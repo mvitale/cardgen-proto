@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "\"Prototype EOL card generator\"",
   "main": "index.js",
-  "dependencies": {
-    "canvas": "^1.6.2"
-  },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

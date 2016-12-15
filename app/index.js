@@ -4,7 +4,7 @@ const Image = require('canvas').Image;
 
 var leatherbackImg = null;
 
-fs.readFile(__dirname + '/images/leatherback.jpg', function(err, turtle) {
+fs.readFile('/Users/mvitale/projects/eol/cardgen/app/images/leatherback.jpg', function(err, turtle) {
   if (err) throw err;
   leatherbackImg = new Image;
   leatherbackImg.src = turtle;

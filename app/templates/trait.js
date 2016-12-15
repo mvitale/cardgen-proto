@@ -33,7 +33,13 @@ if (!module) {
     ctx.font = 'italic 20px OpenSans';
     ctx.fillText(content['sciName'], 15, 50);
 
-    ctx.drawImage(content['image'], 0, 65, 50, 50);
+    //ctx.drawImage(content['image'], 0, 0);
+    var Canvas = require('canvas'),
+        Image  = Canvas.Image;
+    var img = new Image;
+    img.src = canvas.toBuffer();
+    ctx.drawImage(img, 0, 0, 50, 50);
+    
 
     /*
     ctx.font = '30px Helvetica';

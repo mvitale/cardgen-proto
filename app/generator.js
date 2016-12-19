@@ -12,10 +12,10 @@ function generate(options) {
       content = options['content'],
       canvasWidth = template.width(),
       canvasHeight = template.height(),
-      canvas = new Canvas(canvasWidth, canvasHeight);
+      canvas = new Canvas(canvasWidth, canvasHeight, 'svg');
 
   template.draw(canvas, content);
-  fs.writeFile('out.jpg', canvas.toBuffer());
+  fs.writeFile('out.svg', canvas.toBuffer());
 }
 
 module.exports.generate = generate;

@@ -9,5 +9,9 @@
     "start": "node index.js"
   },
   "author": "Michael Vitale",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "canvas": "^1.6.2",
+    "express": "^4.14.1"
+  }
 }

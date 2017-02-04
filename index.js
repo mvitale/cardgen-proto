@@ -1,2 +1,2 @@
 //require('./app/index');
-require('./server');
+require('./app');

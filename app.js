@@ -2,7 +2,7 @@
 // TODO: Should handlers be moved out?
 const port = 8080;
 
-const dbconnect  = require('./app/db/dbconnect')
+const dbconnect  = require('./dbconnect')
 const express    = require('express');
 const multer     = require('multer');
 const upload     = multer({dest: 'storage/images/'});
@@ -15,7 +15,7 @@ const ObjectID = mongo.ObjectID;
 const app = express();
 
 // Wire up JSON request parser
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // Get cards db handle
@@ -86,7 +86,7 @@ router.post('/save_image', upload.single('image'), function(req, res) {
   });
 });
 
-const generator = require('./app/generator');
+const generator = require('./generator');
 
 router.get('/generate/:card_id', function(req, res) {
   var cards = cardsDb.collection('cards');

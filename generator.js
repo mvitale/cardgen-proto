@@ -1,7 +1,7 @@
 var Canvas = require('canvas');
 var Image = Canvas.Image;
 var fs = require('fs');
-var dbconnect = require('./db/dbconnect');
+var dbconnect = require('./dbconnect');
 var ObjectID = require('mongodb').ObjectID;
 
 var dpi = 72;
@@ -48,14 +48,12 @@ function resolveImages(content, imageFieldNames, callback) {
     }, function(err, result) {
       if (err) return callback(err, null);
 
-      fs.readFile(__dirname + '/../storage/images/' + result['filename'], function(err, fileSrc) {
+      fs.readFile(__dirname + '/storage/images/' + result['filename'], function(err, fileSrc) {
         if (err) return callback(err, null);
 
         var image = new Image;
         image.src = fileSrc;
         field['image'] = image;
-
-        console.log(image);
 
         return resolveImages(content, imageFieldNames, callback);
       });

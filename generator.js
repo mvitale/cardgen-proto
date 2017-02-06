@@ -40,7 +40,7 @@ function resolveImages(content, imageFieldNames, callback) {
       , imageFile = null;
 
 
-    field = content[imageFieldNames.pop()]; // Who cares what order
+    field = content[imageFieldNames.pop()];
     imageId = field['imageId'];
 
     imageData = db.collection('images').findOne({

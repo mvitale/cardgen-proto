@@ -1,30 +1,29 @@
 // Server/router/controller for the API service (at the moment)
 // TODO: Should handlers be moved out?
-const port = 8080;
+var port = 8080;
 
-const dbconnect  = require('./dbconnect')
-const express    = require('express');
-const multer     = require('multer');
-const upload     = multer({dest: 'storage/images/'});
-const bodyParser = require('body-parser');
+var express    = require('express');
+var multer     = require('multer');
+var bodyParser = require('body-parser');
+var mongo = require('mongodb');
+var dbconnect  = require('./dbconnect')
 
-const mongo = require('mongodb');
-const ObjectID = mongo.ObjectID;
+// Needed for querying mongo records on _id field
+// TODO: Should records get a new string guid field to be exposed via the API?
+var ObjectID = mongo.ObjectID;
+
+// form/multipart upload handler
+var upload = multer({dest: 'storage/images/'});
 
 // Get that express instance!
-const app = express();
+var app = express();
 
 // Wire up JSON request parser
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-// Get cards db handle
+// Will hold cards db handle (see below)
 var cardsDb = null;
-dbconnect.getConn('cardtest', function(err, db) {
-  if (err) throw err;
-
-  cardsDb = db;
-});
 
 // TODO: Set appropriate http status
 function okJsonRes(res, data) {
@@ -86,7 +85,7 @@ router.post('/save_image', upload.single('image'), function(req, res) {
   });
 });
 
-const generator = require('./generator');
+var generator = require('./generator');
 
 router.get('/generate/:card_id', function(req, res) {
   var cards = cardsDb.collection('cards');
@@ -114,6 +113,12 @@ router.get('/generate/:card_id', function(req, res) {
 // Register all routes at /
 app.use('/', router);
 
-// Start server
-app.listen(port);
-console.log('Server running on port ' + port);
+// Get a db connection and start the server
+dbconnect.getConn('cardtest', function(err, db) {
+  if (err) throw err;
+
+  cardsDb = db;
+
+  app.listen(port);
+  console.log('Server running on port ' + port);
+});

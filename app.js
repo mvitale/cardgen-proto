@@ -5,8 +5,16 @@ var port = 8080;
 var express    = require('express');
 var multer     = require('multer');
 var bodyParser = require('body-parser');
-var mongo = require('mongodb');
-var dbconnect  = require('./dbconnect')
+var mongo      = require('mongodb');
+var dbconnect  = require('./dbconnect');
+var dot        = require('mongo-dot-notation');
+
+var HTTP_STATUS = {
+  'created': 201,
+  'internalError': 500,
+  'ok': 200,
+  'notFound': 404
+}
 
 // Needed for querying mongo records on _id field
 // TODO: Should records get a new string guid field to be exposed via the API?
@@ -36,10 +44,13 @@ function okJsonRes(res, data) {
 }
 
 function errJsonRes(res, err) {
-  res.json({
-    "status": "error",
-    "errorMsg": err
-  })
+  jsonRes(res, 'internalError', {
+    'error': err
+  });
+}
+
+function jsonRes(res, status, data) {
+  res.status(HTTP_STATUS[status]).json(data);
 }
 
 // Routes
@@ -50,21 +61,50 @@ router.get('/ping', function(req, res) {
   res.json({ message: 'I\'m up!' });
 });
 
-router.post('/save_card', function(req, res) {
+router.post('/cards', function(req, res) {
   var cards = cardsDb.collection('cards');
 
   cards.insertOne(req.body, function(err, result) {
     if (err) {
       errJsonRes(res, err);
     } else {
-      okJsonRes(res, {
-        "id": result["insertedId"]
+      jsonRes(res, 'created', {
+        'id': result['insertedId']
       });
     }
   });
 });
 
-router.post('/save_image', upload.single('image'), function(req, res) {
+router.patch('/cards/:cardId', function(req, res) {
+  var id = null;
+
+  if (!ObjectID.isValid(req.params.cardId)) {
+    jsonRes(res, 'notFound', {});
+    return;
+  }
+
+  id = ObjectID(req.params.cardId);
+
+  // create $set instruction using dot notation, which causes mongo to update
+  // only the fields passed in
+  var instructions = dot.flatten(req.body);
+
+  cardsDb.collection('cards').findOneAndUpdate({
+    '_id': id
+  }, instructions, {'returnOriginal': false}, function(err, result) {
+    if (err) {
+      errJsonRes(res, err);
+    } else {
+      if (!(result.ok === 1)) {
+        jsonRes(res, 'notFound', {});
+      } else {
+        jsonRes(res, 'ok', result.value);
+      }
+    }
+  });
+});
+
+router.post('/images', upload.single('image'), function(req, res) {
   if (!(req.file && req.file.filename)) {
     errJsonRes(res, "Upload failed");
     return;

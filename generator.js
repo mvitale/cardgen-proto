@@ -12,8 +12,6 @@ var templates = {
 }
 
 function generate(options, callback) {
-  console.log(options);
-
   var template = require('./templates/' + templates[options['template']]),
       content = options['content'],
       canvasWidth = template.width(),

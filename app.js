@@ -6,8 +6,8 @@ var express    = require('express');
 var multer     = require('multer');
 var bodyParser = require('body-parser');
 var mongo      = require('mongodb');
+var cors       = require('cors');
 var dbconnect  = require('./dbconnect');
-var dot        = require('mongo-dot-notation');
 
 var HTTP_STATUS = {
   'created': 201,
@@ -25,6 +25,8 @@ var upload = multer({dest: 'storage/images/'});
 
 // Get that express instance!
 var app = express();
+
+app.use(cors());
 
 // Wire up JSON request parser
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -64,6 +66,8 @@ router.get('/ping', function(req, res) {
 router.post('/cards', function(req, res) {
   var cards = cardsDb.collection('cards');
 
+  console.log(req.body);
+
   cards.insertOne(req.body, function(err, result) {
     if (err) {
       errJsonRes(res, err);
@@ -75,7 +79,7 @@ router.post('/cards', function(req, res) {
   });
 });
 
-router.patch('/cards/:cardId', function(req, res) {
+router.put('/cards/:cardId', function(req, res) {
   var id = null;
 
   if (!ObjectID.isValid(req.params.cardId)) {
@@ -85,13 +89,9 @@ router.patch('/cards/:cardId', function(req, res) {
 
   id = ObjectID(req.params.cardId);
 
-  // create $set instruction using dot notation, which causes mongo to update
-  // only the fields passed in
-  var instructions = dot.flatten(req.body);
-
   cardsDb.collection('cards').findOneAndUpdate({
     '_id': id
-  }, instructions, {'returnOriginal': false}, function(err, result) {
+  }, req.body, {'returnOriginal': false}, function(err, result) {
     if (err) {
       errJsonRes(res, err);
     } else {

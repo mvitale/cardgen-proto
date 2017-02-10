@@ -41,6 +41,7 @@
     ctx.font = 'italic 20px Open Sans';
     ctx.fillText(content['sciName'], 15, 50);
 
+    console.log('tryna write');
     ctx.drawImage(mainPhoto['image'], mainPhoto['sx'], mainPhoto['sy'], mainPhoto['sWidth'], heightWidthRatio * mainPhoto['sWidth'], 0, 65, width, imgHeight);
   }
   exports.draw = draw;

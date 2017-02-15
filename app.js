@@ -7,7 +7,9 @@ var multer     = require('multer');
 var bodyParser = require('body-parser');
 var mongo      = require('mongodb');
 var cors       = require('cors');
+
 var dbconnect  = require('./dbconnect');
+var dedupDiskStorage = require('./dedup-disk-storage');
 
 var HTTP_STATUS = {
   'created': 201,
@@ -16,12 +18,17 @@ var HTTP_STATUS = {
   'notFound': 404
 }
 
+
 // Needed for querying mongo records on _id field
 // TODO: Should records get a new string guid field to be exposed via the API?
 var ObjectID = mongo.ObjectID;
 
 // form/multipart upload handler
-var upload = multer({dest: 'storage/images/'});
+var upload = multer({
+  storage: dedupDiskStorage({
+    destination: 'storage/images/'
+  })
+});
 
 // Get that express instance!
 var app = express();
@@ -105,23 +112,13 @@ router.put('/cards/:cardId', function(req, res) {
 });
 
 router.post('/images', upload.single('image'), function(req, res) {
-  if (!(req.file && req.file.filename)) {
+  if (!(req.file && req.file.dedupFile)) {
     errJsonRes(res, "Upload failed");
     return;
   }
 
-  var images = cardsDb.collection('images');
-
-  images.insertOne({
-    "filename": req.file.filename
-  }, function(err, result) {
-    if (err) {
-      errJsonRes(res, err);
-    } else {
-      okJsonRes(res, {
-        "id": result["insertedId"]
-      });
-    }
+  okJsonRes(res, {
+    "id": req.file.dedupFile._id
   });
 });
 

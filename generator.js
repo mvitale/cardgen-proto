@@ -3,6 +3,11 @@ var Image = Canvas.Image;
 var fs = require('fs');
 var request = require('request');
 var dbconnect = require('./dbconnect');
+var templateReader = require('./template-reader');
+var templateManager = require('./templates/template-manager');
+var canvasSupplier = require('./canvas-supplier');
+var DedupFile = require('./models/dedup-file');
+
 var ObjectID = require('mongodb').ObjectID;
 
 var dpi = 72;
@@ -11,19 +16,29 @@ var templates = {
   'trait': 'trait'
 }
 
-function generate(options, callback) {
-  var template = require('./templates/' + templates[options['template']]),
-      content = options['content'],
-      canvasWidth = template.width(),
-      canvasHeight = template.height(),
-      imageFieldNames = template.imageFieldNames(),
-      canvas = new Canvas(canvasWidth, canvasHeight, 'svg');
+templateManager.setTemplateReader(templateReader);
+templateManager.setCanvasSupplier(canvasSupplier);
 
-  resolveImages(content, imageFieldNames, function(err, content) {
-    if (err) return callback(err, null);
+module.exports.generate = function generate(options, callback) {
+  var content = options['content']
+    , imageFields = null
+    , imageFieldNames = null
+    , canvas = null;
 
-    template.draw(canvas, content);
-    return callback(null, canvas.toBuffer());
+  templateManager.loadTemplate(options['template'], (err) => {
+    if (err) return callback(err);
+
+    imageFields = templateManager.imageFields();
+    imageFieldNames = imageFields.map(function(field) {
+      return field['id'];
+    });
+
+    resolveImages(content, imageFieldNames, function(err, content) {
+      if (err) return callback(err);
+
+      canvas = templateManager.draw(content);
+      return callback(null, canvas.toBuffer());
+    });
   });
 }
 
@@ -32,50 +47,40 @@ function resolveImages(content, imageFieldNames, callback) {
     return callback(null, content);
   }
 
-  dbconnect.getCardsConn(function(err, db) {
-    if (err) return callback(err, null);
+  var field = null
+    , imageId = null
+    , imageData = null
+    , imageFile = null;
 
-    var field = null
-      , imageId = null
-      , imageData = null
-      , imageFile = null;
+  field = content[imageFieldNames.pop()];
 
+  if (field['url']) {
+    var url = field['url'];
 
-    field = content[imageFieldNames.pop()];
+    request({uri: url, encoding: null}, function(err, resp, body) {
+      if (err) throw err;
 
-    if (field['url']) {
-      var url = field['url'];
-      console.log(url)
+      var image = new Image;
+      image.src = body;
+      field['image'] = image;
 
-      request({uri: url, encoding: null}, function(err, resp, body) {
-        if (err) throw err;
+      return resolveImages(content, imageFieldNames, callback);
+    });
+  } else {
+    imageId = field['imageId'];
+
+    DedupFile.findById(imageId, (err, result) => {
+      if (err) return callback(err, null);
+
+      fs.readFile(__dirname + '/' + result.path, function(err, fileSrc) {
+        if (err) return callback(err, null);
 
         var image = new Image;
-        image.src = body;
+        image.src = fileSrc;
         field['image'] = image;
 
         return resolveImages(content, imageFieldNames, callback);
       });
-    } else {
-      imageId = field['imageId'];
-
-      imageData = db.collection('images').findOne({
-        '_id': ObjectID(imageId)
-      }, function(err, result) {
-        if (err) return callback(err, null);
-
-        fs.readFile(__dirname + '/storage/images/' + result['filename'], function(err, fileSrc) {
-          if (err) return callback(err, null);
-
-          var image = new Image;
-          image.src = fileSrc;
-          field['image'] = image;
-
-          return resolveImages(content, imageFieldNames, callback);
-        });
-      });
-    }
-  });
+    })
+  }
 }
-
-module.exports.generate = generate;

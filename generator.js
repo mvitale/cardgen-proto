@@ -4,7 +4,7 @@ var fs = require('fs');
 var request = require('request');
 var dbconnect = require('./dbconnect');
 var templateReader = require('./template-reader');
-var templateManager = require('./templates/template-manager');
+var templateManager = require('./template-manager/template-manager');
 var canvasSupplier = require('./canvas-supplier');
 var DedupFile = require('./models/dedup-file');
 

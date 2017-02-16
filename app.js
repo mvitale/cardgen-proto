@@ -7,6 +7,7 @@ var multer     = require('multer');
 var bodyParser = require('body-parser');
 var mongo      = require('mongodb');
 var cors       = require('cors');
+var fs         = require('fs');
 
 var dbconnect  = require('./dbconnect');
 var dedupDiskStorage = require('./dedup-disk-storage');
@@ -33,6 +34,7 @@ var upload = multer({
 // Get that express instance!
 var app = express();
 
+// TODO: remove
 app.use(cors());
 
 // Wire up JSON request parser
@@ -143,6 +145,18 @@ router.get('/generate/:card_id', function(req, res) {
           res.send(image);
         }
       });
+    }
+  });
+});
+
+router.get('/templates/:templateName', function(req, res) {
+  var filePath = __dirname + '/templates/' + req.params.templateName + '.json';
+
+  fs.readFile(filePath, (err, fileContents) => {
+    if (err) {
+      errJsonRes(res, err);
+    } else {
+      res.json(JSON.parse(fileContents));
     }
   });
 });

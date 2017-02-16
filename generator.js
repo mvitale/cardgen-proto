@@ -16,7 +16,7 @@ var templates = {
   'trait': 'trait'
 }
 
-templateManager.setTemplateReader(templateReader);
+templateManager.setTemplateSupplier(templateReader);
 templateManager.setCanvasSupplier(canvasSupplier);
 
 module.exports.generate = function generate(options, callback) {

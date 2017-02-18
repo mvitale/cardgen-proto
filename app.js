@@ -9,6 +9,8 @@ var mongo      = require('mongodb');
 var cors       = require('cors');
 var fs         = require('fs');
 
+var Card       = require('./models/card');
+
 var dbconnect  = require('./dbconnect');
 var dedupDiskStorage = require('./dedup-disk-storage');
 
@@ -18,7 +20,6 @@ var HTTP_STATUS = {
   'ok': 200,
   'notFound': 404
 }
-
 
 // Needed for querying mongo records on _id field
 // TODO: Should records get a new string guid field to be exposed via the API?
@@ -73,42 +74,31 @@ router.get('/ping', function(req, res) {
 });
 
 router.post('/cards', function(req, res) {
-  var cards = cardsDb.collection('cards');
-
-  console.log(req.body);
-
-  cards.insertOne(req.body, function(err, result) {
+  Card.create(req.body, (err, card) => {
     if (err) {
       errJsonRes(res, err);
     } else {
-      jsonRes(res, 'created', {
-        'id': result['insertedId']
+      card.populateDefaults(() => {
+        jsonRes(res, 'created', card);
       });
     }
   });
 });
 
 router.put('/cards/:cardId', function(req, res) {
-  var id = null;
-
-  if (!ObjectID.isValid(req.params.cardId)) {
-    jsonRes(res, 'notFound', {});
-    return;
-  }
-
-  id = ObjectID(req.params.cardId);
-
-  cardsDb.collection('cards').findOneAndUpdate({
-    '_id': id
-  }, req.body, {'returnOriginal': false}, function(err, result) {
+  Card.findById(req.params.cardId, (err, card) => {
     if (err) {
       errJsonRes(res, err);
     } else {
-      if (!(result.ok === 1)) {
-        jsonRes(res, 'notFound', {});
-      } else {
-        jsonRes(res, 'ok', result.value);
-      }
+      card.data = req.body;
+
+      card.save((err) => {
+        if (err) {
+          errJsonRes(res, err);
+        } else {
+          jsonRes(res, 'ok', card);
+        }
+      })
     }
   });
 });

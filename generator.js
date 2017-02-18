@@ -4,7 +4,7 @@ var fs = require('fs');
 var request = require('request');
 var dbconnect = require('./dbconnect');
 var templateReader = require('./template-reader');
-var templateManager = require('./template-manager/template-manager');
+var templateRenderer = require('./template-renderer/template-renderer');
 var canvasSupplier = require('./canvas-supplier');
 var DedupFile = require('./models/dedup-file');
 
@@ -16,8 +16,8 @@ var templates = {
   'trait': 'trait'
 }
 
-templateManager.setTemplateSupplier(templateReader);
-templateManager.setCanvasSupplier(canvasSupplier);
+templateRenderer.setTemplateSupplier(templateReader);
+templateRenderer.setCanvasSupplier(canvasSupplier);
 
 module.exports.generate = function generate(options, callback) {
   var content = options['content']
@@ -25,10 +25,10 @@ module.exports.generate = function generate(options, callback) {
     , imageFieldNames = null
     , canvas = null;
 
-  templateManager.loadTemplate(options['template'], (err) => {
+  templateRenderer.loadTemplate(options['template'], (err) => {
     if (err) return callback(err);
 
-    imageFields = templateManager.imageFields();
+    imageFields = templateRenderer.imageFields();
     imageFieldNames = imageFields.map(function(field) {
       return field['id'];
     });
@@ -36,7 +36,7 @@ module.exports.generate = function generate(options, callback) {
     resolveImages(content, imageFieldNames, function(err, content) {
       if (err) return callback(err);
 
-      canvas = templateManager.draw(content);
+      canvas = templateRenderer.draw(content);
       return callback(null, canvas.toBuffer());
     });
   });

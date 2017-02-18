@@ -1,9 +1,5 @@
-var fs = require('fs');
+var templateManager = require('./template-manager');
 
 module.exports.supply = function(templateName, cb) {
-  fs.readFile('./templates/' + templateName + '.json', (err, data) => {
-    if (err) return cb(err);
-
-    cb(null, JSON.parse(data));
-  })
+  return tempalteManager.getTemplate(templateName, cb);
 }

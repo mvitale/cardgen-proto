@@ -1,4 +1,5 @@
 var fs = require('fs');
+var eolApiCaller = require('./eol-api-caller');
 
 var templateCache = {};
 var templateDefaultsCache = {};
@@ -34,13 +35,50 @@ function getDefaultData(name, params, cb) {
   getTemplateDefaults(name, function(err, defaultSpec) {
     if (err) return cb(err);
 
-    return defaultDataHelper(Object.keys(defaultSpec), defaultSpec, params,
-      {}, cb);
+    var apiCalls = defaultSpec['eolApiCalls'];
+
+    makeApiCalls(apiCalls, params, {}, (err, results) => {
+      var defaultSuppliers = defaultSpec['defaultSuppliers'];
+
+      return defaultDataHelper(Object.keys(defaultSuppliers), defaultSuppliers,
+      params, results, {}, cb);
+    });
   });
 }
 module.exports.getDefaultData = getDefaultData;
 
-function defaultDataHelper(fieldIds, spec, params, data, cb) {
+function makeApiCalls(apiCalls, templateParams, results, cb) {
+  if (!apiCalls || apiCalls.length === 0) {
+    return cb(null, results);
+  }
+
+  var apiCall = apiCalls.pop()
+    , apiName = apiCall['api']
+    , apiParams = apiCall['params'];
+
+  resolveApiParams(apiParams, templateParams);
+
+  eolApiCaller.getJson(apiName, apiParams, (err, jsonResult) => {
+    if (err) return cb(err);
+
+    results[apiName] = jsonResult;
+    return makeApiCalls(apiCalls, templateParams, results, cb);
+  })
+}
+
+function resolveApiParams(apiParams, templateParams) {
+  Object.keys(apiParams).forEach((key) => {
+    var val = apiParams[key]
+      , templateParamsKey = null;
+
+    if (typeof val === "string" && val.startsWith('$')) {
+      templateParamsKey = val.substr(1);
+      apiParams[key] = templateParams[templateParamsKey];
+    }
+  });
+}
+
+function defaultDataHelper(fieldIds, spec, params, apiResults, data, cb) {
   if (fieldIds.length === 0) {
     return cb(null, data);
   }
@@ -50,10 +88,10 @@ function defaultDataHelper(fieldIds, spec, params, data, cb) {
     , defaultSupplier = require('./template-defaults/suppliers/' +
         defaultSupplierName);
 
-  defaultSupplier.supply(params, function(err, val) {
+  defaultSupplier.supply(params, apiResults, function(err, val) {
     if (err) return cb(err);
 
     data[fieldId] = val;
-    return defaultDataHelper(fieldIds, spec, params, data, cb);
+    return defaultDataHelper(fieldIds, spec, params, apiResults, data, cb);
   });
 }

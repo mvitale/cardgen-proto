@@ -17,49 +17,31 @@ var baseParams = {
 
 var url = 'http://eol.org/api/pages';
 
-module.exports.supply = function(params, cb) {
-  var speciesId = params['speciesId']
-    , params = null;
+module.exports.supply = function(params, apiResults, cb) {
+  var result = apiResults['pages']
+    , taxonConcept = result['response']['taxonConcept'][0]
+    , commonNames = taxonConcept['commonName'];
 
-  if (!speciesId) {
-    return cb(new Error("Missing speciesId"));
-  }
+    var candidate = null;
 
-  params = Object.assign({id: speciesId}, baseParams);
+    for (var i = 0; i < commonNames.length; i++) {
+      var commonName = commonNames[i]
+        , attrs = commonName['$']
+        , lang = attrs['xml:lang']
+        , preferred = attrs['eol_preferred'];
 
-  request({url: url, qs: params}, (err, res, body) => {
-    if (err) return cb(err);
+      if (lang === 'en') {
+        if (candidate === null || preferred) {
+          candidate = commonName['_'];
+        }
 
-    parseXmlString(body, (err, result) => {
-      if (err) return cb(err);
-
-      console.log(JSON.stringify(result, null, 2));
-
-      var taxonConcept = result['response']['taxonConcept'][0]
-        , commonNames = taxonConcept['commonName'];
-
-      var candidate = null;
-
-      for (var i = 0; i < commonNames.length; i++) {
-        var commonName = commonNames[i]
-          , attrs = commonName['$']
-          , lang = attrs['xml:lang']
-          , preferred = attrs['eol_preferred'];
-
-        if (lang === 'en') {
-          if (candidate === null || preferred) {
-            candidate = commonName['_'];
-          }
-
-          if (preferred) {
-            break;
-          }
+        if (preferred) {
+          break;
         }
       }
+    }
 
-      return cb(null, candidate.replace(/\w\S*/g, (txt) => {
-        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-      }));
-    })
-  });
+    return cb(null, candidate.replace(/\w\S*/g, (txt) => {
+      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    }));
 }

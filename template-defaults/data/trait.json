@@ -19,6 +19,7 @@
     }
   ],
   "defaultSuppliers": {
-    "commonName": "common-name-supplier"
+    "commonName": "common-name-supplier",
+    "sciName": "sci-name-supplier"
   }
 }

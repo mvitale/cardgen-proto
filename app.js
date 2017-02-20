@@ -74,14 +74,16 @@ router.get('/ping', function(req, res) {
 });
 
 router.post('/cards', function(req, res) {
-  Card.create(req.body, (err, card) => {
-    if (err) {
-      errJsonRes(res, err);
-    } else {
-      card.populateDefaults(() => {
-        jsonRes(res, 'created', card);
-      });
-    }
+  var card = new Card(req.body);
+
+  card.populateDefaults((err) => {
+    if (err) return errJsonRes(res, err);
+
+    card.save((err, card) => {
+      if (err) return errJsonRes(res, err);
+
+      jsonRes(res, 'created', card);
+    });
   });
 });
 

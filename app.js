@@ -13,6 +13,7 @@ var Card       = require('./models/card');
 
 var dbconnect  = require('./dbconnect');
 var dedupDiskStorage = require('./dedup-disk-storage');
+var templateManager = require('./template-manager');
 
 var HTTP_STATUS = {
   'created': 201,
@@ -76,7 +77,7 @@ router.get('/ping', function(req, res) {
 router.post('/cards', function(req, res) {
   var card = new Card(req.body);
 
-  card.populateDefaults((err) => {
+  card.populateDefaultsAndChoices((err) => {
     if (err) return errJsonRes(res, err);
 
     card.save((err, card) => {
@@ -142,13 +143,11 @@ router.get('/generate/:card_id', function(req, res) {
 });
 
 router.get('/templates/:templateName', function(req, res) {
-  var filePath = __dirname + '/templates/' + req.params.templateName + '.json';
-
-  fs.readFile(filePath, (err, fileContents) => {
+  templateManager.getTemplate(req.params.templateName, (err, template) => {
     if (err) {
       errJsonRes(res, err);
     } else {
-      res.json(JSON.parse(fileContents));
+      jsonRes(res, 'ok', template);
     }
   });
 });

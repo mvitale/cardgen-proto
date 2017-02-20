@@ -12,19 +12,21 @@ var CardSchema = new Schema({
   },
   templateParams: Object,
   defaultData: Object,
+  choices: Object,
   data: Object
 });
 
-CardSchema.methods.populateDefaults = function(cb) {
+CardSchema.methods.populateDefaultsAndChoices = function(cb) {
   if (!this.templateParams) {
     this.templateParams = {};
   }
 
-  templateManager.getDefaultData(this.template, this.templateParams,
+  templateManager.getDefaultAndChoiceData(this.template, this.templateParams,
     (err, data) => {
       if (err) return cb(err);
 
-      this.defaultData = data;
+      this.defaultData = data['defaultData'];
+      this.choices = data['choices'];
       return cb();
     }
   );

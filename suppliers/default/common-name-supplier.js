@@ -17,7 +17,7 @@ var baseParams = {
 
 var url = 'http://eol.org/api/pages';
 
-module.exports.supply = function(params, apiResults, cb) {
+module.exports.supply = function(params, apiResults, choices, cb) {
   var result = apiResults['pages']
     , taxonConcept = result['response']['taxonConcept'][0]
     , commonNames = taxonConcept['commonName'];

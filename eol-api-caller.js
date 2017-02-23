@@ -10,7 +10,6 @@ function getJson(apiName, params, cb) {
 
     parseXmlString(body, (err, result) => {
       if (err) return cb(err);
-
       return cb(null, result);
     });
   });

@@ -130,7 +130,7 @@ function defaultDataHelper(fieldIds, spec, params, apiResults, choices, data,
     , supplierName = spec[fieldId]
     , supplier = require('./suppliers/default/' + supplierName);
 
-  supplier.supply(params, apiResults, choices, function(err, val) {
+  supplier.supply(params, apiResults, choices[fieldId], function(err, val) {
     if (err) return cb(err);
 
     data[fieldId] = val;

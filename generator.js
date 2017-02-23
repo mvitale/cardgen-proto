@@ -19,42 +19,77 @@ var templates = {
 templateRenderer.setTemplateSupplier(templateReader);
 templateRenderer.setCanvasSupplier(canvasSupplier);
 
-module.exports.generate = function generate(options, callback) {
-  var content = options['content']
-    , imageFields = null
-    , imageFieldNames = null
+module.exports.generate = function generate(card, callback) {
+  var data = JSON.parse(JSON.stringify(card.data))
+    , defaults = card.defaultData
+    , choices = card.choices
+    , fields = card.fields
     , canvas = null;
 
-  templateRenderer.loadTemplate(options['template'], (err) => {
+  templateRenderer.loadTemplate(card.templateName, (err) => {
     if (err) return callback(err);
 
-    imageFields = templateRenderer.imageFields();
-    imageFieldNames = imageFields.map(function(field) {
-      return field['id'];
-    });
-
-    resolveImages(content, imageFieldNames, function(err, content) {
-      if (err) return callback(err);
-
-      canvas = templateRenderer.draw(content);
+    resolveData(data, fields, choices, defaults, (err, data) => {
+      canvas = templateRenderer.draw(data);
       return callback(null, canvas.toBuffer());
     });
   });
 }
 
-function resolveImages(content, imageFieldNames, callback) {
+function resolveData(data, fields, choices, defaults, cb) {
+  // populate blank fields with defaults if present
+  Object.keys(defaults).forEach((key) => {
+    var defaultVal = defaults[key];
+
+    if (!data[key]) {
+      data[key] = defaultVal;
+    }
+  });
+
+  // resolve images
+  var imageFields = fields.filter(function(field) {
+        return field['type'] === 'image';
+      })
+    , imageFieldNames = imageFields.map(function(field) {
+        return field['id'];
+      });
+
+  resolveImages(data, choices, imageFieldNames, (err, data) => {
+    if (err) return cb(err);
+
+    cb(null, data);
+  });
+}
+
+
+function resolveImages(data, choices, imageFieldNames, callback) {
   if (imageFieldNames.length === 0) {
-    return callback(null, content);
+    return callback(null, data);
   }
 
-  var field = null
+  var fieldName = imageFieldNames.pop()
+    , field = data[fieldName]
     , imageId = null
     , imageData = null
     , imageFile = null;
 
-  field = content[imageFieldNames.pop()];
+  console.log(imageFieldNames);
+  console.log(fieldName);
+  console.log(data);
+  console.log(field);
+  console.log(choices);
+  console.log('-----------------------')
 
-  if (field['url']) {
+  if (!field) {
+    return resolveImages(data, choices, imageFieldNames, callback);
+  }
+
+  if ('index' in field) {
+    field['url'] = choices[fieldName][field['index']];
+    imageFieldNames.push(fieldName); // Resolve url on next recursion
+    delete field['index'];
+    return resolveImages(data, choices, imageFieldNames, callback);
+  } else if ('url' in field) {
     var url = field['url'];
 
     request({uri: url, encoding: null}, function(err, resp, body) {
@@ -64,7 +99,7 @@ function resolveImages(content, imageFieldNames, callback) {
       image.src = body;
       field['image'] = image;
 
-      return resolveImages(content, imageFieldNames, callback);
+      return resolveImages(data, choices, imageFieldNames, callback);
     });
   } else {
     imageId = field['imageId'];
@@ -79,7 +114,7 @@ function resolveImages(content, imageFieldNames, callback) {
         image.src = fileSrc;
         field['image'] = image;
 
-        return resolveImages(content, imageFieldNames, callback);
+        return resolveImages(data, choices, imageFieldNames, callback);
       });
     })
   }

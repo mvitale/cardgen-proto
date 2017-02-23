@@ -14,6 +14,7 @@ var Card       = require('./models/card');
 var dbconnect  = require('./dbconnect');
 var dedupDiskStorage = require('./dedup-disk-storage');
 var templateManager = require('./template-manager');
+var generator = require('./generator');
 
 var HTTP_STATUS = {
   'created': 201,
@@ -117,27 +118,19 @@ router.post('/images', upload.single('image'), function(req, res) {
   });
 });
 
-var generator = require('./generator');
-
-router.get('/generate/:card_id', function(req, res) {
-  var cards = cardsDb.collection('cards');
-  var cardData = cards.findOne({
-    "_id": ObjectID(req.params.card_id)
-  }, function(err, result) {
+router.get('/cards/:cardId/export', function(req, res) {
+  Card.findById(req.params.cardId, (err, card) => {
     if (err) {
-      res.json({
-        "status": "error",
-        "errorMsg": err
-      });
+      return errJsonRes(res, err);
     } else {
-      generator.generate(result, function(err, image) {
+      generator.generate(card, (err, svg) => {
         if (err) {
-          errJsonRes(res, err);
+          return errJsonRes(res, err);
         } else {
           res.setHeader('Content-Type', 'image/svg+xml');
-          res.send(image);
+          res.send(svg);
         }
-      });
+      })
     }
   });
 });

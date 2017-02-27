@@ -15,8 +15,6 @@ var baseParams = {
   common_names: true
 };
 
-var url = 'http://eol.org/api/pages';
-
 module.exports.supply = function(params, apiResults, choices, cb) {
   var result = apiResults['pages']
     , taxonConcept = result['response']['taxonConcept'][0]
@@ -24,22 +22,26 @@ module.exports.supply = function(params, apiResults, choices, cb) {
 
     var candidate = null;
 
-    for (var i = 0; i < commonNames.length; i++) {
-      var commonName = commonNames[i]
-        , attrs = commonName['$']
-        , lang = attrs['xml:lang']
-        , preferred = attrs['eol_preferred'];
+    if (commonNames) {
+      for (var i = 0; i < commonNames.length; i++) {
+        var commonName = commonNames[i]
+          , attrs = commonName['$']
+          , lang = attrs['xml:lang']
+          , preferred = attrs['eol_preferred'];
 
-      if (lang === 'en') {
-        if (candidate === null || preferred) {
-          candidate = commonName['_'];
-        }
+        if (lang === 'en') {
+          if (candidate === null || preferred) {
+            candidate = commonName['_'];
+          }
 
-        if (preferred) {
-          break;
+          if (preferred) {
+            break;
+          }
         }
       }
     }
+
+    if (candidate === null) { candidate = '' };
 
     return cb(null, candidate.replace(/\w\S*/g, (txt) => {
       return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();

@@ -5,11 +5,13 @@ module.exports.supply = function(params, apiResults, cb) {
     , dataObjects = response['dataObject']
     , imageUrls = [];
 
-  dataObjects.forEach((dataObj) => {
-    if (dataObj['dataType'].includes(targetDataType)) {
-      imageUrls.push(dataObj['mediaURL'][1]); // EOL-cached version of image
-    }
-  });
+  if (dataObjects) {
+    dataObjects.forEach((dataObj) => {
+      if (dataObj['dataType'].includes(targetDataType)) {
+        imageUrls.push(dataObj['mediaURL'][1]); // EOL-cached version of image
+      }
+    });
+  }
 
   cb(null, imageUrls);
 }

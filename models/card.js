@@ -10,10 +10,6 @@ var CardSchema = new Schema({
     type: String,
     required: true
   },
-  fields: {
-    type: Object,
-    default: {}
-  },
   templateParams: {
     type: Object,
     default: {}
@@ -28,25 +24,28 @@ var CardSchema = new Schema({
   },
   data: {
     type: Object,
+    required: true,
     default: {}
   }
 });
 
 CardSchema.methods.populateDefaultsAndChoices = function(cb) {
-  templateManager.getTemplate(this.templateName, (err, template) => {
+  templateManager.getDefaultAndChoiceData(this.templateName, this.templateParams,
+    (err, data) => {
+      if (err) return cb(err);
+
+      this.defaultData = data['defaultData'];
+      this.choices = data['choices'];
+      return cb();
+    }
+  );
+}
+
+CardSchema.methods.templateSpec = function(cb) {
+  templateManager.getTemplate(this.templateName, (err, data) => {
     if (err) return cb(err);
 
-    this.fields = template['cardDesc']['fields'];
-
-    templateManager.getDefaultAndChoiceData(this.templateName, this.templateParams,
-      (err, data) => {
-        if (err) return cb(err);
-
-        this.defaultData = data['defaultData'];
-        this.choices = data['choices'];
-        return cb();
-      }
-    );
+    return cb(data['spec']);
   });
 }
 

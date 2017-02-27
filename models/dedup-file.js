@@ -62,5 +62,13 @@ DedupFileSchema.methods.removeIncludingFile = function(cb) {
   });
 }
 
+DedupFileSchema.methods.read = function(cb) {
+  fs.readFile(__dirname + '/../' + this.path, (err, buffer) => {
+    if (err) return cb(err);
+
+    return cb(null, buffer);
+  });
+}
+
 var DedupFile = mongoose.model('DedupFile', DedupFileSchema);
 module.exports = DedupFile;

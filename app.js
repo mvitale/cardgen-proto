@@ -16,6 +16,9 @@ var dedupDiskStorage = require('./dedup-disk-storage');
 var templateManager = require('./template-manager');
 var generator = require('./generator');
 
+var CardWrapper = require('./api-wrappers/card-wrapper');
+var TemplateWrapper = require('./api-wrappers/template-wrapper');
+
 var HTTP_STATUS = {
   'created': 201,
   'internalError': 500,
@@ -84,7 +87,7 @@ router.post('/cards', function(req, res) {
     card.save((err, card) => {
       if (err) return errJsonRes(res, err);
 
-      jsonRes(res, 'created', card);
+      jsonRes(res, 'created', new CardWrapper(card));
     });
   });
 });
@@ -118,13 +121,15 @@ router.post('/images', upload.single('image'), function(req, res) {
   });
 });
 
-router.get('/cards/:cardId/export', function(req, res) {
+router.get('/cards/:cardId/render', function(req, res) {
   Card.findById(req.params.cardId, (err, card) => {
     if (err) {
       return errJsonRes(res, err);
     } else {
       generator.generate(card, (err, svg) => {
         if (err) {
+          fakeerr = new Error();
+          console.log(fakeerr.stack)
           return errJsonRes(res, err);
         } else {
           res.setHeader('Content-Type', 'image/svg+xml');
@@ -140,7 +145,7 @@ router.get('/templates/:templateName', function(req, res) {
     if (err) {
       errJsonRes(res, err);
     } else {
-      jsonRes(res, 'ok', template);
+      jsonRes(res, 'ok', new TemplateWrapper(template));
     }
   });
 });

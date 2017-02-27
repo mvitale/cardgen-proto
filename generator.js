@@ -19,24 +19,24 @@ var templates = {
 templateRenderer.setTemplateSupplier(templateReader);
 templateRenderer.setCanvasSupplier(canvasSupplier);
 
-module.exports.generate = function generate(card, callback) {
+module.exports.generate = function generate(card, cb) {
   var data = JSON.parse(JSON.stringify(card.data))
     , defaults = card.defaultData
     , choices = card.choices
-    , fields = card.fields
     , canvas = null;
 
-  templateRenderer.loadTemplate(card.templateName, (err) => {
-    if (err) return callback(err);
 
-    resolveData(data, fields, choices, defaults, (err, data) => {
+  templateRenderer.loadTemplate(card.templateName, (err) => {
+    if (err) return cb(err);
+
+    resolveData(data, choices, defaults, (err, data) => {
       canvas = templateRenderer.draw(data);
-      return callback(null, canvas.toBuffer());
+      return cb(null, canvas.toBuffer());
     });
   });
 }
 
-function resolveData(data, fields, choices, defaults, cb) {
+function resolveData(data, choices, defaults, cb) {
   // populate blank fields with defaults if present
   Object.keys(defaults).forEach((key) => {
     var defaultVal = defaults[key];
@@ -47,11 +47,9 @@ function resolveData(data, fields, choices, defaults, cb) {
   });
 
   // resolve images
-  var imageFields = fields.filter(function(field) {
-        return field['type'] === 'image';
-      })
+  var imageFields = templateRenderer.imageFields()
     , imageFieldNames = imageFields.map(function(field) {
-        return field['id'];
+        return field.id;
       });
 
   resolveImages(data, choices, imageFieldNames, (err, data) => {
@@ -62,9 +60,9 @@ function resolveData(data, fields, choices, defaults, cb) {
 }
 
 
-function resolveImages(data, choices, imageFieldNames, callback) {
+function resolveImages(data, choices, imageFieldNames, cb) {
   if (imageFieldNames.length === 0) {
-    return callback(null, data);
+    return cb(null, data);
   }
 
   var fieldName = imageFieldNames.pop()
@@ -73,48 +71,41 @@ function resolveImages(data, choices, imageFieldNames, callback) {
     , imageData = null
     , imageFile = null;
 
-  console.log(imageFieldNames);
-  console.log(fieldName);
-  console.log(data);
-  console.log(field);
-  console.log(choices);
-  console.log('-----------------------')
-
   if (!field) {
-    return resolveImages(data, choices, imageFieldNames, callback);
+    return resolveImages(data, choices, imageFieldNames, cb);
   }
 
   if ('index' in field) {
-    field['url'] = choices[fieldName][field['index']];
+    field.url = choices[fieldName][field['index']];
     imageFieldNames.push(fieldName); // Resolve url on next recursion
-    delete field['index'];
-    return resolveImages(data, choices, imageFieldNames, callback);
+    delete field.index;
+    return resolveImages(data, choices, imageFieldNames, cb);
   } else if ('url' in field) {
-    var url = field['url'];
+    var url = field.url;
 
     request({uri: url, encoding: null}, function(err, resp, body) {
-      if (err) throw err;
+      if (err) return cb(err);
 
       var image = new Image;
       image.src = body;
-      field['image'] = image;
+      field.image = image;
 
-      return resolveImages(data, choices, imageFieldNames, callback);
+      return resolveImages(data, choices, imageFieldNames, cb);
     });
   } else {
-    imageId = field['imageId'];
+    imageId = field.imageId;
 
     DedupFile.findById(imageId, (err, result) => {
-      if (err) return callback(err, null);
+      if (err) return cb(err);
 
-      fs.readFile(__dirname + '/' + result.path, function(err, fileSrc) {
-        if (err) return callback(err, null);
+      result.read((err, fileSrc) => {
+        if (err) return cb(err);
 
         var image = new Image;
         image.src = fileSrc;
-        field['image'] = image;
+        field.image = image;
 
-        return resolveImages(data, choices, imageFieldNames, callback);
+        return resolveImages(data, choices, imageFieldNames, cb);
       });
     })
   }

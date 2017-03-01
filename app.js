@@ -94,7 +94,7 @@ router.post('/cards', function(req, res) {
   });
 });
 
-router.put('/cards/:cardId', function(req, res) {
+router.put('/cards/:cardId/data', function(req, res) {
   Card.findById(req.params.cardId, (err, card) => {
     if (err) {
       errJsonRes(res, err);
@@ -178,6 +178,7 @@ router.get('/templates/:templateName', function(req, res) {
 });
 
 app.use('/', router);
+app.use('/static', express.static('public'));
 
 dbconnect.getConn('cards', (err, db) => {
   app.listen(port);

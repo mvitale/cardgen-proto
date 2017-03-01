@@ -10,11 +10,13 @@ var cors       = require('cors');
 var fs         = require('fs');
 
 var Card       = require('./models/card');
+var DedupFile  = require('./models/dedup-file');
 
 var dbconnect  = require('./dbconnect');
 var dedupDiskStorage = require('./dedup-disk-storage');
 var templateManager = require('./template-manager');
 var generator = require('./generator');
+var urlHelper = require('./url-helper');
 
 var CardWrapper = require('./api-wrappers/card-wrapper');
 var TemplateWrapper = require('./api-wrappers/template-wrapper');
@@ -110,6 +112,16 @@ router.put('/cards/:cardId', function(req, res) {
   });
 });
 
+router.get('/cards/:cardId', (req, res) => {
+  Card.findById(req.params.cardId, (err, card) => {
+    if (err) {
+      errJsonRes(res, err);
+    } else {
+      jsonRes(res, 'ok', card);
+    }
+  })
+});
+
 router.post('/images', upload.single('image'), function(req, res) {
   if (!(req.file && req.file.dedupFile)) {
     errJsonRes(res, "Upload failed");
@@ -117,8 +129,25 @@ router.post('/images', upload.single('image'), function(req, res) {
   }
 
   okJsonRes(res, {
-    "id": req.file.dedupFile._id
+    "url": urlHelper.imageUrl(req.file.dedupFile)
   });
+});
+
+router.get('/images/:imageId', function(req, res) {
+  DedupFile.findById(req.params.imageId, (err, file) => {
+    if (err) {
+      return errJsonRes(res, err);
+    }
+
+    file.read((err, buffer) => {
+      if (err) return errJsonRes(res, err);
+
+      // TODO: gross
+      if (!buffer) return errJsonRes(res, { msg: "not found"});
+
+      res.send(buffer);
+    })
+  })
 });
 
 router.get('/cards/:cardId/render', function(req, res) {
@@ -148,15 +177,9 @@ router.get('/templates/:templateName', function(req, res) {
   });
 });
 
-// Register all routes at /
 app.use('/', router);
 
-// Get a db connection and start the server
-dbconnect.getConn('cardtest', function(err, db) {
-  if (err) throw err;
-
-  cardsDb = db;
-
+dbconnect.getConn('cards', (err, db) => {
   app.listen(port);
   console.log('Server running on port ' + port);
 });

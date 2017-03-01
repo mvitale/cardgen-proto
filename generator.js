@@ -25,11 +25,13 @@ module.exports.generate = function generate(card, cb) {
     , choices = card.choices
     , canvas = null;
 
-
   templateRenderer.loadTemplate(card.templateName, (err) => {
     if (err) return cb(err);
 
     resolveData(data, choices, defaults, (err, data) => {
+      if (err) return cb(err);
+
+
       canvas = templateRenderer.draw(data);
       return cb(null, canvas.toBuffer());
     });

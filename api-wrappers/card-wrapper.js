@@ -1,5 +1,4 @@
 function CardWrapper(card) {
-  console.log(card);
   this.delegate = card;
 
   this.toJSON = function() {

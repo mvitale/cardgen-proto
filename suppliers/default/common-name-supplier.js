@@ -15,7 +15,7 @@ var baseParams = {
   common_names: true
 };
 
-module.exports.supply = function(params, apiResults, choices, cb) {
+module.exports.supply = function(params, apiResults, choices, fieldSpec, cb) {
   var result = apiResults['pages']
     , taxonConcept = result['response']['taxonConcept'][0]
     , commonNames = taxonConcept['commonName'];

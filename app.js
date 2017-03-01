@@ -128,8 +128,6 @@ router.get('/cards/:cardId/render', function(req, res) {
     } else {
       generator.generate(card, (err, svg) => {
         if (err) {
-          fakeerr = new Error();
-          console.log(fakeerr.stack)
           return errJsonRes(res, err);
         } else {
           res.setHeader('Content-Type', 'image/svg+xml');

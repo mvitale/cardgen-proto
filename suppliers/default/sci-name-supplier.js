@@ -1,4 +1,4 @@
-module.exports.supply = function(params, apiResults, choices, cb) {
+module.exports.supply = function(params, apiResults, choices, fieldSpec, cb) {
   var result = apiResults['pages']
     , taxonConcept = result['response']['taxonConcept'][0]
     , rawSciName = taxonConcept['dwc:scientificName'][0]

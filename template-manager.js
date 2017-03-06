@@ -132,13 +132,18 @@ function defaultDataHelper(fieldIds, spec, params, apiResults, choices, fieldSpe
     , supplierName = spec[fieldId]
     , supplier = require('./suppliers/default/' + supplierName);
 
-  supplier.supply(params, apiResults, choices[fieldId], fieldSpec, (err, val) => {
-    if (err) return cb(err);
+  supplier.supply(params, apiResults, choices[fieldId], fieldSpec,
+    (err, val, choiceIndex) => {
+      if (err) return cb(err);
 
-    data[fieldId] = val;
-    return defaultDataHelper(fieldIds, spec, params, apiResults,
-      choices, fieldSpecs, data, cb);
-  });
+      data[fieldId] = {
+        value: val,
+        choiceIndex: choiceIndex
+      };
+      return defaultDataHelper(fieldIds, spec, params, apiResults,
+        choices, fieldSpecs, data, cb);
+    }
+  );
 }
 
 /*

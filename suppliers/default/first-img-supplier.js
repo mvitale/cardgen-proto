@@ -2,9 +2,11 @@ var request = require('request');
 var sizeOfImage = require('image-size');
 
 module.exports.supply = function(params, apiResults, choices, fieldSpec, cb) {
+  var choiceIndex = null;
 
   if (choices.length > 0) {
-    var uri = choices[0];
+    choiceIndex = 0;
+    var uri = choices[choiceIndex];
 
     request({uri: uri, encoding: null}, (err, res, body) => {
       if (err) return cb(err);
@@ -33,7 +35,7 @@ module.exports.supply = function(params, apiResults, choices, fieldSpec, cb) {
         sx = gap / 2;
       }
 
-      cb(null, {url: '$choiceIndex-0', sx: sx, sy: sy, sWidth: sWidth});
+      cb(null, {url: uri, sx: sx, sy: sy, sWidth: sWidth}, choiceIndex);
     });
   } else {
     cb(null, null);

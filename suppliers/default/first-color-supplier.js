@@ -1,9 +1,11 @@
 module.exports.supply = function(params, apiResults, choices, fieldSpec, cb) {
-  var defaultVal = null;
+  var defaultVal = null
+    , choiceIndex = null;
 
   if (choices && choices.length > 0) {
-    defaultVal = '$choiceIndex-0';
+    choiceIndex = 0;
+    defaultVal = choices[choiceIndex]
   }
 
-  cb(null, defaultVal);
+  cb(null, defaultVal, choiceIndex);
 }

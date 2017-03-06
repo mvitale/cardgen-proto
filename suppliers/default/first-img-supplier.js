@@ -18,8 +18,8 @@ module.exports.supply = function(params, apiResults, choices, fieldSpec, cb) {
         , sy = 0
         , gap = 0;
 
-      if (imgRatio >= targetRatio) {
-        // Shrink width to target width, height will be <= target height
+      // Pick smallest zoom/position to fill image field and center image
+      if (imgRatio <= targetRatio) {
         sWidth = imgSz.width;
         sHeight = targetRatio / sWidth;
 
@@ -33,7 +33,7 @@ module.exports.supply = function(params, apiResults, choices, fieldSpec, cb) {
         sx = gap / 2;
       }
 
-      cb(null, {index: 0, sx: sx, sy: sy, sWidth: sWidth});
+      cb(null, {url: '$choiceIndex-0', sx: sx, sy: sy, sWidth: sWidth});
     });
   } else {
     cb(null, null);

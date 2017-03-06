@@ -63,8 +63,9 @@ function okJsonRes(res, data) {
 }
 
 function errJsonRes(res, err) {
+  console.log(err);
   jsonRes(res, 'internalError', {
-    'error': err
+    'error': JSON.stringify(err)
   });
 }
 

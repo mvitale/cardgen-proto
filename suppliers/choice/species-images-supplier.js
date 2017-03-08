@@ -4,8 +4,6 @@ module.exports.supply = function(params, apiResults, cb) {
     var dataObjects = apiResults.pages.dataObjects
       , imageUrls = [];
 
-  console.log(dataObjects);
-
   if (dataObjects) {
     dataObjects.forEach((dataObj) => {
       if (dataObj['dataType'].includes(targetDataType)) {

@@ -1,8 +1,8 @@
 module.exports.supply = function(params, apiResults, choices, fieldSpec, cb) {
-  var result = apiResults['pages']
-    , taxonConcept = result['response']['taxonConcept'][0]
-    , rawSciName = taxonConcept['dwc:scientificName'][0]
-    , rawSciNameTokens = rawSciName.split(' ')
+  var rawSciName = apiResults.pages.scientificName;
+  console.log(JSON.stringify(apiResults, null, 2));
+  console.log(rawSciName);
+  var rawSciNameTokens = rawSciName.split(' ')
     , sciNameTokens = [rawSciNameTokens[0], rawSciNameTokens[1]]
     , subspeciesCandidate = rawSciNameTokens[2];
 

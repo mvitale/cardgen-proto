@@ -16,22 +16,18 @@ var baseParams = {
 };
 
 module.exports.supply = function(params, apiResults, choices, fieldSpec, cb) {
-  var result = apiResults['pages']
-    , taxonConcept = result['response']['taxonConcept'][0]
-    , commonNames = taxonConcept['commonName'];
-
-    var candidate = null;
+  var commonNames = apiResults.pages.vernacularNames
+    , candidate = null;
 
     if (commonNames) {
       for (var i = 0; i < commonNames.length; i++) {
         var commonName = commonNames[i]
-          , attrs = commonName['$']
-          , lang = attrs['xml:lang']
-          , preferred = attrs['eol_preferred'];
+          , lang = commonName.language
+          , preferred = commonName.eol_preferred;
 
         if (lang === 'en') {
           if (candidate === null || preferred) {
-            candidate = commonName['_'];
+            candidate = commonName.vernacularName;
           }
 
           if (preferred) {

@@ -3,3 +3,4 @@ npm-debug.log
 *.swp
 storage/images/*
 templates
+tags

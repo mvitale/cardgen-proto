@@ -8,7 +8,7 @@ module.exports.supply = function(params, apiResults, choices, fieldSpec, cb) {
     choiceIndex = 0;
     var uri = choices[choiceIndex];
 
-    cb(null, { url: uri }, choiceIndex);
+    cb(null, { url: uri, credit: "Image credit CC-BY-NC" }, choiceIndex);
   } else {
     cb(null, null);
   }

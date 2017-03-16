@@ -4,8 +4,7 @@ module.exports.supply = function(params, apiResults, choices, fieldSpec, cb) {
 
   if (choices && choices.length > 0) {
     choiceIndex = 0;
-    defaultVal = choices[choiceIndex]
   }
 
-  cb(null, defaultVal, choiceIndex);
+  cb(null, null, choiceIndex);
 }

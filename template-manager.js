@@ -136,10 +136,16 @@ function defaultDataHelper(fieldIds, spec, params, apiResults, choices, fieldSpe
     (err, val, choiceIndex) => {
       if (err) return cb(err);
 
-      data[fieldId] = {
-        value: val,
-        choiceIndex: choiceIndex
-      };
+      var defaultObj = {};
+
+      if (val != null) {
+        defaultObj.data = val
+      } else if (choiceIndex != null) {
+        defaultObj.choiceIndex = choiceIndex
+      }
+
+      data[fieldId] = defaultObj;
+
       return defaultDataHelper(fieldIds, spec, params, apiResults,
         choices, fieldSpecs, data, cb);
     }

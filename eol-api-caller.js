@@ -10,14 +10,6 @@ function getJson(apiName, params, cb) {
     if (err) return cb(err);
 
     return cb(null, JSON.parse(body));
-
-    /*
-    parseXmlString(body, (err, result) => {
-      if (err) return cb(err);
-      console.log(JSON.stringify(result, null, 2));
-      return cb(null, result);
-    });
-    */
   });
 }
 module.exports.getJson = getJson;

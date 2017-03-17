@@ -44,10 +44,11 @@ function getDefaultAndChoiceData(name, params, cb) {
   getTemplate(name, function(err, template) {
     if (err) return cb(err);
 
-    var apiCalls = template.apiCalls
+    var //apiCalls = template.apiCalls
+        apiSupplier = template.apiSupplier
       , spec = template.spec;
 
-    makeApiCalls(apiCalls.slice(0), params, {}, (err, results) => {
+    makeApiCalls(apiSupplier, params, {}, (err, results) => {
       if (err) return cb(err);
 
       var choiceSuppliers = template['choiceSuppliers'];
@@ -68,10 +69,17 @@ function getDefaultAndChoiceData(name, params, cb) {
 }
 module.exports.getDefaultAndChoiceData = getDefaultAndChoiceData;
 
+
 /*
  * Make EOL API calls specified in template defaults, and pass results to
  * callback in the form: {'<api name'>: <api result>, ... }
  */
+function makeApiCalls(apiSupplierName, templateParams, results, cb) {
+  var apiSupplier = require('./suppliers/api/' + apiSupplierName);
+
+  apiSupplier.supply(templateParams, cb);
+}
+/*
 function makeApiCalls(apiCalls, templateParams, results, cb) {
   if (!apiCalls || apiCalls.length === 0) {
     return cb(null, results);
@@ -90,6 +98,7 @@ function makeApiCalls(apiCalls, templateParams, results, cb) {
     return makeApiCalls(apiCalls, templateParams, results, cb);
   })
 }
+*/
 
 /*
  * Resolve any API params that need to be populated from template params

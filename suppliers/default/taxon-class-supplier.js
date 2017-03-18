@@ -1,3 +1,4 @@
+var util = require('./util/util');
 
 var classToGroup = {
   'Magnoliopsida': 'Flowering Plants',
@@ -17,18 +18,11 @@ var classToGroup = {
 
 
 module.exports.supply = function(params, apiResults, choices, fieldSpec, cb) {
-  var ancestors = apiResults.hierarchy_entries.ancestors
-    , classLevelResults = ancestors.filter((result) => {
-        return result.taxonRank === 'class'
-      })
-    , result = ""
+  var classLatinName = util.extractClassName(apiResults)
+    , result = classLatinName && classToGroup[classLatinName] ?
+           classToGroup[classLatinName] :
+           ''
     ;
-
-  if (classLevelResults.length) {
-    result = classLevelResults[0].scientificName;
-  }
-
-  result = classToGroup[result] ? classToGroup[result] : result;
 
   cb(null, result);
 }

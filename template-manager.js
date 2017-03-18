@@ -148,7 +148,7 @@ function defaultDataHelper(fieldIds, spec, params, apiResults, choices, fieldSpe
       var defaultObj = {};
 
       if (val != null) {
-        defaultObj.data = val
+        defaultObj.value = val
       } else if (choiceIndex != null) {
         defaultObj.choiceIndex = choiceIndex
       }

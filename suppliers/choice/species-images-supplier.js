@@ -27,7 +27,7 @@ module.exports.supply = function(params, apiResults, cb) {
         }
         // Otherwise, assume public domain/no license string necessary
 
-        credit = 'Image credit: ' + rightsHolder;
+        credit = rightsHolder;
 
         if (license) {
           credit += ' ' + license;

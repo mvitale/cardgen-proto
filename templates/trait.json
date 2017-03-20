@@ -101,7 +101,8 @@
           "y": 329,
           "font": "8px 'Open Sans'",
           "textAlign": "center",
-          "color": "#242424"
+          "color": "#242424",
+          "prefix": "Image: "
         }
       },
       "topLine": {

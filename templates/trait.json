@@ -1,0 +1,313 @@
+{
+  "name": "trait",
+  "params": [
+    {
+      "name": "speciesId",
+      "type": "eol-taxon-id"
+    }
+  ],
+  "apiSupplier": "species-data-supplier",
+  "apiCalls": [
+    {
+      "api": "pages",
+      "params": {
+        "videos_page": 0,
+        "sounds_page": 0,
+        "maps_page": 0,
+        "texts_page": 0,
+        "images_page": 1,
+        "images_per_page": 25,
+        "icun": false,
+        "taxonomy": false,
+        "vetted": 0,
+        "language": "en",
+        "details": true,
+        "common_names": true,
+        "taxonomy": true,
+        "id": "$speciesId"
+      }
+    },
+    {
+      "api": "hierarchy_entries",
+      "params": {
+        "common_names": false,
+        "synonyms": false,
+        "id": "$speciesId"
+      }
+    }
+  ],
+  "spec": {
+    "width": 241,
+    "height": 336,
+    "fields": {
+      "mainBackground": {
+        "label": "Background color",
+        "type": "color",
+        "x": 0,
+        "y": 0,
+        "width": 241,
+        "height": 336
+      },
+      "traitBackground": {
+        "type": "color",
+        "x": 0,
+        "y": 168,
+        "height": 150,
+        "width": 241,
+        "value": "#fff"
+      },
+      "commonName": {
+        "label": "Common name",
+        "type": "text",
+        "font": "14px 'Open Sans'",
+        "color": "#252525",
+        "x": 12,
+        "y": 22
+      },
+      "sciName": {
+        "label": "Scientific name",
+        "type": "text",
+        "font": "10px 'Open Sans'",
+        "color": "#252525",
+        "x": 12,
+        "y": 36
+      },
+      "taxonClass": {
+        "label": "Taxon group",
+        "type": "text",
+        "font": "10px 'Open Sans'",
+        "color": "#252525",
+        "x": 229,
+        "y": 36,
+        "textAlign": "right"
+      },
+      "mainPhotoBg": {
+        "type": "color",
+        "x": 0,
+        "y": 43,
+        "height": 125,
+        "width": 241,
+        "value": "#252525"
+      },
+      "mainPhoto": {
+        "label": "Main photo",
+        "type": "image",
+        "x": 0,
+        "y": 43,
+        "height": 125,
+        "width": 241,
+        "credit": {
+          "x": 120,
+          "y": 329,
+          "font": "8px 'Open Sans'",
+          "textAlign": "center",
+          "color": "#242424"
+        }
+      },
+      "topLine": {
+        "type": "line",
+        "color": "#a6a6a6",
+        "startX": 0,
+        "startY": 168,
+        "endX": 240,
+        "endY": 168,
+        "width": 0.5
+      },
+      "leftLine": {
+        "type": "line",
+        "color": "#a6a6a6",
+        "startX": 0,
+        "startY": 168,
+        "endX": 0,
+        "endY": 318,
+        "width": 0.5
+      },
+      "rightLine": {
+        "type": "line",
+        "color": "#a6a6a6",
+        "startX": 241,
+        "startY": 168,
+        "endX": 241,
+        "endY": 318,
+        "width": 0.5
+      },
+      "sep1": {
+        "type": "line",
+        "color": "#a6a6a6",
+        "startX": 80,
+        "startY": 168.5,
+        "endX": 80,
+        "endY": 198.5,
+        "width": 0.5
+      },
+      "sep2": {
+        "type": "line",
+        "color": "#a6a6a6",
+        "startX": 160.5,
+        "startY": 168.5,
+        "endX": 160.5,
+        "endY": 198.5,
+        "width": 0.5
+      },
+      "iconsBotLine": {
+        "type": "line",
+        "color": "#a6a6a6",
+        "startX": 0,
+        "startY": 198.5,
+        "endX": 241,
+        "endY": 198.5,
+        "width": 0.5
+      },
+      "foodWebRoleTitle": {
+        "type": "text",
+        "font": "8px 'Open Sans'",
+        "color": "#252525",
+        "value": "Food Web Role:",
+        "x": 12,
+        "y": 176
+      },
+      "iucnTitle": {
+        "type": "text",
+        "font": "8px 'Open Sans'",
+        "color": "#252525",
+        "value": "IUCN Status:",
+        "x": 180,
+        "y": 176
+      },
+      "lifecycleHabitats": {
+        "label": "Habitat(s)",
+        "type": "multi-image",
+        "maxInstances": 3,
+        "specs": [
+          [
+            {
+              "x": 108,
+              "y": 170,
+              "height": 25,
+              "width": 25
+            }
+          ],
+          [
+            {
+              "x": 92,
+              "y": 170,
+              "height": 25,
+              "width": 25
+            },
+            {
+              "x": 125,
+              "y": 170,
+              "height": 25,
+              "width": 25
+            }
+          ],
+          [
+            {
+              "x": 83,
+              "y": 170,
+              "height": 25,
+              "width": 25
+            },
+            {
+              "x": 108,
+              "y": 170,
+              "height": 25,
+              "width": 25
+            },
+            {
+              "x": 133,
+              "y": 170,
+              "height": 25,
+              "width": 25
+            }
+          ]
+        ]
+      },
+      "habitatsBotLine": {
+        "type": "line",
+        "color": "#a6a6a6",
+        "startX": 0,
+        "startY": 218.5,
+        "endX": 241,
+        "endY": 218.5,
+        "width": 0.5
+      },
+      "traits": {
+        "type": "var-list",
+        "x": 0,
+        "y": 230,
+        "max": 5,
+        "yIncr": 13,
+        "fields": {
+          "trait": {
+            "type": "key-val-text",
+            "font": "9px 'Open Sans'",
+            "keyX": 14,
+            "valX": 125,
+            "color": "#252525",
+            "y": 0
+          },
+          "keyUnderline": {
+            "type": "line",
+            "color": "#a6a6a6",
+            "startX": 12,
+            "startY": 3,
+            "endX": 117,
+            "endY": 3,
+            "width": 1
+          },
+          "valUnderline": {
+            "type": "line",
+            "color": "#a6a6a6",
+            "startX": 123,
+            "startY": 3,
+            "endX": 228,
+            "endY": 3,
+            "width": 1
+          }
+        }
+      },
+      "habitatTextLabel": {
+        "type": "text",
+        "font": "8px 'Open Sans'",
+        "color": "#252525",
+        "x": 14,
+        "y": 211,
+        "value": "Habitats:"
+      },
+      "habitatText": {
+        "type": "text",
+        "font": "8px 'Open Sans'",
+        "color": "#252525",
+        "x": 50,
+        "y": 211,
+        "value": "Example habitat 1, example habitat 2..."
+      },
+      "miscInfo": {
+        "label": "Additional information",
+        "type": "text",
+        "wrapAt": 221,
+        "font": "8px 'Open Sans'",
+        "color": "#252525",
+        "x": 20,
+        "y": 296,
+        "value": "Additional species information goes here! Additional species information goes here! Additional species information goes here!"
+      }
+    }
+  },
+  "choiceSuppliers": {
+    "mainPhoto": "species-images-supplier",
+    "mainBackground": "standard-bg-color-supplier",
+    "lifecycleHabitats": "habitat-image-supplier"
+  },
+  "defaultSuppliers": {
+    "commonName": "common-name-supplier",
+    "sciName": "sci-name-supplier",
+    "mainPhoto": "first-img-supplier",
+    "mainBackground": "first-color-supplier",
+    "eolLogo": "eol-logo-supplier",
+    "lifecycleHabitats": "habitat-supplier",
+    "taxonClass": "taxon-class-supplier",
+    "traits": "default-trait-supplier"
+  }
+}

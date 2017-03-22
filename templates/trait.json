@@ -167,6 +167,14 @@
         "x": 12,
         "y": 176
       },
+      "foodwebRole": {
+        "label": "Foodweb role",
+        "type": "labeled-choice-image",
+        "x": 19,
+        "y": 179,
+        "height": 16,
+        "width": 44
+      },
       "iucnTitle": {
         "type": "text",
         "font": "8px 'Open Sans'",
@@ -174,6 +182,14 @@
         "value": "IUCN Status:",
         "x": 180,
         "y": 176
+      },
+      "iucnStatus": {
+        "label": "IUCN status",
+        "type": "labeled-choice-image",
+        "x": 181,
+        "y": 179,
+        "height": 16,
+        "width": 44
       },
       "lifecycleHabitats": {
         "label": "Habitat(s)",
@@ -299,7 +315,9 @@
   "choiceSuppliers": {
     "mainPhoto": "species-images-supplier",
     "mainBackground": "standard-bg-color-supplier",
-    "lifecycleHabitats": "habitat-image-supplier"
+    "lifecycleHabitats": "habitat-image-supplier",
+    "foodwebRole": "foodweb-role-icon-supplier",
+    "iucnStatus": "iucn-icon-supplier"
   },
   "defaultSuppliers": {
     "commonName": "common-name-supplier",
@@ -309,6 +327,8 @@
     "eolLogo": "eol-logo-supplier",
     "lifecycleHabitats": "habitat-supplier",
     "taxonClass": "taxon-class-supplier",
-    "traits": "default-trait-supplier"
+    "traits": "default-trait-supplier",
+    "foodwebRole": "first-img-supplier",
+    "iucnStatus": "first-img-supplier"
   }
 }

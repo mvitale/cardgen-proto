@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="44px" height="16px" viewBox="0 0 44 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 16</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#F94848" offset="0%"></stop>
+            <stop stop-color="#E03636" offset="100%"></stop>
+        </linearGradient>
+        <text id="text-2" font-family="OpenSans-Semibold, Open Sans" font-size="12" font-weight="500" fill="#FFFFFF">
+            <tspan x="13.2202763" y="13">EN</tspan>
+        </text>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="0.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.357833759   0 0 0 0 0.0176558994   0 0 0 0 0.0176558994  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-16" transform="translate(0.000000, -1.000000)">
+            <path d="M0,9 C0,4.581722 3.59020852,1 8.00189758,1 L43.4203283,1 L43.4203283,9 C43.4203283,13.418278 39.8301197,17 35.4184307,17 L0,17 L0,9 Z" id="Rectangle-4" fill="url(#linearGradient-1)"></path>
+            <g id="EN" fill-opacity="1" fill="#FFFFFF">
+                <use filter="url(#filter-3)" xlink:href="#text-2"></use>
+                <use xlink:href="#text-2"></use>
+            </g>
+        </g>
+    </g>
+</svg>

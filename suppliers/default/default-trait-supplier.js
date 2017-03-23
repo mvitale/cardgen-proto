@@ -37,7 +37,7 @@ module.exports.supply = function(params, apiResults, choices, fieldSpec, cb) {
                    classToTraitNames[classLatinName] :
                    []
     , traitData = traitNames.map((traitName) => {
-                    return { trait: { key: traitName, val: 'Value...' } };
+                    return { key: traitName, val: 'Value...' };
                   })
     ;
 

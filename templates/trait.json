@@ -250,20 +250,21 @@
         "width": 0.5
       },
       "traits": {
-        "type": "var-list",
+        "label": "Traits",
+        "type": "key-val-list",
         "x": 0,
         "y": 230,
         "max": 5,
         "yIncr": 13,
-        "fields": {
-          "trait": {
-            "type": "key-val-text",
-            "font": "9px 'Open Sans'",
-            "keyX": 14,
-            "valX": 125,
-            "color": "#252525",
-            "y": 0
-          },
+        "keyValSpec": {
+          "type": "key-val-text",
+          "font": "9px 'Open Sans'",
+          "keyX": 14,
+          "valX": 125,
+          "color": "#252525",
+          "y": 0
+        },
+        "additionalElements": {
           "keyUnderline": {
             "type": "line",
             "color": "#a6a6a6",
@@ -284,21 +285,14 @@
           }
         }
       },
-      "habitatTextLabel": {
+      "habitatText": {
+        "label": "Habitats",
         "type": "text",
         "font": "8px 'Open Sans'",
         "color": "#252525",
         "x": 14,
         "y": 211,
-        "value": "Habitats:"
-      },
-      "habitatText": {
-        "type": "text",
-        "font": "8px 'Open Sans'",
-        "color": "#252525",
-        "x": 50,
-        "y": 211,
-        "value": "Example habitat 1, example habitat 2..."
+        "prefix": "Habitats: "
       },
       "miscInfo": {
         "label": "Additional information",

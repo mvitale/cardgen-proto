@@ -24,5 +24,5 @@ module.exports.supply = function(params, apiResults, choices, fieldSpec, cb) {
            ''
     ;
 
-  cb(null, result);
+  cb(null, { text: result });
 }

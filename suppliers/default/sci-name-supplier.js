@@ -8,5 +8,5 @@ module.exports.supply = function(params, apiResults, choices, fieldSpec, cb) {
     sciNameTokens.push(subspeciesCandidate)
   }
 
-  return cb(null, sciNameTokens.join(' '));
+  return cb(null, { text: sciNameTokens.join(' ') });
 }

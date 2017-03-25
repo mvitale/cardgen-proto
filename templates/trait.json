@@ -40,13 +40,18 @@
     "width": 241,
     "height": 336,
     "fields": {
+      "mainColors": {
+        "label": "Background",
+        "type": "color-scheme",
+        "uiColor": "bg"
+      },
       "mainBackground": {
-        "label": "Background color",
         "type": "color",
         "x": 0,
         "y": 0,
         "width": 241,
-        "height": 336
+        "height": 336,
+        "value": "$mainColors.bg"
       },
       "traitBackground": {
         "type": "color",
@@ -60,7 +65,7 @@
         "label": "Common name",
         "type": "text",
         "font": "14px 'Open Sans'",
-        "color": "#252525",
+        "color": "$mainColors.text",
         "x": 12,
         "y": 22
       },
@@ -68,7 +73,7 @@
         "label": "Scientific name",
         "type": "text",
         "font": "10px 'Open Sans'",
-        "color": "#252525",
+        "color": "$mainColors.text",
         "x": 12,
         "y": 36
       },
@@ -76,7 +81,7 @@
         "label": "Taxon group",
         "type": "text",
         "font": "10px 'Open Sans'",
-        "color": "#252525",
+        "color": "$mainColors.text",
         "x": 229,
         "y": 36,
         "textAlign": "right"
@@ -191,8 +196,8 @@
         "height": 16,
         "width": 44
       },
-      "lifecycleHabitats": {
-        "label": "Habitat(s)",
+      "biomes": {
+        "label": "Biome(s)",
         "type": "multi-image",
         "maxInstances": 3,
         "specs": [
@@ -302,27 +307,27 @@
         "color": "#252525",
         "x": 20,
         "y": 296,
-        "value": "Additional species information goes here! Additional species information goes here! Additional species information goes here!"
+        "value": { "text": "Additional species information goes here" }
       }
     }
   },
   "choiceSuppliers": {
     "mainPhoto": "species-images-supplier",
-    "mainBackground": "standard-bg-color-supplier",
-    "lifecycleHabitats": "habitat-image-supplier",
+    "mainColors": "standard-bg-color-supplier",
+    "biomes": "habitat-image-supplier",
     "foodwebRole": "foodweb-role-icon-supplier",
     "iucnStatus": "iucn-icon-supplier"
   },
   "defaultSuppliers": {
     "commonName": "common-name-supplier",
     "sciName": "sci-name-supplier",
-    "mainPhoto": "first-img-supplier",
-    "mainBackground": "first-color-supplier",
+    "mainPhoto": "first-choice-supplier",
+    "mainColors": "first-choice-supplier",
     "eolLogo": "eol-logo-supplier",
-    "lifecycleHabitats": "habitat-supplier",
+    "biomes": "habitat-supplier",
     "taxonClass": "taxon-class-supplier",
     "traits": "default-trait-supplier",
-    "foodwebRole": "first-img-supplier",
-    "iucnStatus": "first-img-supplier"
+    "foodwebRole": "first-choice-supplier",
+    "iucnStatus": "first-choice-supplier"
   }
 }

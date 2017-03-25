@@ -39,7 +39,7 @@ module.exports.supply = function(params, apiResults, choices, fieldSpec, cb) {
 
     if (candidate === null) { candidate = '' };
 
-    return cb(null, candidate.replace(/\w\S*/g, (txt) => {
+    return cb(null, { text: candidate.replace(/\w\S*/g, (txt) => {
       return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-    }));
+    })});
 }

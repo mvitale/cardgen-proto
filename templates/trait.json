@@ -51,7 +51,7 @@
         "y": 0,
         "width": 241,
         "height": 336,
-        "value": "$mainColors.bg"
+        "value": { "color": "$mainColors.bg" }
       },
       "traitBackground": {
         "type": "color",
@@ -59,7 +59,7 @@
         "y": 168,
         "height": 150,
         "width": 241,
-        "value": "#fff"
+        "value": { "color": "#fff" }
       },
       "commonName": {
         "label": "Common name",
@@ -92,7 +92,7 @@
         "y": 43,
         "height": 125,
         "width": 241,
-        "value": "#252525"
+        "value": { "color": "#252525" }
       },
       "mainPhoto": {
         "label": "Main photo",
@@ -106,7 +106,7 @@
           "y": 329,
           "font": "8px 'Open Sans'",
           "textAlign": "center",
-          "color": "#242424",
+          "color": "$mainColors.text",
           "prefix": "Image: "
         }
       },
@@ -168,7 +168,7 @@
         "type": "text",
         "font": "8px 'Open Sans'",
         "color": "#252525",
-        "value": "Food Web Role:",
+        "value": { "text": "Food Web Role:" },
         "x": 12,
         "y": 176
       },
@@ -184,7 +184,7 @@
         "type": "text",
         "font": "8px 'Open Sans'",
         "color": "#252525",
-        "value": "IUCN Status:",
+        "value": { "text": "IUCN Status:" },
         "x": 180,
         "y": 176
       },
@@ -269,8 +269,8 @@
           "color": "#252525",
           "y": 0
         },
-        "additionalElements": {
-          "keyUnderline": {
+        "additionalElements": [
+          {
             "type": "line",
             "color": "#a6a6a6",
             "startX": 12,
@@ -279,7 +279,7 @@
             "endY": 3,
             "width": 1
           },
-          "valUnderline": {
+          {
             "type": "line",
             "color": "#a6a6a6",
             "startX": 123,
@@ -288,7 +288,7 @@
             "endY": 3,
             "width": 1
           }
-        }
+        ]
       },
       "habitatText": {
         "label": "Habitats",

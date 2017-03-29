@@ -35,7 +35,7 @@ module.exports.supply = function(params, apiResults, cb) {
 
         images.push({
           url: dataObj.eolMediaURL,
-          credit: credit
+          credit: { text: credit }
         }); // EOL-cached version of image
       }
     });

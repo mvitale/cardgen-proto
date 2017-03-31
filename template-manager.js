@@ -1,5 +1,4 @@
 var fs = require('fs');
-var eolApiCaller = require('./eol-api-caller');
 
 var templateCache = {};
 var templateDefaultsCache = {};

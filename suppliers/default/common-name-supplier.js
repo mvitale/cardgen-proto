@@ -1,5 +1,4 @@
 var request = require('request');
-var parseXmlString = require('xml2js').parseString;
 
 var baseParams = {
   videos_page: 0,

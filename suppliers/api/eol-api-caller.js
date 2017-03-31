@@ -1,5 +1,4 @@
 var request = require('request');
-//var parseXmlString = require("xml2js").parseString
 var baseUrl = "http://eol.org/api";
 var formatPart = "1.0.json"
 

@@ -17,7 +17,7 @@ var classToGroup = {
 
 
 
-module.exports.supply = function(params, apiResults, choices, fieldSpec, cb) {
+module.exports.supply = function(params, apiResults, choices, cb) {
   var classLatinName = util.extractClassName(apiResults)
     , result = classLatinName && classToGroup[classLatinName] ?
            classToGroup[classLatinName] :

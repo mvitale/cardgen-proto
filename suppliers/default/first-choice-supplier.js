@@ -1,7 +1,7 @@
 var request = require('request');
 var sizeOfImage = require('image-size');
 
-module.exports.supply = function(params, apiResults, choices, fieldSpec, cb) {
+module.exports.supply = function(params, apiResults, choices, cb) {
   var choiceIndex = null;
 
   if (choices.length > 0) {

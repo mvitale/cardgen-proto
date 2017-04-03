@@ -1,3 +1,3 @@
-module.exports.supply = function(params, apiResults, choices, fieldSpec, cb) {
+module.exports.supply = function(params, apiResults, choices, cb) {
   cb(null, null, [0, 2]);
 }

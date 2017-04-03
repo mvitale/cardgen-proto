@@ -1,4 +1,4 @@
-module.exports.supply = function(params, apiResults, choices, fieldSpec, cb) {
+module.exports.supply = function(params, apiResults, choices, cb) {
   var rawSciName = apiResults.pages.scientificName
     , rawSciNameTokens = rawSciName.split(' ')
     , sciNameTokens = [rawSciNameTokens[0], rawSciNameTokens[1]]

@@ -14,7 +14,7 @@ var baseParams = {
   common_names: true
 };
 
-module.exports.supply = function(params, apiResults, choices, fieldSpec, cb) {
+module.exports.supply = function(params, apiResults, choices, cb) {
   var commonNames = apiResults.pages.vernacularNames
     , candidate = null;
 

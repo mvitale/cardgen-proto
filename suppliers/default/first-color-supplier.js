@@ -1,4 +1,4 @@
-module.exports.supply = function(params, apiResults, choices, fieldSpec, cb) {
+module.exports.supply = function(params, apiResults, choices, cb) {
   var choiceIndex = null;
 
   if (choices && choices.length > 0) {

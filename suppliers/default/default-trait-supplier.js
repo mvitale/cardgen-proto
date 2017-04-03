@@ -31,7 +31,7 @@ var classToTraitNames = {
   ]
 };
 
-module.exports.supply = function(params, apiResults, choices, fieldSpec, cb) {
+module.exports.supply = function(params, apiResults, choices, cb) {
   var classLatinName = util.extractClassName(apiResults)
     , traitNames = classLatinName && classToTraitNames[classLatinName] ?
                    classToTraitNames[classLatinName] :

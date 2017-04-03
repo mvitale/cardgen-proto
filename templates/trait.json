@@ -7,35 +7,6 @@
     }
   ],
   "apiSupplier": "species-data-supplier",
-  "apiCalls": [
-    {
-      "api": "pages",
-      "params": {
-        "videos_page": 0,
-        "sounds_page": 0,
-        "maps_page": 0,
-        "texts_page": 0,
-        "images_page": 1,
-        "images_per_page": 25,
-        "iucn": true,
-        "taxonomy": false,
-        "vetted": 0,
-        "language": "en",
-        "details": true,
-        "common_names": true,
-        "taxonomy": true,
-        "id": "$speciesId"
-      }
-    },
-    {
-      "api": "hierarchy_entries",
-      "params": {
-        "common_names": false,
-        "synonyms": false,
-        "id": "$speciesId"
-      }
-    }
-  ],
   "spec": {
     "width": 241,
     "height": 336,

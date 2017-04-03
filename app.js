@@ -3,24 +3,24 @@
  */
 var port = 8080;
 
-var express    = require('express');
-var multer     = require('multer');
-var bodyParser = require('body-parser');
-var mongo      = require('mongodb');
-var cors       = require('cors');
-var fs         = require('fs');
+var express          = require('express');
+var multer           = require('multer');
+var bodyParser       = require('body-parser');
+var mongo            = require('mongodb');
+var cors             = require('cors');
+var morgan           = require('morgan');
 
-var dbconnect  = require('./dbconnect');
+var dbconnect        = require('./dbconnect');
 var dedupDiskStorage = require('./dedup-disk-storage');
-var templateManager = require('./template-manager');
-var generator = require('./generator');
-var urlHelper = require('./url-helper');
+var templateManager  = require('./template-manager');
+var generator        = require('./generator');
+var urlHelper        = require('./url-helper');
 
-var Card       = require('./models/card');
-var DedupFile  = require('./models/dedup-file');
+var Card             = require('./models/card');
+var DedupFile        = require('./models/dedup-file');
 
-var CardWrapper = require('./api-wrappers/card-wrapper');
-var TemplateWrapper = require('./api-wrappers/template-wrapper');
+var CardWrapper      = require('./api-wrappers/card-wrapper');
+var TemplateWrapper  = require('./api-wrappers/template-wrapper');
 
 /*
  * Map human-readable names to http statuses
@@ -46,6 +46,9 @@ var app = express();
 
 // TODO: remove
 app.use(cors());
+
+// Request Logging
+app.use(morgan('common'));
 
 // Wire up JSON request parser
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -100,7 +103,7 @@ router.get('/ping', function(req, res) {
  * Responds with JSON representation of the new Card, which includes the
  * Card id. See api-wrappers/card-wrapper.js.
  */
-router.post('/cards', function(req, res) {
+router.post('/cards', (req, res) => {
   var card = new Card(req.body);
 
   card.populateDefaultsAndChoices((err) => {
@@ -123,7 +126,7 @@ router.post('/cards', function(req, res) {
  * Response:
  *  JSON respresentation of the updated Card.
  */
-router.put('/cards/:cardId/data', function(req, res) {
+router.put('/cards/:cardId/data', (req, res) => {
   Card.findById(req.params.cardId, (err, card) => {
     if (err) {
       errJsonRes(res, err);
@@ -173,7 +176,7 @@ router.get('/cards/:cardId', (req, res) => {
  * TODO: document supported file types
  *
  */
-router.post('/images', upload.single('image'), function(req, res) {
+router.post('/images', upload.single('image'), (req, res) => {
   if (!(req.file && req.file.dedupFile)) {
     errJsonRes(res, "Upload failed");
     return;
@@ -193,7 +196,7 @@ router.post('/images', upload.single('image'), function(req, res) {
  * Response:
  *  An SVG representation of the Card
  */
-router.get('/cards/:cardId/render', function(req, res) {
+router.get('/cards/:cardId/render', (req, res) => {
   Card.findById(req.params.cardId, (err, card) => {
     if (err) {
       return errJsonRes(res, err);

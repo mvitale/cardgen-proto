@@ -1,3 +1,8 @@
+/*
+ * Utility class that supplies template data and can fetch default data
+ * for a template and its parameters.
+ */
+
 var fs = require('fs');
 
 var templateCache = {};
@@ -7,61 +12,92 @@ var templateDefaultsDir = './template-defaults/data'
 
 /*
  * Get template with a given name, either by reading the corresponding
- * json file or retrieving from cache
+ * json file or retrieving from cache.
+ *
+ * Parameteres:
+ *   name - valid template name
+ *   cb - standard callback (err, result)
+ *
+ * Result:
+ *   A copy of the result of calling JSON.parse on the template file
  */
 function getTemplate(name, cb) {
-  templateDataHelper(name, templateCache, templateDir, (err, templateData) => {
+  if (!name) {
+    return cb(new Error('name required'));
+  }
+
+  if (templateCache[name]) {
+    // make a defensive copy and return it
+    return cb(null, JSON.parse(JSON.stringify(cache[name])));
+  }
+
+  fs.readFile(templateDir + '/' + name + '.json', (err, data) => {
     if (err) return cb(err);
 
-    return cb(null, templateData);
+    var parsed = null;
+
+    try {
+      parsed = JSON.parse(data);
+    } catch (e) {
+      return cb(e);
+    }
+
+    cache[name] = parsed;
+    return cb(null, JSON.parse(JSON.stringify(parsed));
   });
 }
 module.exports.getTemplate = getTemplate;
 
 /*
- * Lazy-load cache with json file and pass result to cb
- */
-function templateDataHelper(name, cache, dir, cb) {
-  if (cache[name]) {
-    return cb(null, JSON.parse(JSON.stringify(cache[name]))); // TODO: I hate this, but it should make a defensive copy
-  }
-
-  fs.readFile(dir + '/' + name + '.json', (err, data) => {
-    if (err) return cb(err);
-
-    var parsed = JSON.parse(data);
-    cache[name] = parsed;
-
-    return cb(null, parsed);
-  })
-}
-
-/*
- * Get default data for a template name + template params
+ * Get Card defaults and choices data for a template name + template params.
+ *
+ * Parameters:
+ *   name - a valid template name (see templates directory)
+ *   params - an Object containing the parameters for the template
+ *     (e.g., { speciesId: 1234 })
+ *   cb - callback
+ *
+ * Result:
+ *   { defaultData: <defaults>, choices: <choices> }
  */
 function getDefaultAndChoiceData(name, params, cb) {
   getTemplate(name, function(err, template) {
     if (err) return cb(err);
 
-    var //apiCalls = template.apiCalls
-        apiSupplier = template.apiSupplier
-      , spec = template.spec;
+    var apiSupplier = template.apiSupplier
+      , spec = template.spec
+      ;
 
-    makeApiCalls(apiSupplier, params, {}, (err, results) => {
+    /*
+     * Make external API calls, then get defaults and choices
+     */
+    makeApiCalls(apiSupplier, params, (err, results) => {
       if (err) return cb(err);
 
-      var choiceSuppliers = template['choiceSuppliers'];
-      return choiceHelper(Object.keys(choiceSuppliers), choiceSuppliers,
-        params, results, {}, (err, choices) => {
+      var choiceSuppliers = template.choiceSuppliers;
+
+      return choiceHelper(
+        Object.keys(choiceSuppliers),
+        choiceSuppliers,
+        params,
+        results,
+        {},
+        (err, choices) => {
           if (err) return cb(err);
 
-          var defaultSuppliers = template['defaultSuppliers']
+          var defaultSuppliers = template.defaultSuppliers;
 
-          return defaultDataHelper(Object.keys(defaultSuppliers), defaultSuppliers,
-            params, results, choices, spec.fields, {}, (err, defaults) => {
+          return defaultDataHelper(
+            Object.keys(defaultSuppliers),
+            defaultSuppliers,
+            params,
+            results,
+            choices,
+            {},
+            (err, defaults) => {
               if (err) return cb(err);
               return cb(null, {'defaultData': defaults, 'choices': choices});
-          })
+          });
       });
     });
   });
@@ -70,77 +106,75 @@ module.exports.getDefaultAndChoiceData = getDefaultAndChoiceData;
 
 
 /*
- * Make EOL API calls specified in template defaults, and pass results to
- * callback in the form: {'<api name'>: <api result>, ... }
+ * Load the API supplier with a given name and call it with the provided
+ * parameters.
+ *
+ * Parameters:
+ *   apiSupplierName - the name of an api supplier module
+ *      (see suppliers/api directory)
+ *   templateParams - template parameters Object
+ *   cb - function(err, result)
+ *
+ * Result:
+ *   The result of calling the supplier's supply method
  */
-function makeApiCalls(apiSupplierName, templateParams, results, cb) {
-  var apiSupplier = require('./suppliers/api/' + apiSupplierName);
+function makeApiCalls(apiSupplierName, templateParams, cb) {
+  var apiSupplier = null;
+
+  try {
+    apiSupplier = require('./suppliers/api/' + apiSupplierName);
+  } catch (e) {
+    return cb(e);
+  }
 
   apiSupplier.supply(templateParams, cb);
 }
-/*
-function makeApiCalls(apiCalls, templateParams, results, cb) {
-  if (!apiCalls || apiCalls.length === 0) {
-    return cb(null, results);
-  }
-
-  var apiCall = apiCalls.pop()
-    , apiName = apiCall['api']
-    , apiParams = apiCall['params'];
-
-  resolveApiParams(apiParams, templateParams);
-
-  eolApiCaller.getJson(apiName, apiParams, (err, jsonResult) => {
-    if (err) return cb(err);
-
-    results[apiName] = jsonResult;
-    return makeApiCalls(apiCalls, templateParams, results, cb);
-  })
-}
-*/
 
 /*
- * Resolve any API params that need to be populated from template params
- * (those strings beginning with $)
+ * Fill in field defaults
+ *
+ * Parameters:
+ *   fieldIds - Array of ids of fields to populate default data for. Each value
+ *     must be present in the defaultSuppliers Object. This Array is modified by
+ *     this function!
+ *   defaultSuppliers - Object mapping field ids to choice suppliers.
+ *   params - template parameters
+ *   apiResults - Results returned from calling makeApiCalls
+ *   choices - field choices from calling choiceHelper
+ *   data - Object to hold results
+ *   cb - function(err, result)
+ *
+ * Result:
+ *   data parameter populated where the keys are the values in fieldIds and
+ *   the values are the results of calling each field id's default supplier
+ *   (specified in defaultSuppliers)
  */
-function resolveApiParams(apiParams, templateParams) {
-  Object.keys(apiParams).forEach((key) => {
-    var val = apiParams[key]
-      , templateParamsKey = null;
-
-    if (typeof val === "string" && val.startsWith('$')) {
-      templateParamsKey = val.substr(1);
-      apiParams[key] = templateParams[templateParamsKey];
-    }
-  });
-}
-
-function supplierHelper(
-  supplierType,
+function defaultDataHelper(
   fieldIds,
-  spec,
+  defaultSuppliers,
   params,
   apiResults,
+  choices,
   data,
-  cb) {
-
-}
-
-/*
- * Fill in all field defaults
- */
-function defaultDataHelper(fieldIds, spec, params, apiResults, choices, fieldSpecs,
-  data, cb) {
+  cb
+) {
   if (fieldIds.length === 0) {
     return cb(null, data);
   }
 
   var fieldId = fieldIds.pop()
     , fieldSpec = fieldSpecs[fieldId]
-    , supplierName = spec[fieldId]
-    , supplier = require('./suppliers/default/' + supplierName);
+    , supplierName = defaultSuppliers[fieldId]
+    , supplier = null
+    ;
 
-  supplier.supply(params, apiResults, choices[fieldId], fieldSpec,
+  try {
+    supplier = require('./suppliers/default/' + supplierName);
+  } catch (e) {
+    cb(e);
+  }
+
+  supplier.supply(params, apiResults, choices[fieldId],
     (err, val, choiceIndex) => {
       if (err) return cb(err);
 
@@ -148,35 +182,59 @@ function defaultDataHelper(fieldIds, spec, params, apiResults, choices, fieldSpe
 
       if (val != null) {
         defaultObj.value = val
-      } else if (choiceIndex != null) {
+      }
+
+      if (choiceIndex != null) {
         defaultObj.choiceIndex = choiceIndex
       }
 
       data[fieldId] = defaultObj;
 
-      return defaultDataHelper(fieldIds, spec, params, apiResults,
-        choices, fieldSpecs, data, cb);
+      return defaultDataHelper(fieldIds, defaultSuppliers, params, apiResults,
+        choices, data, cb);
     }
   );
 }
 
 /*
  * Fill in all field choices
+ *
+ * Parameters:
+ *   fieldIds - Array of ids of fields to populate choice data for. Each value
+ *     must be present in the choiceSuppliers Object. This Array is modified by
+ *     this function!
+ *   choiceSuppliers - Object mapping field ids to choice suppliers.
+ *   params - template parameters
+ *   apiResults - Results returned from calling makeApiCalls
+ *   data - Object to hold results
+ *   cb - function(err, result)
+ *
+ * Result:
+ *   data parameter populated where the keys are the values in fieldIds and
+ *   the values are the results of calling each field id's choice supplier
+ *   (specified in choiceSuppliers)
  */
-function choiceHelper(fieldIds, defaultSuppliers, params, apiResults, data, cb) {
+function choiceHelper(fieldIds, choiceSuppliers, params, apiResults, data, cb) {
   if (fieldIds.length === 0) {
     return cb(null, data);
   }
 
   var fieldId = fieldIds.pop()
-    , supplierName = defaultSuppliers[fieldId]
-    , supplier = require('./suppliers/choice/' + supplierName);
+    , supplierName = choiceSuppliers[fieldId]
+    , supplier = null
+    ;
+
+  try {
+    supplier = require('./suppliers/choice/' + supplierName);
+  } catch (e) {
+    return cb(e);
+  }
 
   supplier.supply(params, apiResults, (err, val) => {
     if (err) return cb(err);
 
     data[fieldId] = val;
-    return choiceHelper(fieldIds, defaultSuppliers, params, apiResults,
+    return choiceHelper(fieldIds, choiceSuppliers, params, apiResults,
       data, cb);
   });
 }

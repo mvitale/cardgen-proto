@@ -1,5 +1,6 @@
-// Server/router/controller for the API service (at the moment)
-// TODO: Should handlers be moved out?
+/*
+ * Server/router/controller for the Cards service
+ */
 var port = 8080;
 
 var express    = require('express');
@@ -9,30 +10,31 @@ var mongo      = require('mongodb');
 var cors       = require('cors');
 var fs         = require('fs');
 
-var Card       = require('./models/card');
-var DedupFile  = require('./models/dedup-file');
-
 var dbconnect  = require('./dbconnect');
 var dedupDiskStorage = require('./dedup-disk-storage');
 var templateManager = require('./template-manager');
 var generator = require('./generator');
 var urlHelper = require('./url-helper');
 
+var Card       = require('./models/card');
+var DedupFile  = require('./models/dedup-file');
+
 var CardWrapper = require('./api-wrappers/card-wrapper');
 var TemplateWrapper = require('./api-wrappers/template-wrapper');
 
+/*
+ * Map human-readable names to http statuses
+ */
 var HTTP_STATUS = {
   'created': 201,
   'internalError': 500,
   'ok': 200,
   'notFound': 404
-}
+};
 
-// Needed for querying mongo records on _id field
-// TODO: Should records get a new string guid field to be exposed via the API?
-var ObjectID = mongo.ObjectID;
-
-// form/multipart upload handler
+/*
+ * Form/multipart upload handler. Only used for images.
+ */
 var upload = multer({
   storage: dedupDiskStorage({
     destination: 'storage/images/'
@@ -48,9 +50,6 @@ app.use(cors());
 // Wire up JSON request parser
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
-// Will hold cards db handle (see below)
-var cardsDb = null;
 
 // TODO: Set appropriate http status
 function okJsonRes(res, data) {
@@ -73,14 +72,34 @@ function jsonRes(res, status, data) {
   res.status(HTTP_STATUS[status]).json(data);
 }
 
-// Routes
+/*
+ * ROUTES
+ */
 var router = express.Router();
 
-// Test route
+/*
+ * Test route
+ */
 router.get('/ping', function(req, res) {
   res.json({ message: 'I\'m up!' });
 });
 
+/*
+ * Create a new Card with a given template and templateParams.
+ * Expects JSON of the form:
+ *
+ * {
+ *   "templateName": "<template name>",
+ *   "templateParams": {
+ *     "<template param 1 key>": <template param 1 val>,
+ *     ...
+ *     "<template param n key">: <tempalte param 1 val>
+ *   }
+ * }
+ *
+ * Responds with JSON representation of the new Card, which includes the
+ * Card id. See api-wrappers/card-wrapper.js.
+ */
 router.post('/cards', function(req, res) {
   var card = new Card(req.body);
 
@@ -95,6 +114,15 @@ router.post('/cards', function(req, res) {
   });
 });
 
+/*
+ * PUT a given card's data field.
+ *
+ * Parameters:
+ *  cardId: a valid card ID (as returned from /cards POST)
+ *
+ * Response:
+ *  JSON respresentation of the updated Card.
+ */
 router.put('/cards/:cardId/data', function(req, res) {
   Card.findById(req.params.cardId, (err, card) => {
     if (err) {
@@ -113,6 +141,15 @@ router.put('/cards/:cardId/data', function(req, res) {
   });
 });
 
+/*
+ * GET the JSON representation of a given Card.
+ *
+ * Parameters:
+ *  cardId: A valid Card id
+ *
+ * Response:
+ *  JSON representation of the Card with id cardId
+ */
 router.get('/cards/:cardId', (req, res) => {
   Card.findById(req.params.cardId, (err, card) => {
     if (err) {
@@ -123,6 +160,19 @@ router.get('/cards/:cardId', (req, res) => {
   })
 });
 
+/*
+ * Image upload endpoint. POST a multipart form with a single field "image".
+ * This call is idempotent: if it is called multiple times with the same <<exact>>
+ * image file, it returns the same url eac time.
+ *
+ * Response:
+ *  {
+ *    "url": "<image url>"
+ *  }
+ *
+ * TODO: document supported file types
+ *
+ */
 router.post('/images', upload.single('image'), function(req, res) {
   if (!(req.file && req.file.dedupFile)) {
     errJsonRes(res, "Upload failed");
@@ -134,23 +184,15 @@ router.post('/images', upload.single('image'), function(req, res) {
   });
 });
 
-router.get('/images/:imageId', function(req, res) {
-  DedupFile.findById(req.params.imageId, (err, file) => {
-    if (err) {
-      return errJsonRes(res, err);
-    }
-
-    file.read((err, buffer) => {
-      if (err) return errJsonRes(res, err);
-
-      // TODO: gross
-      if (!buffer) return errJsonRes(res, { msg: "not found"});
-
-      res.send(buffer);
-    })
-  })
-});
-
+/*
+ * GET an SVG of a given card.
+ *
+ * Parameters:
+ *  cardId: A valid Card id
+ *
+ * Response:
+ *  An SVG representation of the Card
+ */
 router.get('/cards/:cardId/render', function(req, res) {
   Card.findById(req.params.cardId, (err, card) => {
     if (err) {
@@ -168,6 +210,15 @@ router.get('/cards/:cardId/render', function(req, res) {
   });
 });
 
+/*
+ * Get template data (fields, etc.) for a given template
+ *
+ * Parameters:
+ *  templateName: A valid Template name (see templates directory)
+ *
+ * Response:
+ *  JSON representation of the Template (see api-wrappers/template-wrapper.js)
+ */
 router.get('/templates/:templateName', function(req, res) {
   templateManager.getTemplate(req.params.templateName, (err, template) => {
     if (err) {
@@ -179,9 +230,22 @@ router.get('/templates/:templateName', function(req, res) {
 });
 
 app.use('/', router);
+
+// Files in public directory are accessible at /static
 app.use('/static', express.static('public'));
 
+/*
+ * Get cards connection to ensure Mongoose is ready to go, then start the
+ * express app.
+ */
 dbconnect.getConn('cards', (err, db) => {
+  // We can ignore the db object
+
+  if (err) {
+    console.log(err);
+    process.exit(1);
+  }
+
   app.listen(port);
   console.log('Server running on port ' + port);
 });

@@ -1,8 +1,10 @@
 /*
  * Helper functions for generating URLs for resources
  */
+var config = require('./config/config');
 
-var baseUrl = "http://localhost:8080" // TODO: get from config
+var baseUrl =
+  'http://' + config.get('server.host') + ':' + config.get('server.port');
 
 /*
  * Url for a DedupFile representing an uploaded image

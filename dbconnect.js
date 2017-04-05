@@ -2,7 +2,12 @@
  * this module.
  */
 var mongoose = require('mongoose');
-var mongoPort = 27017; // TODO: get from config
+
+var config   = require('./config/config');
+
+var dbHost = config.get('db.host')
+var dbPort = config.get('db.port');
+var dbName = config.get('db.dbName');
 
 /*
  * Open db connection for Mongoose. This must be called before interacting
@@ -24,7 +29,7 @@ function openCardsConn(callback) {
 function openConn(dbName, callback) {
   var db = null;
 
-  mongoose.connect('mongodb://localhost:' + mongoPort + '/' + dbName);
+  mongoose.connect('mongodb://' + dbHost + ':' + dbPort + '/' + dbName);
   db = mongoose.connection;
 
   db.on('error', function(err) {

@@ -1,7 +1,9 @@
 /*
- * Slightly modified version of multer's disk storage that checks if we already
- * have a file with a matching fingerprint in the database.
- * XXX: Only supports single-file requests for the moment!
+ * Slightly modified version of multer's disk storage that uses the DedupFile
+ * model to only create a new file if we don't already have one with a matching
+ * fingerprint.
+ *
+ * XXX: Only supports single-file requests=!
  */
 
 var fs = require('fs')

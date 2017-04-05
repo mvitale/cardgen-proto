@@ -1,5 +1,7 @@
+/*
+ * Image fetcher for use with template-renderer.
+ */
 var request = require('request');
-
 var Image = require('canvas').Image;
 
 module.exports.fetch = function(url, cb) {

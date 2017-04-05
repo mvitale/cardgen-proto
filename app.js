@@ -41,10 +41,11 @@ var upload = multer({
   })
 });
 
-// Get that express instance!
+// Get that express instance
 var app = express();
 
-// TODO: remove
+// TODO: remove. Hack to allow client JS to call service directly during
+// development.
 app.use(cors());
 
 // Request Logging
@@ -238,12 +239,9 @@ app.use('/', router);
 app.use('/static', express.static('public'));
 
 /*
- * Get cards connection to ensure Mongoose is ready to go, then start the
- * express app.
+ * Open mongoose database connection, then start the server.
  */
-dbconnect.getConn('cards', (err, db) => {
-  // We can ignore the db object
-
+dbconnect.mongooseInit((err) => {
   if (err) {
     console.log(err);
     process.exit(1);

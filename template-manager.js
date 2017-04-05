@@ -28,7 +28,7 @@ function getTemplate(name, cb) {
 
   if (templateCache[name]) {
     // make a defensive copy and return it
-    return cb(null, JSON.parse(JSON.stringify(cache[name])));
+    return cb(null, JSON.parse(JSON.stringify(templateCache[name])));
   }
 
   fs.readFile(templateDir + '/' + name + '.json', (err, data) => {
@@ -42,8 +42,8 @@ function getTemplate(name, cb) {
       return cb(e);
     }
 
-    cache[name] = parsed;
-    return cb(null, JSON.parse(JSON.stringify(parsed));
+    templateCache[name] = parsed;
+    return cb(null, JSON.parse(JSON.stringify(parsed)));
   });
 }
 module.exports.getTemplate = getTemplate;
@@ -163,7 +163,6 @@ function defaultDataHelper(
   }
 
   var fieldId = fieldIds.pop()
-    , fieldSpec = fieldSpecs[fieldId]
     , supplierName = defaultSuppliers[fieldId]
     , supplier = null
     ;

@@ -1,31 +1,37 @@
-// Database connection utility. All database connection access should be via
-// this module.
+/* Database connection utility. All database connection operations should be via
+ * this module.
+ */
 var mongoose = require('mongoose');
-var mongoPort = 27017;
+var mongoPort = 27017; // TODO: get from config
 
-var conns = {};
-
-function getCardsConn(callback) {
-  return getConn('cardtest', callback);
+/*
+ * Open db connection for Mongoose. This must be called before interacting
+ * with the model storage layer. Only call once.
+ *
+ * Parameters:
+ *  cb - function(err), called when connection is open or there is a
+ *       connection error.
+ */
+function mongooseInit(cb) {
+  openCardsConn(cb);
 }
-module.exports.getCardsConn = getCardsConn;
+module.exports.mongooseInit = mongooseInit;
 
-// Get a connection to database dbName
-function getConn(dbName, callback) {
-  if (conns[dbName]) {
-    return callback(null, conns[dbName]);
-  } else {
-    mongoose.connect('mongodb://localhost:' + mongoPort + '/' + dbName);
-
-    var db = mongoose.connection;
-    db.on('error', function(err) {
-      return callback(err, null);
-    });
-    db.once('open', function() {
-      conns[dbName] = db;
-      return callback(null, db);
-    });
-  }
+function openCardsConn(callback) {
+  openConn('cards', callback);
 }
 
-module.exports.getConn = getConn;
+function openConn(dbName, callback) {
+  var db = null;
+
+  mongoose.connect('mongodb://localhost:' + mongoPort + '/' + dbName);
+  db = mongoose.connection;
+
+  db.on('error', function(err) {
+    return callback(err);
+  });
+
+  db.once('open', function() {
+    return callback(null);
+  });
+}

@@ -4,11 +4,11 @@
 
 var templateReader = require('./template-reader');
 var templateRenderer = require('./template-renderer/template-renderer');
-var canvasSupplier = require('./canvas-supplier');
+var svgCanvasSupplier = require('./svg-canvas-supplier');
+var pngCanvasSupplier = require('./png-canvas-supplier');
 var imageFetcher = require('./image-fetcher');
 
 templateRenderer.setTemplateSupplier(templateReader);
-templateRenderer.setCanvasSupplier(canvasSupplier);
 templateRenderer.setImageFetcher(imageFetcher);
 
 /*
@@ -21,7 +21,27 @@ templateRenderer.setImageFetcher(imageFetcher);
  * Result:
  *   A Buffer containing the SVG data
  */
-module.exports.generate = function generate(card, cb) {
+module.exports.generateSvg = function(card, cb) {
+  templateRenderer.setCanvasSupplier(svgCanvasSupplier);
+  generateHelper(card, cb);
+}
+
+/*
+ * Takes a Card and generates a PNG
+ *
+ * Parameters:
+ *   card - a valid Card
+ *   cb - function(err, result)
+ *
+ * Result:
+ *   A Buffer containing the PNG data
+ */
+module.exports.generatePng = function(card, cb) {
+  templateRenderer.setCanvasSupplier(pngCanvasSupplier);
+  generateHelper(card, cb);
+}
+
+function generateHelper(card, cb) {
   templateRenderer.setCard(card, (err) => {
     if (err) {
       return cb(err);
@@ -32,5 +52,5 @@ module.exports.generate = function generate(card, cb) {
 
       cb(null, canvas.toBuffer());
     });
-  })
+  });
 }

@@ -210,21 +210,50 @@ config.load(function(err) {
    * Response:
    *  An SVG representation of the Card
    */
-  router.get('/cards/:cardId/render', (req, res) => {
+  router.get('/cards/:cardId/svg', (req, res) => {
     Card.findById(req.params.cardId, (err, card) => {
       if (err) {
         return errJsonRes(res, err);
       } else {
-        generator.generate(card, (err, svg) => {
+        generator.generateSvg(card, (err, svg) => {
           if (err) {
             return errJsonRes(res, err);
           } else {
             res.setHeader('Content-Type', 'image/svg+xml');
             res.send(svg);
           }
-        })
+        });
       }
     });
+  });
+
+  /*
+   * GET an PNG of a given card.
+   *
+   * Parameters:
+   *  cardId: A valid Card id
+   *
+   * Response:
+   *  An PNG representation of the Card
+   */
+  router.get('/cards/:cardId/png', (req, res) => {
+   Card.findById(req.params.cardId, (err, card) => {
+     if (err) {
+       return errJsonRes(res, err);
+     } else {
+       generator.generatePng(card, (err, png) => {
+         if (err) {
+           return errJsonRes(res, err);
+         } else {
+           res.writeHead(200, {
+             'Content-Type': 'image/png',
+             'Content-Length': png.length
+           });
+           res.end(png);
+         }
+       });
+     }
+   });
   });
 
   /*

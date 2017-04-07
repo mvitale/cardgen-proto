@@ -1,5 +1,5 @@
 /*
- * Helper functions for generating URLs for resources
+ * Helper functions for generating URLs
  */
 var config = require('./config/config');
 
@@ -16,7 +16,7 @@ var baseUrl =
  *   The url for the file referenced by dedupFile
  */
 function imageUrl(dedupFile) {
-  return baseUrl + '/images/' + dedupFile.id; // TODO: make host/port part of config
+  return baseUrl + '/images/' + dedupFile.id;
 }
 exports.imageUrl = imageUrl;
 

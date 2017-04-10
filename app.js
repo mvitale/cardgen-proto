@@ -180,11 +180,11 @@ config.load(function(err) {
    */
   router.post('/images', bodyParser.raw({type: '*/*'}), (req, res) => {
     DedupFile.findOrCreateFromBuffer(req.body, 'storage/images',
-      req.get('Content-Type'), (err, dedupFile) => {
+      (err, dedupFile) => {
         if (err) return errJsonRes(err);
-
         okJsonRes(res, { "url": urlHelper.imageUrl(dedupFile) });;
-    });
+      }
+    );
   });
 
   router.get('/images/:imageId', function(req, res) {
@@ -199,7 +199,7 @@ config.load(function(err) {
         // TODO: gross
         if (!buffer) return errJsonRes(res, { msg: "not found"});
 
-        res.setHeader('Content-Type', file.contentType);
+        res.setHeader('Content-Type', file.mimeType);
         res.end(buffer);
       });
     });

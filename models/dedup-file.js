@@ -6,6 +6,7 @@
 var crypto = require('crypto');
 var fs = require('fs');
 var path = require('path');
+var fileType = require('file-type');
 
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
@@ -14,7 +15,7 @@ var DedupFileSchema = new Schema({
   path: { type: String, required: true },
   digest: { type: String, index: true, required: true},
   size: { type: Number, required: true },
-  contentType: { type: String, required: true }
+  mimeType: { type: String, required: true }
 });
 
 function createDigest(buffer) {
@@ -29,22 +30,28 @@ function getFilename (cb) {
   })
 }
 
-function findOrCreateFromBuffer(buffer, destination, contentType, cb) {
+function findOrCreateFromBuffer(buffer, destination, cb) {
   var that = this
     , digest = createDigest(buffer);
 
   that.findOne({ digest: digest }, function(err, result) {
     if (err) return cb(err);
 
-    var finalPath = null
-      , outStream = null
-      ;
-
     if (result) {
       return cb(null, result, false);
     } else {
       return getFilename((err, filename) => {
-        finalPath = path.join(destination, filename)
+        var type = fileType(buffer)
+          , finalPath = null
+          , outStream = null
+          ;
+
+        if (!type) {
+          return cb(new Error('Unable to determine file type of buffer'));
+        }
+
+
+        finalPath = path.join(destination, filename + '.' + type.ext);
         outStream = fs.createWriteStream(finalPath)
 
         outStream.end(buffer);
@@ -54,7 +61,7 @@ function findOrCreateFromBuffer(buffer, destination, contentType, cb) {
             path: finalPath,
             digest: digest,
             size: outStream.bytesWritten,
-            contentType: contentType
+            mimeType: type.mime
           }, function(err, result) {
             cb(err, result, true);
           });

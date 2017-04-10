@@ -1,7 +1,7 @@
 /*
  * Server/router/controller for the Cards service
  */
- var config = require('./config/config');
+var config = require('./config/config');
 
 function logErrorAndDieIfExists(err) {
   if (err) {
@@ -16,7 +16,6 @@ config.load(function(err) {
   var express          = require('express');
   var bodyParser       = require('body-parser');
   var mongo            = require('mongodb');
-  var cors             = require('cors');
   var morgan           = require('morgan');
 
   var dbconnect        = require('./dbconnect');
@@ -45,10 +44,6 @@ config.load(function(err) {
 
   // Get that express instance
   var app = express();
-
-  // TODO: remove. Hack to allow client JS to call service directly during
-  // development.
-  app.use(cors());
 
   // Request Logging
   app.use(morgan('common'));

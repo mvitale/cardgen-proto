@@ -11,9 +11,10 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var DedupFileSchema = new Schema({
-  path: String,
-  digest: { type: String, index: true},
-  size: Number
+  path: { type: String, required: true },
+  digest: { type: String, index: true, required: true},
+  size: { type: Number, required: true },
+  contentType: { type: String, required: true }
 });
 
 function createDigest(buffer) {
@@ -22,7 +23,13 @@ function createDigest(buffer) {
   return hash.digest('base64');
 }
 
-function findOrCreateFromBuffer(buffer, destination, filename, cb) {
+function getFilename (cb) {
+  crypto.pseudoRandomBytes(16, function (err, raw) {
+    cb(err, err ? undefined : raw.toString('hex'))
+  })
+}
+
+function findOrCreateFromBuffer(buffer, destination, contentType, cb) {
   var that = this
     , digest = createDigest(buffer);
 
@@ -30,23 +37,27 @@ function findOrCreateFromBuffer(buffer, destination, filename, cb) {
     if (err) return cb(err);
 
     var finalPath = null
-      , outStream = null;
+      , outStream = null
+      ;
 
     if (result) {
       return cb(null, result, false);
     } else {
-      finalPath = path.join(destination, filename)
-      outStream = fs.createWriteStream(finalPath)
+      return getFilename((err, filename) => {
+        finalPath = path.join(destination, filename)
+        outStream = fs.createWriteStream(finalPath)
 
-      outStream.end(buffer);
-      outStream.on('error', cb)
-      outStream.on('finish', function() {
-        that.create({
-          path: finalPath,
-          digest: digest,
-          size: outStream.bytesWritten
-        }, function(err, result) {
-          cb(err, result, true);
+        outStream.end(buffer);
+        outStream.on('error', cb)
+        outStream.on('finish', function() {
+          that.create({
+            path: finalPath,
+            digest: digest,
+            size: outStream.bytesWritten,
+            contentType: contentType
+          }, function(err, result) {
+            cb(err, result, true);
+          });
         });
       });
     }

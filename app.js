@@ -14,14 +14,12 @@ config.load(function(err) {
   logErrorAndDieIfExists(err);
 
   var express          = require('express');
-  var multer           = require('multer');
   var bodyParser       = require('body-parser');
   var mongo            = require('mongodb');
   var cors             = require('cors');
   var morgan           = require('morgan');
 
   var dbconnect        = require('./dbconnect');
-  var dedupDiskStorage = require('./dedup-disk-storage');
   var templateManager  = require('./template-manager');
   var generator        = require('./generator');
   var urlHelper        = require('./url-helper');
@@ -45,15 +43,6 @@ config.load(function(err) {
     'notFound': 404
   };
 
-  /*
-   * Form/multipart upload handler. Only used for images.
-   */
-  var upload = multer({
-    storage: dedupDiskStorage({
-      destination: 'storage/images/'
-    })
-  });
-
   // Get that express instance
   var app = express();
 
@@ -66,7 +55,7 @@ config.load(function(err) {
 
   // Wire up JSON request parser
   app.use(bodyParser.urlencoded({ extended: false }));
-  app.use(bodyParser.json());
+  app.use(bodyParser.json({ type: 'application/json' }));
 
   // TODO: Set appropriate http status
   function okJsonRes(res, data) {
@@ -178,28 +167,44 @@ config.load(function(err) {
   });
 
   /*
-   * Image upload endpoint. POST a multipart form with a single field "image".
-   * This call is idempotent: if it is called multiple times with the same <<exact>>
-   * image file, it returns the same url eac time.
+   * Image upload endpoint. This call is idempotent: if it is called multiple
+   * times with the same <<exact>> image file, it returns the same url each time.
    *
    * Response:
    *  {
    *    "url": "<image url>"
    *  }
    *
-   * TODO: document supported file types
+   * TODO: document/restrict supported file types
    *
    */
-  router.post('/images', upload.single('image'), (req, res) => {
-    if (!(req.file && req.file.dedupFile)) {
-      errJsonRes(res, "Upload failed");
-      return;
-    }
+  router.post('/images', bodyParser.raw({type: '*/*'}), (req, res) => {
+    DedupFile.findOrCreateFromBuffer(req.body, 'storage/images',
+      req.get('Content-Type'), (err, dedupFile) => {
+        if (err) return errJsonRes(err);
 
-    okJsonRes(res, {
-      "url": urlHelper.imageUrl(req.file.dedupFile)
+        okJsonRes(res, { "url": urlHelper.imageUrl(dedupFile) });;
     });
   });
+
+  router.get('/images/:imageId', function(req, res) {
+    DedupFile.findById(req.params.imageId, (err, file) => {
+      if (err) {
+       return errJsonRes(res, err);
+      }
+
+      file.read((err, buffer) => {
+        if (err) return errJsonRes(res, err);
+
+        // TODO: gross
+        if (!buffer) return errJsonRes(res, { msg: "not found"});
+
+        res.setHeader('Content-Type', file.contentType);
+        res.end(buffer);
+      });
+    });
+  });
+
 
   /*
    * GET an SVG of a given card.

@@ -17,6 +17,7 @@ config.load(function(err) {
   var bodyParser       = require('body-parser');
   var mongo            = require('mongodb');
   var morgan           = require('morgan');
+  var nocache          = require('nocache');
 
   var dbconnect        = require('./dbconnect');
   var templateManager  = require('./template-manager');
@@ -47,6 +48,9 @@ config.load(function(err) {
 
   // Request Logging
   app.use(morgan('common'));
+
+  // Disable client caching
+  app.use(nocache());
 
   // Wire up JSON request parser
   app.use(bodyParser.urlencoded({ extended: false }));
@@ -143,6 +147,25 @@ config.load(function(err) {
   });
 
   /*
+   * GET ids for all cards belonging to a user
+   */
+  router.get('/users/:userId/cardIds', (req, res) => {
+    Card.find({ userId: req.params.userId}).sort('-_id').exec((err, cards) => {
+      var ids = [];
+
+      if (err) {
+        errJsonRes(res, err);
+      } else {
+        cards.forEach(function(card) {
+          ids.push(card._id);
+        });
+
+        jsonRes(res, 'ok', ids);
+      }
+    });
+  });
+
+  /*
    * GET the JSON representation of a given Card.
    *
    * Parameters:
@@ -228,6 +251,8 @@ config.load(function(err) {
   });
 
   /*
+   * TODO: Currently broken! https://github.com/Automattic/node-canvas/issues/903
+   *
    * GET an PNG of a given card.
    *
    * Parameters:
@@ -236,12 +261,12 @@ config.load(function(err) {
    * Response:
    *  An PNG representation of the Card
    */
-  router.get('/cards/:cardId/png', (req, res) => {
+  router.get('/cards/:cardId/png/:width', (req, res) => {
    Card.findById(req.params.cardId, (err, card) => {
      if (err) {
        return errJsonRes(res, err);
      } else {
-       generator.generatePng(card, (err, png) => {
+       generator.generatePng(card, parseInt(req.params.width), (err, png) => {
          if (err) {
            return errJsonRes(res, err);
          } else {
@@ -254,6 +279,19 @@ config.load(function(err) {
        });
      }
    });
+  });
+
+  /*
+   * Get the JSON representation of a Card
+   */
+  router.get('/cards/:cardId/json', (req, res) => {
+    Card.findById(req.params.cardId, (err, card) => {
+      if (err) {
+        errJsonRes(res, err);
+      } else {
+        jsonRes(res, 'ok', new CardWrapper(card));
+      }
+    });
   });
 
   /*
@@ -271,6 +309,19 @@ config.load(function(err) {
         errJsonRes(res, err);
       } else {
         jsonRes(res, 'ok', new TemplateWrapper(template));
+      }
+    });
+  });
+
+  /*
+   * DELETE a card
+   */
+  router.delete('/cards/:cardId', function(req, res) {
+    Card.findByIdAndRemove(req.params.cardId, (err, card) => {
+      if (err) {
+        errJsonRes(res, err);
+      } else {
+        jsonRes(res, 'ok', new CardWrapper(card));
       }
     });
   });

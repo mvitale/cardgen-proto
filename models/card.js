@@ -1,11 +1,11 @@
 /*
- * Wrapper for card data
+ * Card
  */
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var templateManager = require('../template-manager');
 
-var CardSchema = new Schema({
+var cardSchema = new Schema({
   templateName: {
     type: String,
     required: true
@@ -26,10 +26,18 @@ var CardSchema = new Schema({
     type: Object,
     required: true,
     default: {}
+  },
+  userId: {
+    type: Number,
+    required: true
+  },
+  _deck: {
+    type: Schema.Types.ObjectId,
+    ref: 'Deck'
   }
 });
 
-CardSchema.methods.populateDefaultsAndChoices = function(cb) {
+cardSchema.methods.populateDefaultsAndChoices = function(cb) {
   templateManager.getDefaultAndChoiceData(this.templateName, this.templateParams,
     (err, data) => {
       if (err) return cb(err);
@@ -41,7 +49,7 @@ CardSchema.methods.populateDefaultsAndChoices = function(cb) {
   );
 }
 
-CardSchema.methods.templateSpec = function(cb) {
+cardSchema.methods.templateSpec = function(cb) {
   templateManager.getTemplate(this.templateName, (err, data) => {
     if (err) return cb(err);
 
@@ -49,4 +57,4 @@ CardSchema.methods.templateSpec = function(cb) {
   });
 }
 
-module.exports = mongoose.model('Card', CardSchema);
+module.exports = mongoose.model('Card', cardSchema);

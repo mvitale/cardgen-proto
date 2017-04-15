@@ -5,7 +5,7 @@
 var templateReader = require('./template-reader');
 var templateRenderer = require('./template-renderer/template-renderer');
 var svgCanvasSupplier = require('./svg-canvas-supplier');
-var pngCanvasSupplier = require('./png-canvas-supplier');
+var pngCanvasSupplierFactory = require('./png-canvas-supplier-factory');
 var imageFetcher = require('./image-fetcher');
 
 templateRenderer.setTemplateSupplier(templateReader);
@@ -36,8 +36,9 @@ module.exports.generateSvg = function(card, cb) {
  * Result:
  *   A Buffer containing the PNG data
  */
-module.exports.generatePng = function(card, cb) {
-  templateRenderer.setCanvasSupplier(pngCanvasSupplier);
+module.exports.generatePng = function(card, width, cb) {
+  var canvasSupplier = pngCanvasSupplierFactory.instance(width);
+  templateRenderer.setCanvasSupplier(canvasSupplier);
   generateHelper(card, cb);
 }
 

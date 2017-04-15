@@ -11,18 +11,20 @@
   "author": "Michael Vitale",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.16.0",
-    "canvas": "^1.6.2",
+    "body-parser": "^1.17.1",
+    "canvas": "^1.6.5",
     "concat-stream": "^1.6.0",
-    "cors": "^2.8.1",
-    "express": "^4.14.1",
+    "cors": "^2.8.3",
+    "express": "^4.15.2",
     "file-type": "^4.1.0",
     "flat": "^2.0.1",
     "image-size": "^0.5.1",
-    "mongodb": "^2.2.22",
-    "mongoose": "^4.8.2",
+    "mongodb": "^2.2.25",
+    "mongoose": "^4.9.4",
     "morgan": "^1.8.1",
-    "request": "^2.79.0"
+    "nocache": "^2.0.0",
+    "request": "^2.81.0",
+    "sharp": "^0.17.3"
   },
   "repository": {
     "type": "git",

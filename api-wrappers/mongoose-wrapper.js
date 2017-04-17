@@ -1,10 +1,11 @@
-function CardWrapper(card) {
-  this.delegate = card;
+function MongooseWrapper(delegate) {
+  this.delegate = delegate;
 
   this.toJSON = function() {
     var json = this.delegate.toJSON();
 
     json.id = json._id;
+    delete json['userId'];
     delete json['_id'];
     delete json['__v'];
 
@@ -12,4 +13,4 @@ function CardWrapper(card) {
   }
 }
 
-module.exports = CardWrapper;
+module.exports = MongooseWrapper;

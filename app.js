@@ -28,7 +28,7 @@ config.load(function(err) {
   var Deck             = require('./models/deck');
   var DedupFile        = require('./models/dedup-file');
 
-  var CardWrapper      = require('./api-wrappers/card-wrapper');
+  var MongooseWrapper      = require('./api-wrappers/mongoose-wrapper');
   var TemplateWrapper  = require('./api-wrappers/template-wrapper');
 
 
@@ -125,7 +125,7 @@ config.load(function(err) {
    */
   userRouter.post('/:userId/cards', (req, res) => {
     var cardData = Object.assign({ userId: req.params.userId }, req.body);
-    var card = new Card(req.body);
+    var card = new Card(cardData);
 
     card.populateDefaultsAndChoices((err) => {
       if (err) return errJsonRes(res, err);
@@ -133,8 +133,21 @@ config.load(function(err) {
       card.save((err, card) => {
         if (err) return errJsonRes(res, err);
 
-        jsonRes(res, 'created', new CardWrapper(card));
+        jsonRes(res, 'created', new MongooseWrapper(card));
       });
+    });
+  });
+
+  /*
+   * Create a new Deck for a user
+   */
+  userRouter.post('/:userId/decks', (req, res) => {
+    var deckData = Object.assign({ userId: req.params.userId }, req.body);
+
+    Deck.create(deckData, (err, deck) => {
+      if (err) return errJsonRes(res, err);
+
+      jsonRes(res, 'created', new MongooseWrapper(deck));
     });
   });
 
@@ -148,7 +161,7 @@ config.load(function(err) {
    *  JSON respresentation of the updated Card.
    */
   userRouter.put('/:userId/cards/:cardId/data', (req, res) => {
-    Card.find({ userId: req.params.userId, _id: req.params.cardId }, (err, card) => {
+    Card.findOne({ userId: req.params.userId, _id: req.params.cardId }, (err, card) => {
       if (err) {
         errJsonRes(res, err);
       } else {
@@ -191,8 +204,18 @@ config.load(function(err) {
   /*
    * GET the ids of all decks belonging to a user
    */
-  userRouter.get('/:userId/deckIds', (req, res) => {
-    userResourcesHelper(Deck, req, res);
+  userRouter.get('/:userId/decks', (req, res) => {
+    Deck.find({ userId: req.params.userId }).sort('-_id').exec((err, decks) => {
+      if (err) return errJsonRes(res, err);
+
+      var wrappedDecks = [];
+
+      decks.forEach((deck) => {
+        wrappedDecks.push(new MongooseWrapper(deck));
+      });
+
+      jsonRes(res, 'ok', wrappedDecks);
+    });
   });
 
   /*
@@ -224,7 +247,6 @@ config.load(function(err) {
    *  }
    *
    * TODO: document/restrict supported file types
-   *
    */
   userRouter.post('/:userId/images', bodyParser.raw({type: '*/*'}), (req, res) => {
     DedupFile.findOrCreateFromBuffer(req.body, 'storage/images',
@@ -319,7 +341,7 @@ config.load(function(err) {
       if (err) {
         errJsonRes(res, err);
       } else {
-        jsonRes(res, 'ok', new CardWrapper(card));
+        jsonRes(res, 'ok', new MongooseWrapper(card));
       }
     });
   });
@@ -332,7 +354,7 @@ config.load(function(err) {
       if (err) {
         errJsonRes(res, err);
       } else {
-        jsonRes(res, 'ok', new CardWrapper(card));
+        jsonRes(res, 'ok', new MongooseWrapper(card));
       }
     });
   });

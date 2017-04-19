@@ -28,8 +28,9 @@ config.load(function(err) {
   var Deck             = require('./models/deck');
   var DedupFile        = require('./models/dedup-file');
 
-  var MongooseWrapper      = require('./api-wrappers/mongoose-wrapper');
-  var TemplateWrapper  = require('./api-wrappers/template-wrapper');
+  var MongooseWrapper    = require('./api-wrappers/mongoose-wrapper');
+  var TemplateWrapper    = require('./api-wrappers/template-wrapper');
+  var CardSummaryWrapper = require('./api-wrappers/card-summary-wrapper');
 
 
   var port = config.get('server.port');
@@ -268,6 +269,22 @@ config.load(function(err) {
   userRouter.get('/:userId/cardIds', (req, res) => {
     userResourcesHelper(Card, req, res);
   });
+
+  userRouter.get('/:userId/cardSummaries', (req, res) => {
+    Card.find({ userId: req.params.userId}).sort('-_id').exec((err, results) => {
+      var summaries = [];
+
+      if (err) {
+        errJsonRes(res, err);
+      } else {
+        results.forEach(function(card) {
+          summaries.push(new CardSummaryWrapper(card));
+        });
+
+        jsonRes(res, 'ok', summaries);
+      }
+    });
+  })
 
   /*
    * GET the ids of all cards in a user's Deck

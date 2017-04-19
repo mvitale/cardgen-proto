@@ -12,8 +12,9 @@ var deckSchema = new Schema({
 
 deckSchema.methods.cards = function(cb) {
   return Card.find({ _deck: this._id })
+    .sort('-_id')
     .populate('_deck')
     .exec(cb);
-}
+};
 
 module.exports = mongoose.model('Deck', deckSchema);

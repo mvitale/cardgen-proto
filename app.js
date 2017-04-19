@@ -56,6 +56,7 @@ config.load(function(err) {
   // Wire up JSON request parser
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(bodyParser.json({ type: 'application/json' }));
+  app.use(bodyParser.text());
 
   // TODO: Set appropriate http status
   function okJsonRes(res, data) {
@@ -107,6 +108,20 @@ config.load(function(err) {
   var userRouter = new express.Router();
   app.use('/users', userRouter);
 
+  function commonCreateCard(res, cardData) {
+    var card = new Card(cardData);
+
+    card.populateDefaultsAndChoices((err) => {
+      if (err) return errJsonRes(res, err);
+
+      card.save((err, card) => {
+        if (err) return errJsonRes(res, err);
+
+        jsonRes(res, 'created', new MongooseWrapper(card));
+      });
+    });
+  }
+
   /*
    * Create a new Card with a given template and templateParams.
    * Expects JSON of the form:
@@ -125,16 +140,42 @@ config.load(function(err) {
    */
   userRouter.post('/:userId/cards', (req, res) => {
     var cardData = Object.assign({ userId: req.params.userId }, req.body);
-    var card = new Card(cardData);
+    commonCreateCard(res, cardData);
+  });
 
-    card.populateDefaultsAndChoices((err) => {
+  /*
+   * Create a new Card in a Deck with a given template and templateParams.
+   * Expects JSON of the form:
+   *
+   * {
+   *   "templateName": "<template name>",
+   *   "templateParams": {
+   *     "<template param 1 key>": <template param 1 val>,
+   *     ...
+   *     "<template param n key">: <tempalte param 1 val>
+   *   }
+   * }
+   *
+   * Responds with JSON representation of the new Card, which includes the
+   * Card id. See api-wrappers/card-wrapper.js.
+   */
+  userRouter.post('/:userId/decks/:deckId/cards', (req, res) => {
+    Deck.findOne({
+      userId: req.params.userId,
+      _id: req.params.deckId
+    }, (err, deck) => {
       if (err) return errJsonRes(res, err);
 
-      card.save((err, card) => {
-        if (err) return errJsonRes(res, err);
+      if (!deck) {
+        return jsonRes(res, 'notFound', { msg: 'Deck not found' });
+      }
 
-        jsonRes(res, 'created', new MongooseWrapper(card));
-      });
+      var cardData = Object.assign({
+        userId: req.params.userId,
+        _deck: deck
+      }, req.body);
+
+      commonCreateCard(res, cardData);
     });
   });
 
@@ -171,9 +212,36 @@ config.load(function(err) {
           if (err) {
             errJsonRes(res, err);
           } else {
-            jsonRes(res, 'ok', card);
+            jsonRes(res, 'ok', new MongooseWrapper(card));
           }
         })
+      }
+    });
+  });
+
+  /*
+   * Assign a Card to a Deck
+   */
+  userRouter.put('/:userId/cards/:cardId/deckId', (req, res) => {
+    Card.findOne({ userId: req.params.userId, _id: req.params.cardId }, (err, card) => {
+      if (err) {
+        errJsonRes(res, err);
+      } else {
+        Deck.findById(req.body, (err, deck) => {
+          if (err) {
+            errJsonRes(res, err);
+          } else {
+            card._deck = deck;
+
+            card.save((err) => {
+              if (err) {
+                errJsonRes(res, err);
+              } else {
+                jsonRes(res, 'ok', new MongooseWrapper(card));
+              }
+            });
+          }
+        });
       }
     });
   });
@@ -199,6 +267,31 @@ config.load(function(err) {
    */
   userRouter.get('/:userId/cardIds', (req, res) => {
     userResourcesHelper(Card, req, res);
+  });
+
+  /*
+   * GET the ids of all cards in a user's Deck
+   */
+  userRouter.get('/:userId/decks/:deckId/cardIds', (req, res) => {
+    Deck.findOne({
+      userId: req.params.userId,
+      _id: req.params.deckId
+    }, (err, deck) => {
+      if (err) return errJsonRes(res, err);
+      if (!deck) return jsonRes(res, 'notFound', { msg: 'Deck not found' });
+
+      deck.cards((err, cards) => {
+        if (err) return errJsonRes(res, err);
+
+        var ids = [];
+
+        cards.forEach((card) => {
+          ids.push(card._id);
+        });
+
+        jsonRes(res, 'ok', ids);
+      });
+    });
   });
 
   /*

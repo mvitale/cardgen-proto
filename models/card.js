@@ -47,7 +47,7 @@ cardSchema.methods.populateDefaultsAndChoices = function(cb) {
       return cb();
     }
   );
-}
+};
 
 cardSchema.methods.templateSpec = function(cb) {
   templateManager.getTemplate(this.templateName, (err, data) => {
@@ -55,6 +55,13 @@ cardSchema.methods.templateSpec = function(cb) {
 
     return cb(data['spec']);
   });
+};
+
+function autopopulateDeck(next) {
+  this.populate('_deck');
+  next();
 }
+cardSchema.pre('findOne', autopopulateDeck);
+cardSchema.pre('find', autopopulateDeck);
 
 module.exports = mongoose.model('Card', cardSchema);

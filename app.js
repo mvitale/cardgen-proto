@@ -220,31 +220,50 @@ config.load(function(err) {
     });
   });
 
-  /*
-   * Assign a Card to a Deck
-   */
-  userRouter.put('/:userId/cards/:cardId/deckId', (req, res) => {
+  function saveAndSendCard(res, card) {
+    card.save((err) => {
+      if (err) {
+        errJsonRes(res, err);
+      } else {
+        jsonRes(res, 'ok', new MongooseWrapper(card));
+      }
+    });
+  }
+
+  function assignDeckIdHelper(req, res, deckId) {
     Card.findOne({ userId: req.params.userId, _id: req.params.cardId }, (err, card) => {
       if (err) {
         errJsonRes(res, err);
       } else {
-        Deck.findById(req.body, (err, deck) => {
-          if (err) {
-            errJsonRes(res, err);
-          } else {
-            card._deck = deck;
-
-            card.save((err) => {
-              if (err) {
-                errJsonRes(res, err);
-              } else {
-                jsonRes(res, 'ok', new MongooseWrapper(card));
-              }
-            });
-          }
-        });
+        if (deckId) {
+          Deck.findById(deckId, (err, deck) => {
+            if (err) {
+              errJsonRes(res, err);
+            } else {
+              card._deck = deck;
+              saveAndSendCard(res, card);
+            }
+          });
+        } else {
+          card._deck = null;
+          saveAndSendCard(res, card);
+        }
       }
     });
+  }
+
+  /*
+   * Assign a Card to a Deck
+   */
+  userRouter.put('/:userId/cards/:cardId/deckId', (req, res) => {
+    assignDeckIdHelper(req, res, req.body);
+  });
+
+  /*
+   * Remove a Card from Deck if it is in one
+   */
+  userRouter.delete('/:userId/cards/:cardId/deckId', (req, res) => {
+    assignDeckIdHelper(req, res, null);
   });
 
   function userResourcesHelper(model, req, res) {

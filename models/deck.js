@@ -11,7 +11,7 @@ var deckSchema = new Schema({
 });
 
 deckSchema.methods.cards = function(cb) {
-  return Card.find({ _deck: this._id })
+  return Card.find({ _deck: this })
     .sort('-_id')
     .populate('_deck')
     .exec(cb);

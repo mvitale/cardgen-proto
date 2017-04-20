@@ -290,20 +290,23 @@ config.load(function(err) {
   });
 
   userRouter.get('/:userId/cardSummaries', (req, res) => {
-    Card.find({ userId: req.params.userId}).sort('-_id').exec((err, results) => {
-      var summaries = [];
+    Card.find({ userId: req.params.userId})
+      .sort('-_id')
+      .populate('_deck')
+      .exec((err, results) => {
+        var summaries = [];
 
-      if (err) {
-        errJsonRes(res, err);
-      } else {
-        results.forEach(function(card) {
-          summaries.push(new CardSummaryWrapper(card));
-        });
+        if (err) {
+          errJsonRes(res, err);
+        } else {
+          results.forEach(function(card) {
+            summaries.push(new CardSummaryWrapper(card));
+          });
 
-        jsonRes(res, 'ok', summaries);
-      }
-    });
-  })
+          jsonRes(res, 'ok', summaries);
+        }
+      });
+  });
 
   /*
    * GET the ids of all cards in a user's Deck

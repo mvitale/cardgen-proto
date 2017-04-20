@@ -57,11 +57,4 @@ cardSchema.methods.templateSpec = function(cb) {
   });
 };
 
-function autopopulateDeck(next) {
-  this.populate('_deck');
-  next();
-}
-cardSchema.pre('findOne', autopopulateDeck);
-cardSchema.pre('find', autopopulateDeck);
-
 module.exports = mongoose.model('Card', cardSchema);

@@ -7,7 +7,8 @@ var Card = require('./card');
 
 var deckSchema = new Schema({
  name: { type: String, required: true },
- userId: { type: Number, required: true }
+ userId: { type: Number, required: true },
+ titleCardId: { type: String }
 });
 
 deckSchema.methods.cards = function(cb) {
@@ -16,5 +17,26 @@ deckSchema.methods.cards = function(cb) {
     .populate('_deck')
     .exec(cb);
 };
+
+deckSchema.post('init', (deck, next) => {
+  if (!deck.titleCardId) {
+    console.log('hi');
+    Card.findOne({ _deck: deck })
+      .sort('-_id')
+      .exec((err, card) => {
+        console.log('here');
+        if (err) return next(err);
+
+        if (card) {
+          deck.titleCardId = card._id;
+        }
+
+        next();
+      }
+    );
+  } else {
+    next();
+  }
+});
 
 module.exports = mongoose.model('Deck', deckSchema);

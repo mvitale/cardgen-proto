@@ -481,7 +481,7 @@ config.load(function(err) {
   /*
    * DELETE a card
    */
-  userRouter.delete('/:userId/cards/:cardId', function(req, res) {
+  userRouter.delete('/:userId/cards/:cardId', (req, res) => {
     Card.findByIdAndRemove(req.params.cardId, (err, card) => {
       if (err) {
         errJsonRes(res, err);
@@ -489,6 +489,27 @@ config.load(function(err) {
         jsonRes(res, 'ok', new MongooseWrapper(card));
       }
     });
+  });
+
+  /*
+   * DELETE a deck. Doesn't delete the cards in the deck, but does set cards in
+   * the deck to have _deck = null
+   */
+  userRouter.delete('/:userId/decks/:deckId', (req, res) => {
+    Deck.findOneAndRemove(
+      { userId: req.params.userId, _id: req.params.deckId },
+      (err, deck) => {
+        if (err) return errJsonRes(res, err);
+        if (!deck) return jsonRes(res, 'notFound', { msg: 'Deck not found' });
+
+        Card.updateMany({ userId: req.params.userId, _deck: deck._id },
+          { _deck: null }, (err) => {
+            if (err) return errJsonRes(res, err);
+            jsonRes(res, 'ok', { msg: "Deck " + deck._id + " removed" });
+          }
+        );
+      }
+    );
   });
 
   // Files in public directory are accessible at /static

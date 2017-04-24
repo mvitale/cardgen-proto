@@ -19,6 +19,7 @@
     "file-type": "^4.1.0",
     "flat": "^2.0.1",
     "image-size": "^0.5.1",
+    "lru-cache": "^4.0.2",
     "mongodb": "^2.2.25",
     "mongoose": "^4.9.4",
     "morgan": "^1.8.1",

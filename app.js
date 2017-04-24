@@ -23,6 +23,7 @@ config.load(function(err) {
   var templateManager  = require('./template-manager');
   var generator        = require('./generator');
   var urlHelper        = require('./url-helper');
+  var cardSvgCache     = require('./card-svg-loading-cache');
 
   var Card             = require('./models/card');
   var Deck             = require('./models/deck');
@@ -208,6 +209,7 @@ config.load(function(err) {
         errJsonRes(res, err);
       } else {
         card.data = req.body;
+        card.version += 1;
 
         card.save((err) => {
           if (err) {
@@ -422,7 +424,7 @@ config.load(function(err) {
       if (err) {
         return errJsonRes(res, err);
       } else {
-        generator.generateSvg(card, (err, svg) => {
+        cardSvgCache.get(card, (err, svg) => {
           if (err) {
             return errJsonRes(res, err);
           } else {

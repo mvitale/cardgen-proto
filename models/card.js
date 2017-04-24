@@ -31,6 +31,11 @@ var cardSchema = new Schema({
     type: Number,
     required: true
   },
+  version: {
+    type: Number,
+    required: true,
+    default: 0
+  },
   _deck: {
     type: Schema.Types.ObjectId,
     ref: 'Deck'

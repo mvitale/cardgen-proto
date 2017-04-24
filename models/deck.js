@@ -20,11 +20,9 @@ deckSchema.methods.cards = function(cb) {
 
 deckSchema.post('init', (deck, next) => {
   if (!deck.titleCardId) {
-    console.log('hi');
     Card.findOne({ _deck: deck })
       .sort('-_id')
       .exec((err, card) => {
-        console.log('here');
         if (err) return next(err);
 
         if (card) {

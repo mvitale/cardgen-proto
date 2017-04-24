@@ -1,6 +1,7 @@
 var LRU = require('lru-cache');
 var generator = require('./generator');
-var cacheMaxSize = 5000000; // TODO: move to config. Max size of cache in bytes.
+var config = require('./config/config');
+var cacheMaxSize = parseInt(config.get('cardSvgCache.maxSize'));
 
 var cache = LRU({
   max: cacheMaxSize,

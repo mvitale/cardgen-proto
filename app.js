@@ -56,7 +56,10 @@ config.load(function(err) {
   app.use(nocache());
 
   // Wire up JSON request parser
-  app.use(bodyParser.urlencoded({ extended: false }));
+  var rawAllParser = bodyParser.raw({
+    type: '*/*',
+    limit: '5mb'
+  })
   app.use(bodyParser.json({ type: 'application/json' }));
   app.use(bodyParser.text());
 
@@ -382,16 +385,23 @@ config.load(function(err) {
    *
    * TODO: document/restrict supported file types
    */
-  userRouter.post('/:userId/images', bodyParser.raw({type: '*/*'}), (req, res) => {
-    DedupFile.findOrCreateFromBuffer(req.body, 'storage/images',
-      (err, dedupFile) => {
-        if (err) return errJsonRes(err);
+  userRouter.post('/:userId/images', rawAllParser, (req, res) => {
+    DedupFile.findOrCreateFromBuffer(req.body, req.params.userId,
+      'storage/images', (err, dedupFile) => {
+        if (err) return errJsonRes(res, err);
         okJsonRes(res, { "url": urlHelper.imageUrl(dedupFile) });;
       }
     );
   });
 
-  userRouter.get('/:userId/images/:imageId', function(req, res) {
+  /*
+   * Image retrieval endpoint. This path does NOT include the usual /users/:userId
+   * prefix so that absolute URLs to uploaded images can be inserted into card
+   * data and requested by the browser directly. The unique imageId should make
+   * it sufficiently difficult to find and request another user's image, and we
+   * do store the user ID when images are uploaded for tracking purposes.
+   */
+  app.get('/images/:imageId', function(req, res) {
     DedupFile.findById(req.params.imageId, (err, file) => {
       if (err) {
        return errJsonRes(res, err);

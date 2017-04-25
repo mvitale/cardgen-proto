@@ -15,7 +15,8 @@ var DedupFileSchema = new Schema({
   path: { type: String, required: true },
   digest: { type: String, index: true, required: true},
   size: { type: Number, required: true },
-  mimeType: { type: String, required: true }
+  mimeType: { type: String, required: true },
+  userId: { type: Number, required: true }
 });
 
 function createDigest(buffer) {
@@ -30,7 +31,7 @@ function getFilename (cb) {
   })
 }
 
-function findOrCreateFromBuffer(buffer, destination, cb) {
+function findOrCreateFromBuffer(buffer, userId, destination, cb) {
   var that = this
     , digest = createDigest(buffer);
 
@@ -41,6 +42,8 @@ function findOrCreateFromBuffer(buffer, destination, cb) {
       return cb(null, result, false);
     } else {
       return getFilename((err, filename) => {
+        if (err) return cb(err);
+
         var type = fileType(buffer)
           , finalPath = null
           , outStream = null
@@ -49,7 +52,6 @@ function findOrCreateFromBuffer(buffer, destination, cb) {
         if (!type) {
           return cb(new Error('Unable to determine file type of buffer'));
         }
-
 
         finalPath = path.join(destination, filename + '.' + type.ext);
         outStream = fs.createWriteStream(finalPath)
@@ -61,7 +63,8 @@ function findOrCreateFromBuffer(buffer, destination, cb) {
             path: finalPath,
             digest: digest,
             size: outStream.bytesWritten,
-            mimeType: type.mime
+            mimeType: type.mime,
+            userId: userId
           }, function(err, result) {
             cb(err, result, true);
           });

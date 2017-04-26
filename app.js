@@ -10,7 +10,7 @@ function logErrorAndDieIfExists(err) {
   }
 }
 
-config.load(function(err) {
+config.load((err) => {
   logErrorAndDieIfExists(err);
 
   var express          = require('express');
@@ -396,7 +396,7 @@ config.load(function(err) {
 
   /*
    * Image retrieval endpoint. This path does NOT include the usual /users/:userId
-   * prefix so that absolute URLs to uploaded images can be inserted into card
+   * prefix so that absolute URLs to uploaded images can be inserted into Card
    * data and requested by the browser directly. The unique imageId should make
    * it sufficiently difficult to find and request another user's image, and we
    * do store the user ID when images are uploaded for tracking purposes.

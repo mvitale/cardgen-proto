@@ -8,12 +8,14 @@ var fs = require('fs');
 var path = require('path');
 var fileType = require('file-type');
 
+var fileUtil = require('./util/file-util');
+
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var DedupFileSchema = new Schema({
   path: { type: String, required: true },
-  digest: { type: String, index: true, required: true},
+  digest: { type: String, index: true, required: true },
   size: { type: Number, required: true },
   mimeType: { type: String, required: true },
   userId: { type: Number, required: true }
@@ -23,12 +25,6 @@ function createDigest(buffer) {
   var hash = crypto.createHash('md5');
   hash.update(buffer);
   return hash.digest('base64');
-}
-
-function getFilename (cb) {
-  crypto.pseudoRandomBytes(16, function (err, raw) {
-    cb(err, err ? undefined : raw.toString('hex'))
-  })
 }
 
 function findOrCreateFromBuffer(buffer, userId, destination, cb) {
@@ -41,7 +37,7 @@ function findOrCreateFromBuffer(buffer, userId, destination, cb) {
     if (result) {
       return cb(null, result, false);
     } else {
-      return getFilename((err, filename) => {
+      return fileUtil.randomFilename((err, filename) => {
         if (err) return cb(err);
 
         var type = fileType(buffer)
@@ -84,11 +80,7 @@ DedupFileSchema.methods.removeIncludingFile = function(cb) {
 }
 
 DedupFileSchema.methods.read = function(cb) {
-  fs.readFile(__dirname + '/../' + this.path, (err, buffer) => {
-    if (err) return cb(err);
-
-    return cb(null, buffer);
-  });
+  fileUtil.read(this, cb);
 }
 
 var DedupFile = mongoose.model('DedupFile', DedupFileSchema);

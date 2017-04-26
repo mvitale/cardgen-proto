@@ -4,16 +4,16 @@
 var request = require('request');
 var sharp = require('sharp');
 var Image = require('canvas').Image;
+var FetchedImage = require('./models/fetched-image');
 
 module.exports.fetch = function(url, cb) {
-  request({uri: url, encoding: null}, function(err, resp, body) {
-    if (err) return cb(err);
+  FetchedImage.findOrCreate(
+    url,
+    'storage/external_images',
+    (err, image) => {
+      if (err) return cb(err);
 
-    var resized = sharp(body)
-      .resize(241, 241)
-      .min()
-      .withoutEnlargement()
-      .toBuffer(function(err, buffer) {
+      image.read((err, buffer) => {
         if (err) return cb(err);
 
         var image = new Image;
@@ -21,5 +21,6 @@ module.exports.fetch = function(url, cb) {
 
         cb(null, image);
       });
-  });
-}
+    }
+  )
+};

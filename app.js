@@ -1,7 +1,7 @@
 /*
  * Server/app/controller for the Cards service
  */
-var config = require('./config/config');
+var init = require('./init');
 
 function logErrorAndDieIfExists(err) {
   if (err) {
@@ -10,7 +10,7 @@ function logErrorAndDieIfExists(err) {
   }
 }
 
-config.load((err) => {
+init((err) => {
   logErrorAndDieIfExists(err);
 
   var express          = require('express');
@@ -25,6 +25,7 @@ config.load((err) => {
   var generator        = require('./generator');
   var urlHelper        = require('./url-helper');
   var cardSvgCache     = require('./card-svg-loading-cache');
+  var config           = require('./config/config');
 
   var Card             = require('./models/card');
   var Deck             = require('./models/deck');

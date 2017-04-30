@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.17.1",
+    "bunyan": "^1.8.10",
     "canvas": "^1.6.5",
     "concat-stream": "^1.6.0",
     "cors": "^2.8.3",
@@ -22,8 +23,8 @@
     "lru-cache": "^4.0.2",
     "mongodb": "^2.2.25",
     "mongoose": "^4.9.4",
-    "morgan": "^1.8.1",
     "nocache": "^2.0.0",
+    "on-finished": "^2.3.0",
     "request": "^2.81.0",
     "sharp": "^0.17.3"
   },

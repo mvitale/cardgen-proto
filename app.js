@@ -16,7 +16,8 @@ config.load((err) => {
   var express          = require('express');
   var bodyParser       = require('body-parser');
   var mongo            = require('mongodb');
-  var morgan           = require('morgan');
+  var onFinished       = require('on-finished');
+  var bunyan           = require('bunyan');
   var nocache          = require('nocache');
 
   var dbconnect        = require('./dbconnect');
@@ -50,7 +51,33 @@ config.load((err) => {
   var app = express();
 
   // Request Logging
-  app.use(morgan('common'));
+  app.use((req, res, next) => {
+    var log = bunyan.createLogger({
+      name: 'Request logger'
+    });
+    req.log = log;
+    next();
+  });
+
+  app.use((req, res, next) => {
+    var reqInfo = {
+      method: req.method,
+      path: req.path,
+      params: req.params,
+      protocol: req.protocol
+    };
+
+    req.log.info(reqInfo, 'request start');
+
+    onFinished(res, () => {
+      req.log.info(Object.assign({
+        statusCode: res.statusCode,
+        contentLength: res.get('Content-Length'),
+      }, reqInfo), 'request end');
+    });
+
+    next();
+  });
 
   // Disable client caching
   app.use(nocache());

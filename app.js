@@ -39,6 +39,7 @@ init((err) => {
 
   var port = config.get('server.port');
 
+
   /*
    * Map human-readable names to http statuses
    */
@@ -104,7 +105,6 @@ init((err) => {
   }
 
   function errJsonRes(res, err) {
-    console.log(err);
     jsonRes(res, 'internalError', {
       'error': JSON.stringify(err)
     });
@@ -131,13 +131,15 @@ init((err) => {
    *  JSON representation of the Template (see api-wrappers/template-wrapper.js)
    */
   app.get('/templates/:templateName', function(req, res) {
-    templateManager.getTemplate(req.params.templateName, (err, template) => {
-      if (err) {
-        errJsonRes(res, err);
-      } else {
-        jsonRes(res, 'ok', new TemplateWrapper(template));
-      }
-    });
+    var name = req.params.templateName
+      , template = templateManager.getTemplate(name)
+      ;
+
+    if (!template) {
+      jsonRes(res, 'notFound', { msg: 'template ' + name + ' not found' });
+    } else {
+      jsonRes(res, 'ok', new TemplateWrapper(template));
+    }
   });
 
   var userRouter = new express.Router();
@@ -556,6 +558,16 @@ init((err) => {
 
   // Files in public directory are accessible at /static
   app.use('/static', express.static('public'));
+
+  // Error handler
+  app.use((err, req, res, next) => {
+    if (res.headersSent) {
+      return next(err);
+    }
+    console.log(err);
+    res.status(HTTP_STATUS.internalError);
+    res.json({ error: err, msg: 'this error handled Expressly for you ;)'});
+  })
 
   /*
    * Open mongoose database connection, then start the server.

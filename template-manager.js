@@ -8,7 +8,25 @@ var fs = require('fs');
 var templateCache = {};
 var templateDefaultsCache = {};
 var templateDir = './templates';
-var templateDefaultsDir = './template-defaults/data'
+var templateDefaultsDir = './template-defaults/data';
+var jsonExt = '.json';
+
+function load() {
+  var fileNames = fs.readdirSync(templateDir);
+
+  fileNames.forEach((fileName) => {
+    var templateName = null
+      , file = null
+      ;
+
+    if (fileName.endsWith(jsonExt)) {
+      templateName = fileName.substring(0, fileName.length - jsonExt.length);
+      file = fs.readFileSync(templateDir + '/' + fileName);
+      templateCache[templateName] = JSON.parse(file);
+    }
+  });
+}
+module.exports.load = load;
 
 /*
  * Get template with a given name, either by reading the corresponding
@@ -16,35 +34,16 @@ var templateDefaultsDir = './template-defaults/data'
  *
  * Parameteres:
  *   name - valid template name
- *   cb - standard callback (err, result)
  *
- * Result:
- *   A copy of the result of calling JSON.parse on the template file
+ * Returns:
+ *   the template if found, or null if not
  */
 function getTemplate(name, cb) {
-  if (!name) {
-    return cb(new Error('name required'));
+  if (name in templateCache) {
+    return templateCache[name];
+  } else {
+    return null;
   }
-
-  if (templateCache[name]) {
-    // make a defensive copy and return it
-    return cb(null, JSON.parse(JSON.stringify(templateCache[name])));
-  }
-
-  fs.readFile(templateDir + '/' + name + '.json', (err, data) => {
-    if (err) return cb(err);
-
-    var parsed = null;
-
-    try {
-      parsed = JSON.parse(data);
-    } catch (e) {
-      return cb(e);
-    }
-
-    templateCache[name] = parsed;
-    return cb(null, JSON.parse(JSON.stringify(parsed)));
-  });
 }
 module.exports.getTemplate = getTemplate;
 
@@ -61,44 +60,48 @@ module.exports.getTemplate = getTemplate;
  *   { defaultData: <defaults>, choices: <choices> }
  */
 function getDefaultAndChoiceData(name, params, cb) {
-  getTemplate(name, function(err, template) {
+  var template = getTemplate(name)
+    , apiSupplier = null
+    , spec = null
+    ;
+
+  if (!template) {
+    return cb(new Error('Template ' + ' name ' + ' not found'));
+  }
+
+  apiSupplier = template.apiSupplier;
+  spec = template.spec;
+
+  /*
+   * Make external API calls, then get defaults and choices
+   */
+  makeApiCalls(apiSupplier, params, (err, results) => {
     if (err) return cb(err);
 
-    var apiSupplier = template.apiSupplier
-      , spec = template.spec
-      ;
+    var choiceSuppliers = template.choiceSuppliers;
 
-    /*
-     * Make external API calls, then get defaults and choices
-     */
-    makeApiCalls(apiSupplier, params, (err, results) => {
-      if (err) return cb(err);
+    return choiceHelper(
+      Object.keys(choiceSuppliers),
+      choiceSuppliers,
+      params,
+      results,
+      {},
+      (err, choices) => {
+        if (err) return cb(err);
 
-      var choiceSuppliers = template.choiceSuppliers;
+        var defaultSuppliers = template.defaultSuppliers;
 
-      return choiceHelper(
-        Object.keys(choiceSuppliers),
-        choiceSuppliers,
-        params,
-        results,
-        {},
-        (err, choices) => {
-          if (err) return cb(err);
-
-          var defaultSuppliers = template.defaultSuppliers;
-
-          return defaultDataHelper(
-            Object.keys(defaultSuppliers),
-            defaultSuppliers,
-            params,
-            results,
-            choices,
-            {},
-            (err, defaults) => {
-              if (err) return cb(err);
-              return cb(null, {'defaultData': defaults, 'choices': choices});
-          });
-      });
+        return defaultDataHelper(
+          Object.keys(defaultSuppliers),
+          defaultSuppliers,
+          params,
+          results,
+          choices,
+          {},
+          (err, defaults) => {
+            if (err) return cb(err);
+            return cb(null, {'defaultData': defaults, 'choices': choices});
+        });
     });
   });
 }

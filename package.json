@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "description": "\"Prototype EOL card generator\"",
   "main": "app.js",
-  "devDependencies": {},
+  "devDependencies": {
+    "mocha": "^3.3.0"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha",
     "start": "node app.js"
   },
   "author": "Michael Vitale",

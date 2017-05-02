@@ -20,30 +20,17 @@ var flattenedConfig = null;
 
 /*
  * Load from config.json. Only call once.
- *
- * Parameters:
- *   cb - function(err)
  */
-function load(cb) {
+function load() {
   if (flattenedConfig) {
-    return cb(new Error('Already loaded'));
+    throw new Error('Already loaded');
   }
 
-  fs.readFile(__dirname + '/config.json', (err, data) => {
-    if (err) return cb(err);
+  var data = fs.readFileSync(__dirname + '/config.json')
+    , parsed = JSON.parse(data)
+    ;
 
-    var parsed = null;
-
-    try {
-      parsed = JSON.parse(data);
-    } catch (e) {
-      return cb(e);
-    }
-
-    flattenedConfig = flatten(parsed);
-
-    cb();
-  });
+  flattenedConfig = flatten(parsed);
 }
 module.exports.load = load;
 

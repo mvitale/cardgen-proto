@@ -19,6 +19,7 @@ init((err) => {
   var onFinished       = require('on-finished');
   var bunyan           = require('bunyan');
   var nocache          = require('nocache');
+  var uuidV1           = require('uuid/v1');
 
   var dbconnect        = require('./dbconnect');
   var templateManager  = require('./template-manager');
@@ -54,7 +55,8 @@ init((err) => {
   // Request Logging
   app.use((req, res, next) => {
     var log = bunyan.createLogger({
-      name: 'Request logger'
+      name: 'cardgen',
+      reqId: uuidV1()
     });
     req.log = log;
     next();
@@ -68,13 +70,13 @@ init((err) => {
       protocol: req.protocol
     };
 
-    req.log.info(reqInfo, 'request start');
+    req.log.info(reqInfo, 'Start request');
 
     onFinished(res, () => {
       req.log.info(Object.assign({
         statusCode: res.statusCode,
         contentLength: res.get('Content-Length'),
-      }, reqInfo), 'request end');
+      }, reqInfo), 'End request');
     });
 
     next();

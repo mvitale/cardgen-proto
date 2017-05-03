@@ -3,9 +3,10 @@ var sinon = require('sinon');
 var sinonChai = require('sinon-chai');
 var fs = require('fs');
 
-var sandbox = sinon.sandbox.create();
 var expect = chai.expect;
 chai.use(sinonChai)
+
+var sandbox = sinon.sandbox.create();
 
 var template1 = {
   type: 'trait',

@@ -1,0 +1,14 @@
+{
+  "server": {
+    "host": "localhost",
+    "port": 8080
+  },
+  "db": {
+    "host": "localhost",
+    "port": 27017,
+    "dbName": "cards"
+  },
+  "cardSvgCache": {
+    "maxSize": 10000000
+  }
+}

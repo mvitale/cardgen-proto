@@ -12,25 +12,36 @@
  */
 var flatten = require('flat');
 var fs      = require('fs');
+var merge   = require('merge');
 
 /*
  * State
  */
 var flattenedConfig = null;
+var env = process.env.NODE_ENV ? process.env.NODE_ENV : 'development';
+
+console.log('NODE_ENV', env);
 
 /*
- * Load from config.json. Only call once.
+ * Load by merging environment config into defaults. Should only be called once.
  */
 function load() {
   if (flattenedConfig) {
     throw new Error('Already loaded');
   }
 
-  var data = fs.readFileSync(__dirname + '/config.json')
-    , parsed = JSON.parse(data)
+  var dataRaw = fs.readFileSync(__dirname + '/defaults.json')
+    , data = JSON.parse(dataRaw)
+    , envDataPath = __dirname + '/' + env + '.json'
+    , envDataRaw = fs.existsSync(envDataPath) ? fs.readFileSync(envDataPath) : null
+    , envData = envDataRaw ? JSON.parse(envDataRaw) : null
     ;
 
-  flattenedConfig = flatten(parsed);
+  if (envData) {
+    merge.recursive(data, envData);
+  }
+
+  flattenedConfig = flatten(data);
 }
 module.exports.load = load;
 

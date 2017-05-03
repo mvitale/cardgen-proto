@@ -7,7 +7,7 @@
     "mocha": "^3.3.0"
   },
   "scripts": {
-    "test": "mocha",
+    "test": "NODE_ENV=test mocha",
     "start": "node app.js"
   },
   "author": "Michael Vitale",
@@ -23,6 +23,7 @@
     "flat": "^2.0.1",
     "image-size": "^0.5.1",
     "lru-cache": "^4.0.2",
+    "merge": "^1.2.0",
     "mongodb": "^2.2.25",
     "mongoose": "^4.9.4",
     "nocache": "^2.0.0",

@@ -3,4 +3,3 @@ npm-debug.log
 *.swp
 storage/*
 tags
-config/config.json

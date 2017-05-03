@@ -1,6 +1,6 @@
 /*
- * Get config values from config.json. Refer to nested values by a dot-separated
- * query string, e.g., for the object
+ * Load and get config values. Refer to nested values by a dot-separated query
+ * string, e.g., for the object
  *
  * { a: { b: 3 } }
  *

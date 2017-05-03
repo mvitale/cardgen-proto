@@ -6,13 +6,26 @@
 var fs = require('fs');
 
 var templateCache = {};
-var templateDefaultsCache = {};
+var supplierLoader
 var templateDir = './templates';
-var templateDefaultsDir = './template-defaults/data';
 var jsonExt = '.json';
 
-function load() {
-  var fileNames = fs.readdirSync(templateDir);
+var defaultSupplierLoader = {
+  load: function(path) {
+    return require(path);
+  }
+};
+
+function load(theSupplierLoader) {
+  var fileNames;
+
+  if (theSupplierLoader) {
+    supplierLoader = theSupplierLoader;
+  } else {
+    supplierLoader = defaultSupplierLoader;
+  }
+
+  fileNames = fs.readdirSync(templateDir);
 
   fileNames.forEach((fileName) => {
     var templateName = null
@@ -32,13 +45,13 @@ module.exports.load = load;
  * Get template with a given name, either by reading the corresponding
  * json file or retrieving from cache.
  *
- * Parameteres:
+ * Parameters:
  *   name - valid template name
  *
  * Returns:
  *   the template if found, or null if not
  */
-function getTemplate(name, cb) {
+function getTemplate(name) {
   if (name in templateCache) {
     return templateCache[name];
   } else {
@@ -66,7 +79,7 @@ function getDefaultAndChoiceData(name, params, cb) {
     ;
 
   if (!template) {
-    return cb(new Error('Template ' + ' name ' + ' not found'));
+    return cb(new Error('Template ' + name + ' not found'));
   }
 
   apiSupplier = template.apiSupplier;
@@ -125,7 +138,7 @@ function makeApiCalls(apiSupplierName, templateParams, cb) {
   var apiSupplier = null;
 
   try {
-    apiSupplier = require('./suppliers/api/' + apiSupplierName);
+    apiSupplier = supplierLoader.load('./suppliers/api/' + apiSupplierName);
   } catch (e) {
     return cb(e);
   }
@@ -171,7 +184,7 @@ function defaultDataHelper(
     ;
 
   try {
-    supplier = require('./suppliers/default/' + supplierName);
+    supplier = supplierLoader.load('./suppliers/default/' + supplierName);
   } catch (e) {
     cb(e);
   }
@@ -227,7 +240,7 @@ function choiceHelper(fieldIds, choiceSuppliers, params, apiResults, data, cb) {
     ;
 
   try {
-    supplier = require('./suppliers/choice/' + supplierName);
+    supplier = supplierLoader.load('./suppliers/choice/' + supplierName);
   } catch (e) {
     return cb(e);
   }

@@ -4,7 +4,7 @@ var sinonChai = require('sinon-chai');
 var request = require('request');
 
 var expect = chai.expect;
-chai.use(sinonChai)
+chai.use(sinonChai);
 
 var sandbox = sinon.sandbox.create();
 
@@ -48,7 +48,7 @@ describe('eol-api-caller', () => {
       });
     });
 
-    describe('when request is fails', () => {
+    describe('when request fails', () => {
       var error = new Error('Request failed');
 
       beforeEach(() => {

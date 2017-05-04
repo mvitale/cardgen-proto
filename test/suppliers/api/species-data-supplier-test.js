@@ -1,16 +1,17 @@
 var chai = require('chai');
 var sinon = require('sinon');
-var sinonChai = require('sinon-chai');
 
-var VError = require('verror').VError;
+var sinonChai = require('sinon-chai');
+var verrorChai = require('../../helpers/verror-chai');
 
 var expect = chai.expect;
 chai.use(sinonChai);
+chai.use(verrorChai);
 
 var sandbox = sinon.sandbox.create();
 
-var eolApiCaller = require('../../suppliers/api/eol-api-caller');
-var speciesDataSupplier = require('../../suppliers/api/species-data-supplier');
+var eolApiCaller = require('../../../suppliers/api/eol-api-caller');
+var speciesDataSupplier = require('../../../suppliers/api/species-data-supplier');
 
 describe('species-data-supplier', () => {
   describe('#supply', () => {
@@ -27,14 +28,6 @@ describe('species-data-supplier', () => {
           ]
         }
       ;
-
-    function checkErrorArgs(args, prefix) {
-      expect(args.length).to.equal(1);
-
-      error = args[0];
-      expect(error).to.be.an.instanceof(VError);
-      expect(error.message.startsWith(prefix)).to.be.true;
-    }
 
     beforeEach(() => {
       getJson = sandbox.stub(eolApiCaller, 'getJson');
@@ -67,8 +60,8 @@ describe('species-data-supplier', () => {
     });
 
     context('when an api call fails', () => {
-      function checkApiErrorArgs(args, apiName) {
-        checkErrorArgs(args, apiName + ' call failed: ');
+      function checkApiErrorArgs(cb, apiName) {
+        expect(cb).to.have.been.calledWithVerror(apiName + ' call failed: ');
       }
 
       context('when the pages call fails', () => {
@@ -81,7 +74,7 @@ describe('species-data-supplier', () => {
         });
 
         it('yields the correct error', () => {
-          checkApiErrorArgs(cb.args[0], 'pages');
+          checkApiErrorArgs(cb, 'pages');
         });
       });
 
@@ -99,7 +92,7 @@ describe('species-data-supplier', () => {
         });
 
         it('yields the correct error', () => {
-          checkApiErrorArgs(cb.args[0], 'hierarchy_entries');
+          checkApiErrorArgs(cb, 'hierarchy_entries');
         });
       });
     });
@@ -117,7 +110,9 @@ describe('species-data-supplier', () => {
         });
 
         it('produces the correct error', () => {
-          checkErrorArgs(cb.args[0], 'taxonConcepts missing in pages result');
+          expect(cb).to.have.been.calledWithVerror(
+            'taxonConcepts missing in pages result'
+          );
         });
       });
 
@@ -133,7 +128,9 @@ describe('species-data-supplier', () => {
         });
 
         it('produces the correct error', () => {
-          checkErrorArgs(cb.args[0], 'taxonConcepts empty in pages result');
+          expect(cb).to.have.been.calledWithVerror(
+            'taxonConcepts empty in pages result'
+          );
         });
       });
 
@@ -151,8 +148,7 @@ describe('species-data-supplier', () => {
           });
 
           it('produces the correct error', () => {
-            checkErrorArgs(
-              cb.args[0],
+            expect(cb).to.have.been.calledWithVerror(
               'taxonConcepts first element missing identifier'
             );
           });

@@ -1,19 +1,8 @@
-var request = require('request');
+var targetLang = 'en';
 
-var baseParams = {
-  videos_page: 0,
-  sounds_page: 0,
-  maps_page: 0,
-  texts_page: 0,
-  icun: false,
-  taxonomy: false,
-  vetted: 0,
-  language: 'en',
-  details: false,
-  images_page: 0,
-  common_names: true
-};
-
+/*
+ * Throws TypeError if apiResults.pages is not an Object
+ */
 module.exports.supply = function(params, apiResults, choices, cb) {
   var commonNames = apiResults.pages.vernacularNames
     , candidate = null;
@@ -24,7 +13,7 @@ module.exports.supply = function(params, apiResults, choices, cb) {
           , lang = commonName.language
           , preferred = commonName.eol_preferred;
 
-        if (lang === 'en') {
+        if (lang === targetLang) {
           if (candidate === null || preferred) {
             candidate = commonName.vernacularName;
           }

@@ -51,7 +51,7 @@ describe('util', () => {
               },
               {
                 taxonRank: 'class',
-                scientificName: 'sci name'
+                scientificName: 'classname'
               },
               {
                 taxonRank: 'bar'
@@ -62,7 +62,7 @@ describe('util', () => {
       });
 
       it('returns the scientificName', () => {
-        expect(util.extractClassName(apiResults)).to.equal('sci name');
+        expect(util.extractClassName(apiResults)).to.equal('classname');
       });
     });
 
@@ -108,6 +108,8 @@ describe('util', () => {
         });
       }
     );
+
+    // TODO: Should ensure capitalization of class name
   });
 
   afterEach(() => {

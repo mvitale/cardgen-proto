@@ -16,7 +16,6 @@ init((err) => {
     ;
 
   server.listen(port, function() {
-    var port = server.address().port;
     console.log('server listening at port %s', port);
   });
 });

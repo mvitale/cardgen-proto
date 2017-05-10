@@ -1,4 +1,4 @@
-var init = require('./init');
+var init = require('_/init');
 
 function logErrorAndDieIfExists(err) {
   if (err) {
@@ -10,6 +10,13 @@ function logErrorAndDieIfExists(err) {
 init((err) => {
   logErrorAndDieIfExists(err);
 
-  var server = require('./server');
-  server.start();
+  var server = require('_/server')
+    , config = require('_/config/config')
+    , port = config.get('server.port')
+    ;
+
+  server.listen(port, function() {
+    var port = server.address().port;
+    console.log('server listening at port %s', port);
+  });
 });

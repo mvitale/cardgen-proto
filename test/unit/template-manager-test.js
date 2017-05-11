@@ -10,6 +10,7 @@ var sandbox = sinon.sandbox.create();
 
 var template1 = {
   type: 'trait',
+  name: 'template1',
   params: [
     {
       name: 'speciesId',
@@ -27,10 +28,9 @@ var template1 = {
 
 var template2 = {
   type: 'title',
+  name: 'template2',
   fields: []
 };
-
-var invalidTemplateStr = "{ \"type\": 'invalid JSON' }";
 
 describe('template-manager', () => {
   var templateManager;
@@ -40,54 +40,25 @@ describe('template-manager', () => {
   });
 
   describe('#load', () => {
-    context('when all templates in the directory are valid JSON', () => {
-      beforeEach(() => {
-        var readFileSync;
 
-        sandbox.stub(fs, 'readdirSync').callsFake((path) => {
-          return [ 'template1.json', 'template2.json' ];
+    context('when the templateLoader returns a valid result', () => {
+      beforeEach(() => {
+        templateManager.setTemplateLoader({
+          templates: function() {
+            return [ template1, template2 ];
+          }
         });
 
-        readFileSync = sandbox.stub(fs, 'readFileSync');
-
-        readFileSync
-          .withArgs('./templates/template1.json')
-          .returns(JSON.stringify(template1));
-
-        readFileSync
-          .withArgs('./templates/template2.json')
-          .returns(JSON.stringify(template2));
-      });
-
-      it('should successfully load the templates', () => {
         templateManager.load();
-
-        expect(templateManager.getTemplate('template1')).to.eql(template1);
-        expect(templateManager.getTemplate('template2')).to.eql(template2);
-      });
-    });
-
-    context('when there is a file in the directory that is invalid JSON', () => {
-      beforeEach(() => {
-        var readFileSync;
-
-        sandbox.stub(fs, 'readdirSync').callsFake((path) => {
-          return [ 'template1.json', 'invalid.json' ];
-        });
-
-        readFileSync = sandbox.stub(fs, 'readFileSync');
-
-        readFileSync
-          .withArgs('./templates/template1.json')
-          .returns(JSON.stringify(template1));
-
-        readFileSync
-          .withArgs('./templates/invalid.json')
-          .returns(invalidTemplateStr);
       });
 
-      it('should throw an Error', () => {
-        expect(templateManager.load).to.throw(Error);
+      it('loads the templates', () => {
+        expect(templateManager.getTemplate('template1')).to.equal(template1);
+        expect(templateManager.getTemplate('template2')).to.equal(template2);
+      });
+
+      afterEach(() => {
+        templateManager.setTemplateLoader();
       });
     });
   });
@@ -96,19 +67,12 @@ describe('template-manager', () => {
     var callback;
 
     beforeEach(() => {
-      var readFileSync;
-
       callback = sinon.spy();
-
-      sandbox.stub(fs, 'readdirSync').callsFake((path) => {
-        return [ 'template.json' ];
+      templateManager.setTemplateLoader({
+        templates: function() {
+          return [ template1 ];
+        }
       });
-
-      readFileSync = sandbox.stub(fs, 'readFileSync');
-
-      readFileSync
-        .withArgs('./templates/template.json')
-        .returns(JSON.stringify(template1));
     });
 
     var okApiSupplier = {
@@ -132,10 +96,9 @@ describe('template-manager', () => {
       }
     };
 
-    describe('when no dependencies return errors', () => {
-
+    context('when no dependencies return errors', () => {
       beforeEach(() => {
-        templateManager.load({
+        templateManager.setSupplierLoader({
           load: function(path) {
             switch (path) {
               case './suppliers/api/species-data-supplier':
@@ -152,7 +115,7 @@ describe('template-manager', () => {
       context('when called with a valid template name', () => {
         it('yields the correct result', () => {
           templateManager.getDefaultAndChoiceData(
-            'template',
+            'template1',
             { speciesId: 1234 },
             callback
           );
@@ -193,7 +156,7 @@ describe('template-manager', () => {
     context('when the API supplier returns an error', () => {
       var apiError = new Error('Failed to connect to EOL');
       beforeEach(() => {
-        templateManager.load({
+        templateManager.setSupplierLoader({
           load: function(path) {
             switch (path) {
               case './suppliers/api/species-data-supplier':
@@ -213,7 +176,7 @@ describe('template-manager', () => {
 
       it('yields an error', () => {
         templateManager.getDefaultAndChoiceData(
-          'template',
+          'template1',
           { speciesId: 1234 },
           callback
         );
@@ -225,8 +188,9 @@ describe('template-manager', () => {
 
     context('when the choice supplier returns an error', () => {
       var choiceSupplierError = new Error('Failed to build choices');
+
       beforeEach(() => {
-        templateManager.load({
+        templateManager.setSupplierLoader({
           load: function(path) {
             switch (path) {
               case './suppliers/api/species-data-supplier':
@@ -246,7 +210,7 @@ describe('template-manager', () => {
 
       it('yields an error', () => {
         templateManager.getDefaultAndChoiceData(
-          'template',
+          'template1',
           { speciesId: 1234 },
           callback
         );
@@ -260,7 +224,7 @@ describe('template-manager', () => {
       var defaultSupplierError = new Error('Failed to get defaults');
 
       beforeEach(() => {
-        templateManager.load({
+        templateManager.setSupplierLoader({
           load: function(path) {
             switch (path) {
               case './suppliers/api/species-data-supplier':
@@ -280,7 +244,7 @@ describe('template-manager', () => {
 
       it('yields an error', () => {
         templateManager.getDefaultAndChoiceData(
-          'template',
+          'template1',
           { speciesId: 1234 },
           callback
         );
@@ -288,6 +252,11 @@ describe('template-manager', () => {
         expect(callback.called).to.be.true;
         expect(callback).to.have.been.calledWith(defaultSupplierError);
       });
+    });
+
+    afterEach(() => {
+      templateManager.setSupplierLoader();
+      templateManager.setTemplateLoader();
     });
   });
 

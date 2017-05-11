@@ -1,4 +1,4 @@
-var init = require('_/init');
+var init = require('./init');
 
 function logErrorAndDieIfExists(err) {
   if (err) {
@@ -10,7 +10,7 @@ function logErrorAndDieIfExists(err) {
 init((err) => {
   logErrorAndDieIfExists(err);
 
-  var server = require('_/server')
+  var server = require('./server')
     , config = require('_/config/config')
     , port = config.get('server.port')
     ;

@@ -99,14 +99,13 @@ describe('template-manager', () => {
     context('when no dependencies return errors', () => {
       beforeEach(() => {
         templateManager.setSupplierLoader({
-          load: function(path) {
-            switch (path) {
-              case './suppliers/api/species-data-supplier':
-                return okApiSupplier;
-              case './suppliers/choice/species-images-supplier':
-                return okChoiceSupplier;
-              case './suppliers/default/common-name-supplier':
-                return okDefaultSupplier;
+          load: function(name, type) {
+            if (name === 'species-data-supplier' && type === 'api') {
+              return okApiSupplier;
+            } else if (name === 'species-images-supplier' && type === 'choice') {
+              return okChoiceSupplier;
+            } else if (name === 'common-name-supplier' && type === 'default') {
+              return okDefaultSupplier;
             }
           }
         });
@@ -157,18 +156,17 @@ describe('template-manager', () => {
       var apiError = new Error('Failed to connect to EOL');
       beforeEach(() => {
         templateManager.setSupplierLoader({
-          load: function(path) {
-            switch (path) {
-              case './suppliers/api/species-data-supplier':
-                return {
-                  supply: function(templateParams, cb) {
-                    return cb(apiError);
-                  }
+          load: function(name, type) {
+            if (name === 'species-data-supplier' && type === 'api') {
+              return {
+                supply: function(templateParams, cb) {
+                  return cb(apiError);
                 }
-              case './suppliers/choice/species-images-supplier':
-                return okChoiceSupplier;
-              case './suppliers/default/common-name-supplier':
-                return okDefaultSupplier;
+              };
+            } else if (name === 'species-images-supplier' && type === 'choice') {
+              return okChoiceSupplier;
+            } else if (name === 'common-name-supplier' && type === 'default') {
+              return okDefaultSupplier;
             }
           }
         });
@@ -191,18 +189,17 @@ describe('template-manager', () => {
 
       beforeEach(() => {
         templateManager.setSupplierLoader({
-          load: function(path) {
-            switch (path) {
-              case './suppliers/api/species-data-supplier':
-                return okApiSupplier;
-              case './suppliers/choice/species-images-supplier':
-                return {
-                  supply: function(params, apiResults, cb) {
-                    return cb(choiceSupplierError);
-                  }
-                };
-              case './suppliers/default/common-name-supplier':
-                return okDefaultSupplier;
+          load: function(name, type) {
+            if (name === 'species-data-supplier' && type === 'api') {
+              return okApiSupplier;
+            } else if (name === 'species-images-supplier' && type === 'choice') {
+              return {
+                supply: function(params, apiResults, cb) {
+                  return cb(choiceSupplierError);
+                }
+              };
+            } else if (name === 'common-name-supplier' && type === 'default') {
+              return okDefaultSupplier;
             }
           }
         });
@@ -225,18 +222,17 @@ describe('template-manager', () => {
 
       beforeEach(() => {
         templateManager.setSupplierLoader({
-          load: function(path) {
-            switch (path) {
-              case './suppliers/api/species-data-supplier':
-                return okApiSupplier;
-              case './suppliers/choice/species-images-supplier':
-                return okChoiceSupplier
-              case './suppliers/default/common-name-supplier':
-                return {
-                  supply: function(params, apiResults, choices, cb) {
-                    return cb(defaultSupplierError);
-                  }
-                };
+          load: function(name, type) {
+            if (name === 'species-data-supplier' && type === 'api') {
+              return okApiSupplier;
+            } else if (name === 'species-images-supplier' && type === 'choice') {
+              return okChoiceSupplier;
+            } else if (name === 'common-name-supplier' && type === 'default') {
+              return {
+                supply: function(params, apiResults, choices, cb) {
+                  return cb(defaultSupplierError);
+                }
+              };
             }
           }
         });

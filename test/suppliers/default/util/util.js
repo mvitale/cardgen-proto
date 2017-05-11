@@ -3,7 +3,7 @@ var chai = require('chai');
 var sinon = require('sinon');
 var sinonChai = require('sinon-chai');
 
-var util = require('../../../../suppliers/default/util/util');
+var util = require('_/suppliers/default/util/util');
 
 var expect = chai.expect
   , sandbox = sinon.sandbox.create()

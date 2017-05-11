@@ -10,7 +10,7 @@ chai.use(sinonChai);
 chai.use(verrorChai);
 
 var speciesImagesSupplier =
-  require('../../../suppliers/choice/species-images-supplier');
+  require('_/suppliers/choice/species-images-supplier');
 
 
 var sandbox = sinon.sandbox.create();

@@ -4,7 +4,7 @@ var sinon = require('sinon');
 var sinonChai = require('sinon-chai');
 
 var sciNameSupplier =
-  require('../../../suppliers/default/sci-name-supplier');
+  require('_/suppliers/default/sci-name-supplier');
 
 var expect = chai.expect
   , sandbox = sinon.sandbox.create()

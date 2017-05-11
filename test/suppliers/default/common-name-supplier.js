@@ -4,7 +4,7 @@ var sinon = require('sinon');
 var sinonChai = require('sinon-chai');
 
 var commonNameSupplier =
-  require('../../../suppliers/default/common-name-supplier');
+  require('_/suppliers/default/common-name-supplier');
 
 chai.use(sinonChai);
 

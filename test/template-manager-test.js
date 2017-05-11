@@ -36,7 +36,7 @@ describe('template-manager', () => {
   var templateManager;
 
   beforeEach(() => {
-    templateManager = require('../template-manager');
+    templateManager = require('_/template-manager');
   });
 
   describe('#load', () => {

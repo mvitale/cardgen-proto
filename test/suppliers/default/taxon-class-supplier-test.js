@@ -4,9 +4,9 @@ var sinon = require('sinon');
 var sinonChai = require('sinon-chai');
 
 var taxonClassSupplier =
-  require('../../../suppliers/default/taxon-class-supplier');
+  require('_/suppliers/default/taxon-class-supplier');
 var util =
-  require('../../../suppliers/default/util/util');
+  require('_/suppliers/default/util/util');
 
 var expect = chai.expect
   , sandbox = sinon.sandbox.create()

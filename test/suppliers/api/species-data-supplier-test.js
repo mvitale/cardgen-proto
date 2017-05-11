@@ -10,8 +10,8 @@ chai.use(verrorChai);
 
 var sandbox = sinon.sandbox.create();
 
-var eolApiCaller = require('../../../suppliers/api/eol-api-caller');
-var speciesDataSupplier = require('../../../suppliers/api/species-data-supplier');
+var eolApiCaller = require('_/suppliers/api/eol-api-caller');
+var speciesDataSupplier = require('_/suppliers/api/species-data-supplier');
 
 describe('species-data-supplier', () => {
   describe('#supply', () => {

@@ -5,7 +5,7 @@ var chaiHttp = require('chai-http');
 
 var expect = chai.expect;
 
-var config = require('../config/config');
+var config = require('_/config/config');
 config.load();
 
 chai.use(chaiHttp);
@@ -16,12 +16,12 @@ describe('server', () => {
   var server;
 
   beforeEach(() => {
-    server = require('../server');
+    server = require('_/server');
   });
 
   /*
   describe('GET /templates/:templateName', () => {
-    var templateManager = require('../template-manager')
+    var templateManager = require('_/template-manager')
       , getTemplateStub
       , spec
       ;
@@ -59,10 +59,9 @@ describe('server', () => {
       });
     });
   });
-  */
 
   describe('POST /users/:userId/cards', () => {
-    var card = require('../models/card')
+    var card = require('_/models/card')
       , params = {
           templateName: 'trait',
           templateParams: { speciesId: 1234 }
@@ -99,6 +98,7 @@ describe('server', () => {
       });
     });
   });
+  */
 
   afterEach(() => {
     sandbox.restore();

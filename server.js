@@ -15,6 +15,10 @@ var generator        = require('_/generator');
 var urlHelper        = require('_/url-helper');
 var cardSvgCache     = require('_/card-svg-loading-cache');
 
+var templateRoutes   = require('_/routes/templates');
+var cardRoutes       = require('_/routes/cards');
+var deckRoutes       = require('_/routes/decks');
+
 var card             = require('_/models/card');
 var Deck             = require('_/models/deck');
 var DedupFile        = require('_/models/dedup-file');
@@ -116,35 +120,10 @@ app.get('/ping', function(req, res) {
  * Response:
  *  JSON representation of the Template (see api-wrappers/template-wrapper.js)
  */
-app.get('/templates/:templateName', function(req, res) {
-  var name = req.params.templateName
-    , template = templateManager.getTemplate(name)
-    ;
-
-  if (!template) {
-    jsonRes(res, 'notFound', { msg: 'template ' + name + ' not found' });
-  } else {
-    jsonRes(res, 'ok', new TemplateWrapper(template));
-  }
-});
+app.get('/templates/:templateName', templateRoutes.getTemplate);
 
 var userRouter = new express.Router();
 app.use('/users', userRouter);
-
-function commonCreateCard(res, cardData) {
-  var newCard = new card.Card(cardData);
-  console.log('newCard');
-
-  newCard.populateDefaultsAndChoices((err) => {
-    if (err) return errJsonRes(res, err);
-    console.log('post-pop');
-
-    newCard.save((err, newCard) => {
-      if (err) return errJsonRes(res, err);
-      jsonRes(res, 'created', new mongooseWrapper.MongooseWrapper(newCard));
-    });
-  });
-}
 
 /*
  * Create a new Card with a given template and templateParams.
@@ -162,10 +141,7 @@ function commonCreateCard(res, cardData) {
  * Responds with JSON representation of the new Card, which includes the
  * Card id. See api-wrappers/card-wrapper.js.
  */
-userRouter.post('/:userId/cards', (req, res) => {
-  var cardData = Object.assign({ userId: req.params.userId }, req.body);
-  commonCreateCard(res, cardData);
-});
+userRouter.post('/:userId/cards', cardRoutes.createCard);
 
 /*
  * Create a new Card in a Deck with a given template and templateParams.
@@ -183,38 +159,12 @@ userRouter.post('/:userId/cards', (req, res) => {
  * Responds with JSON representation of the new Card, which includes the
  * Card id. See api-wrappers/card-wrapper.js.
  */
-userRouter.post('/:userId/decks/:deckId/cards', (req, res) => {
-  Deck.findOne({
-    userId: req.params.userId,
-    _id: req.params.deckId
-  }, (err, deck) => {
-    if (err) return errJsonRes(res, err);
-
-    if (!deck) {
-      return jsonRes(res, 'notFound', { msg: 'Deck not found' });
-    }
-
-    var cardData = Object.assign({
-      userId: req.params.userId,
-      _deck: deck
-    }, req.body);
-
-    commonCreateCard(res, cardData);
-  });
-});
+userRouter.post('/:userId/decks/:deckId/cards', cardRoutes.createCardInDeck);
 
 /*
  * Create a new Deck for a user
  */
-userRouter.post('/:userId/decks', (req, res) => {
-  var deckData = Object.assign({ userId: req.params.userId }, req.body);
-
-  Deck.create(deckData, (err, deck) => {
-    if (err) return errJsonRes(res, err);
-
-    jsonRes(res, 'created', new MongooseWrapper(deck));
-  });
-});
+userRouter.post('/:userId/decks', deckRoutes.createDeck);
 
 /*
  * PUT a given card's data field.
@@ -225,24 +175,7 @@ userRouter.post('/:userId/decks', (req, res) => {
  * Response:
  *  JSON respresentation of the updated Card.
  */
-userRouter.put('/:userId/cards/:cardId/data', (req, res) => {
-  Card.findOne({ userId: req.params.userId, _id: req.params.cardId }, (err, card) => {
-    if (err) {
-      errJsonRes(res, err);
-    } else {
-      card.data = req.body;
-      card.version += 1;
-
-      card.save((err) => {
-        if (err) {
-          errJsonRes(res, err);
-        } else {
-          jsonRes(res, 'ok', new MongooseWrapper(card));
-        }
-      })
-    }
-  });
-});
+userRouter.put('/:userId/cards/:cardId/data', cardRoutes.putCardData);
 
 function saveAndSendCard(res, card) {
   card.save((err) => {
@@ -279,16 +212,12 @@ function assignDeckIdHelper(req, res, deckId) {
 /*
  * Assign a Card to a Deck
  */
-userRouter.put('/:userId/cards/:cardId/deckId', (req, res) => {
-  assignDeckIdHelper(req, res, req.body);
-});
+userRouter.put('/:userId/cards/:cardId/deckId', cardRoutes.assignCardDeck);
 
 /*
  * Remove a Card from Deck if it is in one
  */
-userRouter.delete('/:userId/cards/:cardId/deckId', (req, res) => {
-  assignDeckIdHelper(req, res, null);
-});
+userRouter.delete('/:userId/cards/:cardId/deckId', cardRoutes.removeCardDeck);
 
 function userResourcesHelper(model, req, res) {
   model.find({ userId: req.params.userId}).sort('-_id').exec((err, results) => {

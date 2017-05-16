@@ -2,10 +2,12 @@ var mocha = require('mocha');
 var chai = require('chai');
 var sinon = require('sinon');
 var sinonChai = require('sinon-chai');
+var sinonMongoose = require('sinon-mongoose');
 
 var deck = require('_/models/deck')
   , deckRoutes = require('_/routes/decks')
   , resUtils = require('_/routes/util/res-utils')
+  , MongooseWrapper = require('_/api-wrappers/mongoose-wrapper')
   ;
 
 var expect = chai.expect
@@ -76,6 +78,83 @@ describe('decks', () => {
       it('calls errJsonRes with the error', () => {
         expect(errJsonRes).to.have.been.calledOnce.calledWith(res, error);
         expect(jsonRes).not.to.have.been.called;
+      });
+    });
+  });
+
+  describe('#decksForUser', () => {
+    var deckFind
+      , userId = 1
+      ;
+
+    beforeEach(() => {
+      req = {
+        params: {
+          userId: userId
+        }
+      };
+
+      deckFind = sandbox.mock(deck.Deck)
+        .expects('find').withArgs({ userId: userId })
+        .chain('sort').withArgs('-_id')
+        .chain('exec');
+    });
+
+    context('when there are decks belonging to the user', () => {
+      var deck1 = { _id: 1 }
+        , deck2 = { _id: 5 }
+        ;
+
+      beforeEach(() => {
+        deckFind.yields(null, [ deck1, deck2 ]);
+
+        deckRoutes.decksForUser(req, res);
+      });
+
+      it('calls jsonRes with the wrapped decks', () => {
+        var args;
+
+        expect(jsonRes).to.have.been.calledOnce;
+
+        args = jsonRes.getCall(0).args;
+
+        expect(args.length).to.equal(3);
+        expect(args[0]).to.equal(res);
+        expect(args[1]).to.equal(resUtils.httpStatus.ok);
+        expect(args[2]).to.be.an.instanceof(Array);
+        expect(args[2][0]).to.be.an.instanceof(MongooseWrapper);
+        expect(args[2][0].delegate).to.equal(deck1);
+        expect(args[2][1]).to.be.an.instanceof(MongooseWrapper);
+        expect(args[2][1].delegate).to.equal(deck2);
+      });
+    });
+
+    context("when there aren't decks belonging to the user", () => {
+      beforeEach(() => {
+        deckFind.yields(null, []);
+
+        deckRoutes.decksForUser(req, res);
+      });
+
+      it('calls jsonRes with an empty Array', () => {
+        expect(jsonRes).to.have.been.calledOnce.calledWith(
+          res,
+          resUtils.httpStatus.ok,
+          []
+        );
+      });
+    });
+
+    context('when finding user decks yields an error', () => {
+      var error = new Error('Error finding deck');
+
+      beforeEach(() => {
+        deckFind.yields(error);
+        deckRoutes.decksForUser(req, res);
+      });
+
+      it('calls errJsonRes with the error', () => {
+        expect(errJsonRes).to.have.been.calledOnce.calledWith(res, error);
       });
     });
   });

@@ -219,88 +219,52 @@ userRouter.put('/:userId/cards/:cardId/deckId', cardRoutes.assignCardDeck);
  */
 userRouter.delete('/:userId/cards/:cardId/deckId', cardRoutes.removeCardDeck);
 
-function userResourcesHelper(model, req, res) {
-  model.find({ userId: req.params.userId}).sort('-_id').exec((err, results) => {
-    var ids = [];
-
-    if (err) {
-      errJsonRes(res, err);
-    } else {
-      results.forEach(function(result) {
-        ids.push(result._id);
-      });
-
-      jsonRes(res, 'ok', ids);
-    }
-  });
-}
-
 /*
  * GET ids for all cards belonging to a user
  */
-userRouter.get('/:userId/cardIds', (req, res) => {
-  userResourcesHelper(Card, req, res);
-});
+userRouter.get('/:userId/cardIds', cardRoutes.cardIdsForUser);
 
-userRouter.get('/:userId/cardSummaries', (req, res) => {
-  Card.find({ userId: req.params.userId})
-    .sort('-_id')
-    .populate('_deck')
-    .exec((err, results) => {
-      var summaries = [];
-
-      if (err) {
-        errJsonRes(res, err);
-      } else {
-        results.forEach(function(card) {
-          summaries.push(new CardSummaryWrapper(card));
-        });
-
-        jsonRes(res, 'ok', summaries);
-      }
-    });
-});
+userRouter.get('/:userId/cardSummaries', cardRoutes.cardSummariesForUser);
 
 /*
  * GET the ids of all cards in a user's Deck
  */
-userRouter.get('/:userId/decks/:deckId/cardIds', (req, res) => {
-  Deck.findOne({
-    userId: req.params.userId,
-    _id: req.params.deckId
-  }, (err, deck) => {
-    if (err) return errJsonRes(res, err);
-    if (!deck) return jsonRes(res, 'notFound', { msg: 'Deck not found' });
-
-    deck.cards((err, cards) => {
-      if (err) return errJsonRes(res, err);
-
-      var ids = [];
-
-      cards.forEach((card) => {
-        ids.push(card._id);
-      });
-
-      jsonRes(res, 'ok', ids);
-    });
-  });
-});
+userRouter.get('/:userId/decks/:deckId/cardIds', cardRoutes.cardIdsForDeck);
 
 /*
- * GET the ids of all decks belonging to a user
+ * GET all decks belonging to a user
  */
-userRouter.get('/:userId/decks', (req, res) => {
-  Deck.find({ userId: req.params.userId }).sort('-_id').exec((err, decks) => {
-    if (err) return errJsonRes(res, err);
+userRouter.get('/:userId/decks', deckRoutes.decksForUser);
 
-    var wrappedDecks = [];
+/*
+ * GET the JSON representation of a Card
+ */
+userRouter.get('/:userId/cards/:cardId/json', cardRoutes.getCard);
 
-    decks.forEach((deck) => {
-      wrappedDecks.push(new MongooseWrapper(deck));
-    });
+/*
+ * DELETE a card
+ */
+userRouter.delete('/:userId/cards/:cardId', cardRoutes.deleteCard);
 
-    jsonRes(res, 'ok', wrappedDecks);
-  });
+/*
+ * DELETE a deck. Doesn't delete the cards in the deck, but does set cards in
+ * the deck to have _deck = null
+ */
+userRouter.delete('/:userId/decks/:deckId', (req, res) => {
+  Deck.findOneAndRemove(
+    { userId: req.params.userId, _id: req.params.deckId },
+    (err, deck) => {
+      if (err) return errJsonRes(res, err);
+      if (!deck) return jsonRes(res, 'notFound', { msg: 'Deck not found' });
+
+      Card.updateMany({ userId: req.params.userId, _deck: deck._id },
+        { _deck: null }, (err) => {
+          if (err) return errJsonRes(res, err);
+          jsonRes(res, 'ok', { msg: "Deck " + deck._id + " removed" });
+        }
+      );
+    }
+  );
 });
 
 /*
@@ -425,52 +389,7 @@ userRouter.get('/:userId/cards/:cardId/png/:width', (req, res) => {
  });
 });
 
-/*
- * Get the JSON representation of a Card
- */
-userRouter.get('/:userId/cards/:cardId/json', (req, res) => {
-  Card.findById(req.params.cardId, (err, card) => {
-    if (err) {
-      errJsonRes(res, err);
-    } else {
-      jsonRes(res, 'ok', new MongooseWrapper(card));
-    }
-  });
-});
 
-/*
- * DELETE a card
- */
-userRouter.delete('/:userId/cards/:cardId', (req, res) => {
-  Card.findByIdAndRemove(req.params.cardId, (err, card) => {
-    if (err) {
-      errJsonRes(res, err);
-    } else {
-      jsonRes(res, 'ok', new MongooseWrapper(card));
-    }
-  });
-});
-
-/*
- * DELETE a deck. Doesn't delete the cards in the deck, but does set cards in
- * the deck to have _deck = null
- */
-userRouter.delete('/:userId/decks/:deckId', (req, res) => {
-  Deck.findOneAndRemove(
-    { userId: req.params.userId, _id: req.params.deckId },
-    (err, deck) => {
-      if (err) return errJsonRes(res, err);
-      if (!deck) return jsonRes(res, 'notFound', { msg: 'Deck not found' });
-
-      Card.updateMany({ userId: req.params.userId, _deck: deck._id },
-        { _deck: null }, (err) => {
-          if (err) return errJsonRes(res, err);
-          jsonRes(res, 'ok', { msg: "Deck " + deck._id + " removed" });
-        }
-      );
-    }
-  );
-});
 
 // Files in public directory are accessible at /static
 app.use('/static', express.static('public'));

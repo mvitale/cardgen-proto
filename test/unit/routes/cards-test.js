@@ -2,12 +2,14 @@ var mocha = require('mocha');
 var chai = require('chai');
 var sinon = require('sinon');
 var sinonChai = require('sinon-chai');
+var sinonMongoose = require('sinon-mongoose');
 
 var cardRoutes = require('_/routes/cards')
   , card = require('_/models/card')
   , deck = require('_/models/deck')
   , resUtils = require('_/routes/util/res-utils')
   , MongooseWrapper = require('_/api-wrappers/mongoose-wrapper')
+  , CardSummaryWrapper = require('_/api-wrappers/card-summary-wrapper')
   ;
 
 var expect = chai.expect
@@ -227,7 +229,7 @@ describe('cards', () => {
         expect(jsonRes).to.have.been.calledOnce.calledWith(
           res,
           resUtils.httpStatus.notFound,
-          { msg: 'Card ' + cardId + ' belonging to user ' + userId + ' not found'}
+          { msg: cardNotFoundMessage(cardId, userId) }
         );
       });
     });
@@ -337,7 +339,7 @@ describe('cards', () => {
         expect(jsonRes).to.have.been.calledWith(
           res,
           resUtils.httpStatus.notFound,
-          { msg: 'Card ' + cardId + ' belonging to user ' + userId + ' not found' }
+          { msg: cardNotFoundMessage(cardId, userId) }
         );
       });
     });
@@ -369,7 +371,7 @@ describe('cards', () => {
         expect(jsonRes).to.have.been.calledWith(
           res,
           resUtils.httpStatus.notFound,
-          { msg: 'Deck ' + deckId + ' belonging to user ' + userId + ' not found' }
+          { msg: deckNotFoundMessage(deckId, userId) }
         );
       });
     });
@@ -457,7 +459,7 @@ describe('cards', () => {
         expect(jsonRes).to.have.been.calledWith(
           res,
           resUtils.httpStatus.notFound,
-          { msg: 'Card ' + cardId + ' belonging to user ' + userId + ' not found' }
+          { msg: cardNotFoundMessage(cardId, userId) }
         );
       });
     });
@@ -477,7 +479,449 @@ describe('cards', () => {
     });
   });
 
+  describe('#cardIdsForUser', () => {
+    var findMock
+      , userId = 10
+      , cards
+      ;
+
+    beforeEach(() => {
+      req = {
+        params: {
+          userId: userId
+        }
+      };
+    });
+
+    context('when there are no cards belonging to the user', () => {
+      beforeEach(() => {
+        cards = [];
+
+        findMock = sandbox.mock(card.Card)
+          .expects('find').withArgs({ userId: userId})
+          .chain('sort').withArgs('-_id')
+          .chain('exec')
+          .yields(null, cards);
+
+        cardRoutes.cardIdsForUser(req, res);
+      });
+
+      it('calls jsonRes with an empty array', () => {
+        expect(jsonRes).to.have.been.calledOnce.calledWith(
+          res,
+          resUtils.httpStatus.ok,
+          []
+        );
+
+        findMock.verify();
+      });
+    });
+
+    context('when there are cards belonging to the user', () => {
+      var card1 = { _id: 10 }
+        , card2 = { _id: 20 }
+        ;
+
+      beforeEach(() => {
+        cards = [ card1, card2 ];
+
+        findMock = sandbox.mock(card.Card)
+          .expects('find').withArgs({ userId: userId})
+          .chain('sort').withArgs('-_id')
+          .chain('exec')
+          .yields(null, cards);
+
+        cardRoutes.cardIdsForUser(req, res);
+      });
+
+      it('calls jsonRes with the ids of all cards', () => {
+        expect(jsonRes).to.have.been.calledOnce.calledWith(
+          res,
+          resUtils.httpStatus.ok,
+          [ card1._id, card2._id ]
+        );
+
+        findMock.verify();
+      });
+    });
+
+    context('when find yields an error', () => {
+      var error = new Error('error finding Cards');
+
+      beforeEach(() => {
+        findMock = sandbox.mock(card.Card)
+          .expects('find').withArgs({ userId: userId})
+          .chain('sort').withArgs('-_id')
+          .chain('exec')
+          .yields(error);
+
+        cardRoutes.cardIdsForUser(req, res);
+      });
+
+      it('calls errJsonRes with the error', () => {
+        expect(errJsonRes).to.have.been.calledOnce.calledWith(res, error);
+        findMock.verify();
+      });
+    });
+  });
+
+  describe('#cardSummariesForUser', () => {
+    var userId = 1
+      , cards
+      , findMock
+      ;
+
+    beforeEach(() => {
+      req = {
+        params: {
+          userId: userId
+        }
+      };
+    });
+
+    context("when the user doesn't have any cards", () => {
+      beforeEach(() => {
+        cards = [];
+
+        findMock = sandbox.mock(card.Card)
+          .expects('find').withArgs({ userId: userId })
+          .chain('sort').withArgs('-_id')
+          .chain('populate').withArgs('_deck')
+          .chain('exec')
+          .yields(null, cards)
+
+        cardRoutes.cardSummariesForUser(req, res);
+      });
+
+      it('calls jsonRes with an empty Array', () => {
+        expect(jsonRes).to.have.been.calledOnce.calledWith(
+          res,
+          resUtils.httpStatus.ok,
+          []);
+        findMock.verify();
+      });
+    });
+
+    context('when the user has cards', () => {
+      var card1 = { _id: 3 }
+        , card2 = { _id: 5 }
+        ;
+
+      beforeEach(() => {
+        cards = [ card1, card2 ];
+
+        findMock = sandbox.mock(card.Card)
+          .expects('find').withArgs({ userId: userId })
+          .chain('sort').withArgs('-_id')
+          .chain('populate').withArgs('_deck')
+          .chain('exec')
+          .yields(null, cards)
+
+        cardRoutes.cardSummariesForUser(req, res);
+      });
+
+      it('calls jsonRes with those cards wrapped', () => {
+        var args;
+
+        expect(jsonRes).to.have.been.calledOnce;
+
+        args = jsonRes.getCall(0).args;
+
+        expect(args.length).to.equal(3);
+        expect(args[0]).to.equal(res);
+        expect(args[1]).to.equal(resUtils.httpStatus.ok);
+        expect(args[2]).to.be.an.instanceof(Array);
+        expect(args[2][0]).to.be.an.instanceof(CardSummaryWrapper);
+        expect(args[2][0].delegate).to.equal(card1);
+        expect(args[2][1]).to.be.an.instanceof(CardSummaryWrapper);
+        expect(args[2][1].delegate).to.equal(card2);
+
+        findMock.verify();
+      });
+    });
+
+    context('when find yields an error', () => {
+      var error = new Error('error finding Cards');
+
+      beforeEach(() => {
+        findMock = sandbox.mock(card.Card)
+          .expects('find').withArgs({ userId: userId })
+          .chain('sort').withArgs('-_id')
+          .chain('populate').withArgs('_deck')
+          .chain('exec')
+          .yields(error)
+
+        cardRoutes.cardSummariesForUser(req, res);
+      });
+
+      it('calls errJsonRes with the error', () => {
+        expect(errJsonRes).to.have.been.calledWith(res, error);
+        findMock.verify();
+      });
+    });
+  });
+
+  describe('#cardIdsForDeck', () => {
+    var deckId = 'asdf1234'
+      , userId = '10'
+      , deckFindStub
+      ;
+
+    beforeEach(() => {
+      req = {
+        params: {
+          deckId: deckId,
+          userId: userId
+        }
+      };
+
+      deckFindStub = sandbox.stub(deck.Deck, 'findOne');
+    });
+
+    context('when the deck exists', () => {
+      var fakeDeck;
+
+      beforeEach(() => {
+        fakeDeck = sandbox.stub();
+        fakeDeck.cards = sandbox.stub();
+
+        deckFindStub
+          .withArgs({ userId: userId, _id: deckId })
+          .yields(null, fakeDeck);
+      });
+
+      context('when the deck has cards in it', () => {
+        var card1 = { _id: 10 }
+          , card2 = { _id: 20 }
+          ;
+
+        beforeEach(() => {
+          fakeDeck.cards.yields(null, [card1, card2]);
+
+          cardRoutes.cardIdsForDeck(req, res);
+        });
+
+        it('calls jsonRes with an Array containing the card ids', () => {
+          expect(jsonRes).to.have.been.calledOnce.calledWith(
+            res,
+            resUtils.httpStatus.ok,
+            [ card1._id, card2._id ]
+          );
+        });
+      });
+
+      context("when the deck doesn't have cards in it", () => {
+        beforeEach(() => {
+          fakeDeck.cards.yields(null, []);
+
+          cardRoutes.cardIdsForDeck(req, res);
+        });
+
+        it('calls jsonRes with an emptyArray', () => {
+          expect(jsonRes).to.have.been.calledOnce.calledWith(
+            res,
+            resUtils.httpStatus.ok,
+            []
+          );
+        });
+      });
+
+      context("when finding the deck's cards yields an error", () => {
+        var error = new Error('error finding deck cards');
+
+        beforeEach(() => {
+          fakeDeck.cards.yields(error);
+
+          cardRoutes.cardIdsForDeck(req, res);
+        });
+
+        it('calls errJsonRes with the error', () => {
+          expect(errJsonRes).to.have.been.calledOnce.calledWith(res, error);
+        });
+      });
+    });
+
+    context("when the deck doesn't exist", () => {
+      beforeEach(() => {
+        deckFindStub.yields(null, null);
+
+        cardRoutes.cardIdsForDeck(req, res);
+      });
+
+      it('calls jsonRes with not found status and message', () => {
+        expect(jsonRes).to.have.been.calledOnce.calledWith(
+          res,
+          resUtils.httpStatus.notFound,
+          { msg: deckNotFoundMessage(deckId, userId) }
+        );
+      });
+    });
+
+    context('when finding the deck yields an error', () => {
+      var error = new Error('error finding deck')
+
+      beforeEach(() => {
+        deckFindStub
+          .withArgs({ userId: userId, _id: deckId })
+          .yields(error);
+
+        cardRoutes.cardIdsForDeck(req, res);
+      });
+
+      it('calls errJsonRes with the error', () => {
+        expect(errJsonRes).to.have.been.calledOnce.calledWith(res, error);
+      });
+    });
+  });
+
+  describe('#getCard', () => {
+    var cardFind
+      , userId = 1
+      , cardId = '1234adsf'
+      ;
+
+    beforeEach(() => {
+      req = {
+        params: {
+          userId: userId,
+          cardId: cardId
+        }
+      };
+
+      cardFind = sandbox.stub(card.Card, 'findOne')
+        .withArgs({ userId: userId, _id: cardId });
+    });
+
+    context('when the card exists', () => {
+      var card = { _id: cardId, foo: 'bar' };
+
+      beforeEach(() => {
+        cardFind.yields(null, card);
+
+        cardRoutes.getCard(req, res);
+      });
+
+      it('calls jsonRes with the wrapped card', () => {
+        var args;
+
+        expect(jsonRes).to.have.been.calledOnce;
+
+        args = jsonRes.getCall(0).args;
+
+        expect(args[0]).to.equal(res);
+        expect(args[1]).to.equal(resUtils.httpStatus.ok);
+        expect(args[2]).to.be.an.instanceof(MongooseWrapper);
+        expect(args[2].delegate).to.equal(card);
+      });
+    });
+
+    context("when the card doesn't exist", () => {
+      beforeEach(() => {
+        cardFind.yields(null, null);
+
+        cardRoutes.getCard(req, res);
+      });
+
+      it('calls jsonRes with not found status and message', () => {
+        expect(jsonRes).to.have.been.calledOnce.calledWith(
+          res,
+          resUtils.httpStatus.notFound,
+          { msg: cardNotFoundMessage(cardId, userId) }
+        );
+      });
+    });
+
+    context('when finding the card yields an error', () => {
+      var error = new Error('error finding card');
+
+      beforeEach(() => {
+        cardFind.yields(error);
+
+        cardRoutes.getCard(req, res);
+      });
+
+      it('calls errJsonRes with the error', () => {
+        expect(errJsonRes).to.have.been.calledOnce.calledWith(res, error);
+      });
+    });
+  });
+
+  describe('#deleteCard', () => {
+    var findOneAndRemove
+      , userId = 1
+      , cardId = 'asdf1234'
+      ;
+
+    beforeEach(() => {
+      req = {
+        params: {
+          userId: userId,
+          cardId: cardId
+        }
+      };
+
+      findOneAndRemove = sandbox.stub(card.Card, 'findOneAndRemove')
+        .withArgs({ userId: userId, _id: cardId });
+    });
+
+    context('when the card is found', () => {
+      var fakeCard = { _id: cardId, foo: 'bar' };
+
+      beforeEach(() => {
+        findOneAndRemove.yields(null, fakeCard);
+
+        cardRoutes.deleteCard(req, res);
+      });
+
+      it('calls jsonRes with ok status and message', () => {
+        expect(jsonRes).to.have.been.calledOnce.calledWith(
+          res,
+          resUtils.httpStatus.ok,
+          { msg: 'Card ' + cardId + ' belonging to user ' + userId + ' deleted' }
+        );
+      });
+    });
+
+    context("when the card isn't found", () => {
+      beforeEach(() => {
+        findOneAndRemove.yields(null, null);
+
+        cardRoutes.deleteCard(req, res);
+      });
+
+      it('calls jsonRes with not found status and message', () => {
+        expect(jsonRes).to.have.been.calledOnce.calledWith(
+          res,
+          resUtils.httpStatus.notFound,
+          { msg: cardNotFoundMessage(cardId, userId) }
+        );
+      });
+    });
+
+    context('when finding and deleting the card yields an error', () => {
+      var error = new Error('error finding and deleting card');
+
+      beforeEach(() => {
+        findOneAndRemove.yields(error);
+
+        cardRoutes.deleteCard(req, res);
+      });
+
+      it('calls errJsonRes with the error', () => {
+        expect(errJsonRes).to.have.been.calledOnce.calledWith(res, error);
+      });
+    });
+  });
+
   afterEach(() => {
     sandbox.restore();
   });
 });
+
+function cardNotFoundMessage(cardId, userId) {
+  return 'Card ' + cardId + ' belonging to user ' + userId + ' not found';
+}
+
+function deckNotFoundMessage(deckId, userId) {
+  return 'Deck ' + deckId + ' belonging to user ' + userId + ' not found';
+}

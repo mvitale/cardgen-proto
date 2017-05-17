@@ -17,7 +17,7 @@ var cardSvgCache     = require('_/card-svg-loading-cache');
 
 var templateRoutes   = require('_/routes/templates');
 var cardRoutes       = require('_/routes/cards');
-var deckRoutes       = require('_/routes/decks');
+var cardRoutes       = require('_/routes/decks');
 
 var card             = require('_/models/card');
 var Deck             = require('_/models/deck');
@@ -164,7 +164,7 @@ userRouter.post('/:userId/decks/:deckId/cards', cardRoutes.createCardInDeck);
 /*
  * Create a new Deck for a user
  */
-userRouter.post('/:userId/decks', deckRoutes.createDeck);
+userRouter.post('/:userId/decks', cardRoutes.createDeck);
 
 /*
  * PUT a given card's data field.
@@ -234,7 +234,7 @@ userRouter.get('/:userId/decks/:deckId/cardIds', cardRoutes.cardIdsForDeck);
 /*
  * GET all decks belonging to a user
  */
-userRouter.get('/:userId/decks', deckRoutes.decksForUser);
+userRouter.get('/:userId/decks', cardRoutes.decksForUser);
 
 /*
  * GET the JSON representation of a Card
@@ -251,20 +251,7 @@ userRouter.delete('/:userId/cards/:cardId', cardRoutes.deleteCard);
  * the deck to have _deck = null
  */
 userRouter.delete('/:userId/decks/:deckId', (req, res) => {
-  Deck.findOneAndRemove(
-    { userId: req.params.userId, _id: req.params.deckId },
-    (err, deck) => {
-      if (err) return errJsonRes(res, err);
-      if (!deck) return jsonRes(res, 'notFound', { msg: 'Deck not found' });
 
-      Card.updateMany({ userId: req.params.userId, _deck: deck._id },
-        { _deck: null }, (err) => {
-          if (err) return errJsonRes(res, err);
-          jsonRes(res, 'ok', { msg: "Deck " + deck._id + " removed" });
-        }
-      );
-    }
-  );
 });
 
 /*

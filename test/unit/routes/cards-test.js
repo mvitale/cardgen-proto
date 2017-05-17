@@ -913,6 +913,204 @@ describe('cards', () => {
     });
   });
 
+  describe('#createDeck', () => {
+    var deckCreate
+      , fakeDeck = { its: 'a deck'}
+      ;
+
+    beforeEach(() => {
+      req = {
+        params: {
+          userId: 1
+        },
+        body: { foo: 'bar' }
+      };
+
+      deckCreate = sandbox.stub(deck.Deck, 'create');
+    });
+
+    context('when deck is successfully created', () => {
+      beforeEach(() => {
+        deckCreate.yields(null, fakeDeck);
+        cardRoutes.createDeck(req, res);
+      });
+
+      it('calls jsonRes with status created and the new wrapped deck', () => {
+        var args;
+
+        expect(deckCreate).to.have.been.calledWith({
+          userId: 1,
+          foo: 'bar'
+        });
+
+        expect(jsonRes).to.have.been.calledOnce;
+        args = jsonRes.getCall(0).args;
+
+        expect(args[0]).to.equal(res);
+        expect(args[1]).to.equal(resUtils.httpStatus.created);
+        expect(args[2].delegate).to.equal(fakeDeck);
+      });
+    });
+
+    context('when deck creation fails', () => {
+      var error = new Error('failed to create Deck');
+
+      beforeEach(() => {
+        deckCreate.yields(error);
+        cardRoutes.createDeck(req, res);
+      });
+
+      it('calls errJsonRes with the error', () => {
+        expect(errJsonRes).to.have.been.calledOnce.calledWith(res, error);
+        expect(jsonRes).not.to.have.been.called;
+      });
+    });
+  });
+
+  describe('#decksForUser', () => {
+    var deckFind
+      , userId = 1
+      ;
+
+    beforeEach(() => {
+      req = {
+        params: {
+          userId: userId
+        }
+      };
+
+      deckFind = sandbox.mock(deck.Deck)
+        .expects('find').withArgs({ userId: userId })
+        .chain('sort').withArgs('-_id')
+        .chain('exec');
+    });
+
+    context('when there are decks belonging to the user', () => {
+      var deck1 = { _id: 1 }
+        , deck2 = { _id: 5 }
+        ;
+
+      beforeEach(() => {
+        deckFind.yields(null, [ deck1, deck2 ]);
+
+        cardRoutes.decksForUser(req, res);
+      });
+
+      it('calls jsonRes with the wrapped decks', () => {
+        var args;
+
+        expect(jsonRes).to.have.been.calledOnce;
+
+        args = jsonRes.getCall(0).args;
+
+        expect(args.length).to.equal(3);
+        expect(args[0]).to.equal(res);
+        expect(args[1]).to.equal(resUtils.httpStatus.ok);
+        expect(args[2]).to.be.an.instanceof(Array);
+        expect(args[2][0]).to.be.an.instanceof(MongooseWrapper);
+        expect(args[2][0].delegate).to.equal(deck1);
+        expect(args[2][1]).to.be.an.instanceof(MongooseWrapper);
+        expect(args[2][1].delegate).to.equal(deck2);
+      });
+    });
+
+    context("when there aren't decks belonging to the user", () => {
+      beforeEach(() => {
+        deckFind.yields(null, []);
+
+        cardRoutes.decksForUser(req, res);
+      });
+
+      it('calls jsonRes with an empty Array', () => {
+        expect(jsonRes).to.have.been.calledOnce.calledWith(
+          res,
+          resUtils.httpStatus.ok,
+          []
+        );
+      });
+    });
+
+    context('when finding user decks yields an error', () => {
+      var error = new Error('Error finding deck');
+
+      beforeEach(() => {
+        deckFind.yields(error);
+        cardRoutes.decksForUser(req, res);
+      });
+
+      it('calls errJsonRes with the error', () => {
+        expect(errJsonRes).to.have.been.calledOnce.calledWith(res, error);
+      });
+    });
+  });
+
+  describe('#deleteDeck', () => {
+    var findOneAndRemove
+      , userId = 1
+      , deckId = 'qwer1234'
+      ;
+
+    beforeEach(() => {
+      req = {
+        params: {
+          userId: userId,
+          deckId: deckId
+        }
+      };
+
+      findOneAndRemove = sandbox.stub(deck.Deck, 'findOneAndRemove')
+        .withArgs({ userId: userId, _id: deckId });
+    });
+
+    context('when the deck is successfully found and deleted', () => {
+      var fakeDeck = { _id: deckId }
+
+      beforeEach(() => {
+        findOneAndRemove.yields(null, fakeDeck);
+
+        cardRoutes.deleteDeck(req, res);
+      });
+
+      it('calls jsonRes with ok status and message', () => {
+        expect(jsonRes).to.have.been.calledOnce.calledWith(
+          res,
+          resUtils.httpStatus.ok,
+          { msg: 'Deck ' + deckId + ' belonging to user ' + userId + ' deleted' }
+        );
+      });
+    });
+
+    context("when the deck isn't found", () => {
+      beforeEach(() => {
+        findOneAndRemove.yields(null, null);
+
+        cardRoutes.deleteDeck(req, res);
+      });
+
+      it('calls jsonRes with not found status and message', () => {
+        expect(jsonRes).to.have.been.calledOnce.calledWith(
+          res,
+          resUtils.httpStatus.notFound,
+          { msg: deckNotFoundMessage(deckId, userId) }
+        );
+      });
+    });
+
+    context('when finding and deleting the deck yields an error', () => {
+      var error = new Error('error finding and deleting deck');
+
+      beforeEach(() => {
+        findOneAndRemove.yields(error);
+
+        cardRoutes.deleteDeck(req, res);
+      });
+
+      it('calls errJsonRes with the error', () => {
+        expect(errJsonRes).to.have.been.calledOnce.calledWith(res, error);
+      });
+    });
+  });
+
   afterEach(() => {
     sandbox.restore();
   });

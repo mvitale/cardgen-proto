@@ -2,6 +2,7 @@ var mocha = require('mocha');
 var chai = require('chai');
 var sinon = require('sinon');
 var sinonChai = require('sinon-chai');
+var path = require('path');
 
 var imageRoutes = require('_/routes/images')
   , DedupFile = require('_/models/dedup-file')
@@ -43,7 +44,7 @@ describe('images', () => {
       }
 
       findOrCreate = sandbox.stub(DedupFile, 'findOrCreateFromBuffer')
-        .withArgs(body, userId, 'storage/images');
+        .withArgs(body, userId, path.join(__dirname, '../../..', 'storage/uploaded_images'));
     });
 
     context('when findOrCreateFromBuffer is successful', () => {

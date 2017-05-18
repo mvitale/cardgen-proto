@@ -23,26 +23,13 @@ var card             = require('_/models/card');
 var Deck             = require('_/models/deck');
 var DedupFile        = require('_/models/dedup-file');
 
-var mongooseWrapper
-  = require('_/api-wrappers/mongoose-wrapper');
+var mongooseWrapper    = require('_/api-wrappers/mongoose-wrapper');
 var TemplateWrapper    = require('_/api-wrappers/template-wrapper');
 var CardSummaryWrapper = require('_/api-wrappers/card-summary-wrapper');
 
-
-/*
- * Map human-readable names to http statuses
- */
-var HTTP_STATUS = {
-  'created': 201,
-  'internalError': 500,
-  'ok': 200,
-  'notFound': 404
-};
-
-// Get that express instance
 var app = express();
 
-// Request Logging
+// Create logger and hang on resquest and response objects
 app.use((req, res, next) => {
   var log = bunyan.createLogger({
     name: 'cardgen',
@@ -54,6 +41,7 @@ app.use((req, res, next) => {
   next();
 });
 
+// Log request/response
 app.use((req, res, next) => {
   req.log.info({ req: req }, 'Start request');
 
@@ -74,27 +62,6 @@ var rawAllParser = bodyParser.raw({
 })
 app.use(bodyParser.json({ type: 'application/json' }));
 app.use(bodyParser.text());
-
-// TODO: Set appropriate http status
-function okJsonRes(res, data) {
-  var resObj = {
-    "status": "ok"
-  };
-
-  Object.assign(resObj, data);
-  res.json(resObj);
-}
-
-function errJsonRes(res, err) {
-  console.log('error broh: ', err);
-  jsonRes(res, 'internalError', {
-    'error': JSON.stringify(err)
-  });
-}
-
-function jsonRes(res, status, data) {
-  res.status(HTTP_STATUS[status]).json(data);
-}
 
 /*
  * Test route

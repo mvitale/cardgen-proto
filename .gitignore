@@ -2,6 +2,7 @@
 !/node_modules/_
 npm-debug.log
 *.swp
-storage/*
-tags
+/storage/*
+!/storage/external_images
+/tags
 .DS_Store

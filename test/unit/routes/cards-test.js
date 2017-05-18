@@ -10,6 +10,7 @@ var cardRoutes = require('_/routes/cards')
   , resUtils = require('_/routes/util/res-utils')
   , MongooseWrapper = require('_/api-wrappers/mongoose-wrapper')
   , CardSummaryWrapper = require('_/api-wrappers/card-summary-wrapper')
+  , cardSvgCache = require('_/card-svg-loading-cache')
   ;
 
 var expect = chai.expect
@@ -22,7 +23,7 @@ describe('cards', () => {
   var newCardStub
     , stubCard
     , req
-    , res = {}
+    , res
     , jsonRes
     , errJsonRes
     ;
@@ -51,6 +52,7 @@ describe('cards', () => {
     newCardStub.returns(stubCard);
     jsonRes = sandbox.stub(resUtils, 'jsonRes');
     errJsonRes = sandbox.stub(resUtils, 'errJsonRes');
+    res = sandbox.stub();
   });
 
   describe('#createCard', () => {
@@ -1103,6 +1105,98 @@ describe('cards', () => {
         findOneAndRemove.yields(error);
 
         cardRoutes.deleteDeck(req, res);
+      });
+
+      it('calls errJsonRes with the error', () => {
+        expect(errJsonRes).to.have.been.calledOnce.calledWith(res, error);
+      });
+    });
+  });
+
+  describe('#cardSvg', () => {
+    var cardId = 'asdf1234'
+      , userId = 5
+      , findOne
+      ;
+
+    beforeEach(() => {
+      req = {
+        params: {
+          cardId: cardId,
+          userId: userId
+        }
+      };
+
+      findOne = sandbox.stub(card.Card, 'findOne').withArgs({ userId: userId, _id: cardId });
+    });
+
+    context('when the Card is found', () => {
+      var fakeCard = { foo: 'bar' }
+        , svgCacheGet
+        ;
+
+      beforeEach(() => {
+        svgCacheGet = sandbox.stub(cardSvgCache, 'get')//.withArgs(fakeCard);
+
+        findOne.yields(null, fakeCard);
+      });
+
+      context('when cardSvgCache yields an error', () => {
+        var error = new Error('Error getting Card SVG');
+
+        beforeEach(() => {
+          svgCacheGet.yields(error);
+          cardRoutes.cardSvg(req, res);
+        });
+
+        it('calls errJsonRes with the error', () => {
+          expect(errJsonRes).to.have.been.calledOnce.calledWith(res, error);
+        });
+      });
+
+      context('when cardSvgCache yields a result', () => {
+        var buffer;
+
+        beforeEach(() => {
+          buffer = sandbox.stub();
+          svgCacheGet.yields(null, buffer);
+
+          res.setHeader = sandbox.spy();
+          res.send = sandbox.spy();
+
+          cardRoutes.cardSvg(req, res);
+        });
+
+        it('sets the Content-Type header and calls send with the buffer', () => {
+          expect(res.setHeader).to.have.been.calledWith('Content-Type', 'image/svg+xml');
+          expect(res.send).to.have.been.calledOnce.calledWith(buffer);
+        });
+      });
+    });
+
+    context("when the Card isn't found", () => {
+      beforeEach(() => {
+        findOne.yields(null, null);
+
+        cardRoutes.cardSvg(req, res);
+      });
+
+      it('calls jsonRes with not found message and status', () => {
+        expect(jsonRes).to.have.been.calledOnce.calledWith(
+          res,
+          resUtils.httpStatus.notFound,
+          { msg: cardNotFoundMessage(cardId, userId) }
+        );
+      });
+    });
+
+    context('when finding the Card yields an error', () => {
+      var error = new Error('error finding card');
+
+      beforeEach(() => {
+        findOne.yields(error);
+
+        cardRoutes.cardSvg(req, res);
       });
 
       it('calls errJsonRes with the error', () => {

@@ -17,7 +17,7 @@ var cardSvgCache     = require('_/card-svg-loading-cache');
 
 var templateRoutes   = require('_/routes/templates');
 var cardRoutes       = require('_/routes/cards');
-var cardRoutes       = require('_/routes/decks');
+var imageRoutes      = require('_/routes/images');
 
 var card             = require('_/models/card');
 var Deck             = require('_/models/deck');
@@ -46,27 +46,19 @@ var app = express();
 app.use((req, res, next) => {
   var log = bunyan.createLogger({
     name: 'cardgen',
-    reqId: uuidV1()
+    reqId: uuidV1(),
+    serializers: bunyan.stdSerializers
   });
   req.log = log;
+  res.log = log;
   next();
 });
 
 app.use((req, res, next) => {
-  var reqInfo = {
-    method: req.method,
-    path: req.path,
-    params: req.params,
-    protocol: req.protocol
-  };
-
-  req.log.info(reqInfo, 'Start request');
+  req.log.info({ req: req }, 'Start request');
 
   onFinished(res, () => {
-    req.log.info(Object.assign({
-      statusCode: res.statusCode,
-      contentLength: res.get('Content-Length'),
-    }, reqInfo), 'End request');
+    req.log.info({ res: res }, 'End request');
   });
 
   next();
@@ -177,38 +169,6 @@ userRouter.post('/:userId/decks', cardRoutes.createDeck);
  */
 userRouter.put('/:userId/cards/:cardId/data', cardRoutes.putCardData);
 
-function saveAndSendCard(res, card) {
-  card.save((err) => {
-    if (err) {
-      errJsonRes(res, err);
-    } else {
-      jsonRes(res, 'ok', new MongooseWrapper(card));
-    }
-  });
-}
-
-function assignDeckIdHelper(req, res, deckId) {
-  Card.findOne({ userId: req.params.userId, _id: req.params.cardId }, (err, card) => {
-    if (err) {
-      errJsonRes(res, err);
-    } else {
-      if (deckId) {
-        Deck.findById(deckId, (err, deck) => {
-          if (err) {
-            errJsonRes(res, err);
-          } else {
-            card._deck = deck;
-            saveAndSendCard(res, card);
-          }
-        });
-      } else {
-        card._deck = null;
-        saveAndSendCard(res, card);
-      }
-    }
-  });
-}
-
 /*
  * Assign a Card to a Deck
  */
@@ -224,6 +184,9 @@ userRouter.delete('/:userId/cards/:cardId/deckId', cardRoutes.removeCardDeck);
  */
 userRouter.get('/:userId/cardIds', cardRoutes.cardIdsForUser);
 
+/*
+ * GET card summaries for all cards belonging to a user
+ */
 userRouter.get('/:userId/cardSummaries', cardRoutes.cardSummariesForUser);
 
 /*
@@ -250,28 +213,7 @@ userRouter.delete('/:userId/cards/:cardId', cardRoutes.deleteCard);
  * DELETE a deck. Doesn't delete the cards in the deck, but does set cards in
  * the deck to have _deck = null
  */
-userRouter.delete('/:userId/decks/:deckId', (req, res) => {
-
-});
-
-/*
- * GET the JSON representation of a given Card.
- *
- * Parameters:
- *  cardId: A valid Card id
- *
- * Response:
- *  JSON representation of the Card with id cardId
- */
-userRouter.get('/:userId/cards/:cardId', (req, res) => {
-  Card.where({ userId: req.params.userId, _id: req.params.cardId }, (err, card) => {
-    if (err) {
-      errJsonRes(res, err);
-    } else {
-      jsonRes(res, 'ok', card);
-    }
-  })
-});
+userRouter.delete('/:userId/decks/:deckId', cardRoutes.deleteDeck);
 
 /*
  * Image upload endpoint. This call is idempotent: if it is called multiple
@@ -284,14 +226,7 @@ userRouter.get('/:userId/cards/:cardId', (req, res) => {
  *
  * TODO: document/restrict supported file types
  */
-userRouter.post('/:userId/images', rawAllParser, (req, res) => {
-  DedupFile.findOrCreateFromBuffer(req.body, req.params.userId,
-    'storage/images', (err, dedupFile) => {
-      if (err) return errJsonRes(res, err);
-      okJsonRes(res, { "url": urlHelper.imageUrl(dedupFile) });;
-    }
-  );
-});
+userRouter.post('/:userId/images', rawAllParser, imageRoutes.saveImage);
 
 /*
  * Image retrieval endpoint. This path does NOT include the usual /users/:userId
@@ -300,23 +235,7 @@ userRouter.post('/:userId/images', rawAllParser, (req, res) => {
  * it sufficiently difficult to find and request another user's image, and we
  * do store the user ID when images are uploaded for tracking purposes.
  */
-app.get('/images/:imageId', function(req, res) {
-  DedupFile.findById(req.params.imageId, (err, file) => {
-    if (err) {
-     return errJsonRes(res, err);
-    }
-
-    file.read((err, buffer) => {
-      if (err) return errJsonRes(res, err);
-
-      // TODO: gross
-      if (!buffer) return errJsonRes(res, { msg: "not found"});
-
-      res.setHeader('Content-Type', file.mimeType);
-      res.end(buffer);
-    });
-  });
-});
+app.get('/images/:imageId', imageRoutes.getImage);
 
 
 /*
@@ -328,22 +247,7 @@ app.get('/images/:imageId', function(req, res) {
  * Response:
  *  An SVG representation of the Card
  */
-userRouter.get('/:userId/cards/:cardId/svg', (req, res) => {
-  Card.findById(req.params.cardId, (err, card) => {
-    if (err) {
-      return errJsonRes(res, err);
-    } else {
-      cardSvgCache.get(card, (err, svg) => {
-        if (err) {
-          return errJsonRes(res, err);
-        } else {
-          res.setHeader('Content-Type', 'image/svg+xml');
-          res.send(svg);
-        }
-      });
-    }
-  });
-});
+userRouter.get('/:userId/cards/:cardId/svg', cardRoutes.cardSvg);
 
 /*
  * TODO: Currently broken! https://github.com/Automattic/node-canvas/issues/903
@@ -356,6 +260,7 @@ userRouter.get('/:userId/cards/:cardId/svg', (req, res) => {
  * Response:
  *  An PNG representation of the Card
  */
+ /*
 userRouter.get('/:userId/cards/:cardId/png/:width', (req, res) => {
  Card.findById(req.params.cardId, (err, card) => {
    if (err) {
@@ -374,9 +279,8 @@ userRouter.get('/:userId/cards/:cardId/png/:width', (req, res) => {
      });
    }
  });
-});
-
-
+})
+*/
 
 // Files in public directory are accessible at /static
 app.use('/static', express.static('public'));

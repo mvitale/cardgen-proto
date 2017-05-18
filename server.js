@@ -285,14 +285,4 @@ userRouter.get('/:userId/cards/:cardId/png/:width', (req, res) => {
 // Files in public directory are accessible at /static
 app.use('/static', express.static('public'));
 
-// Error handler
-app.use((err, req, res, next) => {
-  if (res.headersSent) {
-    return next(err);
-  }
-  console.log(err);
-  res.status(HTTP_STATUS.internalError);
-  res.json({ error: err, msg: 'this error handled Expressly for you ;)'});
-});
-
 module.exports = app;

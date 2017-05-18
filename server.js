@@ -64,8 +64,8 @@ app.use((req, res, next) => {
   next();
 });
 
-// Disable client caching
-app.use(nocache());
+// Disable client caching for all routes except static resources
+app.use(/^(?!\/static).+/g, nocache());
 
 // Wire up JSON request parser
 var rawAllParser = bodyParser.raw({

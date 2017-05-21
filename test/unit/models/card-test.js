@@ -64,9 +64,10 @@ describe('Card', () => {
         doc = new Card(badData);
       });
 
-      it('should be invalid', () => {
+      it('should be invalid', (next) => {
         doc.validate((err) => {
           expect(err).not.to.be.null;
+          next();
         });
       });
     });
@@ -79,9 +80,10 @@ describe('Card', () => {
         doc = new Card(badData);
       });
 
-      it('should be invalid', () => {
+      it('should be invalid', (next) => {
         doc.validate((err) => {
           expect(err).not.to.be.null;
+          next();
         });
       });
     });

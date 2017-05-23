@@ -5,13 +5,14 @@ var sinonChai = require('sinon-chai');
 var path = require('path');
 
 var imageRoutes = require('_/routes/images')
-  , DedupFile = require('_/models/dedup-file')
+  , dedupFile = require('_/models/dedup-file')
   , resUtils = require('_/routes/util/res-utils')
   , urlHelper = require('_/url-helper')
   ;
 
 var expect = chai.expect
   , sandbox = sinon.sandbox.create()
+  , DedupFile = dedupFile.DedupFile
   ;
 
 chai.use(sinonChai);

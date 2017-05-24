@@ -1,3 +1,6 @@
 [submodule "template-manager"]
 	path = lib/template-renderer
 	url = git@github.com:mvitale/template-renderer.git
+[submodule "lib/template-renderer"]
+	path = lib/template-renderer
+	url = git@github.com:mvitale/template-renderer.git

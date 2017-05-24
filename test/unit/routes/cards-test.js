@@ -5,8 +5,8 @@ var sinonChai = require('sinon-chai');
 var sinonMongoose = require('sinon-mongoose');
 
 var cardRoutes = require('_/routes/cards')
-  , card = require('_/models/card')
-  , deck = require('_/models/deck')
+  , Card = require('_/models/card')
+  , Deck = require('_/models/deck')
   , resUtils = require('_/routes/util/res-utils')
   , MongooseWrapper = require('_/api-wrappers/mongoose-wrapper')
   , CardSummaryWrapper = require('_/api-wrappers/card-summary-wrapper')
@@ -47,8 +47,8 @@ describe('cards', () => {
   }
 
   beforeEach(() => {
-    newCardStub = sandbox.stub(card, 'new');
-    stubCard = sinon.createStubInstance(card.Card);
+    newCardStub = sandbox.stub(Card, 'new');
+    stubCard = sinon.createStubInstance(Card);
     newCardStub.returns(stubCard);
     jsonRes = sandbox.stub(resUtils, 'jsonRes');
     errJsonRes = sandbox.stub(resUtils, 'errJsonRes');
@@ -124,7 +124,7 @@ describe('cards', () => {
         }
       };
 
-      findDeck = sandbox.stub(deck.Deck, 'findOne');
+      findDeck = sandbox.stub(Deck, 'findOne');
     });
 
     context('success pathway', () => {
@@ -135,7 +135,7 @@ describe('cards', () => {
       });
 
       it('creates the Card and sets the correct response', () => {
-        expect(card.new).to.have.been.calledWith({
+        expect(Card.new).to.have.been.calledWith({
           userId: 1,
           _deck: fakeDeck
         });
@@ -187,7 +187,7 @@ describe('cards', () => {
         body: update
       };
 
-      findOne = sandbox.stub(card.Card, 'findOne');
+      findOne = sandbox.stub(Card, 'findOne');
     });
 
     context('success pathway', () => {
@@ -298,8 +298,8 @@ describe('cards', () => {
         body: deckId
       };
 
-      findOneCard = sandbox.stub(card.Card, 'findOne');
-      findOneDeck = sandbox.stub(deck.Deck, 'findOne');
+      findOneCard = sandbox.stub(Card, 'findOne');
+      findOneDeck = sandbox.stub(Deck, 'findOne');
     });
 
     context('success path', () => {
@@ -346,7 +346,7 @@ describe('cards', () => {
       });
     });
 
-    context('when card.findOne yields an error', () => {
+    context('when Card.findOne yields an error', () => {
       var error = new Error('Card.find error');
 
       beforeEach(() => {
@@ -422,7 +422,7 @@ describe('cards', () => {
         }
       };
 
-      findOneCard = sandbox.stub(card.Card, 'findOne');
+      findOneCard = sandbox.stub(Card, 'findOne');
     });
 
     context('success path', () => {
@@ -466,7 +466,7 @@ describe('cards', () => {
       });
     });
 
-    context('when card.findOne yields an error', () => {
+    context('when Card.findOne yields an error', () => {
       var error = new Error('Card.find error');
 
       beforeEach(() => {
@@ -499,7 +499,7 @@ describe('cards', () => {
       beforeEach(() => {
         cards = [];
 
-        findMock = sandbox.mock(card.Card)
+        findMock = sandbox.mock(Card)
           .expects('find').withArgs({ userId: userId})
           .chain('sort').withArgs('-_id')
           .chain('exec')
@@ -527,7 +527,7 @@ describe('cards', () => {
       beforeEach(() => {
         cards = [ card1, card2 ];
 
-        findMock = sandbox.mock(card.Card)
+        findMock = sandbox.mock(Card)
           .expects('find').withArgs({ userId: userId})
           .chain('sort').withArgs('-_id')
           .chain('exec')
@@ -551,7 +551,7 @@ describe('cards', () => {
       var error = new Error('error finding Cards');
 
       beforeEach(() => {
-        findMock = sandbox.mock(card.Card)
+        findMock = sandbox.mock(Card)
           .expects('find').withArgs({ userId: userId})
           .chain('sort').withArgs('-_id')
           .chain('exec')
@@ -585,7 +585,7 @@ describe('cards', () => {
       beforeEach(() => {
         cards = [];
 
-        findMock = sandbox.mock(card.Card)
+        findMock = sandbox.mock(Card)
           .expects('find').withArgs({ userId: userId })
           .chain('sort').withArgs('-_id')
           .chain('populate').withArgs('_deck')
@@ -612,7 +612,7 @@ describe('cards', () => {
       beforeEach(() => {
         cards = [ card1, card2 ];
 
-        findMock = sandbox.mock(card.Card)
+        findMock = sandbox.mock(Card)
           .expects('find').withArgs({ userId: userId })
           .chain('sort').withArgs('-_id')
           .chain('populate').withArgs('_deck')
@@ -646,7 +646,7 @@ describe('cards', () => {
       var error = new Error('error finding Cards');
 
       beforeEach(() => {
-        findMock = sandbox.mock(card.Card)
+        findMock = sandbox.mock(Card)
           .expects('find').withArgs({ userId: userId })
           .chain('sort').withArgs('-_id')
           .chain('populate').withArgs('_deck')
@@ -677,7 +677,7 @@ describe('cards', () => {
         }
       };
 
-      deckFindStub = sandbox.stub(deck.Deck, 'findOne');
+      deckFindStub = sandbox.stub(Deck, 'findOne');
     });
 
     context('when the deck exists', () => {
@@ -790,7 +790,7 @@ describe('cards', () => {
         }
       };
 
-      cardFind = sandbox.stub(card.Card, 'findOne')
+      cardFind = sandbox.stub(Card, 'findOne')
         .withArgs({ userId: userId, _id: cardId });
     });
 
@@ -862,7 +862,7 @@ describe('cards', () => {
         }
       };
 
-      findOneAndRemove = sandbox.stub(card.Card, 'findOneAndRemove')
+      findOneAndRemove = sandbox.stub(Card, 'findOneAndRemove')
         .withArgs({ userId: userId, _id: cardId });
     });
 
@@ -928,7 +928,7 @@ describe('cards', () => {
         body: { foo: 'bar' }
       };
 
-      deckCreate = sandbox.stub(deck.Deck, 'create');
+      deckCreate = sandbox.stub(Deck, 'create');
     });
 
     context('when deck is successfully created', () => {
@@ -981,7 +981,7 @@ describe('cards', () => {
         }
       };
 
-      deckFind = sandbox.mock(deck.Deck)
+      deckFind = sandbox.mock(Deck)
         .expects('find').withArgs({ userId: userId })
         .chain('sort').withArgs('-_id')
         .chain('exec');
@@ -1060,7 +1060,7 @@ describe('cards', () => {
         }
       };
 
-      findOneAndRemove = sandbox.stub(deck.Deck, 'findOneAndRemove')
+      findOneAndRemove = sandbox.stub(Deck, 'findOneAndRemove')
         .withArgs({ userId: userId, _id: deckId });
     });
 
@@ -1127,7 +1127,7 @@ describe('cards', () => {
         }
       };
 
-      findOne = sandbox.stub(card.Card, 'findOne').withArgs({ userId: userId, _id: cardId });
+      findOne = sandbox.stub(Card, 'findOne').withArgs({ userId: userId, _id: cardId });
     });
 
     context('when the Card is found', () => {

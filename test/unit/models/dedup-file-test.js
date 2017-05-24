@@ -6,13 +6,12 @@ var mocha = require('mocha')
   , fs = require('fs')
   ;
 
-var dedupFile = require('_/models/dedup-file')
+var DedupFile = require('_/models/dedup-file')
   , fileUtil = require('_/models/util/file-util')
   ;
 
 var expect = chai.expect
   , sandbox = sinon.sandbox.create()
-  , DedupFile = dedupFile.DedupFile
   ;
 
 chai.use(sinonChai);

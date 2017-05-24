@@ -4,13 +4,12 @@ var mocha = require('mocha')
   , sinonChai = require('sinon-chai')
   ;
 
-var card = require('_/models/card')
+var Card = require('_/models/card')
   , templateManager = require('_/template-manager')
   ;
 
 var expect = chai.expect
   , sandbox = sinon.sandbox.create()
-  , Card = card.Card
   ;
 
 chai.use(sinonChai);

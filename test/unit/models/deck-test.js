@@ -5,14 +5,12 @@ var mocha = require('mocha')
   , sinonMongoose = require('sinon-mongoose')
   ;
 
-var deck = require('_/models/deck')
-  , card = require('_/models/card')
+var Deck = require('_/models/deck')
+  , Card = require('_/models/card')
   ;
 
 var expect = chai.expect
   , sandbox = sinon.sandbox.create()
-  , Deck = deck.Deck
-  , Card = card.Card
   ;
 
 chai.use(sinonChai);

@@ -6,7 +6,9 @@
   "db": {
     "host": "localhost",
     "port": 27017,
-    "dbName": "cards"
+    "dbName": "cardgen",
+    "user": "cardgen",
+    "password": "$secrets.db.password"
   },
   "cardSvgCache": {
     "maxSize": 10000000

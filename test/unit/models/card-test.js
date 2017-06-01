@@ -103,7 +103,7 @@ describe('Card', () => {
         });
       });
 
-      it('correctly sets its defaultData and choices fields', () => {
+      it('correctly sets its data and choices fields', () => {
         doc.populateDefaultsAndChoices((err) => {
           expect(getDefaultAndChoiceData).to.have.been.calledOnce.calledWith(
             doc.templateName, doc.templateParams

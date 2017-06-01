@@ -16,9 +16,9 @@ chai.use(sinonChai);
 
 describe('Card', () => {
   var validData = {
-      templateName: 'foo',
-      userId: 1
-    }
+        templateName: 'foo',
+        userId: 1
+      }
     , doc
     ;
 
@@ -36,10 +36,6 @@ describe('Card', () => {
 
       it('should default templateParams', () => {
         expect(doc.templateParams).to.eql({});
-      });
-
-      it('should default defaultData', () => {
-        expect(doc.defaultData).to.eql({});
       });
 
       it('should default choices', () => {
@@ -114,7 +110,7 @@ describe('Card', () => {
           );
 
           expect(err).not.to.exist;
-          expect(doc.defaultData).to.equal(defaultData);
+          expect(doc.data).to.equal(defaultData);
           expect(doc.choices).to.equal(choices);
         });
       });

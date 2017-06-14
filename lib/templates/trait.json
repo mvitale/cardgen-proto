@@ -35,27 +35,36 @@
       "commonName": {
         "label": "Common name",
         "type": "text",
-        "font": "14px 'Open Sans'",
+        "fontFamily": "Open Sans",
+        "minFontSz": 10,
+        "maxFontSz": 18,
         "color": "$mainColors.text",
         "x": 12,
-        "y": 22
+        "y": 22,
+        "value": { "fontSz": 14 }
       },
       "sciName": {
         "label": "Scientific name",
         "type": "text",
-        "font": "10px 'Open Sans'",
+        "fontFamily": "Open Sans",
+        "minFontSz": 10,
+        "maxFontSz": 18,
         "color": "$mainColors.text",
         "x": 12,
-        "y": 36
+        "y": 36,
+        "value": { "fontSz": 10 }
       },
       "taxonClass": {
         "label": "Taxon group",
         "type": "text",
-        "font": "10px 'Open Sans'",
+        "fontFamily": "Open Sans",
+        "minFontSz": 10,
+        "maxFontSz": 18,
         "color": "$mainColors.text",
         "x": 229,
         "y": 36,
-        "textAlign": "right"
+        "textAlign": "right",
+        "value": { "fontSz": 10}
       },
       "mainPhotoBg": {
         "type": "color",

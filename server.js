@@ -126,7 +126,9 @@ userRouter.post('/:userId/decks/:deckId/cards', cardRoutes.createCardInDeck);
 userRouter.post('/:userId/decks', cardRoutes.createDeck);
 
 /*
- * PUT a given card's data field.
+ * Save card data. Expects JSON request body of the form
+ * { data: <data>, userData: <userData> }. Replaces both of those fields on the
+ * Card and saves it.
  *
  * Parameters:
  *  cardId: a valid card ID (as returned from /cards POST)
@@ -134,7 +136,7 @@ userRouter.post('/:userId/decks', cardRoutes.createDeck);
  * Response:
  *  JSON respresentation of the updated Card.
  */
-userRouter.put('/:userId/cards/:cardId/data', cardRoutes.putCardData);
+userRouter.put('/:userId/cards/:cardId/save', cardRoutes.save);
 
 /*
  * Assign a Card to a Deck

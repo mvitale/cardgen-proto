@@ -242,7 +242,6 @@
         "max": 5,
         "yIncr": 13,
         "keyValSpec": {
-          "type": "key-val-text",
           "font": "9px 'Open Sans'",
           "keyX": 14,
           "valX": 125,
@@ -296,7 +295,8 @@
     "mainColors": "standard-bg-color-supplier",
     "biomes": "habitat-image-supplier",
     "foodwebRole": "foodweb-role-icon-supplier",
-    "iucnStatus": "iucn-icon-supplier"
+    "iucnStatus": "iucn-icon-supplier",
+    "traits": "trait-supplier"
   },
   "defaultSuppliers": {
     "commonName": "common-name-supplier",

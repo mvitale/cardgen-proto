@@ -36,8 +36,7 @@
         "label": "Common name",
         "type": "text",
         "fontFamily": "Open Sans",
-        "minFontSz": 10,
-        "maxFontSz": 18,
+        "fontSizes": [10, 11, 12, 13, 14, 16, 18, 20, 22],
         "color": "$mainColors.text",
         "x": 12,
         "y": 22,
@@ -47,8 +46,7 @@
         "label": "Scientific name",
         "type": "text",
         "fontFamily": "Open Sans",
-        "minFontSz": 10,
-        "maxFontSz": 18,
+        "fontSizes": [9, 10, 11, 12, 13, 14, 15],
         "color": "$mainColors.text",
         "x": 12,
         "y": 36,
@@ -58,8 +56,7 @@
         "label": "Taxon group",
         "type": "text",
         "fontFamily": "Open Sans",
-        "minFontSz": 10,
-        "maxFontSz": 18,
+        "fontSizes": [9, 10, 11, 12, 13, 14, 15],
         "color": "$mainColors.text",
         "x": 229,
         "y": 36,
@@ -280,17 +277,18 @@
       },
       "miscInfo": {
         "label": "Additional information",
-        "type": "text",
+        "type": "multiline-text",
         "wrapAt": 221,
-        "font": "8px 'Open Sans'",
+        "fontFamily": "Open Sans",
         "color": "#252525",
         "x": 20,
         "y": 296,
-        "value": { "text": "Additional species information goes here" }
+        "value": { "fontSz": 8 }
       }
     }
   },
   "choiceSuppliers": {
+    "commonName": "common-name-supplier",
     "mainPhoto": "species-images-supplier",
     "mainColors": "standard-bg-color-supplier",
     "biomes": "habitat-image-supplier",
@@ -299,7 +297,7 @@
     "traits": "trait-supplier"
   },
   "defaultSuppliers": {
-    "commonName": "common-name-supplier",
+    "commonName": "first-choice-supplier",
     "sciName": "sci-name-supplier",
     "mainPhoto": "first-choice-supplier",
     "mainColors": "first-choice-supplier",

@@ -170,10 +170,12 @@ describe('cards', () => {
     })
   });
 
-  describe('#putCardData', () => {
+  describe('#save', () => {
     var userId = 1
       , cardId = 'ABC134'
-      , update = { someData: 'foo' }
+      , dataUpdate = { foo: 'bar' }
+      , userDataUpdate = { baz: 'bop' }
+      , update = { data: dataUpdate, userData: userDataUpdate }
       , findOne
       , fakeCard = { version: 1 }
       ;
@@ -193,21 +195,21 @@ describe('cards', () => {
     context('success pathway', () => {
       beforeEach(() => {
         fakeCard.save = sandbox.stub().callsFake((cb) => {
-          expect(fakeCard.data).to.equal(update);
-          expect(fakeCard.version).to.equal(2);
           cb(null, fakeCard);
         });
 
         findOne.withArgs({ userId: userId, _id: cardId })
           .yields(null, fakeCard);
 
-        cardRoutes.putCardData(req, res);
+        cardRoutes.save(req, res);
       });
 
       it('updates the card and calls jsonRes with the correct arguments', () => {
         var args;
 
-        expect(fakeCard.data).to.equal(update);
+        expect(fakeCard.data).to.equal(dataUpdate);
+        expect(fakeCard.userData).to.equal(userDataUpdate);
+        expect(fakeCard.version).to.equal(2);
         expect(fakeCard.save).to.have.been.calledOnce;
 
         expect(jsonRes).to.have.been.calledOnce;
@@ -224,7 +226,7 @@ describe('cards', () => {
       beforeEach(() => {
         findOne.yields(null, null);
 
-        cardRoutes.putCardData(req, res);
+        cardRoutes.save(req, res);
       });
 
       it('calls jsonRes with the correct error message', () => {
@@ -242,7 +244,7 @@ describe('cards', () => {
       beforeEach(() =>  {
         findOne.yields(error);
 
-        cardRoutes.putCardData(req, res);
+        cardRoutes.save(req, res);
       });
 
       it('calls errJsonRes with the error', () => {
@@ -258,7 +260,7 @@ describe('cards', () => {
         findOne.yields(null, fakeCard);
         fakeCard.save = sandbox.stub().yields(error);
 
-        cardRoutes.putCardData(req, res);
+        cardRoutes.save(req, res);
       });
 
       it('calls errJsonRes with the error', () => {

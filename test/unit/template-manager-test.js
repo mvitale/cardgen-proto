@@ -122,6 +122,7 @@ describe('template-manager', () => {
           expect(callback.called).to.be.true;
 
           expect(callback).to.have.been.calledWith(null, {
+            "choiceTips": {},
             "defaultData": {
               "commonName": {
                 "value": "Red panda"

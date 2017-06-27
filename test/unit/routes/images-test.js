@@ -65,7 +65,7 @@ describe('images', () => {
         expect(jsonRes).to.have.been.calledOnce.calledWith(
           res,
           resUtils.httpStatus.ok,
-          { url: url }
+          { url: url, thumbUrl: url }
         )
       });
     });

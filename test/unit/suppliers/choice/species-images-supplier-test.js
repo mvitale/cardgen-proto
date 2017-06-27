@@ -24,14 +24,16 @@ describe('species-images-supplier', () => {
     });
 
     context('when apiResults.pages.dataObjects is present', () => {
-      var url = 'http://www.foo.com/image.png'
+      var url = 'https://www.eol.org/12345_orig.jpg'
+      , fullSzUrl = 'https://www.eol.org/12345_580_360.jpg'
+      , thumbUrl = 'https://www.eol.org/12345_130_130.jpg'
       , author = 'John Smith'
       , license = 'http://creativecommons.org/licenses/by/'
       , targetDataType = 'http://purl.org/dc/dcmitype/StillImage'
       , apiResults = {
           pages:  {
             dataObjects: [
-              {
+              { // Should be parsed
                 eolMediaURL: url,
                 rightsHolder: author,
                 license: license,
@@ -47,7 +49,7 @@ describe('species-images-supplier', () => {
                 rightsHolder: author,
                 dataType: [ 'foo', targetDataType ]
               },
-              {
+              { // Should be parsed
                 eolMediaURL: url,
                 agents: [
                   {
@@ -57,10 +59,10 @@ describe('species-images-supplier', () => {
                 license: license,
                 dataType: [ targetDataType ]
               },
-              {
+              { // Garbage
                 dataType: [ 'foo', 'bar' ]
               },
-              {
+              { // Should be parsed
                 eolMediaURL: url,
                 license: 'notalicense',
                 dataType: [ targetDataType ]
@@ -80,7 +82,8 @@ describe('species-images-supplier', () => {
       it('produces the correct result', () => {
         var expectedCredit = 'John Smith CC-BY'
           , expectedResult = {
-              url: url,
+              url: fullSzUrl,
+              thumbUrl: thumbUrl,
               credit: {
                 text: expectedCredit
               }
@@ -90,7 +93,7 @@ describe('species-images-supplier', () => {
         expect(cb).to.have.been.calledWith(null, [
           expectedResult,
           expectedResult,
-          { url: url, credit: { text: 'Unknown' } }
+          { url: fullSzUrl, thumbUrl: thumbUrl, credit: { text: 'Unknown' } }
         ]);
       });
     });

@@ -17,9 +17,11 @@ chai.use(sinonChai);
 
 describe('Deck', () => {
   var doc
+    , name = 'Pandas'
+    , userId = 4
     , minValidData = {
-        name: 'Pandas',
-        userId: 4
+        name: name,
+        userId: userId
       }
     ;
 
@@ -55,6 +57,27 @@ describe('Deck', () => {
         });
       });
     });
+
+    /*
+     * TODO: revisit
+     *
+    context('when name is already taken by user', (done) => {
+      beforeEach(() => {
+        var findOneStub = sandbox.stub(Deck, 'findOne');
+        findOneStub.withArgs({ userId: userId, name: name }).yields(
+          null, {}
+        );
+        doc = minValidDoc();
+      });
+
+      it('is invalid', (done) => {
+        doc.validate((err) => {
+          expect(err).to.exist;
+          done();
+        });
+      });
+    });
+    */
 
     context("when userId isn't present", () => {
       beforeEach(() => {

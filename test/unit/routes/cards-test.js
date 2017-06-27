@@ -26,6 +26,7 @@ describe('cards', () => {
     , res
     , jsonRes
     , errJsonRes
+    , handleModelErr
     ;
 
   function setUpSuccessCard() {
@@ -52,6 +53,7 @@ describe('cards', () => {
     newCardStub.returns(stubCard);
     jsonRes = sandbox.stub(resUtils, 'jsonRes');
     errJsonRes = sandbox.stub(resUtils, 'errJsonRes');
+    handleModelErr = sandbox.stub(resUtils, 'handleModelErr');
     res = sandbox.stub();
   });
 
@@ -964,8 +966,8 @@ describe('cards', () => {
         cardRoutes.createDeck(req, res);
       });
 
-      it('calls errJsonRes with the error', () => {
-        expect(errJsonRes).to.have.been.calledOnce.calledWith(res, error);
+      it('calls handleModelErr with the error', () => {
+        expect(handleModelErr).to.have.been.calledOnce.calledWith(res, error);
         expect(jsonRes).not.to.have.been.called;
       });
     });

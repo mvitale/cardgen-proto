@@ -18,6 +18,7 @@ var cardSvgCache     = require('_/card-svg-loading-cache');
 var templateRoutes   = require('_/routes/templates');
 var cardRoutes       = require('_/routes/cards');
 var imageRoutes      = require('_/routes/images');
+var dataRoutes       = require('_/routes/data');
 
 var card             = require('_/models/card');
 var Deck             = require('_/models/deck');
@@ -206,6 +207,7 @@ userRouter.post('/:userId/images', rawAllParser, imageRoutes.saveImage);
  */
 app.get('/images/:imageId', imageRoutes.getImage);
 
+app.get('/taxonSummaries/:id', dataRoutes.taxonSummary);
 
 /*
  * GET an SVG of a given card.

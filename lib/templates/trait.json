@@ -300,7 +300,7 @@
     "commonName": "first-choice-supplier",
     "sciName": "sci-name-supplier",
     "mainPhoto": "first-choice-supplier",
-    "mainColors": "first-choice-supplier",
+    "mainColors": "taxon-rank-color-supplier",
     "eolLogo": "eol-logo-supplier",
     "biomes": "habitat-supplier",
     "taxonClass": "taxon-class-supplier",

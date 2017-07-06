@@ -186,6 +186,11 @@ userRouter.delete('/:userId/cards/:cardId', cardRoutes.deleteCard);
 userRouter.delete('/:userId/decks/:deckId', cardRoutes.deleteDeck);
 
 /*
+ * GET a deck (as opposed to its contents)
+ */
+userRouter.get('/:userId/decks/:deckId', cardRoutes.getDeck);
+
+/*
  * Image upload endpoint. This call is idempotent: if it is called multiple
  * times with the same <<exact>> image file, it returns the same url each time.
  *

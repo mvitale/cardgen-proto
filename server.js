@@ -226,6 +226,17 @@ app.get('/taxonSummaries/:id', dataRoutes.taxonSummary);
 userRouter.get('/:userId/cards/:cardId/svg', cardRoutes.cardSvg);
 
 /*
+ * Add a card for every taxon in a collection to a deck. This kicks off an
+ * asynchronous job, the status of with can be gotten using the below route.
+ */
+userRouter.post('/:userId/decks/:deckId/populateFromCollection', cardRoutes.populateDeckFromCollection);
+
+/*
+ * GET the status of a job started with cardRoutes.populateDeckFromCollection
+ */
+app.get('/collectionJob/:jobId/status', cardRoutes.collectionJobStatus);
+
+/*
  * TODO: Currently broken! https://github.com/Automattic/node-canvas/issues/903
  *
  * GET an PNG of a given card.

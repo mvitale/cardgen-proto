@@ -16,6 +16,6 @@ module.exports = function(cb) {
   var auth = require('_/auth');
 
   templateManager.load();
-  dbconnect.mongooseInit(cb);
   auth.init();
+  dbconnect.mongooseInit(cb);
 };

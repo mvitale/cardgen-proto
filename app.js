@@ -28,7 +28,7 @@ init((err) => {
   if (config.get('server.enableHttps')) {
     httpsOptions = {
       key: fs.readFileSync('/etc/pki/tls/private/ca.key'),
-      cert: fs.readFileSync('/etc/pki/tls/private/ca.cert'),
+      cert: fs.readFileSync('/etc/pki/tls/certs/ca.cert'),
       requestCert: false,
       rejectUnauthorized: false
     };

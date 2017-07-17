@@ -13,7 +13,7 @@
   },
   "scripts": {
     "test": "NODE_ENV=test mocha",
-    "start": "node app.js"
+    "start": "node app"
   },
   "author": "Michael Vitale",
   "license": "ISC",

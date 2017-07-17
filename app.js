@@ -26,14 +26,16 @@ init((err) => {
     ;
 
   if (config.get('server.enableHttps')) {
+    console.log('starting with HTTPS');
     httpsOptions = {
-      key: fs.readFileSync('/etc/pki/tls/private/ca.key'),
-      cert: fs.readFileSync('/etc/pki/tls/certs/ca.cert'),
+      key: fs.readFileSync('/etc/pki/tls/private/card-svc-selfsigned.key'),
+      cert: fs.readFileSync('/etc/pki/tls/certs/card-svc-selfsigned.crt'),
       requestCert: false,
       rejectUnauthorized: false
     };
     https.createServer(httpsOptions, server).listen(port, readyMsgBound);
   } else {
+    console.log('starting without HTTPS');
     server.listen(port, readyMsgBound);
   }
 });

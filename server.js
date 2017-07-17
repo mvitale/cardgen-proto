@@ -14,6 +14,7 @@ var templateManager  = require('_/template-manager');
 var generator        = require('_/generator');
 var urlHelper        = require('_/url-helper');
 var cardSvgCache     = require('_/card-svg-loading-cache');
+var auth             = require('_/auth');
 
 var templateRoutes   = require('_/routes/templates');
 var cardRoutes       = require('_/routes/cards');
@@ -29,6 +30,22 @@ var TemplateWrapper    = require('_/api-wrappers/template-wrapper');
 var CardSummaryWrapper = require('_/api-wrappers/card-summary-wrapper');
 
 var app = express();
+
+// Authentication - add client app id to req
+app.use((req, res, next) => {
+  var apiKey = req.get('x-api-key')
+    , appId = auth.auth(apiKey);
+
+  console.log('apiKey:', apiKey);
+
+  if (appId) {
+    req.appId = appId;
+  } else {
+    res.status(403).send();
+  }
+
+  next();
+});
 
 // Create logger and hang on resquest and response objects
 app.use((req, res, next) => {

@@ -2,6 +2,7 @@
 // application.
 
 var config = require('_/config/config');
+
 var mongoose = require('mongoose');
 
 
@@ -12,7 +13,9 @@ module.exports = function(cb) {
 
   var templateManager = require('_/template-manager');
   var dbconnect = require('_/dbconnect');
+  var auth = require('_/auth');
 
   templateManager.load();
   dbconnect.mongooseInit(cb);
+  auth.init();
 };

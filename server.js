@@ -31,28 +31,59 @@ var CardSummaryWrapper = require('_/api-wrappers/card-summary-wrapper');
 
 var app = express();
 
-// Authentication - add client app id to req
-app.use((req, res, next) => {
-  var apiKey = req.get('x-api-key')
-    , appId = auth.auth(apiKey);
+var sensitiveHeaders = ['x-api-key'];
 
-  console.log('apiKey:', apiKey);
+/*
+ * Copied from bunyan standard serializers, but filters
+ * sensitive headers.
+ */
+function reqSerializer(req) {
+  var headers;
 
-  if (appId) {
-    req.appId = appId;
-  } else {
-    res.status(403).send();
+  if (!req || !req.connection) {
+    return req;
   }
 
-  next();
-});
+  headers = req.headers ?
+    JSON.parse(JSON.stringify(req.headers)) :
+    {};
+
+  sensitiveHeaders.forEach((header) => {
+    if (header in headers) {
+      headers[header] = 'FILTERED';
+    }
+  });
+
+  return {
+      method: req.method,
+      url: req.url,
+      headers: headers,
+      remoteAddress: req.connection.remoteAddress,
+      remotePort: req.connection.remotePort
+  };
+}
+
+// Disable client caching for all routes except static resources
+app.use(/^(?!\/static).+/g, nocache());
+
+// Wire up JSON request parser
+var rawAllParser = bodyParser.raw({
+  type: '*/*',
+  limit: '5mb'
+})
+app.use(bodyParser.json({ type: 'application/json' }));
+app.use(bodyParser.text());
 
 // Create logger and hang on resquest and response objects
 app.use((req, res, next) => {
   var log = bunyan.createLogger({
     name: 'cardgen',
     reqId: uuidV1(),
-    serializers: bunyan.stdSerializers
+    serializers: {
+      err: bunyan.stdSerializers.err,
+      res: bunyan.stdSerializers.res,
+      req: reqSerializer
+    }
   });
   req.log = log;
   res.log = log;
@@ -70,16 +101,39 @@ app.use((req, res, next) => {
   next();
 });
 
-// Disable client caching for all routes except static resources
-app.use(/^(?!\/static).+/g, nocache());
+// Authentication - add client app id to req or fail
+app.use((req, res, next) => {
+  var apiKey = req.get('x-api-key')
+    , appId = auth.auth(apiKey)
+    , err
+    ;
 
-// Wire up JSON request parser
-var rawAllParser = bodyParser.raw({
-  type: '*/*',
-  limit: '5mb'
-})
-app.use(bodyParser.json({ type: 'application/json' }));
-app.use(bodyParser.text());
+  if (appId) {
+    req.appId = appId;
+    req.log.info({ appId: appId}, 'Authenticated app');
+    next();
+  } else {
+    err = new Error("Bad or missing API key");
+    err.status = 403;
+    next(err);
+  }
+});
+
+/*
+ * Error handler
+ */
+app.use((err, req, res, next) => {
+  // Delegate to default error handler. Only do this if necessary, as it writes
+  // to stdout and not pretty bunyan logging
+  if (res.headersSent) {
+    return next(err);
+  }
+
+  res.log.error({ err: err }, 'Unhandled error');
+
+  res.status(err.status || 500);
+  res.send();
+});
 
 /*
  * Test route

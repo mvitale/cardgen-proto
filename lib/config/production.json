@@ -1,6 +1,8 @@
 {
   "server": {
     "port": 9000,
-    "enableHttps": true
+    "enableHttps": true,
+    "httpsCert": "/etc/pki/tls/certs/card-svc-selfsigned.crt",
+    "httpsKey": "/etc/pki/tls/private/card-svc-selfsigned.key"
   }
-} 
+}

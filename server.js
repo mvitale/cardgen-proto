@@ -32,6 +32,7 @@ var CardSummaryWrapper = require('_/api-wrappers/card-summary-wrapper');
 var app = express();
 
 var sensitiveHeaders = ['x-api-key'];
+var notStaticResourcePattern = /^(?!\/static).+/;
 
 /*
  * Copied from bunyan standard serializers, but filters
@@ -64,7 +65,7 @@ function reqSerializer(req) {
 }
 
 // Disable client caching for all routes except static resources
-app.use(/^(?!\/static).+/g, nocache());
+app.use(notStaticResourcePattern, nocache());
 
 // Wire up JSON request parser
 var rawAllParser = bodyParser.raw({
@@ -102,7 +103,7 @@ app.use((req, res, next) => {
 });
 
 // Authentication - add client app id to req or fail
-app.use((req, res, next) => {
+app.use(notStaticResourcePattern, (req, res, next) => {
   var apiKey = req.get('x-api-key')
     , appId = auth.auth(apiKey)
     , err

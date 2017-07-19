@@ -8,7 +8,7 @@
   ],
   "apiSupplier": "species-data-supplier",
   "spec": {
-    "width": 241,
+    "width": 240,
     "height": 336,
     "fields": {
       "mainColors": {
@@ -20,16 +20,16 @@
         "type": "color",
         "x": 0,
         "y": 0,
-        "width": 241,
+        "width": 240,
         "height": 336,
         "value": { "color": "$mainColors.bg" }
       },
       "traitBackground": {
         "type": "color",
         "x": 0,
-        "y": 168,
-        "height": 150,
-        "width": 241,
+        "y": 167,
+        "height": 148,
+        "width": 240,
         "value": { "color": "#fff" }
       },
       "commonName": {
@@ -38,8 +38,8 @@
         "fontFamily": "Open Sans",
         "fontSizes": [10, 11, 12, 13, 14, 16, 18, 20, 22],
         "color": "$mainColors.text",
-        "x": 12,
-        "y": 22,
+        "x": 13,
+        "y": 19,
         "value": { "fontSz": 14 }
       },
       "sciName": {
@@ -48,7 +48,7 @@
         "fontFamily": "Open Sans",
         "fontSizes": [9, 10, 11, 12, 13, 14, 15],
         "color": "$mainColors.text",
-        "x": 12,
+        "x": 13,
         "y": 36,
         "value": { "fontSz": 10 }
       },
@@ -58,7 +58,7 @@
         "fontFamily": "Open Sans",
         "fontSizes": [9, 10, 11, 12, 13, 14, 15],
         "color": "$mainColors.text",
-        "x": 229,
+        "x": 227,
         "y": 36,
         "textAlign": "right",
         "value": { "fontSz": 10}
@@ -67,8 +67,8 @@
         "type": "color",
         "x": 0,
         "y": 43,
-        "height": 125,
-        "width": 241,
+        "height": 124,
+        "width": 240,
         "value": { "color": "#252525" }
       },
       "mainPhoto": {
@@ -76,170 +76,66 @@
         "type": "image",
         "x": 0,
         "y": 43,
-        "height": 125,
-        "width": 241,
+        "height": 124,
+        "width": 240,
         "credit": {
           "x": 120,
-          "y": 329,
+          "y": 328,
           "font": "8px 'Open Sans'",
           "textAlign": "center",
           "color": "$mainColors.text",
           "prefix": "Image: "
         }
       },
-      "topLine": {
-        "type": "line",
-        "color": "#a6a6a6",
-        "startX": 0,
-        "startY": 168,
-        "endX": 240,
-        "endY": 168,
-        "width": 0.5
-      },
-      "leftLine": {
-        "type": "line",
-        "color": "#a6a6a6",
-        "startX": 0,
-        "startY": 168,
-        "endX": 0,
-        "endY": 318,
-        "width": 0.5
-      },
-      "rightLine": {
-        "type": "line",
-        "color": "#a6a6a6",
-        "startX": 241,
-        "startY": 168,
-        "endX": 241,
-        "endY": 318,
-        "width": 0.5
-      },
-      "sep1": {
-        "type": "line",
-        "color": "#a6a6a6",
-        "startX": 80,
-        "startY": 168.5,
-        "endX": 80,
-        "endY": 198.5,
-        "width": 0.5
-      },
-      "sep2": {
-        "type": "line",
-        "color": "#a6a6a6",
-        "startX": 160.5,
-        "startY": 168.5,
-        "endX": 160.5,
-        "endY": 198.5,
-        "width": 0.5
-      },
-      "iconsBotLine": {
-        "type": "line",
-        "color": "#a6a6a6",
-        "startX": 0,
-        "startY": 198.5,
-        "endX": 241,
-        "endY": 198.5,
-        "width": 0.5
-      },
       "foodWebRoleTitle": {
         "type": "text",
-        "font": "8px 'Open Sans'",
+        "font": "7px 'Open Sans'",
         "color": "#252525",
         "value": { "text": "Food Web Role:" },
-        "x": 12,
+        "x": 4,
         "y": 176
       },
       "foodwebRole": {
         "label": "Foodweb role",
         "type": "labeled-choice-image",
-        "x": 19,
-        "y": 179,
-        "height": 16,
-        "width": 44
+        "x": 14,
+        "y": 181,
+        "height": 11,
+        "width": 32
       },
       "iucnTitle": {
         "type": "text",
-        "font": "8px 'Open Sans'",
+        "font": "7px 'Open Sans'",
         "color": "#252525",
         "value": { "text": "IUCN Status:" },
-        "x": 180,
+        "x": 190,
         "y": 176
       },
       "iucnStatus": {
         "label": "IUCN status",
         "type": "labeled-choice-image",
-        "x": 181,
-        "y": 179,
-        "height": 16,
-        "width": 44
+        "x": 195,
+        "y": 181,
+        "height": 11,
+        "width": 32
       },
-      "biomes": {
-        "label": "Biome(s)",
-        "type": "multi-image",
-        "maxInstances": 3,
-        "specs": [
-          [
-            {
-              "x": 108,
-              "y": 170,
-              "height": 25,
-              "width": 25
-            }
-          ],
-          [
-            {
-              "x": 92,
-              "y": 170,
-              "height": 25,
-              "width": 25
-            },
-            {
-              "x": 125,
-              "y": 170,
-              "height": 25,
-              "width": 25
-            }
-          ],
-          [
-            {
-              "x": 83,
-              "y": 170,
-              "height": 25,
-              "width": 25
-            },
-            {
-              "x": 108,
-              "y": 170,
-              "height": 25,
-              "width": 25
-            },
-            {
-              "x": 133,
-              "y": 170,
-              "height": 25,
-              "width": 25
-            }
-          ]
-        ]
-      },
-      "habitatsBotLine": {
-        "type": "line",
-        "color": "#a6a6a6",
-        "startX": 0,
-        "startY": 218.5,
-        "endX": 241,
-        "endY": 218.5,
-        "width": 0.5
+      "biome" : {
+        "label": "Biome",
+        "type": "labeled-choice-image",
+        "x": 61,
+        "y": 167,
+        "height": 29,
+        "width": 120
       },
       "traits": {
         "label": "Traits",
         "type": "key-val-list",
         "x": 0,
-        "y": 230,
+        "y": 227,
         "max": 5,
-        "yIncr": 13,
+        "yIncr": 11,
         "keyValSpec": {
-          "font": "9px 'Open Sans'",
+          "font": "7px 'Open Sans'",
           "keyX": 14,
           "valX": 125,
           "color": "#252525",
@@ -269,10 +165,11 @@
       "habitatText": {
         "label": "Habitats",
         "type": "text",
-        "font": "8px 'Open Sans'",
+        "font": "7px 'Open Sans'",
         "color": "#252525",
-        "x": 14,
+        "x": 120,
         "y": 211,
+        "textAlign": "center",
         "prefix": "Habitats: "
       },
       "miscInfo": {
@@ -282,8 +179,8 @@
         "fontFamily": "Open Sans",
         "color": "#252525",
         "x": 20,
-        "y": 296,
-        "value": { "fontSz": 8 }
+        "y": 284,
+        "value": { "fontSz": 6 }
       }
     }
   },
@@ -291,7 +188,7 @@
     "commonName": "common-name-supplier",
     "mainPhoto": "species-images-supplier",
     "mainColors": "standard-bg-color-supplier",
-    "biomes": "habitat-image-supplier",
+    "biome": "biome-icon-supplier",
     "foodwebRole": "foodweb-role-icon-supplier",
     "iucnStatus": "iucn-icon-supplier",
     "traits": "trait-supplier"
@@ -304,8 +201,6 @@
     "eolLogo": "eol-logo-supplier",
     "biomes": "habitat-supplier",
     "taxonClass": "taxon-class-supplier",
-    "traits": "default-trait-supplier",
-    "foodwebRole": "first-choice-supplier",
-    "iucnStatus": "first-choice-supplier"
+    "traits": "default-trait-supplier"
   }
 }

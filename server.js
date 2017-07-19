@@ -13,7 +13,6 @@ var dbconnect        = require('_/dbconnect');
 var templateManager  = require('_/template-manager');
 var generator        = require('_/generator');
 var urlHelper        = require('_/url-helper');
-var cardSvgCache     = require('_/card-svg-loading-cache');
 var auth             = require('_/auth');
 
 var templateRoutes   = require('_/routes/templates');

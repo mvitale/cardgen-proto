@@ -9,5 +9,8 @@
   },
   "log": {
     "level": "debug"
+  },
+  "cardSvgCache": {
+    "maxSize": 400
   }
 }

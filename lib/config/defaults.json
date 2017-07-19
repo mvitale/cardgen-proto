@@ -12,7 +12,7 @@
     "password": "$secrets.db.password"
   },
   "cardSvgCache": {
-    "maxSize": 10000000
+    "maxSize": 100
   },
   "log": {
     "level": "debug"

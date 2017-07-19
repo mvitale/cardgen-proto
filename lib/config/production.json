@@ -6,5 +6,8 @@
     "httpsCert": "/etc/pki/tls/certs/card-svc-selfsigned.crt",
     "httpsKey": "/etc/pki/tls/private/card-svc-selfsigned.key",
     "staticResourceProxyPort": 80
+  },
+  "log": {
+    "level": "debug"
   }
 }

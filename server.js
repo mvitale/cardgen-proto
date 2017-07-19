@@ -25,14 +25,20 @@ var card             = require('_/models/card');
 var Deck             = require('_/models/deck');
 var DedupFile        = require('_/models/dedup-file');
 
+var config           = require('_/config/config');
+
 var mongooseWrapper    = require('_/api-wrappers/mongoose-wrapper');
 var TemplateWrapper    = require('_/api-wrappers/template-wrapper');
 var CardSummaryWrapper = require('_/api-wrappers/card-summary-wrapper');
 
 var app = express();
 
-var sensitiveHeaders = ['x-api-key'];
-var notStaticResourcePattern = /^(?!\/static).+/;
+var sensitiveHeaders = ['x-api-key']
+  , notStaticResourcePattern = /^(?!\/static|\/images).+/
+  , logLevel = config.get('log.level') || 'info'
+  ;
+
+console.log('Log level:', logLevel);
 
 /*
  * Copied from bunyan standard serializers, but filters
@@ -80,6 +86,7 @@ app.use((req, res, next) => {
   var log = bunyan.createLogger({
     name: 'cardgen',
     reqId: uuidV1(),
+    level: logLevel,
     serializers: {
       err: bunyan.stdSerializers.err,
       res: bunyan.stdSerializers.res,
@@ -114,7 +121,7 @@ app.use(notStaticResourcePattern, (req, res, next) => {
     req.log.info({ appId: appId}, 'Authenticated app');
     next();
   } else {
-    err = new Error("Bad or missing API key");
+    err = new Error('Bad or missing API key');
     err.status = 403;
     next(err);
   }

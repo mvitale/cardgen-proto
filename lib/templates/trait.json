@@ -179,8 +179,8 @@
         "fontFamily": "Open Sans",
         "color": "#252525",
         "x": 20,
-        "y": 284,
-        "value": { "fontSz": 6 }
+        "y": 285,
+        "value": { "fontSz": 7 }
       }
     }
   },

@@ -10,7 +10,8 @@ module.exports = {
       name      : 'card-svc',
       script    : 'app.js',
       env: {
-        NODE_ENV: 'development'
+        NODE_ENV: 'development',
+        watch: true
       },
       env_production : {
         NODE_ENV: 'production'

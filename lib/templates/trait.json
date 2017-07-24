@@ -186,21 +186,23 @@
   },
   "choiceSuppliers": {
     "commonName": "common-name-supplier",
+    "sciName": "sci-name-supplier",
     "mainPhoto": "species-images-supplier",
     "mainColors": "standard-bg-color-supplier",
     "biome": "biome-icon-supplier",
     "foodwebRole": "foodweb-role-icon-supplier",
     "iucnStatus": "iucn-icon-supplier",
+    "taxonClass": "taxon-group-supplier",
     "traits": "trait-supplier"
   },
   "defaultSuppliers": {
     "commonName": "first-choice-supplier",
-    "sciName": "sci-name-supplier",
+    "sciName": "first-choice-supplier",
     "mainPhoto": "first-choice-supplier",
     "mainColors": "taxon-rank-color-supplier",
     "eolLogo": "eol-logo-supplier",
     "biomes": "habitat-supplier",
-    "taxonClass": "taxon-class-supplier",
+    "taxonClass": "taxon-group-supplier",
     "traits": "default-trait-supplier"
   }
 }

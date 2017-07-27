@@ -8,7 +8,7 @@
     "staticResourceProxyPort": 80
   },
   "log": {
-    "level": "debug"
+    "level": "info"
   },
   "cardSvgCache": {
     "maxSize": 400

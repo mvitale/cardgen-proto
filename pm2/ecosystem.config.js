@@ -14,7 +14,8 @@ module.exports = {
         watch: true
       },
       env_production : {
-        NODE_ENV: 'production'
+        NODE_ENV: 'production',
+        watch: false
       },
       error_file      : "logs/err.log",
       out_file        : "logs/out.log"

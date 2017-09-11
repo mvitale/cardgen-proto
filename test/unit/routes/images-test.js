@@ -33,6 +33,7 @@ describe('images', () => {
     var findOrCreate
       , userId = 1
       , body = { foo: 'bar' }
+      , appId = 'appId'
       ;
 
     beforeEach(() => {
@@ -40,11 +41,17 @@ describe('images', () => {
         params: {
           userId: userId
         },
+        appId: appId,
         body: body
       }
 
       findOrCreate = sandbox.stub(DedupFile, 'findOrCreateFromBuffer')
-        .withArgs(body, userId, path.join(__dirname, '../../..', 'storage/uploaded_images'));
+        .withArgs(
+          body,
+          appId,
+          userId,
+          path.join(__dirname, '../../..', 'storage/uploaded_images')
+        );
     });
 
     context('when findOrCreateFromBuffer is successful', () => {
@@ -88,13 +95,15 @@ describe('images', () => {
   describe('#getImage', () => {
     var findById
       , imageId = '1234asdf'
+      , appId = 'appId'
       ;
 
     beforeEach(() => {
       req = {
         params: {
           imageId: imageId
-        }
+        },
+        appId: appId
       };
 
       findById = sandbox.stub(DedupFile, 'findById').withArgs(imageId);

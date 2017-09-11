@@ -18,12 +18,16 @@ chai.use(sinonChai);
 
 describe('DedupFile', () => {
   var doc
+    , minValidAppId = 'appId'
+    , minValidUserId = 2
+    , minValidDigest = 'asdf1234'
     , minValidData = {
         path: '/file/path/file.jpg',
-        digest: 'asdf1234',
+        digest: minValidDigest,
         size: 42,
         mimeType: 'image/jpeg',
-        userId: 2
+        userId: minValidUserId,
+        appId: minValidAppId
       }
     ;
   describe('validations', () => {
@@ -116,9 +120,10 @@ describe('DedupFile', () => {
     });
   });
 
-  describe('#findOrCreateFromBuffer', () => {
-    var digest = 'asdf1234'
-      , userId = 10
+  describe.only('#findOrCreateFromBuffer', () => {
+    var digest = minValidDigest
+      , userId = minValidUserId
+      , appId = minValidAppId
       , findOne
       , buffer
       , createDigest
@@ -128,7 +133,8 @@ describe('DedupFile', () => {
       findOne =
         sandbox.stub(DedupFile, 'findOne').withArgs({
           userId: userId,
-          digest: digest
+          digest: digest,
+          appId: appId
         });
 
       buffer = sandbox.stub();
@@ -146,7 +152,7 @@ describe('DedupFile', () => {
       });
 
       it('yields it', () => {
-        DedupFile.findOrCreateFromBuffer(buffer, userId, '/destination',
+        DedupFile.findOrCreateFromBuffer(buffer, appId, userId, '/destination',
           (err, result, created) => {
             expect(err).not.to.exist;
             expect(result).to.equal(found);
@@ -194,7 +200,7 @@ describe('DedupFile', () => {
         });
 
         it('creates a new DedupFile and yields it', (done) => {
-          DedupFile.findOrCreateFromBuffer(buffer, userId, destination,
+          DedupFile.findOrCreateFromBuffer(buffer, appId, userId, destination,
             (err, doc, created) => {
               expect(err).not.to.exist;
               expect(doc).to.equal(newDoc);
@@ -202,6 +208,7 @@ describe('DedupFile', () => {
 
               expect(writeStream.end).to.have.been.calledOnce.calledWith(buffer);
               expect(create).to.have.been.calledOnce.calledWith({
+                appId: appId,
                 path: '/foo/bar/filename.jpg',
                 digest: digest,
                 size: bytesWritten,
@@ -224,7 +231,7 @@ describe('DedupFile', () => {
       });
 
       it('yields the error', (done) => {
-        DedupFile.findOrCreateFromBuffer(buffer, userId, 'destination',
+        DedupFile.findOrCreateFromBuffer(buffer, appId, userId, 'destination',
           (err, result, created) => {
             expect(err).to.equal(error);
             done();
@@ -244,7 +251,7 @@ describe('DedupFile', () => {
       });
 
       it('yields the error', (done) => {
-        DedupFile.findOrCreateFromBuffer(buffer, userId, 'destination',
+        DedupFile.findOrCreateFromBuffer(buffer, appId, userId, 'destination',
           (err, result, created) => {
             expect(err).to.equal(error);
             done();
@@ -269,7 +276,7 @@ describe('DedupFile', () => {
       });
 
       it('yields an error', (done) => {
-        DedupFile.findOrCreateFromBuffer(buffer, userId, 'destination',
+        DedupFile.findOrCreateFromBuffer(buffer, appId, userId, 'destination',
           (err, result, created) => {
             expect(err).to.be.an.instanceof(Error);
             expect(err.message).to
@@ -311,7 +318,7 @@ describe('DedupFile', () => {
       });
 
       it('yields the error', (done) => {
-        DedupFile.findOrCreateFromBuffer(buffer, userId, 'destination',
+        DedupFile.findOrCreateFromBuffer(buffer, appId, userId, 'destination',
           (err, result, created) => {
             expect(err).to.equal(error);
             done();

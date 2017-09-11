@@ -58,12 +58,17 @@ describe('cards', () => {
   });
 
   describe('#createCard', () => {
+    var userId = 1
+      , appId = 'appId'
+      ;
+
     beforeEach(() => {
       req = {
         body: {},
         params: {
-          userId: 1
-        }
+          userId: 1,
+        },
+        appId: appId
       }
     });
 
@@ -76,7 +81,10 @@ describe('cards', () => {
       it('creates a Card and sets the correct response', () => {
         var jsonResArgs;
 
-        expect(newCardStub).to.have.been.calledWith({ userId: 1 });
+        expect(newCardStub).to.have.been.calledWith({
+          userId: userId,
+          appId: appId
+        });
         verifyCardCreated();
       });
     });
@@ -116,14 +124,18 @@ describe('cards', () => {
   describe('#createCardInDeck', () => {
     var findDeck
       , fakeDeck = { deck: true }
+      , userId = 1
+      , deckId = 2
+      , appId = 'appId'
       ;
 
     beforeEach(() => {
       req = {
         params: {
-          userId: 1,
-          deckId: 2
-        }
+          userId: userId,
+          deckId: deckId
+        },
+        appId: appId
       };
 
       findDeck = sandbox.stub(Deck, 'findOne');
@@ -138,7 +150,8 @@ describe('cards', () => {
 
       it('creates the Card and sets the correct response', () => {
         expect(Card.new).to.have.been.calledWith({
-          userId: 1,
+          userId: userId,
+          appId: appId,
           _deck: fakeDeck
         });
         verifyCardCreated();
@@ -174,6 +187,7 @@ describe('cards', () => {
 
   describe('#save', () => {
     var userId = 1
+      , appId = 'appId'
       , cardId = 'ABC134'
       , dataUpdate = { foo: 'bar' }
       , userDataUpdate = { baz: 'bop' }
@@ -188,6 +202,7 @@ describe('cards', () => {
           userId: userId,
           cardId: cardId
         },
+        appId: appId,
         body: update
       };
 
@@ -200,7 +215,7 @@ describe('cards', () => {
           cb(null, fakeCard);
         });
 
-        findOne.withArgs({ userId: userId, _id: cardId })
+        findOne.withArgs({ userId: userId, appId: appId, _id: cardId })
           .yields(null, fakeCard);
 
         cardRoutes.save(req, res);
@@ -276,6 +291,7 @@ describe('cards', () => {
     var cardId = 'asdf1234'
       , deckId = 'fdas4312'
       , userId = 1
+      , appId = 'appId'
       , findOneCard
       , findOneDeck
       , fakeCard
@@ -289,7 +305,7 @@ describe('cards', () => {
         cb(null, fakeCard);
       });
 
-      findOneCard.withArgs({ _id: cardId, userId: userId })
+      findOneCard.withArgs({ _id: cardId, userId: userId, appId: appId })
         .yields(null, fakeCard);
     }
 
@@ -299,6 +315,7 @@ describe('cards', () => {
           cardId: cardId,
           userId: userId
         },
+        appId: appId,
         body: deckId
       };
 
@@ -312,7 +329,7 @@ describe('cards', () => {
       beforeEach(() => {
         setupFindOneCardSuccess();
 
-        findOneDeck.withArgs({ _id: deckId, userId: userId })
+        findOneDeck.withArgs({ _id: deckId, userId: userId, appId: appId })
           .yields(null, fakeDeck);
 
         cardRoutes.assignCardDeck(req, res);
@@ -403,6 +420,7 @@ describe('cards', () => {
   describe('#removeCardDeck', () => {
     var cardId = 'asdf1234'
       , userId = 1
+      , appId = 'appId'
       , findOneCard
       , fakeCard
       ;
@@ -414,7 +432,7 @@ describe('cards', () => {
         cb(null, fakeCard);
       });
 
-      findOneCard.withArgs({ _id: cardId, userId: userId })
+      findOneCard.withArgs({ _id: cardId, userId: userId, appId: appId })
         .yields(null, fakeCard);
     }
 
@@ -423,7 +441,8 @@ describe('cards', () => {
         params: {
           cardId: cardId,
           userId: userId
-        }
+        },
+        appId: appId
       };
 
       findOneCard = sandbox.stub(Card, 'findOne');
@@ -488,6 +507,7 @@ describe('cards', () => {
   describe('#cardIdsForUser', () => {
     var findMock
       , userId = 10
+      , appId = 'appId'
       , cards
       ;
 
@@ -495,7 +515,8 @@ describe('cards', () => {
       req = {
         params: {
           userId: userId
-        }
+        },
+        appId: appId
       };
     });
 
@@ -504,7 +525,7 @@ describe('cards', () => {
         cards = [];
 
         findMock = sandbox.mock(Card)
-          .expects('find').withArgs({ userId: userId})
+          .expects('find').withArgs({ userId: userId, appId: appId })
           .chain('sort').withArgs('-_id')
           .chain('exec')
           .yields(null, cards);
@@ -532,7 +553,7 @@ describe('cards', () => {
         cards = [ card1, card2 ];
 
         findMock = sandbox.mock(Card)
-          .expects('find').withArgs({ userId: userId})
+          .expects('find').withArgs({ userId: userId, appId: appId })
           .chain('sort').withArgs('-_id')
           .chain('exec')
           .yields(null, cards);
@@ -556,7 +577,7 @@ describe('cards', () => {
 
       beforeEach(() => {
         findMock = sandbox.mock(Card)
-          .expects('find').withArgs({ userId: userId})
+          .expects('find').withArgs({ userId: userId, appId: appId })
           .chain('sort').withArgs('-_id')
           .chain('exec')
           .yields(error);
@@ -573,6 +594,7 @@ describe('cards', () => {
 
   describe('#cardSummariesForUser', () => {
     var userId = 1
+      , appId = 'appId'
       , cards
       , findMock
       ;
@@ -581,7 +603,8 @@ describe('cards', () => {
       req = {
         params: {
           userId: userId
-        }
+        },
+        appId: appId
       };
     });
 
@@ -590,7 +613,7 @@ describe('cards', () => {
         cards = [];
 
         findMock = sandbox.mock(Card)
-          .expects('find').withArgs({ userId: userId })
+          .expects('find').withArgs({ userId: userId, appId: appId })
           .chain('sort').withArgs('-_id')
           .chain('populate').withArgs('_deck')
           .chain('exec')
@@ -617,7 +640,7 @@ describe('cards', () => {
         cards = [ card1, card2 ];
 
         findMock = sandbox.mock(Card)
-          .expects('find').withArgs({ userId: userId })
+          .expects('find').withArgs({ userId: userId, appId: appId })
           .chain('sort').withArgs('-_id')
           .chain('populate').withArgs('_deck')
           .chain('exec')
@@ -651,7 +674,7 @@ describe('cards', () => {
 
       beforeEach(() => {
         findMock = sandbox.mock(Card)
-          .expects('find').withArgs({ userId: userId })
+          .expects('find').withArgs({ userId: userId, appId: appId })
           .chain('sort').withArgs('-_id')
           .chain('populate').withArgs('_deck')
           .chain('exec')
@@ -670,6 +693,7 @@ describe('cards', () => {
   describe('#cardIdsForDeck', () => {
     var deckId = 'asdf1234'
       , userId = '10'
+      , appId = 'appId'
       , deckFindStub
       ;
 
@@ -678,7 +702,8 @@ describe('cards', () => {
         params: {
           deckId: deckId,
           userId: userId
-        }
+        },
+        appId: appId
       };
 
       deckFindStub = sandbox.stub(Deck, 'findOne');
@@ -692,7 +717,7 @@ describe('cards', () => {
         fakeDeck.cards = sandbox.stub();
 
         deckFindStub
-          .withArgs({ userId: userId, _id: deckId })
+          .withArgs({ userId: userId, _id: deckId, appId: appId })
           .yields(null, fakeDeck);
       });
 
@@ -768,7 +793,7 @@ describe('cards', () => {
 
       beforeEach(() => {
         deckFindStub
-          .withArgs({ userId: userId, _id: deckId })
+          .withArgs({ userId: userId, _id: deckId, appId: appId })
           .yields(error);
 
         cardRoutes.cardIdsForDeck(req, res);
@@ -781,9 +806,10 @@ describe('cards', () => {
   });
 
   describe('#getCard', () => {
-    var cardFind
-      , userId = 1
+    var userId = 1
       , cardId = '1234adsf'
+      , appId = 'appId'
+      , cardFindMock
       ;
 
     beforeEach(() => {
@@ -791,19 +817,25 @@ describe('cards', () => {
         params: {
           userId: userId,
           cardId: cardId
-        }
+        },
+        appId: appId
       };
 
-      cardFind = sandbox.stub(Card, 'findOne')
-        .withArgs({ userId: userId, _id: cardId });
-    });
+      cardFindMock = sandbox.mock(Card)
+        .expects('findOne').withArgs({
+            userId: userId,
+            _id: cardId,
+            appId: appId
+        })
+        .chain('populate').withArgs('_deck')
+        .chain('exec');
+     });
 
     context('when the card exists', () => {
       var card = { _id: cardId, foo: 'bar' };
 
       beforeEach(() => {
-        cardFind.yields(null, card);
-
+        cardFindMock.yields(null, card);
         cardRoutes.getCard(req, res);
       });
 
@@ -823,8 +855,7 @@ describe('cards', () => {
 
     context("when the card doesn't exist", () => {
       beforeEach(() => {
-        cardFind.yields(null, null);
-
+        cardFindMock.yields(null, null);
         cardRoutes.getCard(req, res);
       });
 
@@ -841,8 +872,7 @@ describe('cards', () => {
       var error = new Error('error finding card');
 
       beforeEach(() => {
-        cardFind.yields(error);
-
+        cardFindMock.yields(error);
         cardRoutes.getCard(req, res);
       });
 
@@ -856,6 +886,7 @@ describe('cards', () => {
     var findOneAndRemove
       , userId = 1
       , cardId = 'asdf1234'
+      , appId = 'appId'
       ;
 
     beforeEach(() => {
@@ -863,11 +894,16 @@ describe('cards', () => {
         params: {
           userId: userId,
           cardId: cardId
-        }
+        },
+        appId: appId
       };
 
       findOneAndRemove = sandbox.stub(Card, 'findOneAndRemove')
-        .withArgs({ userId: userId, _id: cardId });
+        .withArgs({
+          userId: userId,
+          appId: appId,
+          _id: cardId
+        });
     });
 
     context('when the card is found', () => {
@@ -922,6 +958,7 @@ describe('cards', () => {
   describe('#createDeck', () => {
     var deckCreate
       , fakeDeck = { its: 'a deck'}
+      , appId = 'appId'
       ;
 
     beforeEach(() => {
@@ -929,6 +966,7 @@ describe('cards', () => {
         params: {
           userId: 1
         },
+        appId: appId,
         body: { foo: 'bar' }
       };
 
@@ -946,7 +984,8 @@ describe('cards', () => {
 
         expect(deckCreate).to.have.been.calledWith({
           userId: 1,
-          foo: 'bar'
+          foo: 'bar',
+          appId: appId
         });
 
         expect(jsonRes).to.have.been.calledOnce;
@@ -976,17 +1015,19 @@ describe('cards', () => {
   describe('#decksForUser', () => {
     var deckFind
       , userId = 1
+      , appId = appId
       ;
 
     beforeEach(() => {
       req = {
         params: {
           userId: userId
-        }
+        },
+        appId: appId
       };
 
       deckFind = sandbox.mock(Deck)
-        .expects('find').withArgs({ userId: userId })
+        .expects('find').withArgs({ userId: userId, appId: appId })
         .chain('sort').withArgs('-_id')
         .chain('exec');
     });
@@ -1054,6 +1095,7 @@ describe('cards', () => {
     var findOneAndRemove
       , userId = 1
       , deckId = 'qwer1234'
+      , appId = 'appId'
       ;
 
     beforeEach(() => {
@@ -1061,18 +1103,29 @@ describe('cards', () => {
         params: {
           userId: userId,
           deckId: deckId
-        }
+        },
+        appId: appId
       };
 
       findOneAndRemove = sandbox.stub(Deck, 'findOneAndRemove')
-        .withArgs({ userId: userId, _id: deckId });
+        .withArgs({
+          userId: userId,
+          appId: appId,
+          _id: deckId
+        });
     });
 
     context('when the deck is successfully found and deleted', () => {
       var fakeDeck = { _id: deckId }
+        , cardRemove
+        ;
 
       beforeEach(() => {
         findOneAndRemove.yields(null, fakeDeck);
+
+        cardRemove = sandbox.stub(Card, 'remove')
+          .withArgs({ _deck: deckId })
+          .yields(null);
 
         cardRoutes.deleteDeck(req, res);
       });
@@ -1120,6 +1173,8 @@ describe('cards', () => {
   describe('#cardSvg', () => {
     var cardId = 'asdf1234'
       , userId = 5
+      , appId = 'appId'
+      , logger = { log: 'log' }
       , findOne
       ;
 
@@ -1128,10 +1183,17 @@ describe('cards', () => {
         params: {
           cardId: cardId,
           userId: userId
-        }
+        },
+        appId: appId,
+        log: logger
       };
 
-      findOne = sandbox.stub(Card, 'findOne').withArgs({ userId: userId, _id: cardId });
+      findOne = sandbox.stub(Card, 'findOne')
+        .withArgs({
+          userId: userId,
+          appId: appId,
+          _id: cardId
+        });
     });
 
     context('when the Card is found', () => {
@@ -1140,7 +1202,8 @@ describe('cards', () => {
         ;
 
       beforeEach(() => {
-        svgCacheGet = sandbox.stub(cardSvgCache, 'get')//.withArgs(fakeCard);
+        svgCacheGet = sandbox.stub(cardSvgCache, 'get')
+          .withArgs(fakeCard, logger);
 
         findOne.yields(null, fakeCard);
       });

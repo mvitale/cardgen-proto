@@ -120,7 +120,7 @@ describe('DedupFile', () => {
     });
   });
 
-  describe.only('#findOrCreateFromBuffer', () => {
+  describe('#findOrCreateFromBuffer', () => {
     var digest = minValidDigest
       , userId = minValidUserId
       , appId = minValidAppId

@@ -21,7 +21,8 @@ describe('Deck', () => {
     , userId = 4
     , minValidData = {
         name: name,
-        userId: userId
+        userId: userId,
+        appId: 'theApp'
       }
     ;
 

@@ -91,7 +91,7 @@ describe('template-manager', () => {
     };
 
     var okDefaultSupplier = {
-      supply: function(params, apiResults, choices, cb) {
+      supply: function(params, apiResults, choices, tips, cb) {
         cb(null, 'Red panda');
       }
     };
@@ -230,7 +230,7 @@ describe('template-manager', () => {
               return okChoiceSupplier;
             } else if (name === 'common-name-supplier' && type === 'default') {
               return {
-                supply: function(params, apiResults, choices, cb) {
+                supply: function(params, apiResults, choices, tips, cb) {
                   return cb(defaultSupplierError);
                 }
               };

@@ -4,7 +4,7 @@ var sinon = require('sinon');
 var sinonChai = require('sinon-chai');
 
 var sciNameSupplier =
-  require('_/suppliers/default/sci-name-supplier');
+  require('_/suppliers/choice/sci-name-supplier');
 
 var expect = chai.expect
   , sandbox = sinon.sandbox.create()
@@ -30,7 +30,7 @@ describe('sci-name-supplier', () => {
       });
 
       it('throws TypeError', () => {
-        expect(() => { sciNameSupplier.supply({}, apiResults, [], cb) })
+        expect(() => { sciNameSupplier.supply({}, apiResults, cb) })
           .to.throw(TypeError);
       });
     });
@@ -43,11 +43,11 @@ describe('sci-name-supplier', () => {
           }
         };
 
-        sciNameSupplier.supply({}, apiResults, [], cb);
+        sciNameSupplier.supply({}, apiResults, cb);
       });
 
-      it("returns ''", () => {
-        expect(cb).to.have.been.calledWith(null, { text: '' });
+      it("yields []", () => {
+        expect(cb).to.have.been.calledWith(null, []);
       });
     });
 
@@ -59,11 +59,11 @@ describe('sci-name-supplier', () => {
           }
         }
 
-        sciNameSupplier.supply({}, apiResults, [], cb);
+        sciNameSupplier.supply({}, apiResults, cb);
       });
 
-      it('returns the species name', () => {
-        expect(cb).to.have.been.calledWith(null, { text: 'Ailurus fulgens' });
+      it('yields the species name', () => {
+        expect(cb).to.have.been.calledWith(null, [{ text: 'Ailurus fulgens' }] );
       });
     });
 
@@ -75,13 +75,13 @@ describe('sci-name-supplier', () => {
           }
         };
 
-        sciNameSupplier.supply({}, apiResults, [], cb);
+        sciNameSupplier.supply({}, apiResults, cb);
       });
 
       it('returns the species name including the subspecies', () => {
         expect(cb).to.have.been.calledWith(
           null,
-          { text: 'Ailurus fulgens fulgens' }
+          [{ text: 'Ailurus fulgens fulgens' }]
         );
       });
     });
@@ -94,11 +94,11 @@ describe('sci-name-supplier', () => {
           }
         }
 
-        sciNameSupplier.supply({}, apiResults, [], cb);
+        sciNameSupplier.supply({}, apiResults, cb);
       });
 
-      it('returns the word', () => {
-        expect(cb).to.have.been.calledWith(null, { text: 'foo' });
+      it('yields the word', () => {
+        expect(cb).to.have.been.calledWith(null, [{ text: 'foo' }]);
       });
     });
 
@@ -110,11 +110,11 @@ describe('sci-name-supplier', () => {
           }
         };
 
-        sciNameSupplier.supply({}, apiResults, [], cb);
+        sciNameSupplier.supply({}, apiResults, cb);
       });
 
-      it("returns ''", () => {
-        expect(cb).to.have.been.calledWith(null, { text: '' });
+      it("yields []", () => {
+        expect(cb).to.have.been.calledWith(null, []);
       });
     });
   });

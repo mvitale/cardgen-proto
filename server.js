@@ -117,7 +117,7 @@ app.use(notStaticResourcePattern, (req, res, next) => {
 
   if (appId) {
     req.appId = appId;
-    req.log.info({ appId: appId}, 'Authenticated app');
+    req.log.info({ appId: appId }, 'Authenticated app');
     next();
   } else {
     err = new Error('Bad or missing API key');

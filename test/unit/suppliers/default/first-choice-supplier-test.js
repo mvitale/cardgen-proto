@@ -26,7 +26,7 @@ describe('first-choice-supplier', () => {
       beforeEach(() => {
         choices = ['foo'];
 
-        firstChoiceSupplier.supply({}, {}, choices, cb);
+        firstChoiceSupplier.supply({}, {}, choices, {}, cb);
       });
 
       it('returns 0', () => {
@@ -38,7 +38,7 @@ describe('first-choice-supplier', () => {
       beforeEach(() => {
         choices = ['foo', 'bar', 'baz'];
 
-        firstChoiceSupplier.supply({}, {}, choices, cb);
+        firstChoiceSupplier.supply({}, {}, choices, {}, cb);
       });
 
       it('returns 0', () => {
@@ -50,7 +50,7 @@ describe('first-choice-supplier', () => {
       beforeEach(() => {
         choices = [];
 
-        firstChoiceSupplier.supply({}, {}, choices, cb);
+        firstChoiceSupplier.supply({}, {}, choices, {}, cb);
       });
 
       it('returns null', () => {

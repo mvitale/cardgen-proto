@@ -185,14 +185,16 @@
       }
     }
   },
+  "templateChoiceSuppliers": {
+    "mainColors": "standard-bg-color-supplier",
+    "biome": "biome-icon-supplier",
+    "foodwebRole": "foodweb-role-icon-supplier",
+    "iucnStatus": "iucn-icon-supplier"
+  },
   "choiceSuppliers": {
     "commonName": "common-name-supplier",
     "sciName": "sci-name-supplier",
     "mainPhoto": "species-images-supplier",
-    "mainColors": "standard-bg-color-supplier",
-    "biome": "biome-icon-supplier",
-    "foodwebRole": "foodweb-role-icon-supplier",
-    "iucnStatus": "iucn-icon-supplier",
     "taxonClass": "taxon-group-supplier",
     "traits": "trait-supplier"
   },

@@ -43,7 +43,7 @@ describe('common-name-supplier', () => {
       it('yields that result', () => {
         expect(parseCommonName).to.have.been.calledOnce.calledWith(pages);
         expect(cb).to.have.been.calledWith(null, [
-          { text: commonName }
+          { text: commonName, choiceKey: commonName }
         ]);
       });
     });

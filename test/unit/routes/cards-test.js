@@ -346,7 +346,7 @@ describe('cards', () => {
         expect(args.length).to.equal(3);
         expect(args[0]).to.equal(res);
         expect(args[1]).to.equal(resUtils.httpStatus.ok);
-        expect(args[2]).to.be.an.instanceof(MongooseWrapper);
+        expect(args[2]).to.be.an.instanceof(CardSummaryWrapper);
         expect(args[2].delegate).to.equal(fakeCard);
       });
     });
@@ -468,7 +468,7 @@ describe('cards', () => {
         expect(args.length).to.equal(3);
         expect(args[0]).to.equal(res);
         expect(args[1]).to.equal(resUtils.httpStatus.ok);
-        expect(args[2]).to.be.an.instanceof(MongooseWrapper);
+        expect(args[2]).to.be.an.instanceof(CardSummaryWrapper);
         expect(args[2].delegate).to.equal(fakeCard);
       });
     });

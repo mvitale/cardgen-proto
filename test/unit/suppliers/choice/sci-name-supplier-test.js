@@ -63,7 +63,9 @@ describe('sci-name-supplier', () => {
       });
 
       it('yields the species name', () => {
-        expect(cb).to.have.been.calledWith(null, [{ text: 'Ailurus fulgens' }] );
+        expect(cb).to.have.been.calledWith(null, [
+          { text: 'Ailurus fulgens', choiceKey: 'Ailurus fulgens' }
+        ] );
       });
     });
 
@@ -81,7 +83,7 @@ describe('sci-name-supplier', () => {
       it('returns the species name including the subspecies', () => {
         expect(cb).to.have.been.calledWith(
           null,
-          [{ text: 'Ailurus fulgens fulgens' }]
+          [{ text: 'Ailurus fulgens fulgens', choiceKey: 'Ailurus fulgens fulgens'}]
         );
       });
     });
@@ -98,7 +100,9 @@ describe('sci-name-supplier', () => {
       });
 
       it('yields the word', () => {
-        expect(cb).to.have.been.calledWith(null, [{ text: 'foo' }]);
+        expect(cb).to.have.been.calledWith(null, [
+          { text: 'foo', choiceKey: 'foo'}
+        ]);
       });
     });
 

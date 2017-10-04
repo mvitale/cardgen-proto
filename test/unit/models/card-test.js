@@ -17,10 +17,27 @@ chai.use(sinonChai);
 describe('Card', () => {
   var validData = {
         templateName: 'foo',
-        userId: 1
+        userId: 1,
+        locale: 'en',
+        appId: 'app'
       }
     , doc
     ;
+
+  function shouldBehaveLikeFieldMissing(missingField) {
+    it('should be invalid', (next) => {
+      var data = Object.assign({}, validData)
+        ;
+
+      delete data[missingField];
+      doc = new Card(data);
+
+      doc.validate((err) => {
+        expect(err).not.to.be.null;
+        next();
+      });
+    });
+  }
 
   describe('validations and defaults', () => {
     describe('valid document', () => {
@@ -28,9 +45,10 @@ describe('Card', () => {
         doc = new Card(validData);
       });
 
-      it('should be valid', () => {
+      it('should be valid', (next) => {
         doc.validate((err) => {
           expect(err).to.be.null;
+          next();
         });
       });
 
@@ -51,36 +69,20 @@ describe('Card', () => {
       });
     });
 
-    context('when document is missing templateName', () => {
-      beforeEach(() => {
-        var badData = Object.assign({}, validData);
-
-        badData.templateName = null;
-        doc = new Card(badData);
-      });
-
-      it('should be invalid', (next) => {
-        doc.validate((err) => {
-          expect(err).not.to.be.null;
-          next();
-        });
-      });
+    context('when document is missing userId', () => {
+      shouldBehaveLikeFieldMissing('userId');
     });
 
-    context('when document is missing userId', () => {
-      beforeEach(() => {
-        var badData = Object.assign({}, validData);
+    context('when document is missing locale', () => {
+      shouldBehaveLikeFieldMissing('locale');
+    });
 
-        badData.userId = null;
-        doc = new Card(badData);
-      });
+    context('when document is missing appId', () => {
+      shouldBehaveLikeFieldMissing('appId');
+    });
 
-      it('should be invalid', (next) => {
-        doc.validate((err) => {
-          expect(err).not.to.be.null;
-          next();
-        });
-      });
+    context('when document is missing templateName', () => {
+      shouldBehaveLikeFieldMissing('templateName');
     });
   });
 
@@ -93,7 +95,7 @@ describe('Card', () => {
     beforeEach(() => {
       doc = new Card(validData);
       getDefaultAndChoiceData = sandbox.stub(templateManager, 'getDefaultAndChoiceData');
-    })
+    });
 
     context('when getDefaultAndChoiceData yields a result', () => {
       beforeEach(() => {
@@ -106,7 +108,7 @@ describe('Card', () => {
       it('correctly sets its data and choices fields', () => {
         doc.populateDefaultsAndChoices((err) => {
           expect(getDefaultAndChoiceData).to.have.been.calledOnce.calledWith(
-            doc.templateName, doc.templateParams
+            doc.templateName, doc.locale, doc.templateParams
           );
 
           expect(err).not.to.exist;

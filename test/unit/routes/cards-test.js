@@ -60,6 +60,7 @@ describe('cards', () => {
   describe('#createCard', () => {
     var userId = 1
       , appId = 'appId'
+      , locale = 'es'
       ;
 
     beforeEach(() => {
@@ -68,7 +69,8 @@ describe('cards', () => {
         params: {
           userId: 1,
         },
-        appId: appId
+        appId: appId,
+        locale: locale
       }
     });
 
@@ -83,7 +85,8 @@ describe('cards', () => {
 
         expect(newCardStub).to.have.been.calledWith({
           userId: userId,
-          appId: appId
+          appId: appId,
+          locale: locale
         });
         verifyCardCreated();
       });
@@ -127,6 +130,7 @@ describe('cards', () => {
       , userId = 1
       , deckId = 2
       , appId = 'appId'
+      , locale = 'zh'
       ;
 
     beforeEach(() => {
@@ -135,7 +139,8 @@ describe('cards', () => {
           userId: userId,
           deckId: deckId
         },
-        appId: appId
+        appId: appId,
+        locale: locale
       };
 
       findDeck = sandbox.stub(Deck, 'findOne');
@@ -152,7 +157,8 @@ describe('cards', () => {
         expect(Card.new).to.have.been.calledWith({
           userId: userId,
           appId: appId,
-          _deck: fakeDeck
+          _deck: fakeDeck,
+          locale: locale
         });
         verifyCardCreated();
       });

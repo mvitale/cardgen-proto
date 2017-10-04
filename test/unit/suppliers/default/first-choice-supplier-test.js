@@ -24,25 +24,29 @@ describe('first-choice-supplier', () => {
 
     context('when there is one choice', () => {
       beforeEach(() => {
-        choices = ['foo'];
+        choices = [{text: 'foo', choiceKey: 'key'}];
 
         firstChoiceSupplier.supply({}, {}, choices, {}, cb);
       });
 
-      it('returns 0', () => {
-        expect(cb).to.have.been.calledWith(null, null, 0);
+      it('returns the choice key of the choice', () => {
+        expect(cb).to.have.been.calledWith(null, null, 'key');
       });
     });
 
     context('when there are multiple choices', () => {
       beforeEach(() => {
-        choices = ['foo', 'bar', 'baz'];
+        choices = [
+          {text: 'foo', choiceKey: 'key'},
+          {text: 'bar', choiceKey: 'wrong1'},
+          {text: 'baz', choiceKey: 'wrong2'}
+        ];
 
         firstChoiceSupplier.supply({}, {}, choices, {}, cb);
       });
 
-      it('returns 0', () => {
-        expect(cb).to.have.been.calledWith(null, null, 0);
+      it('returns the choice key of the first', () => {
+        expect(cb).to.have.been.calledWith(null, null, 'key');
       });
     });
 

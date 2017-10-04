@@ -1,12 +1,17 @@
-var chai = require('chai');
-var sinon = require('sinon');
-var sinonChai = require('sinon-chai');
-var fs = require('fs');
+var chai = require('chai')
+  , sinon = require('sinon')
+  , sinonChai = require('sinon-chai')
+  , fs = require('fs')
+  , i18n = require('_/i18n')
+  , config = require('_/config/config')
+  ;
 
 var expect = chai.expect;
 chai.use(sinonChai)
 
 var sandbox = sinon.sandbox.create();
+
+var labelKeyPrefix = 'template.fieldLabels.';
 
 var template1 = {
   type: 'trait',
@@ -17,6 +22,38 @@ var template1 = {
       type: 'eol-taxon-id'
     }
   ],
+  spec: {
+    fields: {
+      someText: {
+        labelKey: 'someText'
+      }
+    },
+  },
+  apiSupplier: 'species-data-supplier',
+  choiceSuppliers: {
+    mainPhoto: 'species-images-supplier'
+  },
+  defaultSuppliers: {
+    commonName: 'common-name-supplier'
+  }
+};
+
+template1Resolved = {
+  type: 'trait',
+  name: 'template1',
+  params: [
+    {
+      name: 'speciesId',
+      type: 'eol-taxon-id'
+    }
+  ],
+  spec: {
+    fields: {
+      someText: {
+        label: 'Some text'
+      }
+    },
+  },
   apiSupplier: 'species-data-supplier',
   choiceSuppliers: {
     mainPhoto: 'species-images-supplier'
@@ -29,37 +66,84 @@ var template1 = {
 var template2 = {
   type: 'title',
   name: 'template2',
-  fields: []
+  spec: {
+    fields: {
+      otherText: {
+        labelKey: 'otherText'
+      }
+    }
+  }
 };
 
+var template2Resolved = {
+  type: 'title',
+  name: 'template2',
+  spec: {
+    fields: {
+      otherText: {
+        label: 'Other text'
+      }
+    }
+  }
+}
+
 describe('template-manager', () => {
-  var templateManager;
+  var templateManager
+    , tStub
+    , configGetStub
+    ;
 
   beforeEach(() => {
     templateManager = require('_/template-manager');
+
+    tStub = sandbox.stub(i18n, 't');
+    tStub.withArgs('en', labelKeyPrefix + 'someText').returns('Some text');
+    tStub.withArgs('en', labelKeyPrefix + 'otherText').returns('Other text');
+
+    configGetStub = sandbox.stub(config, 'get');
+    configGetStub.withArgs('i18n.availableLocales').returns(['en']);
+    configGetStub.withArgs('i18n.defaultLocale').returns('en');
   });
 
-  describe('#load', () => {
-
-    context('when the templateLoader returns a valid result', () => {
-      beforeEach(() => {
-        templateManager.setTemplateLoader({
-          templates: function() {
-            return [ template1, template2 ];
-          }
-        });
-
-        templateManager.load();
+  describe('#getTemplate', () => {
+    beforeEach(() => {
+      templateManager.setTemplateLoader({
+        templates: function() {
+          return [ template1, template2 ];
+        }
       });
 
-      it('loads the templates', () => {
-        expect(templateManager.getTemplate('template1')).to.equal(template1);
-        expect(templateManager.getTemplate('template2')).to.equal(template2);
-      });
+      templateManager.load();
+    });
 
-      afterEach(() => {
-        templateManager.setTemplateLoader();
+    context('when the template name is valid and the locale is loaded', () => {
+      it('returns the translated template for that locale', () => {
+        expect(templateManager.getTemplate('template1', 'en')).to.eql(template1Resolved);
+        expect(templateManager.getTemplate('template2', 'en')).to.eql(template2Resolved);
       });
+    });
+
+    context("when the template name is valid but the locale isn't loaded", () => {
+      it ('returns the template for the default locale', () => {
+        expect(templateManager.getTemplate('template1', 'es')).to.eql(template1Resolved);
+        expect(templateManager.getTemplate('template2', 'zh')).to.eql(template2Resolved);
+      });
+    });
+
+    context('when the template name is invalid', () => {
+      it ('returns null', () => {
+        expect(templateManager.getTemplate('bogus', 'en')).to.be.null;
+      });
+    });
+
+    context('when the locale is null', () => {
+      it ('throws an error', () => {
+        expect(() => { templateManager.getTemplate('template1', null)}).to.throw(TypeError);
+      });
+    });
+
+    afterEach(() => {
+      templateManager.setTemplateLoader();
     });
   });
 
@@ -73,6 +157,7 @@ describe('template-manager', () => {
           return [ template1 ];
         }
       });
+      templateManager.load();
     });
 
     var okApiSupplier = {
@@ -115,6 +200,7 @@ describe('template-manager', () => {
         it('yields the correct result', () => {
           templateManager.getDefaultAndChoiceData(
             'template1',
+            'en',
             { speciesId: 1234 },
             callback
           );
@@ -142,6 +228,7 @@ describe('template-manager', () => {
         it('yields an error', () => {
           templateManager.getDefaultAndChoiceData(
             'invalidtemplate',
+            'en',
             {},
             callback
           );
@@ -176,6 +263,7 @@ describe('template-manager', () => {
       it('yields an error', () => {
         templateManager.getDefaultAndChoiceData(
           'template1',
+          'en',
           { speciesId: 1234 },
           callback
         );
@@ -209,6 +297,7 @@ describe('template-manager', () => {
       it('yields an error', () => {
         templateManager.getDefaultAndChoiceData(
           'template1',
+          'en',
           { speciesId: 1234 },
           callback
         );
@@ -242,6 +331,7 @@ describe('template-manager', () => {
       it('yields an error', () => {
         templateManager.getDefaultAndChoiceData(
           'template1',
+          'en',
           { speciesId: 1234 },
           callback
         );

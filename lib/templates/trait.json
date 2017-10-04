@@ -12,7 +12,7 @@
     "height": 336,
     "fields": {
       "mainColors": {
-        "label": "Background",
+        "labelKey": "background",
         "type": "color-scheme",
         "uiColor": "bg"
       },
@@ -33,7 +33,7 @@
         "value": { "color": "#fff" }
       },
       "commonName": {
-        "label": "Common name",
+        "labelKey": "commonName",
         "type": "text",
         "fontFamily": "Open Sans",
         "fontSizes": [10, 11, 12, 13, 14, 16, 18, 20, 22],
@@ -43,7 +43,7 @@
         "value": { "fontSz": 14 }
       },
       "sciName": {
-        "label": "Scientific name",
+        "labelKey": "scientificName",
         "type": "text",
         "fontFamily": "Open Sans",
         "fontStyle": "italic",
@@ -54,7 +54,7 @@
         "value": { "fontSz": 10 }
       },
       "taxonClass": {
-        "label": "Taxon group",
+        "labelKey": "taxonGroup",
         "type": "text",
         "fontFamily": "Open Sans",
         "fontSizes": [9, 10, 11, 12, 13, 14, 15],
@@ -73,7 +73,7 @@
         "value": { "color": "#252525" }
       },
       "mainPhoto": {
-        "label": "Main photo",
+        "labelKey": "mainPhoto",
         "type": "image",
         "x": 0,
         "y": 43,
@@ -97,7 +97,7 @@
         "y": 176
       },
       "foodwebRole": {
-        "label": "Foodweb role",
+        "labelKey": "foodWebRole",
         "type": "labeled-choice-image",
         "x": 14,
         "y": 181,
@@ -113,7 +113,7 @@
         "y": 176
       },
       "iucnStatus": {
-        "label": "IUCN status",
+        "labelKey": "iucnStatus",
         "type": "labeled-choice-image",
         "x": 195,
         "y": 181,
@@ -121,7 +121,7 @@
         "width": 32
       },
       "biome" : {
-        "label": "Biome",
+        "labelKey": "biome",
         "type": "labeled-choice-image",
         "x": 61,
         "y": 167,
@@ -129,7 +129,7 @@
         "width": 120
       },
       "traits": {
-        "label": "Traits",
+        "labelKey": "traits",
         "type": "key-val-list",
         "x": 0,
         "y": 227,
@@ -164,7 +164,7 @@
         ]
       },
       "habitatText": {
-        "label": "Habitats",
+        "labelKey": "habitats",
         "type": "text",
         "font": "7px 'Open Sans'",
         "color": "#252525",
@@ -174,7 +174,7 @@
         "prefix": "Habitats: "
       },
       "miscInfo": {
-        "label": "Additional information",
+        "labelKey": "additionalInfo",
         "type": "multiline-text",
         "wrapAt": 221,
         "fontFamily": "Open Sans",

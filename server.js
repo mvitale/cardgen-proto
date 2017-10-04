@@ -35,6 +35,8 @@ var app = express();
 var sensitiveHeaders = ['x-api-key']
   , notStaticResourcePattern = /^(?!\/static|\/images).+/
   , logLevel = config.get('log.level') || 'info'
+  , defaultLocale = config.get('i18n.defaultLocale')
+  , availableLocales = config.get('i18n.availableLocales')
   ;
 
 console.log('Log level:', logLevel);
@@ -124,6 +126,30 @@ app.use(notStaticResourcePattern, (req, res, next) => {
     err.status = 403;
     next(err);
   }
+});
+
+// Populate req locale from header or default
+app.use((req, res, next) => {
+  var locale = req.get('x-locale');
+
+  if (locale && availableLocales.find(locale)) {
+    req.log.debug({locale: locale}, 'Setting locale from header');
+    req.locale = locale;
+  } else {
+    if (!locale) {
+      req.log.debug({
+        locale: defaultLocale
+      }, 'Locale missing from request. Using default');
+    } else {
+      req.log.debug({
+        requetedLocale: locale,
+        locale: defaultLocale
+      }, 'Locale not supported. Using default');
+    }
+    req.locale = defaultLocale;
+  }
+
+  next();
 });
 
 /*

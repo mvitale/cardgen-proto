@@ -16,5 +16,9 @@
   },
   "log": {
     "level": "debug"
+  },
+  "i18n": {
+    "availableLocales": ["en"],
+    "defaultLocale": "en"
   }
 }

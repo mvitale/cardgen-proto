@@ -1,3 +1,17 @@
 {
-  "test_key": "test_val"
+  "template": {
+    "fieldLabels": {
+      "background": "Background",
+      "commonName": "Common name",
+      "scientificName": "Scientific name",
+      "taxonGroup": "Taxon group",
+      "mainPhoto": "Main photo",
+      "foodWebRole": "Food web role",
+      "iucnStatus": "IUCN status",
+      "biome": "Biome",
+      "traits": "Traits",
+      "habitats": "Habitats",
+      "additionalInfo": "Additional information"
+    }
+  }
 }

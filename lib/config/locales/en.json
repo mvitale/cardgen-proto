@@ -13,5 +13,28 @@
       "habitats": "Habitats",
       "additionalInfo": "Additional information"
     }
+  },
+  "standard_bg_color_supplier": {
+    "tips": {
+      "annelids": "Annelids",
+      "bacteria": "Bacteria",
+      "echinoderms": "Echinoderms",
+      "fishes": "Fishes",
+      "archaea": "Archaea",
+      "platyhelminthes": "Platyhelminthes",
+      "mollusks": "Mollusks",
+      "plants": "Plants",
+      "fungi": "Fungi",
+      "nematodes": "Nematodes",
+      "reptiles": "Reptiles",
+      "arthropods": "Arthropods",
+      "birds": "Birds",
+      "cnidarians": "Cnidarians",
+      "amphibians": "Amphibians",
+      "protists": "Protists",
+      "sponges": "Sponges",
+      "mammals": "Mammals",
+      "other_animals": "Other animals"
+    }
   }
 }

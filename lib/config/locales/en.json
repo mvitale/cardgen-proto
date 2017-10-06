@@ -14,7 +14,7 @@
       "additionalInfo": "Additional information"
     }
   },
-  "standard_bg_color_supplier": {
+  "standardBgColorSupplier": {
     "tips": {
       "annelids": "Annelids",
       "bacteria": "Bacteria",
@@ -34,7 +34,44 @@
       "protists": "Protists",
       "sponges": "Sponges",
       "mammals": "Mammals",
-      "other_animals": "Other animals"
+      "otherAnimals": "Other animals"
+    }
+  },
+  "biomeIconSupplier": {
+    "labels": {
+      "desert": "Desert",
+      "freshwater": "Freshwater",
+      "grasslands": "Grasslands",
+      "marine": "Marine",
+      "temperateForest": "Temperate Forest",
+      "tropicalForest": "Tropical Forest",
+      "tundra": "Tundra",
+      "urban": "Urban"
+    }
+  },
+  "foodwebRoleIconSupplier": {
+    "labels": {
+      "apexPredator": "Apex predator",
+      "autotroph": "Autotroph",
+      "carnivore": "Carnivore",
+      "decomposer": "Decomposer",
+      "detritivore": "Detritivore",
+      "herbivore": "Herbivore",
+      "omnivore": "Omnivore",
+      "sanguinivore": "Sanguinivore"
+    }
+  },
+  "iucnIconSupplier": {
+    "labels": {
+      "lc": "Least concern (LC)",
+      "nt": "Near threatened (NT)",
+      "vu": "Vulnerable (VU)",
+      "en": "Endangered (EN)",
+      "cr": "Critically endangered (CR)",
+      "ew": "Extinct in the wild (EW)",
+      "ex": "Extinct (EX)",
+      "dd": "Data deficient (DD)",
+      "ne": "Not evaluated (NE)"
     }
   }
 }

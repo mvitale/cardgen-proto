@@ -17,7 +17,9 @@ var sandbox = sinon.sandbox.create();
 
 describe('species-images-supplier', () => {
   describe('#supply', () => {
-    var cb;
+    var cb
+      , locale = 'es'
+      ;
 
     beforeEach(() => {
       cb = sinon.spy();
@@ -93,7 +95,7 @@ describe('species-images-supplier', () => {
       ;
 
       beforeEach(() => {
-        speciesImagesSupplier.supply({}, apiResults, cb);
+        speciesImagesSupplier.supply({}, apiResults, locale, cb);
       });
 
       it('produces the correct result', () => {
@@ -139,7 +141,7 @@ describe('species-images-supplier', () => {
       };
 
       it('throws a TypeError', () => {
-        expect(() => { speciesImagesSupplier.supply({}, apiResults, cb); })
+        expect(() => { speciesImagesSupplier.supply({}, apiResults, locale, cb); })
           .to.throw(TypeError);
       });
     });
@@ -152,7 +154,7 @@ describe('species-images-supplier', () => {
       };
 
       beforeEach(() => {
-        speciesImagesSupplier.supply({}, apiResults, cb);
+        speciesImagesSupplier.supply({}, apiResults, locale, cb);
       });
 
       it('returns an empty result', () => {

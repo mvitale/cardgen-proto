@@ -16,6 +16,7 @@ describe('sci-name-supplier', () => {
   describe('#supply', () => {
     var apiResults
       , cb
+      , locale = 'es'
       ;
 
     beforeEach(() => {
@@ -30,7 +31,7 @@ describe('sci-name-supplier', () => {
       });
 
       it('throws TypeError', () => {
-        expect(() => { sciNameSupplier.supply({}, apiResults, cb) })
+        expect(() => { sciNameSupplier.supply({}, apiResults, locale, cb) })
           .to.throw(TypeError);
       });
     });
@@ -43,7 +44,7 @@ describe('sci-name-supplier', () => {
           }
         };
 
-        sciNameSupplier.supply({}, apiResults, cb);
+        sciNameSupplier.supply({}, apiResults, locale, cb);
       });
 
       it("yields []", () => {
@@ -59,7 +60,7 @@ describe('sci-name-supplier', () => {
           }
         }
 
-        sciNameSupplier.supply({}, apiResults, cb);
+        sciNameSupplier.supply({}, apiResults, locale, cb);
       });
 
       it('yields the species name', () => {
@@ -77,7 +78,7 @@ describe('sci-name-supplier', () => {
           }
         };
 
-        sciNameSupplier.supply({}, apiResults, cb);
+        sciNameSupplier.supply({}, apiResults, locale, cb);
       });
 
       it('returns the species name including the subspecies', () => {
@@ -96,7 +97,7 @@ describe('sci-name-supplier', () => {
           }
         }
 
-        sciNameSupplier.supply({}, apiResults, cb);
+        sciNameSupplier.supply({}, apiResults, locale, cb);
       });
 
       it('yields the word', () => {
@@ -114,7 +115,7 @@ describe('sci-name-supplier', () => {
           }
         };
 
-        sciNameSupplier.supply({}, apiResults, cb);
+        sciNameSupplier.supply({}, apiResults, locale, cb);
       });
 
       it("yields []", () => {

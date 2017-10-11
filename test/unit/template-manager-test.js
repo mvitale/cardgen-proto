@@ -167,7 +167,7 @@ describe('template-manager', () => {
     };
 
     var okChoiceSupplier = {
-      supply: function(params, apiResults, cb) {
+      supply: function(params, apiResults, locale, cb) {
         cb(null, [
           { url: 'www.url1.com' },
           { url: 'www.url2.com' }
@@ -283,7 +283,7 @@ describe('template-manager', () => {
               return okApiSupplier;
             } else if (name === 'species-images-supplier' && type === 'choice') {
               return {
-                supply: function(params, apiResults, cb) {
+                supply: function(params, apiResults, locale, cb) {
                   return cb(choiceSupplierError);
                 }
               };

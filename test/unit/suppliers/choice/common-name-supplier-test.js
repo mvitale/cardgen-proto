@@ -27,6 +27,7 @@ describe('common-name-supplier', () => {
       , apiResults = {
           pages: pages
         }
+      , locale = 'es'
       , parseCommonName
       ;
 
@@ -37,7 +38,7 @@ describe('common-name-supplier', () => {
     context('when dataUtils.parseCommonName returns a result', () => {
       beforeEach(() => {
         parseCommonName.returns(commonName);
-        commonNameSupplier.supply({}, apiResults, cb);
+        commonNameSupplier.supply({}, apiResults, locale, cb);
       });
 
       it('yields that result', () => {
@@ -51,7 +52,7 @@ describe('common-name-supplier', () => {
     context('when dataUtils.parseCommonName returns null', () => {
       beforeEach(() => {
         parseCommonName.returns(null);
-        commonNameSupplier.supply({}, apiResults, cb);
+        commonNameSupplier.supply({}, apiResults, locale, cb);
       });
 
       it('yields an empty array', () => {

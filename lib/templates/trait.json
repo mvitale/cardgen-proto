@@ -6,7 +6,7 @@
       "type": "eol-taxon-id"
     }
   ],
-  "apiSupplier": "species-data-supplier",
+  "dataSupplier": "species-data-supplier",
   "spec": {
     "width": 240,
     "height": 336,

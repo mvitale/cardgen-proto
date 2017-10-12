@@ -10,17 +10,24 @@ chai.use(verrorChai);
 
 var sandbox = sinon.sandbox.create();
 
-var eolApiCaller = require('_/api-callers/eol-api-caller');
-var speciesDataSupplier = require('_/suppliers/api/species-data-supplier');
+var eolApiCaller = require('_/api-callers/eol-api-caller')
+  , speciesDataSupplier = require('_/suppliers/data/species-data-supplier')
+  , dataUtils = require('_/data-utils/data-utils')
+  ;
 
 describe('species-data-supplier', () => {
   describe('#supply', () => {
     var getJson
       , cb
+      , sciName = 'Procyon lotor'
+      , taxonRank = 'Species'
+      , taxonRankLower = 'species'
       , pagesResult = {
           taxonConcepts: [
             {
-              identifier: 1234
+              identifier: 1234,
+              scientificName: sciName,
+              taxonRank: taxonRank
             },
             {
               identifier: 4321
@@ -35,26 +42,48 @@ describe('species-data-supplier', () => {
     });
 
     context('when all calls are successful', () => {
-
       var hierarchyResult = {
-        hierarchy_entries: 'foo'
-      };
+            ancestors: [{
+              foo: 'bar',
+              scientificName: 'animalia',
+              taxonRank: 'kingdom'
+            }, {
+              bar: 'foo',
+              scientificName: 'chordata',
+              taxonRank: 'phylum'
+            }]
+          }
+        , images = [
+              {url: 'foo'}
+            ]
+        , commonName = 'Red Panda'
+        ;
 
       beforeEach(() => {
-        getJson.withArgs('pages').callsFake((apiName, params, cb) => {
-          cb(null, pagesResult);
-        });
-
-        getJson.withArgs('hierarchy_entries').callsFake((apiName, params, cb) => {
-          cb(null, hierarchyResult);
-        });
+        getJson.withArgs('pages').yields(null, pagesResult);
+        getJson.withArgs('hierarchy_entries').yields(null, hierarchyResult);
+        sandbox.stub(dataUtils, 'parseImages')
+          .returns(images);
+        sandbox.stub(dataUtils, 'parseCommonName')
+          .returns(commonName);
       });
 
       it('yields the correct result', () => {
         speciesDataSupplier.supply({}, cb);
         expect(cb).to.have.been.calledWith(null, {
-          pages: pagesResult,
-          hierarchy_entries: hierarchyResult
+          taxon: {
+            commonName: commonName,
+            scientificName: sciName,
+            taxonRank: taxonRankLower,
+          },
+          images: images,
+          ancestors: [{
+            scientificName: 'animalia',
+            taxonRank: 'kingdom'
+          }, {
+            scientificName: 'chordata',
+            taxonRank: 'phylum'
+          }]
         });
       });
     });

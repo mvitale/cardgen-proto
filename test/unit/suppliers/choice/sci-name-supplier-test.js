@@ -14,37 +14,21 @@ chai.use(sinonChai);
 
 describe('sci-name-supplier', () => {
   describe('#supply', () => {
-    var apiResults
+    var data
       , cb
       , locale = 'es'
       ;
 
     beforeEach(() => {
       cb = sinon.spy();
+      data = {
+        taxon: {}
+      }
     });
 
-    context('when apiResults.pages is undefined', () => {
+    context("when data.taxon doesn't contain a scientificName", () => {
       beforeEach(() => {
-        apiResults = {
-          foo: 'bar'
-        };
-      });
-
-      it('throws TypeError', () => {
-        expect(() => { sciNameSupplier.supply({}, apiResults, locale, cb) })
-          .to.throw(TypeError);
-      });
-    });
-
-    context("when pages result doesn't contain a scientificName", () => {
-      beforeEach(() => {
-        apiResults = {
-          pages: {
-            foo: 'bar'
-          }
-        };
-
-        sciNameSupplier.supply({}, apiResults, locale, cb);
+        sciNameSupplier.supply({}, data, locale, cb);
       });
 
       it("yields []", () => {
@@ -54,13 +38,8 @@ describe('sci-name-supplier', () => {
 
     context('when there is a scientificName without a subspecies', () => {
       beforeEach(() => {
-        apiResults = {
-          pages: {
-            scientificName: 'Ailurus fulgens F. G. Cuvier, 1825'
-          }
-        }
-
-        sciNameSupplier.supply({}, apiResults, locale, cb);
+        data.taxon.scientificName = 'Ailurus fulgens F. G. Cuvier, 1825';
+        sciNameSupplier.supply({}, data, locale, cb);
       });
 
       it('yields the species name', () => {
@@ -72,13 +51,8 @@ describe('sci-name-supplier', () => {
 
     context('when there is a scientificName with a subspecies', () => {
       beforeEach(() => {
-        apiResults = {
-          pages: {
-            scientificName: 'Ailurus fulgens fulgens F. G. Cuvier, 1825'
-          }
-        };
-
-        sciNameSupplier.supply({}, apiResults, locale, cb);
+        data.taxon.scientificName = 'Ailurus fulgens fulgens F. G. Cuvier, 1825';
+        sciNameSupplier.supply({}, data, locale, cb);
       });
 
       it('returns the species name including the subspecies', () => {
@@ -91,13 +65,8 @@ describe('sci-name-supplier', () => {
 
     context('when there is a scientificName with just one word', () => {
       beforeEach(() => {
-        apiResults = {
-          pages: {
-            scientificName: 'foo'
-          }
-        }
-
-        sciNameSupplier.supply({}, apiResults, locale, cb);
+        data.taxon.scientificName = 'foo';
+        sciNameSupplier.supply({}, data, locale, cb);
       });
 
       it('yields the word', () => {
@@ -109,13 +78,8 @@ describe('sci-name-supplier', () => {
 
     context('when there is an empty scientificName', () => {
       beforeEach(() => {
-        apiResults = {
-          pages: {
-            scientificName: ''
-          }
-        };
-
-        sciNameSupplier.supply({}, apiResults, locale, cb);
+        data.taxon.scientificName = '';
+        sciNameSupplier.supply({}, data, locale, cb);
       });
 
       it("yields []", () => {

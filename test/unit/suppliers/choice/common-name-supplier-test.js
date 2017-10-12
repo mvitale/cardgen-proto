@@ -22,41 +22,37 @@ describe('common-name-supplier', () => {
   });
 
   describe('#supply', () => {
-    var commonName = 'common name'
-      , pages = { pages: 'pages' }
-      , apiResults = {
-          pages: pages
-        }
+    var data
       , locale = 'es'
-      , parseCommonName
       ;
 
     beforeEach(() => {
-      parseCommonName = sandbox.stub(dataUtils, 'parseCommonName');
+      data = {
+        taxon: {}
+      };
     });
 
-    context('when dataUtils.parseCommonName returns a result', () => {
+    context('when there is commonName in data.taxon', () => {
+      var commonName = 'Red Junglefowl';
+
       beforeEach(() => {
-        parseCommonName.returns(commonName);
-        commonNameSupplier.supply({}, apiResults, locale, cb);
+        data.taxon.commonName = commonName;
+        commonNameSupplier.supply({}, data, locale, cb);
       });
 
       it('yields that result', () => {
-        expect(parseCommonName).to.have.been.calledOnce.calledWith(pages);
         expect(cb).to.have.been.calledWith(null, [
           { text: commonName, choiceKey: commonName }
         ]);
       });
     });
 
-    context('when dataUtils.parseCommonName returns null', () => {
+    context("when there isn't a commonName in data.taxon", () => {
       beforeEach(() => {
-        parseCommonName.returns(null);
-        commonNameSupplier.supply({}, apiResults, locale, cb);
+        commonNameSupplier.supply({}, data, locale, cb);
       });
 
       it('yields an empty array', () => {
-        expect(parseCommonName).to.have.been.calledOnce.calledWith(pages);
         expect(cb).to.have.been.calledWith(null, []);
       });
     });

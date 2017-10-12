@@ -29,7 +29,7 @@ var template1 = {
       }
     },
   },
-  apiSupplier: 'species-data-supplier',
+  dataSupplier: 'species-data-supplier',
   choiceSuppliers: {
     mainPhoto: 'species-images-supplier'
   },
@@ -54,7 +54,7 @@ template1Resolved = {
       }
     },
   },
-  apiSupplier: 'species-data-supplier',
+  dataSupplier: 'species-data-supplier',
   choiceSuppliers: {
     mainPhoto: 'species-images-supplier'
   },
@@ -160,14 +160,14 @@ describe('template-manager', () => {
       templateManager.load();
     });
 
-    var okApiSupplier = {
+    var okDataSupplier = {
       supply: function(templateParams, cb) {
-        cb(null, { apiresults: true });
+        cb(null, { data: true });
       }
     };
 
     var okChoiceSupplier = {
-      supply: function(params, apiResults, locale, cb) {
+      supply: function(params, data, locale, cb) {
         cb(null, [
           { url: 'www.url1.com' },
           { url: 'www.url2.com' }
@@ -176,7 +176,7 @@ describe('template-manager', () => {
     };
 
     var okDefaultSupplier = {
-      supply: function(params, apiResults, choices, tips, cb) {
+      supply: function(params, data, choices, tips, cb) {
         cb(null, 'Red panda');
       }
     };
@@ -185,8 +185,8 @@ describe('template-manager', () => {
       beforeEach(() => {
         templateManager.setSupplierLoader({
           load: function(name, type) {
-            if (name === 'species-data-supplier' && type === 'api') {
-              return okApiSupplier;
+            if (name === 'species-data-supplier' && type === 'data') {
+              return okDataSupplier;
             } else if (name === 'species-images-supplier' && type === 'choice') {
               return okChoiceSupplier;
             } else if (name === 'common-name-supplier' && type === 'default') {
@@ -245,7 +245,7 @@ describe('template-manager', () => {
       beforeEach(() => {
         templateManager.setSupplierLoader({
           load: function(name, type) {
-            if (name === 'species-data-supplier' && type === 'api') {
+            if (name === 'species-data-supplier' && type === 'data') {
               return {
                 supply: function(templateParams, cb) {
                   return cb(apiError);
@@ -279,11 +279,11 @@ describe('template-manager', () => {
       beforeEach(() => {
         templateManager.setSupplierLoader({
           load: function(name, type) {
-            if (name === 'species-data-supplier' && type === 'api') {
-              return okApiSupplier;
+            if (name === 'species-data-supplier' && type === 'data') {
+              return okDataSupplier;
             } else if (name === 'species-images-supplier' && type === 'choice') {
               return {
-                supply: function(params, apiResults, locale, cb) {
+                supply: function(params, data, locale, cb) {
                   return cb(choiceSupplierError);
                 }
               };
@@ -313,13 +313,13 @@ describe('template-manager', () => {
       beforeEach(() => {
         templateManager.setSupplierLoader({
           load: function(name, type) {
-            if (name === 'species-data-supplier' && type === 'api') {
-              return okApiSupplier;
+            if (name === 'species-data-supplier' && type === 'data') {
+              return okDataSupplier;
             } else if (name === 'species-images-supplier' && type === 'choice') {
               return okChoiceSupplier;
             } else if (name === 'common-name-supplier' && type === 'default') {
               return {
-                supply: function(params, apiResults, choices, tips, cb) {
+                supply: function(params, data, choices, tips, cb) {
                   return cb(defaultSupplierError);
                 }
               };

@@ -13,6 +13,7 @@ var sandbox = sinon.sandbox.create();
 var eolApiCaller = require('_/api-callers/eol-api-caller')
   , speciesDataSupplier = require('_/suppliers/data/species-data-supplier')
   , dataUtils = require('_/data-utils/data-utils')
+  , taxonGroup = require('_/suppliers/shared/taxon-group')
   ;
 
 describe('species-data-supplier', () => {
@@ -42,21 +43,22 @@ describe('species-data-supplier', () => {
     });
 
     context('when all calls are successful', () => {
-      var hierarchyResult = {
-            ancestors: [{
-              foo: 'bar',
-              scientificName: 'animalia',
-              taxonRank: 'kingdom'
-            }, {
-              bar: 'foo',
-              scientificName: 'chordata',
-              taxonRank: 'phylum'
-            }]
+      var ancestors = [{
+            foo: 'bar',
+            scientificName: 'animalia',
+            taxonRank: 'kingdom'
+          }, {
+            bar: 'foo',
+            scientificName: 'Mammalia',
+            taxonRank: 'class'
+          }]
+        , hierarchyResult = {
+            ancestors: ancestors
           }
-        , images = [
-              {url: 'foo'}
-            ]
+        , images = [{url:
+            'foo'}]
         , commonName = 'Red Panda'
+        , taxonGroupKeyStub
         ;
 
       beforeEach(() => {
@@ -66,6 +68,13 @@ describe('species-data-supplier', () => {
           .returns(images);
         sandbox.stub(dataUtils, 'parseCommonName')
           .returns(commonName);
+        sandbox.stub(taxonGroup, 'lowestTaxonGroupKey').withArgs(ancestors)
+          .returns('mammals');
+
+        // Store in var to verify later that the args are in fact what we
+        // expect. Null is too vague a value to rely on the withArgs matching
+        // alone
+        taxonGroupKeyStub = sandbox.stub(taxonGroup, 'taxonGroupKey').returns(null);
       });
 
       it('yields the correct result', () => {
@@ -74,17 +83,15 @@ describe('species-data-supplier', () => {
           taxon: {
             commonName: commonName,
             scientificName: sciName,
-            taxonRank: taxonRankLower,
+            taxonGroupKey: 'mammals',
+            selfTaxonGroupKey: null,
+            taxonRank: 'species'
           },
           images: images,
-          ancestors: [{
-            scientificName: 'animalia',
-            taxonRank: 'kingdom'
-          }, {
-            scientificName: 'chordata',
-            taxonRank: 'phylum'
-          }]
         });
+        expect(taxonGroupKeyStub).to.have.been.calledOnce.calledWith(
+          taxonRankLower, sciName
+        );
       });
     });
 

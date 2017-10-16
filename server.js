@@ -180,11 +180,13 @@ app.get('/ping', function(req, res) {
  *
  * Parameters:
  *  templateName: A valid Template name (see templates directory)
+ *  templateVersion: A valid version for the Template with name templateName
+ *
  *
  * Response:
  *  JSON representation of the Template (see api-wrappers/template-wrapper.js)
  */
-app.get('/templates/:templateName', templateRoutes.getTemplate);
+app.get('/templates/:templateName/:templateVersion(\\d\.\\d)', templateRoutes.getTemplate);
 
 var userRouter = new express.Router();
 app.use('/users', userRouter);

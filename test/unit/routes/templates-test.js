@@ -17,14 +17,18 @@ chai.use(sinonChai);
 
 describe('templates', () => {
   describe('#getTemplate', () => {
-    var template = {
-        name: 'valid_template_name'
-      }
-    , req
-    , res
-    , jsonRes
-    , getTemplate
-    ;
+    var templateName = 'valid_template_name'
+      , templateVersion = '1.3'
+      , locale = 'en'
+      , template = {
+          name: templateName,
+          version: templateVersion
+        }
+      , req
+      , res
+      , jsonRes
+      , getTemplate
+      ;
 
     beforeEach(() => {
       jsonRes = sandbox.stub(resUtils, 'jsonRes');
@@ -32,15 +36,17 @@ describe('templates', () => {
       getTemplate = sandbox.stub(templateManager, 'getTemplate');
 
       getTemplate.returns(null);
-      getTemplate.withArgs('valid_template_name').returns(template);
+      getTemplate.withArgs(templateName, templateVersion, locale).returns(template);
     });
 
     context('when a valid template name is requested', () => {
       beforeEach(() => {
         req = {
           params: {
-            templateName: 'valid_template_name'
-          }
+            templateName: templateName,
+            templateVersion: templateVersion
+          },
+          locale: locale
         };
 
         templates.getTemplate(req, res);
@@ -59,22 +65,50 @@ describe('templates', () => {
       });
     });
 
+    function behavesLikeInvalidTemplateParam(templateName, templateVersion) {
+      expect(jsonRes).to.have.been.calledOnce;
+      expect(jsonRes).to.have.been.calledWith(res, resUtils.httpStatus.notFound,
+        { msg: 'template ' + templateName + ' at version ' + templateVersion + ' not found'});
+    }
+
     context('when an invalid template name is requested', () => {
+      var invalidTemplateName = 'invalid_template_name';
+
       beforeEach(() => {
         req = {
           params: {
-            templateName: 'invalid_template_name'
-          }
+            templateName: invalidTemplateName,
+            templateVersion: templateVersion
+          },
+          locale: locale
         }
 
         templates.getTemplate(req, res);
       });
 
-      it('sets up the correct response', () => {
-        expect(jsonRes).to.have.been.calledOnce;
-        expect(jsonRes).to.have.been.calledWith(res, resUtils.httpStatus.notFound,
-          { msg: 'template invalid_template_name not found'});
+      it('', () => {
+        behavesLikeInvalidTemplateParam(invalidTemplateName, templateVersion);
+      })
+    });
+
+    context('when an invalid template version is requested', () => {
+      var invalidVersion = '10000.1';
+
+      beforeEach(() => {
+        req = {
+          params: {
+            templateName: templateName,
+            templateVersion: invalidVersion
+          }, 
+          locale: locale
+        }
+
+        templates.getTemplate(req, res);
       });
+
+      it('', () => {
+        behavesLikeInvalidTemplateParam(templateName, invalidVersion);
+      })
     });
   });
 

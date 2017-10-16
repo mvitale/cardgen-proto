@@ -12,7 +12,7 @@
     "sinon-mongoose": "^2.0.1"
   },
   "scripts": {
-    "test": "NODE_ENV=test mocha",
+    "test": "mocha \"test/**/*-test.js\"",
     "start": "node app"
   },
   "author": "Michael Vitale",
@@ -29,6 +29,7 @@
     "image-size": "^0.5.1",
     "lru-cache": "^4.0.2",
     "merge": "^1.2.0",
+    "minimist": "^1.2.0",
     "mongodb": "^2.2.25",
     "mongoose": "^4.9.4",
     "mongoose-beautiful-unique-validation": "^5.1.1",

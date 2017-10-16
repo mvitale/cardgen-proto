@@ -5,9 +5,6 @@ var chaiHttp = require('chai-http');
 
 var expect = chai.expect;
 
-var config = require('_/config/config');
-config.load();
-
 chai.use(chaiHttp);
 
 var sandbox = sinon.sandbox.create();

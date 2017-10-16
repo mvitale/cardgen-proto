@@ -1,0 +1,725 @@
+{
+  "templateName": "trait",
+  "userId": 1234,
+  "appId": "test",
+  "locale": "en",
+  "_id": "59e4c0382897ba6beaacaf63",
+  "version": 0,
+  "data": {
+    "commonName": {
+      "choiceKey": "Hazel Dormouse"
+    },
+    "sciName": {
+      "choiceKey": "Muscardinus avellanarius"
+    },
+    "mainPhoto": {
+      "choiceKey": "http://media.eol.org/content/2016/06/22/13/80122_580_360.jpg"
+    },
+    "mainColors": {
+      "choiceKey": "mammals"
+    },
+    "eolLogo": {
+      "value": {
+        "url": "http://localhost:8080/static/images/eol-logo.png"
+      }
+    },
+    "taxonClass": {
+      "choiceKey": "mammals"
+    },
+    "traits": {
+      "value": [
+        {
+          "val": {
+            "text": ""
+          },
+          "key": {
+            "text": "Adult Body Length"
+          }
+        },
+        {
+          "val": {
+            "text": ""
+          },
+          "key": {
+            "text": "Adult Weight"
+          }
+        },
+        {
+          "val": {
+            "text": ""
+          },
+          "key": {
+            "text": "Lifespan"
+          }
+        },
+        {
+          "val": {
+            "text": ""
+          },
+          "key": {
+            "text": "Offspring/litters"
+          }
+        },
+        {
+          "val": {
+            "text": ""
+          },
+          "key": {
+            "text": "Age of Female Maturity"
+          }
+        }
+      ]
+    }
+  },
+  "choices": {
+    "commonName": [
+      {
+        "choiceKey": "Hazel Dormouse",
+        "text": "Hazel Dormouse"
+      }
+    ],
+    "sciName": [
+      {
+        "choiceKey": "Muscardinus avellanarius",
+        "text": "Muscardinus avellanarius"
+      }
+    ],
+    "mainPhoto": [
+      {
+        "credit": {
+          "text": "Danielle Schwarz CC-BY-SA"
+        },
+        "thumbUrl": "http://media.eol.org/content/2016/06/22/13/80122_130_130.jpg",
+        "url": "http://media.eol.org/content/2016/06/22/13/80122_580_360.jpg",
+        "choiceKey": "http://media.eol.org/content/2016/06/22/13/80122_580_360.jpg"
+      },
+      {
+        "credit": {
+          "text": "Biopix CC-BY-NC"
+        },
+        "thumbUrl": "http://media.eol.org/content/2013/06/20/07/99824_130_130.jpg",
+        "url": "http://media.eol.org/content/2013/06/20/07/99824_580_360.jpg",
+        "choiceKey": "http://media.eol.org/content/2013/06/20/07/99824_580_360.jpg"
+      },
+      {
+        "credit": {
+          "text": "Sasso Pisano CC-BY-SA"
+        },
+        "thumbUrl": "http://media.eol.org/content/2013/12/07/04/75495_130_130.jpg",
+        "url": "http://media.eol.org/content/2013/12/07/04/75495_580_360.jpg",
+        "choiceKey": "http://media.eol.org/content/2013/12/07/04/75495_580_360.jpg"
+      },
+      {
+        "credit": {
+          "text": "Björn Schulz (= User Bjoernschulz on de.wikipedia) CC-BY-SA"
+        },
+        "thumbUrl": "http://media.eol.org/content/2012/06/15/02/38482_130_130.jpg",
+        "url": "http://media.eol.org/content/2012/06/15/02/38482_580_360.jpg",
+        "choiceKey": "http://media.eol.org/content/2012/06/15/02/38482_580_360.jpg"
+      },
+      {
+        "credit": {
+          "text": "Massimo L. CC-BY-SA"
+        },
+        "thumbUrl": "http://media.eol.org/content/2012/06/15/02/64555_130_130.jpg",
+        "url": "http://media.eol.org/content/2012/06/15/02/64555_580_360.jpg",
+        "choiceKey": "http://media.eol.org/content/2012/06/15/02/64555_580_360.jpg"
+      },
+      {
+        "credit": {
+          "text": "Biopix CC-BY-NC"
+        },
+        "thumbUrl": "http://media.eol.org/content/2013/05/02/01/86277_130_130.jpg",
+        "url": "http://media.eol.org/content/2013/05/02/01/86277_580_360.jpg",
+        "choiceKey": "http://media.eol.org/content/2013/05/02/01/86277_580_360.jpg"
+      },
+      {
+        "credit": {
+          "text": "Jiří Duchoň CC-BY-NC"
+        },
+        "thumbUrl": "http://media.eol.org/content/2009/07/24/11/56205_130_130.jpg",
+        "url": "http://media.eol.org/content/2009/07/24/11/56205_580_360.jpg",
+        "choiceKey": "http://media.eol.org/content/2009/07/24/11/56205_580_360.jpg"
+      },
+      {
+        "credit": {
+          "text": "Massimo L. CC-BY-SA"
+        },
+        "thumbUrl": "http://media.eol.org/content/2012/06/15/02/80554_130_130.jpg",
+        "url": "http://media.eol.org/content/2012/06/15/02/80554_580_360.jpg",
+        "choiceKey": "http://media.eol.org/content/2012/06/15/02/80554_580_360.jpg"
+      },
+      {
+        "credit": {
+          "text": "Massimo L. CC-BY-SA"
+        },
+        "thumbUrl": "http://media.eol.org/content/2012/06/15/02/15777_130_130.jpg",
+        "url": "http://media.eol.org/content/2012/06/15/02/15777_580_360.jpg",
+        "choiceKey": "http://media.eol.org/content/2012/06/15/02/15777_580_360.jpg"
+      },
+      {
+        "credit": {
+          "text": "Massimo L. CC-BY-SA"
+        },
+        "thumbUrl": "http://media.eol.org/content/2012/06/15/02/52709_130_130.jpg",
+        "url": "http://media.eol.org/content/2012/06/15/02/52709_580_360.jpg",
+        "choiceKey": "http://media.eol.org/content/2012/06/15/02/52709_580_360.jpg"
+      },
+      {
+        "credit": {
+          "text": "Massimo L. CC-BY-SA"
+        },
+        "thumbUrl": "http://media.eol.org/content/2012/06/15/02/28414_130_130.jpg",
+        "url": "http://media.eol.org/content/2012/06/15/02/28414_580_360.jpg",
+        "choiceKey": "http://media.eol.org/content/2012/06/15/02/28414_580_360.jpg"
+      },
+      {
+        "credit": {
+          "text": "Biopix CC-BY-NC"
+        },
+        "thumbUrl": "http://media.eol.org/content/2013/05/02/01/26351_130_130.jpg",
+        "url": "http://media.eol.org/content/2013/05/02/01/26351_580_360.jpg",
+        "choiceKey": "http://media.eol.org/content/2013/05/02/01/26351_580_360.jpg"
+      },
+      {
+        "credit": {
+          "text": "Karlostachys CC-BY-SA"
+        },
+        "thumbUrl": "http://media.eol.org/content/2017/03/23/22/22149_130_130.jpg",
+        "url": "http://media.eol.org/content/2017/03/23/22/22149_580_360.jpg",
+        "choiceKey": "http://media.eol.org/content/2017/03/23/22/22149_580_360.jpg"
+      },
+      {
+        "credit": {
+          "text": "umbi24 CC-BY-NC"
+        },
+        "thumbUrl": "http://media.eol.org/content/2016/07/31/11/14944_130_130.jpg",
+        "url": "http://media.eol.org/content/2016/07/31/11/14944_580_360.jpg",
+        "choiceKey": "http://media.eol.org/content/2016/07/31/11/14944_580_360.jpg"
+      },
+      {
+        "credit": {
+          "text": "Julien Renoult CC-BY-NC"
+        },
+        "thumbUrl": "http://media.eol.org/content/2016/08/03/17/95133_130_130.jpg",
+        "url": "http://media.eol.org/content/2016/08/03/17/95133_580_360.jpg",
+        "choiceKey": "http://media.eol.org/content/2016/08/03/17/95133_580_360.jpg"
+      },
+      {
+        "credit": {
+          "text": "Flavio Rocchi CC-BY-NC"
+        },
+        "thumbUrl": "http://media.eol.org/content/2016/08/04/01/34996_130_130.jpg",
+        "url": "http://media.eol.org/content/2016/08/04/01/34996_580_360.jpg",
+        "choiceKey": "http://media.eol.org/content/2016/08/04/01/34996_580_360.jpg"
+      },
+      {
+        "credit": {
+          "text": "Mattia Menchetti CC-BY-NC"
+        },
+        "thumbUrl": "http://media.eol.org/content/2016/07/31/16/74685_130_130.jpg",
+        "url": "http://media.eol.org/content/2016/07/31/16/74685_580_360.jpg",
+        "choiceKey": "http://media.eol.org/content/2016/07/31/16/74685_580_360.jpg"
+      },
+      {
+        "credit": {
+          "text": "Camponotus Vagus CC-BY-NC-SA"
+        },
+        "thumbUrl": "http://media.eol.org/content/2015/04/29/23/96478_130_130.jpg",
+        "url": "http://media.eol.org/content/2015/04/29/23/96478_580_360.jpg",
+        "choiceKey": "http://media.eol.org/content/2015/04/29/23/96478_580_360.jpg"
+      },
+      {
+        "credit": {
+          "text": "Camponotus Vagus CC-BY-NC-SA"
+        },
+        "thumbUrl": "http://media.eol.org/content/2012/05/15/00/80347_130_130.jpg",
+        "url": "http://media.eol.org/content/2012/05/15/00/80347_580_360.jpg",
+        "choiceKey": "http://media.eol.org/content/2012/05/15/00/80347_580_360.jpg"
+      },
+      {
+        "credit": {
+          "text": "Massimo L. CC-BY-SA"
+        },
+        "thumbUrl": "http://media.eol.org/content/2012/06/15/02/52996_130_130.jpg",
+        "url": "http://media.eol.org/content/2012/06/15/02/52996_580_360.jpg",
+        "choiceKey": "http://media.eol.org/content/2012/06/15/02/52996_580_360.jpg"
+      },
+      {
+        "credit": {
+          "text": "Camponotus Vagus CC-BY-NC-SA"
+        },
+        "thumbUrl": "http://media.eol.org/content/2015/05/20/03/31582_130_130.jpg",
+        "url": "http://media.eol.org/content/2015/05/20/03/31582_580_360.jpg",
+        "choiceKey": "http://media.eol.org/content/2015/05/20/03/31582_580_360.jpg"
+      },
+      {
+        "credit": {
+          "text": "Wikimedia Commons"
+        },
+        "thumbUrl": "http://media.eol.org/content/2012/06/15/02/89674_130_130.jpg",
+        "url": "http://media.eol.org/content/2012/06/15/02/89674_580_360.jpg",
+        "choiceKey": "http://media.eol.org/content/2012/06/15/02/89674_580_360.jpg"
+      },
+      {
+        "credit": {
+          "text": "Flavio Rocchi CC-BY-NC"
+        },
+        "thumbUrl": "http://media.eol.org/content/2016/08/04/01/23265_130_130.jpg",
+        "url": "http://media.eol.org/content/2016/08/04/01/23265_580_360.jpg",
+        "choiceKey": "http://media.eol.org/content/2016/08/04/01/23265_580_360.jpg"
+      },
+      {
+        "credit": {
+          "text": "Massimo L. CC-BY-SA"
+        },
+        "thumbUrl": "http://media.eol.org/content/2012/06/15/02/72473_130_130.jpg",
+        "url": "http://media.eol.org/content/2012/06/15/02/72473_580_360.jpg",
+        "choiceKey": "http://media.eol.org/content/2012/06/15/02/72473_580_360.jpg"
+      },
+      {
+        "credit": {
+          "text": "Biopix CC-BY-NC"
+        },
+        "thumbUrl": "http://media.eol.org/content/2013/05/02/01/99776_130_130.jpg",
+        "url": "http://media.eol.org/content/2013/05/02/01/99776_580_360.jpg",
+        "choiceKey": "http://media.eol.org/content/2013/05/02/01/99776_580_360.jpg"
+      },
+      {
+        "credit": {
+          "text": "Alexandre Dulaunoy CC-BY-SA"
+        },
+        "thumbUrl": "http://media.eol.org/content/2015/04/30/19/69975_130_130.jpg",
+        "url": "http://media.eol.org/content/2015/04/30/19/69975_580_360.jpg",
+        "choiceKey": "http://media.eol.org/content/2015/04/30/19/69975_580_360.jpg"
+      },
+      {
+        "credit": {
+          "text": "Alexandre Dulaunoy CC-BY-SA"
+        },
+        "thumbUrl": "http://media.eol.org/content/2011/12/20/01/07706_130_130.jpg",
+        "url": "http://media.eol.org/content/2011/12/20/01/07706_580_360.jpg",
+        "choiceKey": "http://media.eol.org/content/2011/12/20/01/07706_580_360.jpg"
+      },
+      {
+        "credit": {
+          "text": "Jiří Duchoň CC-BY-NC"
+        },
+        "thumbUrl": "http://media.eol.org/content/2010/03/24/02/12056_130_130.jpg",
+        "url": "http://media.eol.org/content/2010/03/24/02/12056_580_360.jpg",
+        "choiceKey": "http://media.eol.org/content/2010/03/24/02/12056_580_360.jpg"
+      },
+      {
+        "credit": {
+          "text": "Massimo L. CC-BY-SA"
+        },
+        "thumbUrl": "http://media.eol.org/content/2012/06/15/02/82974_130_130.jpg",
+        "url": "http://media.eol.org/content/2012/06/15/02/82974_580_360.jpg",
+        "choiceKey": "http://media.eol.org/content/2012/06/15/02/82974_580_360.jpg"
+      },
+      {
+        "credit": {
+          "text": "lauragola CC-BY-NC"
+        },
+        "thumbUrl": "http://media.eol.org/content/2017/03/23/22/93750_130_130.jpg",
+        "url": "http://media.eol.org/content/2017/03/23/22/93750_580_360.jpg",
+        "choiceKey": "http://media.eol.org/content/2017/03/23/22/93750_580_360.jpg"
+      },
+      {
+        "credit": {
+          "text": "Wikimedia Commons"
+        },
+        "thumbUrl": "http://media.eol.org/content/2016/03/30/17/05882_130_130.jpg",
+        "url": "http://media.eol.org/content/2016/03/30/17/05882_580_360.jpg",
+        "choiceKey": "http://media.eol.org/content/2016/03/30/17/05882_580_360.jpg"
+      },
+      {
+        "credit": {
+          "text": "AlexisMartin mb CC-BY-SA"
+        },
+        "thumbUrl": "http://media.eol.org/content/2013/11/17/08/23912_130_130.jpg",
+        "url": "http://media.eol.org/content/2013/11/17/08/23912_580_360.jpg",
+        "choiceKey": "http://media.eol.org/content/2013/11/17/08/23912_580_360.jpg"
+      },
+      {
+        "credit": {
+          "text": "Biodiversity Heritage Library CC-BY"
+        },
+        "thumbUrl": "http://media.eol.org/content/2015/02/27/02/58939_130_130.jpg",
+        "url": "http://media.eol.org/content/2015/02/27/02/58939_580_360.jpg",
+        "choiceKey": "http://media.eol.org/content/2015/02/27/02/58939_580_360.jpg"
+      },
+      {
+        "credit": {
+          "text": "Biodiversity Heritage Library CC-BY"
+        },
+        "thumbUrl": "http://media.eol.org/content/2016/08/16/00/88948_130_130.jpg",
+        "url": "http://media.eol.org/content/2016/08/16/00/88948_580_360.jpg",
+        "choiceKey": "http://media.eol.org/content/2016/08/16/00/88948_580_360.jpg"
+      },
+      {
+        "credit": {
+          "text": "Biodiversity Heritage Library CC-BY"
+        },
+        "thumbUrl": "http://media.eol.org/content/2016/07/19/22/18866_130_130.jpg",
+        "url": "http://media.eol.org/content/2016/07/19/22/18866_580_360.jpg",
+        "choiceKey": "http://media.eol.org/content/2016/07/19/22/18866_580_360.jpg"
+      },
+      {
+        "credit": {
+          "text": "Camponotus Vagus CC-BY-NC-SA"
+        },
+        "thumbUrl": "http://media.eol.org/content/2012/05/15/00/39216_130_130.jpg",
+        "url": "http://media.eol.org/content/2012/05/15/00/39216_580_360.jpg",
+        "choiceKey": "http://media.eol.org/content/2012/05/15/00/39216_580_360.jpg"
+      },
+      {
+        "credit": {
+          "text": "gbohne from Berlin, Germany CC-BY-SA"
+        },
+        "thumbUrl": "http://media.eol.org/content/2015/03/21/18/97662_130_130.jpg",
+        "url": "http://media.eol.org/content/2015/03/21/18/97662_580_360.jpg",
+        "choiceKey": "http://media.eol.org/content/2015/03/21/18/97662_580_360.jpg"
+      },
+      {
+        "credit": {
+          "text": "Biodiversity Heritage Library CC-BY"
+        },
+        "thumbUrl": "http://media.eol.org/content/2014/10/11/04/43165_130_130.jpg",
+        "url": "http://media.eol.org/content/2014/10/11/04/43165_580_360.jpg",
+        "choiceKey": "http://media.eol.org/content/2014/10/11/04/43165_580_360.jpg"
+      },
+      {
+        "credit": {
+          "text": "Haruta Ovidiu, University of Oradea, Bugwood.org CC-BY"
+        },
+        "thumbUrl": "http://media.eol.org/content/2014/06/12/11/49670_130_130.jpg",
+        "url": "http://media.eol.org/content/2014/06/12/11/49670_580_360.jpg",
+        "choiceKey": "http://media.eol.org/content/2014/06/12/11/49670_580_360.jpg"
+      },
+      {
+        "credit": {
+          "text": "Wikimedia Commons"
+        },
+        "thumbUrl": "http://media.eol.org/content/2013/11/17/03/92745_130_130.jpg",
+        "url": "http://media.eol.org/content/2013/11/17/03/92745_580_360.jpg",
+        "choiceKey": "http://media.eol.org/content/2013/11/17/03/92745_580_360.jpg"
+      },
+      {
+        "credit": {
+          "text": "Ambica"
+        },
+        "thumbUrl": "http://media.eol.org/content/2013/11/24/23/62407_130_130.jpg",
+        "url": "http://media.eol.org/content/2013/11/24/23/62407_580_360.jpg",
+        "choiceKey": "http://media.eol.org/content/2013/11/24/23/62407_580_360.jpg"
+      },
+      {
+        "credit": {
+          "text": "Wikimedia Commons"
+        },
+        "thumbUrl": "http://media.eol.org/content/2013/11/30/23/53596_130_130.jpg",
+        "url": "http://media.eol.org/content/2013/11/30/23/53596_580_360.jpg",
+        "choiceKey": "http://media.eol.org/content/2013/11/30/23/53596_580_360.jpg"
+      },
+      {
+        "credit": {
+          "text": "Creator:Archibald Thorburn"
+        },
+        "thumbUrl": "http://media.eol.org/content/2013/12/01/19/35630_130_130.jpg",
+        "url": "http://media.eol.org/content/2013/12/01/19/35630_580_360.jpg",
+        "choiceKey": "http://media.eol.org/content/2013/12/01/19/35630_580_360.jpg"
+      },
+      {
+        "credit": {
+          "text": "Camponotus Vagus CC-BY-NC-SA"
+        },
+        "thumbUrl": "http://media.eol.org/content/2015/05/20/03/10380_130_130.jpg",
+        "url": "http://media.eol.org/content/2015/05/20/03/10380_580_360.jpg",
+        "choiceKey": "http://media.eol.org/content/2015/05/20/03/10380_580_360.jpg"
+      },
+      {
+        "credit": {
+          "text": "Massimo L. CC-BY-SA"
+        },
+        "thumbUrl": "http://media.eol.org/content/2012/06/15/02/19580_130_130.jpg",
+        "url": "http://media.eol.org/content/2012/06/15/02/19580_580_360.jpg",
+        "choiceKey": "http://media.eol.org/content/2012/06/15/02/19580_580_360.jpg"
+      },
+      {
+        "credit": {
+          "text": "Massimo L. CC-BY-SA"
+        },
+        "thumbUrl": "http://media.eol.org/content/2012/06/15/02/14366_130_130.jpg",
+        "url": "http://media.eol.org/content/2012/06/15/02/14366_580_360.jpg",
+        "choiceKey": "http://media.eol.org/content/2012/06/15/02/14366_580_360.jpg"
+      },
+      {
+        "credit": {
+          "text": "Wikimedia Commons CC-BY"
+        },
+        "thumbUrl": "http://media.eol.org/content/2012/06/15/02/37640_130_130.jpg",
+        "url": "http://media.eol.org/content/2012/06/15/02/37640_580_360.jpg",
+        "choiceKey": "http://media.eol.org/content/2012/06/15/02/37640_580_360.jpg"
+      }
+    ],
+    "taxonClass": [
+      {
+        "choiceKey": "amphibians",
+        "text": "Amphibians"
+      },
+      {
+        "choiceKey": "animals",
+        "text": "Animals"
+      },
+      {
+        "choiceKey": "annelids",
+        "text": "Annelids"
+      },
+      {
+        "choiceKey": "archaea",
+        "text": "Archaea"
+      },
+      {
+        "choiceKey": "arthropods",
+        "text": "Arthropods"
+      },
+      {
+        "choiceKey": "birds",
+        "text": "Birds"
+      },
+      {
+        "choiceKey": "cnidarians",
+        "text": "Cnidarians"
+      },
+      {
+        "choiceKey": "echinoderms",
+        "text": "Echinoderms"
+      },
+      {
+        "choiceKey": "fishes",
+        "text": "Fishes"
+      },
+      {
+        "choiceKey": "fungi",
+        "text": "Fungi"
+      },
+      {
+        "choiceKey": "mammals",
+        "text": "Mammals"
+      },
+      {
+        "choiceKey": "mollusks",
+        "text": "Mollusks"
+      },
+      {
+        "choiceKey": "nematodes",
+        "text": "Nematodes"
+      },
+      {
+        "choiceKey": "plants",
+        "text": "Plants"
+      },
+      {
+        "choiceKey": "platyhelminthes",
+        "text": "Platyhelminthes"
+      },
+      {
+        "choiceKey": "reptiles",
+        "text": "Reptiles"
+      },
+      {
+        "choiceKey": "sponges",
+        "text": "Sponges"
+      }
+    ],
+    "traits": [
+      {
+        "choiceKey": "Activity",
+        "text": "Activity"
+      },
+      {
+        "choiceKey": "Adult Body Length",
+        "text": "Adult Body Length"
+      },
+      {
+        "choiceKey": "Adult Habitat",
+        "text": "Adult Habitat"
+      },
+      {
+        "choiceKey": "Adult Lifespan",
+        "text": "Adult Lifespan"
+      },
+      {
+        "choiceKey": "Adult Weight",
+        "text": "Adult Weight"
+      },
+      {
+        "choiceKey": "Age of Female Maturity",
+        "text": "Age of Female Maturity"
+      },
+      {
+        "choiceKey": "Body Length",
+        "text": "Body Length"
+      },
+      {
+        "choiceKey": "Cap Color",
+        "text": "Cap Color"
+      },
+      {
+        "choiceKey": "Cap Size",
+        "text": "Cap Size"
+      },
+      {
+        "choiceKey": "Cell Shape",
+        "text": "Cell Shape"
+      },
+      {
+        "choiceKey": "Cell Wall",
+        "text": "Cell Wall"
+      },
+      {
+        "choiceKey": "Clutch/broods",
+        "text": "Clutch/broods"
+      },
+      {
+        "choiceKey": "Color",
+        "text": "Color"
+      },
+      {
+        "choiceKey": "Depth Zone",
+        "text": "Depth Zone"
+      },
+      {
+        "choiceKey": "Development",
+        "text": "Development"
+      },
+      {
+        "choiceKey": "Diameter",
+        "text": "Diameter"
+      },
+      {
+        "choiceKey": "Energy Source",
+        "text": "Energy Source"
+      },
+      {
+        "choiceKey": "Flower Color",
+        "text": "Flower Color"
+      },
+      {
+        "choiceKey": "Form",
+        "text": "Form"
+      },
+      {
+        "choiceKey": "Growth Form",
+        "text": "Growth Form"
+      },
+      {
+        "choiceKey": "Growth Habit",
+        "text": "Growth Habit"
+      },
+      {
+        "choiceKey": "Habitat",
+        "text": "Habitat"
+      },
+      {
+        "choiceKey": "Height",
+        "text": "Height"
+      },
+      {
+        "choiceKey": "Host",
+        "text": "Host"
+      },
+      {
+        "choiceKey": "Length",
+        "text": "Length"
+      },
+      {
+        "choiceKey": "Life Cycle",
+        "text": "Life Cycle"
+      },
+      {
+        "choiceKey": "Lifespan",
+        "text": "Lifespan"
+      },
+      {
+        "choiceKey": "Metabolism",
+        "text": "Metabolism"
+      },
+      {
+        "choiceKey": "Motility",
+        "text": "Motility"
+      },
+      {
+        "choiceKey": "Nest Type",
+        "text": "Nest Type"
+      },
+      {
+        "choiceKey": "Number of Eggs",
+        "text": "Number of Eggs"
+      },
+      {
+        "choiceKey": "Offspring",
+        "text": "Offspring"
+      },
+      {
+        "choiceKey": "Offspring/litters",
+        "text": "Offspring/litters"
+      },
+      {
+        "choiceKey": "Organism Cells",
+        "text": "Organism Cells"
+      },
+      {
+        "choiceKey": "Reproduction",
+        "text": "Reproduction"
+      },
+      {
+        "choiceKey": "Shell/mantle",
+        "text": "Shell/mantle"
+      },
+      {
+        "choiceKey": "Size",
+        "text": "Size"
+      },
+      {
+        "choiceKey": "Snout-vent Length",
+        "text": "Snout-vent Length"
+      },
+      {
+        "choiceKey": "Spore Print",
+        "text": "Spore Print"
+      },
+      {
+        "choiceKey": "Spore Surface",
+        "text": "Spore Surface"
+      },
+      {
+        "choiceKey": "Sunlight/soil",
+        "text": "Sunlight/soil"
+      },
+      {
+        "choiceKey": "Symbiotic Status",
+        "text": "Symbiotic Status"
+      },
+      {
+        "choiceKey": "Total Length",
+        "text": "Total Length"
+      },
+      {
+        "choiceKey": "Wings",
+        "text": "Wings"
+      },
+      {
+        "choiceKey": "Wingspan",
+        "text": "Wingspan"
+      },
+      {
+        "choiceKey": "Zonation",
+        "text": "Zonation"
+      }
+    ]
+  },
+  "templateParams": {
+    "speciesId": 327940
+  }
+}

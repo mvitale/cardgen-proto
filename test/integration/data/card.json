@@ -1,10 +1,10 @@
 {
-  "templateVersion": "1.1",
+  "templateVersion": "1.0",
   "templateName": "trait",
   "userId": 1234,
   "appId": "test",
   "locale": "en",
-  "_id": "59e50456f877347503988ec7",
+  "_id": "59e50af27cf51575e5b4c52a",
   "version": 0,
   "data": {
     "commonName": {

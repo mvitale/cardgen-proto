@@ -14,8 +14,8 @@ var sandbox = sinon.sandbox.create();
 var labelKeyPrefix = 'template.fieldLabels.';
 
 var template1 = {
-  type: 'trait',
   name: 'template1',
+  version: '1.0',
   params: [
     {
       name: 'speciesId',
@@ -39,8 +39,8 @@ var template1 = {
 };
 
 template1Resolved = {
-  type: 'trait',
   name: 'template1',
+  version: '1.0',
   params: [
     {
       name: 'speciesId',
@@ -64,8 +64,8 @@ template1Resolved = {
 };
 
 var template2 = {
-  type: 'title',
   name: 'template2',
+  version: '2.3',
   spec: {
     fields: {
       otherText: {
@@ -76,8 +76,8 @@ var template2 = {
 };
 
 var template2Resolved = {
-  type: 'title',
   name: 'template2',
+  version: '2.3',
   spec: {
     fields: {
       otherText: {
@@ -106,39 +106,63 @@ describe('template-manager', () => {
   });
 
   describe('#getTemplate', () => {
+    var v1 = '1.5'
+      , v2 = '2.1'
+      , v3 = '2.2'
+      , t1v1 = JSON.parse(JSON.stringify(template1))
+      , t1v2 = JSON.parse(JSON.stringify(template1))
+      , t1v3 = JSON.parse(JSON.stringify(template1))
+      , t1v1res = JSON.parse(JSON.stringify(template1Resolved))
+      , t1v2res = JSON.parse(JSON.stringify(template1Resolved))
+      , t1v3res = JSON.parse(JSON.stringify(template1Resolved))
+      ;
+      
+    t1v1.version = t1v1res.version = v1;
+    t1v2.version = t1v2res.version = v2;
+    t1v3.version = t1v3res.version = v3;
+      
     beforeEach(() => {
+
       templateManager.setTemplateLoader({
         templates: function() {
-          return [ template1, template2 ];
+          return [ t1v1, t1v2, t1v3, template2 ];
         }
       });
 
       templateManager.load();
     });
 
-    context('when the template name is valid and the locale is loaded', () => {
-      it('returns the translated template for that locale', () => {
-        expect(templateManager.getTemplate('template1', 'en')).to.eql(template1Resolved);
-        expect(templateManager.getTemplate('template2', 'en')).to.eql(template2Resolved);
+    context('when template name and version are valid', () => {
+      context('when locale is loaded', () => {
+        it('returns the translated template for that locale', () => {
+          expect(templateManager.getTemplate('template1', v2, 'en')).to.eql(t1v2res);
+          expect(templateManager.getTemplate('template2', '2.3', 'en')).to.eql(template2Resolved);
+        });
+      });
+
+      context('when locale isn\'t loaded', () => {
+        it('returns the template for the default locale', () => {
+          expect(templateManager.getTemplate('template1', v2, 'es')).to.eql(t1v2res);
+          expect(templateManager.getTemplate('template2', '2.3', 'zh')).to.eql(template2Resolved);
+        });
       });
     });
 
-    context("when the template name is valid but the locale isn't loaded", () => {
-      it ('returns the template for the default locale', () => {
-        expect(templateManager.getTemplate('template1', 'es')).to.eql(template1Resolved);
-        expect(templateManager.getTemplate('template2', 'zh')).to.eql(template2Resolved);
+    context('when template name is valid and version isn\'t specified', () => {
+      it('returns the template with the highest version', () => {
+        expect(templateManager.getTemplate('template1', null, 'es')).to.eql(t1v3res);
       });
     });
 
     context('when the template name is invalid', () => {
       it ('returns null', () => {
-        expect(templateManager.getTemplate('bogus', 'en')).to.be.null;
+        expect(templateManager.getTemplate('bogus', null, 'en')).to.be.null;
       });
     });
 
     context('when the locale is null', () => {
       it ('throws an error', () => {
-        expect(() => { templateManager.getTemplate('template1', null)}).to.throw(TypeError);
+        expect(() => { templateManager.getTemplate('template1', v1, null)}).to.throw(TypeError);
       });
     });
 
@@ -200,6 +224,7 @@ describe('template-manager', () => {
         it('yields the correct result', () => {
           templateManager.getDefaultAndChoiceData(
             'template1',
+            null,
             'en',
             { speciesId: 1234 },
             callback
@@ -228,6 +253,7 @@ describe('template-manager', () => {
         it('yields an error', () => {
           templateManager.getDefaultAndChoiceData(
             'invalidtemplate',
+            null,
             'en',
             {},
             callback
@@ -263,6 +289,7 @@ describe('template-manager', () => {
       it('yields an error', () => {
         templateManager.getDefaultAndChoiceData(
           'template1',
+          null,
           'en',
           { speciesId: 1234 },
           callback
@@ -297,6 +324,7 @@ describe('template-manager', () => {
       it('yields an error', () => {
         templateManager.getDefaultAndChoiceData(
           'template1',
+          null,
           'en',
           { speciesId: 1234 },
           callback
@@ -331,6 +359,7 @@ describe('template-manager', () => {
       it('yields an error', () => {
         templateManager.getDefaultAndChoiceData(
           'template1',
+          null,
           'en',
           { speciesId: 1234 },
           callback

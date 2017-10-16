@@ -17,6 +17,7 @@ chai.use(sinonChai);
 describe('Card', () => {
   var validData = {
         templateName: 'foo',
+        templateVersion: '1.4',
         userId: 1,
         locale: 'en',
         appId: 'app'
@@ -84,6 +85,10 @@ describe('Card', () => {
     context('when document is missing templateName', () => {
       shouldBehaveLikeFieldMissing('templateName');
     });
+
+    context('when document is missing templateVersion', () => {
+      shouldBehaveLikeFieldMissing('templateVersion');
+    });
   });
 
   describe('#populateDefaultsAndChoices', () => {
@@ -108,7 +113,7 @@ describe('Card', () => {
       it('correctly sets its data and choices fields', () => {
         doc.populateDefaultsAndChoices((err) => {
           expect(getDefaultAndChoiceData).to.have.been.calledOnce.calledWith(
-            doc.templateName, doc.locale, doc.templateParams
+            doc.templateName, doc.templateVersion, doc.locale, doc.templateParams
           );
 
           expect(err).not.to.exist;

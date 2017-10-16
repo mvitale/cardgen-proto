@@ -38,7 +38,7 @@ var template1 = {
   }
 };
 
-template1Resolved = {
+var template1Resolved = {
   name: 'template1',
   version: '1.0',
   params: [
@@ -87,6 +87,21 @@ var template2Resolved = {
   }
 }
 
+var v1 = '1.5'
+  , v2 = '2.1'
+  , v3 = '2.2'
+  , t1v1 = JSON.parse(JSON.stringify(template1))
+  , t1v2 = JSON.parse(JSON.stringify(template1))
+  , t1v3 = JSON.parse(JSON.stringify(template1))
+  , t1v1res = JSON.parse(JSON.stringify(template1Resolved))
+  , t1v2res = JSON.parse(JSON.stringify(template1Resolved))
+  , t1v3res = JSON.parse(JSON.stringify(template1Resolved))
+  ;
+  
+t1v1.version = t1v1res.version = v1;
+t1v2.version = t1v2res.version = v2;
+t1v3.version = t1v3res.version = v3;
+
 describe('template-manager', () => {
   var templateManager
     , tStub
@@ -106,20 +121,6 @@ describe('template-manager', () => {
   });
 
   describe('#getTemplate', () => {
-    var v1 = '1.5'
-      , v2 = '2.1'
-      , v3 = '2.2'
-      , t1v1 = JSON.parse(JSON.stringify(template1))
-      , t1v2 = JSON.parse(JSON.stringify(template1))
-      , t1v3 = JSON.parse(JSON.stringify(template1))
-      , t1v1res = JSON.parse(JSON.stringify(template1Resolved))
-      , t1v2res = JSON.parse(JSON.stringify(template1Resolved))
-      , t1v3res = JSON.parse(JSON.stringify(template1Resolved))
-      ;
-      
-    t1v1.version = t1v1res.version = v1;
-    t1v2.version = t1v2res.version = v2;
-    t1v3.version = t1v3res.version = v3;
       
     beforeEach(() => {
 
@@ -148,15 +149,15 @@ describe('template-manager', () => {
       });
     });
 
-    context('when template name is valid and version isn\'t specified', () => {
-      it('returns the template with the highest version', () => {
-        expect(templateManager.getTemplate('template1', null, 'es')).to.eql(t1v3res);
+    context('when version is null specified', () => {
+      it('throws a TypeError', () => {
+        expect(() => { templateManager.getTemplate('template1', null, 'es') }).to.throw(TypeError);
       });
     });
 
     context('when the template name is invalid', () => {
       it ('returns null', () => {
-        expect(templateManager.getTemplate('bogus', null, 'en')).to.be.null;
+        expect(templateManager.getTemplate('bogus', v1, 'en')).to.be.null;
       });
     });
 
@@ -224,7 +225,7 @@ describe('template-manager', () => {
         it('yields the correct result', () => {
           templateManager.getDefaultAndChoiceData(
             'template1',
-            null,
+            v1,
             'en',
             { speciesId: 1234 },
             callback
@@ -253,7 +254,7 @@ describe('template-manager', () => {
         it('yields an error', () => {
           templateManager.getDefaultAndChoiceData(
             'invalidtemplate',
-            null,
+            v1,
             'en',
             {},
             callback
@@ -289,7 +290,7 @@ describe('template-manager', () => {
       it('yields an error', () => {
         templateManager.getDefaultAndChoiceData(
           'template1',
-          null,
+          v1,
           'en',
           { speciesId: 1234 },
           callback
@@ -324,7 +325,7 @@ describe('template-manager', () => {
       it('yields an error', () => {
         templateManager.getDefaultAndChoiceData(
           'template1',
-          null,
+          v1,
           'en',
           { speciesId: 1234 },
           callback
@@ -359,7 +360,7 @@ describe('template-manager', () => {
       it('yields an error', () => {
         templateManager.getDefaultAndChoiceData(
           'template1',
-          null,
+          v1,
           'en',
           { speciesId: 1234 },
           callback

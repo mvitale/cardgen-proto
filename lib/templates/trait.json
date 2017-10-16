@@ -1,5 +1,6 @@
 {
   "name": "trait",
+  "version": "1.1",
   "params": [
     {
       "name": "speciesId",

@@ -34,7 +34,9 @@
     "sponges": "Sponges",
     "mammals": "Mammals",
     "animals": "Animals",
-    "otherAnimals": "Other animals"
+    "otherAnimals": "Other animals",
+    "eukaryotes": "Eukaryotes",
+    "cellularOrganisms": "Cellular organisms"
   },
   "biomeIconSupplier": {
     "labels": {

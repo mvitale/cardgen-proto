@@ -68,7 +68,7 @@ describe('species-data-supplier', () => {
           .returns(images);
         sandbox.stub(dataUtils, 'parseCommonName')
           .returns(commonName);
-        sandbox.stub(taxonGroup, 'lowestTaxonGroupKey').withArgs(ancestors)
+        sandbox.stub(taxonGroup, 'lowestTaxonGroupKey').withArgs(sciName, ancestors)
           .returns('mammals');
 
         // Store in var to verify later that the args are in fact what we

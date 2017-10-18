@@ -4,7 +4,7 @@
   "userId": 1234,
   "appId": "test",
   "locale": "en",
-  "_id": "59e50af27cf51575e5b4c52a",
+  "_id": "59e762f85a451d062efa8ad7",
   "version": 0,
   "data": {
     "commonName": {
@@ -463,76 +463,6 @@
         "choiceKey": "http://media.eol.org/content/2012/06/15/02/37640_580_360.jpg"
       }
     ],
-    "taxonClass": [
-      {
-        "choiceKey": "amphibians",
-        "text": "Amphibians"
-      },
-      {
-        "choiceKey": "animals",
-        "text": "Animals"
-      },
-      {
-        "choiceKey": "annelids",
-        "text": "Annelids"
-      },
-      {
-        "choiceKey": "archaea",
-        "text": "Archaea"
-      },
-      {
-        "choiceKey": "arthropods",
-        "text": "Arthropods"
-      },
-      {
-        "choiceKey": "birds",
-        "text": "Birds"
-      },
-      {
-        "choiceKey": "cnidarians",
-        "text": "Cnidarians"
-      },
-      {
-        "choiceKey": "echinoderms",
-        "text": "Echinoderms"
-      },
-      {
-        "choiceKey": "fishes",
-        "text": "Fishes"
-      },
-      {
-        "choiceKey": "fungi",
-        "text": "Fungi"
-      },
-      {
-        "choiceKey": "mammals",
-        "text": "Mammals"
-      },
-      {
-        "choiceKey": "mollusks",
-        "text": "Mollusks"
-      },
-      {
-        "choiceKey": "nematodes",
-        "text": "Nematodes"
-      },
-      {
-        "choiceKey": "plants",
-        "text": "Plants"
-      },
-      {
-        "choiceKey": "platyhelminthes",
-        "text": "Platyhelminthes"
-      },
-      {
-        "choiceKey": "reptiles",
-        "text": "Reptiles"
-      },
-      {
-        "choiceKey": "sponges",
-        "text": "Sponges"
-      }
-    ],
     "traits": [
       {
         "choiceKey": "Activity",
@@ -643,6 +573,10 @@
         "text": "Lifespan"
       },
       {
+        "choiceKey": "Locomotion",
+        "text": "Locomotion"
+      },
+      {
         "choiceKey": "Metabolism",
         "text": "Metabolism"
       },
@@ -673,6 +607,10 @@
       {
         "choiceKey": "Reproduction",
         "text": "Reproduction"
+      },
+      {
+        "choiceKey": "Shape",
+        "text": "Shape"
       },
       {
         "choiceKey": "Shell/mantle",

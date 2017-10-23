@@ -19,7 +19,7 @@ init((err) => {
 
   logErrorAndDieIfExists(err);
 
-  var server = require('./server')
+  var server = require('_/server')
     , config = require('_/config/config')
     , port = config.get('server.port')
     , readyMsgBound = readyMsg.bind(null, port)

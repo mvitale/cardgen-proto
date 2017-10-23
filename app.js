@@ -15,11 +15,10 @@ function readyMsg(port) {
 }
 
 init((err) => {
-  var httpsOptions;
-
   logErrorAndDieIfExists(err);
 
-  var server = require('_/server')
+  var httpsOptions
+    , server = require('_/server')
     , config = require('_/config/config')
     , port = config.get('server.port')
     , readyMsgBound = readyMsg.bind(null, port)

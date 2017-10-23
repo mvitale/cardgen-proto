@@ -6,14 +6,24 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",
+    "decache": "^4.1.0",
     "mocha": "^3.3.0",
+    "nyc": "^11.2.1",
     "sinon": "^2.2.0",
     "sinon-chai": "^2.10.0",
     "sinon-mongoose": "^2.0.1"
   },
   "scripts": {
-    "test": "mocha \"test/**/*-test.js\"",
+    "test": "NODE_ENV=test nyc --all mocha \"test/**/*-test.js\"",
     "start": "node app"
+  },
+  "nyc": {
+    "exclude": [
+      "lib/template-renderer/*",
+      "test",
+      "pm2",
+      "scripts"
+    ]
   },
   "author": "Michael Vitale",
   "license": "ISC",

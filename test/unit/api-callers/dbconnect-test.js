@@ -51,7 +51,7 @@ describe('dbconnect', () => {
         dbconnect.mongooseInit(cb);
         expect(mongooseConnect).to.have.been.calledOnce.calledWith(
           'mongodb://cardgenUser:cardgenPass@card-db:1234/cardgen',
-          null,
+          { useMongoClient: true },
           cb
         );
       });

@@ -3,6 +3,7 @@ var chai = require('chai');
 var sinon = require('sinon');
 var sinonChai = require('sinon-chai');
 var sinonMongoose = require('sinon-mongoose');
+var mongoose = require('mongoose');
 
 var cardRoutes = require('_/routes/cards')
   , Card = require('_/models/card')
@@ -1193,7 +1194,6 @@ describe('cards', () => {
         appId: appId,
         log: logger
       };
-
       findOne = sandbox.stub(Card, 'findOne')
         .withArgs({
           userId: userId,
@@ -1278,15 +1278,212 @@ describe('cards', () => {
     });
   });
 
+  describe('#copyCard', () => {
+    var findOne
+      , savedCard
+      , cardId = 'qwerty'
+      , newId = 'ytrewq'
+      , userId = 1234
+      , appId = 'app'
+      ;
+
+    beforeEach(() => {
+      findOne = sandbox.stub(Card, 'findOne');
+      savedCard = null;
+    });
+
+    context('when the card is found', () => {
+      var card
+        ;
+
+      beforeEach(() => {
+        sandbox.stub(mongoose.Types, 'ObjectId').returns(newId);
+        card = {
+          _id: cardId,
+          version: 5,
+          isNew: false,
+          _deck: {
+            id: 'foo'
+          }
+        };
+        card.save = sandbox.stub();
+        findOne.yields(null, card);
+      });
+
+      function verifySavedCard(deck) {
+        it('should have version set to 0', () => {
+          expect(savedCard.version).to.equal(0);
+        });
+
+        it('should have isNew set to true', () => {
+          expect(savedCard.isNew).to.be.true;
+        });
+
+        it('should have _id set to the result of mongoose.Types.ObjectId()', () => {
+          expect(savedCard._id).to.equal(newId);
+        });
+
+        it('should have _deck set correctly', () => {
+          if (deck) {
+            expect(savedCard._deck).to.eql(deck);
+          } else {
+            expect(savedCard._deck).not.to.exist;
+          }
+        });
+      }
+
+      function itBehavesLikeCardFound(deck) {
+        it('calls Card.findOne with the expected parameters', () => {
+          cardRoutes.copyCard(req, res);
+          expect(findOne).to.have.been.calledOnce.calledWith({
+            _id: cardId,
+            appId: appId,
+            userId: userId
+          });
+        });
+
+        context('when save is successful', () => {
+          beforeEach(() => {
+            card.save.callsFake((cb) => {
+              savedCard = JSON.parse(JSON.stringify(card));
+              cb(null, savedCard);
+            });
+            cardRoutes.copyCard(req, res);
+          });
+
+          verifySavedCard(deck);
+
+          it('calls jsonRes with ok message and status', () => {
+            expect(jsonRes).to.have.been.calledOnce.calledWith(
+              res,
+              resUtils.httpStatus.ok,
+              { status: 'ok' }
+            );
+          });
+        });
+
+        context('when save yields an error', () => {
+          var err = new Error('failed to save document');
+
+          beforeEach(() => {
+            card.save.yields(err);
+          });
+
+          it('calls errJsonRes with the error', () => {
+            cardRoutes.copyCard(req, res);
+            expect(errJsonRes).to.have.been.calledOnce.calledWith(res, err);
+          });
+        });
+      }
+
+      context('when deckId is missing from the request', () => {
+        beforeEach(() => {
+          req = {
+            params: {
+              userId: userId,
+              cardId: cardId
+            },
+            body: {},
+            appId: appId
+          }
+        });
+
+        itBehavesLikeCardFound(null);
+      });
+
+      context('when there is deckId in the request', () => {
+        var deckId = 'deckid';
+
+        beforeEach(() => {
+          req = {
+            params: {
+              userId: userId,
+              cardId: cardId,
+            },
+            body: {
+              deckId: deckId
+            },
+            appId: appId
+          };
+
+          sandbox.stub(Deck, 'findOne');
+        });
+
+        it('calls Deck.findOne with the correct options', () => {
+          cardRoutes.copyCard(req, res);
+          expect(Deck.findOne).to.have.been.calledOnce.calledWith({
+            _id: deckId,
+            appId: appId,
+            userId: userId
+          });
+        });
+
+        context('when Deck.findOne is successful', () => {
+          var deck = {
+            id: deckId
+          };
+
+          beforeEach(() => {
+            Deck.findOne.yields(null, deck);
+          });
+
+          itBehavesLikeCardFound(deck);
+        });
+
+        context('when Deck.findOne yields an error', () => {
+          var err = new Error('Deck.findOne failed');
+
+          beforeEach(() => {
+            Deck.findOne.yields(err);
+            cardRoutes.copyCard(req, res);
+          });
+
+          itSendsDeckNotFoundResponse(deckId, userId);
+        });
+      });
+    });
+
+    context('when Card.findOne yields an error', () => {
+      var err = new Error('findOne failed');
+
+      beforeEach(() => {
+        findOne.yields(err);
+        cardRoutes.copyCard(req, res);
+      });
+
+      itSendsCardNotFoundResponse(cardId, userId);
+    });
+  });
+
   afterEach(() => {
     sandbox.restore();
   });
+
+  function itSendsCardNotFoundResponse(cardId, userId) {
+    it('sends card not found response', () => {
+      expect(resUtils.jsonRes).to.have.been.calledOnce.calledWith(
+        res,
+        resUtils.httpStatus.notFound,
+        { msg: cardNotFoundMessage(cardId, userId) }
+      );
+    });
+  }
+
+  function itSendsDeckNotFoundResponse(deckId, userId) {
+    it('sends deck not found response', () => {
+      expect(resUtils.jsonRes).to.have.been.calledOnce.calledWith(
+        res,
+        resUtils.httpStatus.notFound,
+        { msg: deckNotFoundMessage(deckId, userId) }
+      );
+    });
+  }
+
+  function cardNotFoundMessage(cardId, userId) {
+    return 'Card ' + cardId + ' belonging to user ' + userId + ' not found';
+  }
+
+  function deckNotFoundMessage(deckId, userId) {
+    return 'Deck ' + deckId + ' belonging to user ' + userId + ' not found';
+  }
 });
-
-function cardNotFoundMessage(cardId, userId) {
-  return 'Card ' + cardId + ' belonging to user ' + userId + ' not found';
-}
-
-function deckNotFoundMessage(deckId, userId) {
-  return 'Deck ' + deckId + ' belonging to user ' + userId + ' not found';
-}

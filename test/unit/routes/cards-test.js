@@ -1438,6 +1438,17 @@ describe('cards', () => {
             cardRoutes.copyCard(req, res);
           });
 
+          it('calls errJsonRes with the error', () => {
+            expect(errJsonRes).to.have.been.calledOnce.calledWith(res, err);
+          });
+        });
+
+        context('when Deck.findOne is yields a null result', () => {
+          beforeEach(() => {
+            Deck.findOne.yields(null, null);
+            cardRoutes.copyCard(req, res);
+          });
+
           itSendsDeckNotFoundResponse(deckId, userId);
         });
       });
@@ -1451,7 +1462,93 @@ describe('cards', () => {
         cardRoutes.copyCard(req, res);
       });
 
+      it('calls errJsonRes with the error', () => {
+        expect(errJsonRes).to.have.been.calledOnce.calledWith(res, err);
+      });
+    });
+
+    context('when Card.findOne yields a null result', () => {
+      beforeEach(() => {
+        findOne.yields(null, null);
+        cardRoutes.copyCard(req, res);
+      });
+
       itSendsCardNotFoundResponse(cardId, userId);
+    });
+  });
+
+  describe('#userCardsWithTaxonId', () => {
+    var userId = 'userId'
+      , taxonId = 12345
+      , appId
+      ;
+
+    beforeEach(() => {
+      req = {
+        params: {
+          userId: userId,
+          taxonId: taxonId
+        },
+        appId: appId
+      }
+      sandbox.stub(Card, 'find')
+    });
+
+    it('calls find with the expected parameters', () => {
+      cardRoutes.userCardsWithTaxonId(req, res);
+      expect(Card.find).to.have.been.calledOnce.calledWith({
+        templateParams: {
+          speciesId: taxonId
+        },
+        userId: userId,
+        appId: appId
+      });
+    });
+
+    context('when there are cards that belong to the user with the same taxonId', () => {
+      var card1Id = 'card1id'
+        , card2Id = 'card2id'
+        , card1 = {
+            _id: card1Id
+          }
+        , card2 = {
+            _id: card2Id
+          }
+        ;
+
+      beforeEach(() => {
+        Card.find.yields(null, [
+          card1,
+          card2
+        ]);
+
+        cardRoutes.userCardsWithTaxonId(req, res);
+      });
+
+      it('calls jsonRes with ok status and an array containing the card ids', () => {
+        expect(resUtils.jsonRes).to.have.been.calledOnce.calledWith(
+          res,
+          resUtils.httpStatus.ok,
+          [
+            card1Id,
+            card2Id
+          ]
+        );
+      });
+    });
+
+    context('when Card.find yields an error', () => {
+      var err = new Error('Card.find failed');
+
+      beforeEach(() => {
+        Card.find.yields(err);
+
+        cardRoutes.userCardsWithTaxonId(req, res);
+      });
+
+      it('calls errJsonRes with the error', () => {
+        expect(resUtils.errJsonRes).to.have.been.calledOnce.calledWith(res, err);
+      });
     });
   });
 

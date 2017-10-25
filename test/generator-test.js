@@ -6,9 +6,9 @@ var mocha = require('mocha')
   , TemplateRenderer = require('_/template-renderer/template-renderer')
   , CardWrapper = require('_/template-renderer/card-wrapper')
   , imageFetcher = require('_/image-fetcher')
+  , generator = require('_/generator')
+  , pngCanvasSupplierFactory = require('_/png-canvas-supplier-factory')
   ;
-
-var generator = require('_/generator');
 
 var expect = chai.expect
   , sandbox = sinon.sandbox.create()
@@ -16,87 +16,148 @@ var expect = chai.expect
 
 chai.use(sinonChai);
 
-describe('generator', () => {
-  describe('#generateSvg', () => {
-    var templateRenderer
-      , cardWrapper
-      , canvas
-      , cb
-      , card = {
-          id: 1234
-        }
-      , cardWrapper = {
-          card: card
-        }
-      , logger
-      , newTemplateRenderer
-      , newCardWrapper
-      ;
+describe.only('generator', () => {
+  var templateRenderer
+    , cardWrapper
+    , canvas
+    , cb
+    , card = {
+        id: 1234
+      }
+    , cardWrapper = {
+        card: card
+      }
+    , logger
+    , newTemplateRenderer
+    , newCardWrapper
+    , buffer = 'asdf'
+    , cardWrapperErr = new Error('CardWrapper.newInstance failed')
+    , drawErr = new Error('renderer.draw failed')
+    ;
 
-    beforeEach(() => {
-      templateRenderer = {}
-      templateRenderer.setLogger = sandbox.spy();
-      templateRenderer.draw = sandbox.stub()
-      newCardWrapper = sandbox.stub(CardWrapper, 'newInstance')
-      newTemplateRenderer = sandbox.stub(TemplateRenderer, 'new')
-      newTemplateRenderer.returns(templateRenderer);
-      cb = sandbox.spy();
-      logger = sandbox.stub();
+  beforeEach(() => {
+    templateRenderer = {}
+    templateRenderer.setLogger = sandbox.spy();
+    templateRenderer.draw = sandbox.stub()
+    newCardWrapper = sandbox.stub(CardWrapper, 'newInstance')
+    newTemplateRenderer = sandbox.stub(TemplateRenderer, 'new')
+    newTemplateRenderer.returns(templateRenderer);
+    cb = sandbox.spy();
+    logger = sandbox.stub();
+  });
+
+  function successPathwaySetup() {
+    newCardWrapper.yields(null, cardWrapper)
+    canvas = {
+      toBuffer: sandbox.stub().returns(buffer)
+    };
+    templateRenderer.draw.yields(null, canvas);
+  }
+
+  function itBehavesLikeSuccess(canvasSupplier) {
+    it('calls the expected dependencies', () => {
+      expect(newTemplateRenderer).to.have.been.calledOnce.calledWith(
+        canvasSupplier, imageFetcher);
+      expect(templateRenderer.setLogger).to.have.been.calledOnce
+        .calledWith(logger);
+      expect(newCardWrapper).to.have.been.calledOnce.calledWith(card);
+      expect(templateRenderer.draw).to.have.been.calledOnce.calledWith(
+        cardWrapper);
     });
 
+    it('yields the result of canvas.toBuffer()', () => {
+      expect(cb).to.have.been.calledOnce.calledWith(null, buffer);
+    });
+  }
+
+  function itBehavesLikeCardWrapperError() {
+    it('yields the error', () => {
+      expect(cb).to.have.been.calledOnce.calledWith(cardWrapperErr);
+    });
+  }
+
+  function cardWrapperErrorSetup() {
+    newCardWrapper.yields(cardWrapperErr);
+  }
+
+  function drawErrorSetup() {
+    newCardWrapper.yields(null, cardWrapper);
+    templateRenderer.draw.yields(drawErr);
+  }
+
+  function itBehavesLikeDrawError() {
+    it('yields the error', () => {
+      expect(cb).to.have.been.calledOnce.calledWith(drawErr);
+    });
+  }
+
+  describe('#generateSvg', () => {
     context('success pathway', () => {
-      var buffer = 'asdf';
-
       beforeEach(() => {
-        newCardWrapper.yields(null, cardWrapper)
-        canvas = {
-          toBuffer: sandbox.stub().returns(buffer)
-        };
-        templateRenderer.draw.yields(null, canvas);
-
+        successPathwaySetup();
         generator.generateSvg(card, logger, cb);
       });
 
-      it('makes the expected calls to its depencencies', () => {
-        expect(newTemplateRenderer).to.have.been.calledOnce.calledWith(
-          svgCanvasSupplier, imageFetcher);
-        expect(templateRenderer.setLogger).to.have.been.calledOnce
-          .calledWith(logger);
-        expect(newCardWrapper).to.have.been.calledOnce.calledWith(card);
-        expect(templateRenderer.draw).to.have.been.calledOnce.calledWith(
-          cardWrapper);
+      itBehavesLikeSuccess(svgCanvasSupplier);
+    });
+
+    context('when CardWrapper.newInstance yields an error', () => {
+      beforeEach(() => {
+        cardWrapperErrorSetup();
+        generator.generateSvg(card, logger, cb);
       });
 
-      it('yields the result of canvas.toBuffer()', () => {
-        expect(cb).to.have.been.calledOnce.calledWith(null, buffer);
+      itBehavesLikeCardWrapperError();
+    });
+
+    context('when renderer.draw yields an error', () => {
+      beforeEach(() => {
+        drawErrorSetup();
+        generator.generateSvg(card, logger, cb);
+      });
+
+      itBehavesLikeDrawError();
+    });
+  });
+
+  describe('#generatePng', () => {
+    var width = 300;
+
+    context('success pathway', () => {
+      var pngCanvasSupplier = sandbox.stub();
+
+      beforeEach(() => {
+        successPathwaySetup();
+        sandbox.stub(pngCanvasSupplierFactory, 'instance').returns(
+          pngCanvasSupplier
+        );
+        generator.generatePng(card, width, logger, cb);
+      });
+
+      itBehavesLikeSuccess(pngCanvasSupplier);
+
+      it('calls pngCanvasSupplierFactory with the correct width', () => {
+        expect(pngCanvasSupplierFactory.instance).to.have.been.calledOnce
+          .calledWith(width);
       });
     });
 
     context('when CardWrapper.newInstance yields an error', () => {
-      var err = new Error('CardWrapper.newInstance failed');
-
       beforeEach(() => {
-        newCardWrapper.yields(err);
-        generator.generateSvg(card, logger, cb);
+        cardWrapperErrorSetup();
+        generator.generatePng(card, width, logger, cb);
       });
 
-      it('yields the error', () => {
-        expect(cb).to.have.been.calledOnce.calledWith(err);
-      })
+      itBehavesLikeCardWrapperError();
     });
 
     context('when renderer.draw yields an error', () => {
-      var err = new Error('renderer.draw failed');
-
       beforeEach(() => {
-        newCardWrapper.yields(null, cardWrapper);
-        templateRenderer.draw.yields(err);
-        generator.generateSvg(card, logger, cb);
+        drawErrorSetup();
+        generator.generatePng(card, width, logger, cb);
       });
 
-      it('yields the error', () => {
-        expect(cb).to.have.been.calledOnce.calledWith(err);
-      });
+      itBehavesLikeDrawError();
     });
   });
 

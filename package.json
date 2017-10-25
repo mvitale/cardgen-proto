@@ -30,7 +30,7 @@
   "dependencies": {
     "body-parser": "^1.17.1",
     "bunyan": "^1.8.10",
-    "canvas": "^1.6.5",
+    "canvas": "^1.6.6",
     "concat-stream": "^1.6.0",
     "cors": "^2.8.3",
     "express": "^4.15.2",

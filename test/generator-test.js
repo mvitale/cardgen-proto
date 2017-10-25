@@ -16,7 +16,7 @@ var expect = chai.expect
 
 chai.use(sinonChai);
 
-describe.only('generator', () => {
+describe('generator', () => {
   var templateRenderer
     , cardWrapper
     , canvas

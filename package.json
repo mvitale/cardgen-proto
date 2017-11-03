@@ -14,7 +14,8 @@
     "sinon-mongoose": "^2.0.1"
   },
   "scripts": {
-    "test": "NODE_ENV=test nyc --all mocha \"test/**/*-test.js\"",
+    "test": "NODE_ENV=test mocha \"test/**/*-test.js\"",
+    "test-coverage": "nyc --all npm test",
     "start": "node app"
   },
   "nyc": {

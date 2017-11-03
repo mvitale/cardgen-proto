@@ -17,18 +17,30 @@ describe.only('deck-pdf-maker', () => {
     , job = {
         id: jobId 
       }
-    , cardId1 = 'card1'
-    , cardId2 = 'card2'
-    , card1 = {
-        id: cardId1
+    , cards
+    , pngs    
+    , logger = {
+        info: () => {},
+        error: () => {}
       }
-    , card2 = {
-        id: cardId2
-      }
-    , cards = [card1, card2]
-    , logger = {}
     , jobError = new Error('job failed')
+    , numCards = 7
     ;
+
+  beforeEach(() => {
+    var cardId;
+
+    cards = new Array(numCards);
+    pngs = {};
+
+    for (var i = 0; i < numCards; i++) {
+      cardId = 'card' + i;
+      cards[i] = {
+        id: cardId
+      };
+      pngs[cardId] = 'png' + i; 
+    }
+  });
 
   function jobSetupBefore() {
     job.start = sandbox.stub();
@@ -48,10 +60,7 @@ describe.only('deck-pdf-maker', () => {
 
   function setupResolvingJob() {
     jobSetupBefore();
-    job.start.resolves({
-      [cardId1]: 'png1',
-      [cardId2]: 'png2'
-    });
+    job.start.resolves(pngs);
     jobSetupAfter();
   }
 
@@ -111,6 +120,50 @@ describe.only('deck-pdf-maker', () => {
     context("when the job doesn't exist", () => {
       it('returns "dead"', () => {
         expect(deckPdfMaker.jobStatus('notajobid')).to.equal('dead');
+      });
+    });
+  });
+
+  describe('#pipePdf', () => {
+    var pdfConstructor
+      , pdf
+      ;
+
+    beforeEach((done) => {
+      pdf = {
+        pipe: sandbox.spy(),
+        addPage: sandbox.spy(),
+        image: sandbox.spy(),
+        end: sandbox.spy()
+      };
+      pdfConstructor = sandbox.stub().returns(pdf);
+
+      setupResolvingJob();
+      deckPdfMaker.startJob(cards, logger);
+      process.nextTick(done);
+    });
+
+    context('when the PNGs are in cache', () => {
+
+      it('invokes the expected functions on the PDF', () => {
+        var res = {
+          response: 'yes'
+        };
+
+        deckPdfMaker.pipePdf(jobId, res, pdfConstructor);
+        expect(pdf.pipe).to.have.been.calledOnce.calledWith(res);
+
+        cards.forEach((card) => {
+          expect(pdf.image).to.have.been.calledWith(pngs[card.id]);
+        });
+        // TODO: rather than test the coordinates of the calls here, unit test the cardLocation method and make sure its results are passed here
+      });
+    });
+
+    context("when the PNGs aren't in cache", () => {
+      it('throws an error', () => {
+        expect(() => { deckPdfMaker.pipePdf('missingjob', {}, pdfConstructor) })
+          .to.throw;
       });
     });
   });

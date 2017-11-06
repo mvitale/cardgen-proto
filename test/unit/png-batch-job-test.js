@@ -12,7 +12,7 @@ var expect = chai.expect
 
 chai.use(sinonChai);
 
-describe.only('png-batch-job', () => {
+describe('png-batch-job', () => {
   var cards = [
         { id: 'id1' },
         { id: 'id2' }

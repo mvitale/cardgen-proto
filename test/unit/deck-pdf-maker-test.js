@@ -17,7 +17,9 @@ chai.use(sinonChai);
 describe('deck-pdf-maker', () => {
   var jobId = 'jobid'
     , job = {
-        id: jobId 
+        id: () => {
+          return jobId 
+        }
       }
     , cards
     , pngs    

@@ -12,7 +12,7 @@ var expect = chai.expect
 
 chai.use(sinonChai);
 
-describe.only('deck-pdf-maker', () => {
+describe('deck-pdf-maker', () => {
   var jobId = 'jobid'
     , job = {
         id: jobId 
@@ -147,23 +147,47 @@ describe.only('deck-pdf-maker', () => {
 
       it('invokes the expected functions on the PDF', () => {
         var res = {
-          response: 'yes'
-        };
+              response: 'yes'
+            }
+          , expectedCoords = [
+              {x:108, y:45},
+              {x:306, y:45},
+              {x:504, y:45},
+              {x:108, y:315},
+              {x:306, y:315},
+              {x:504, y:315},
+              {x:108, y:45}
+            ]
+          , imageCalls
+          , curCall
+          , curCard
+          ;
 
         deckPdfMaker.pipePdf(jobId, res, pdfConstructor);
         expect(pdf.pipe).to.have.been.calledOnce.calledWith(res);
+        imageCalls = pdf.image.getCalls();
+        expect(imageCalls.length).to.equal(cards.length);
 
-        cards.forEach((card) => {
-          expect(pdf.image).to.have.been.calledWith(pngs[card.id]);
-        });
-        // TODO: rather than test the coordinates of the calls here, unit test the cardLocation method and make sure its results are passed here
+        for (var i = 0; i < imageCalls.length; i++) {
+          curCall = imageCalls[i];
+          curCard = cards[i];
+
+          expect(curCall.args[0]).to.equal(pngs[curCard.id]);
+          expect(curCall.args[1]).to.equal(expectedCoords[i].x);
+          expect(curCall.args[2]).to.equal(expectedCoords[i].y);
+          expect(curCall.args[3]).to.eql({
+            width: 180
+          });
+        }
+
+        expect(pdf.end).to.have.been.calledOnce;
       });
     });
 
     context("when the PNGs aren't in cache", () => {
       it('throws an error', () => {
         expect(() => { deckPdfMaker.pipePdf('missingjob', {}, pdfConstructor) })
-          .to.throw;
+          .to.throw('Results for job id missingjob not found');
       });
     });
   });

@@ -4,6 +4,8 @@ var mocha = require('mocha')
   , sinonChai = require('sinon-chai')
   , deckPdfMaker = require('_/deck-pdf-maker')
   , pngBatchJob = require('_/png-batch-job')
+  , svg2png = require('svg2png')
+  , uuid = require('uuid')
   ;
 
 var expect = chai.expect
@@ -75,12 +77,18 @@ describe('deck-pdf-maker', () => {
   }
 
   describe('#startJob', () => {
+    var constructorCall;
+
     beforeEach(setupNonFinishingJob);
 
     it('creates a PngBatchJob and starts it', () => {
       deckPdfMaker.startJob(cards, logger);
-      expect(pngBatchJob.PngBatchJob).to.have.been.calledOnce
-        .calledWith(cards, logger);
+      expect(pngBatchJob.PngBatchJob).to.have.been.calledOnce;
+      constructorCall = pngBatchJob.PngBatchJob.getCalls()[0];
+      expect(constructorCall.args[0]).to.equal(cards);
+      expect(constructorCall.args[1]).to.equal(logger);
+      expect(constructorCall.args[2]).to.eql(svg2png);
+      expect(constructorCall.args[3]).to.eql(uuid);
       expect(job.start).to.have.been.calledOnce;
     });
   });

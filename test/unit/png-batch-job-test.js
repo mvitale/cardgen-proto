@@ -12,7 +12,7 @@ var expect = chai.expect
 
 chai.use(sinonChai);
 
-describe('png-batch-job', () => {
+describe.only('png-batch-job', () => {
   var cards = [
         { id: 'id1' },
         { id: 'id2' }
@@ -65,10 +65,18 @@ describe('png-batch-job', () => {
         generator.generateSvg.withArgs(cards[1]).yields(null, svg2);
       });
 
-      context('when all SVGs are successfully converted to PNGs', () => {
+      context('when all SVGs can be successfully converted to PNGs', () => {
         beforeEach(() => {
           svg2png.withArgs(svg1).resolves(png1);
           svg2png.withArgs(svg2).resolves(png2);
+        });
+
+        it('calls svg2png with each svg and the correct options ', () => {
+          var expectedWidth = 750;
+          job.start();
+          expect(svg2png).to.have.been.calledTwice
+            .calledWith(svg1, { width: expectedWidth })
+            .calledWith(svg2, { width: expectedWidth });
         });
 
         it('resolves with the PNGs', () => {
@@ -82,7 +90,7 @@ describe('png-batch-job', () => {
       });
 
       context('when an SVG conversion fails', () => {
-        var error = new Error ('Failed to convert SVG');
+        var error = new Error('Failed to convert SVG');
         beforeEach(() => {
           svg2png.withArgs(svg1).resolves(png1);
           svg2png.withArgs(svg2).rejects(error);

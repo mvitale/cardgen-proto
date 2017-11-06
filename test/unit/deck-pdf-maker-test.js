@@ -159,32 +159,84 @@ describe('deck-pdf-maker', () => {
         var res = {
               response: 'yes'
             }
-          , expectedCoords = [
-              {x:108, y:45},
-              {x:306, y:45},
-              {x:504, y:45},
-              {x:108, y:315},
-              {x:306, y:315},
-              {x:504, y:315},
-              {x:108, y:45}
+          , back = {
+              type: 'cardBack'
+            }
+          , expectedCalls = [
+              [
+                pngs[cards[0].id], 
+                {x:108, y:45}
+              ],
+              [
+                pngs[cards[1].id],
+                {x:306, y:45}
+              ],
+              [
+                pngs[cards[2].id],
+                {x:504, y:45}
+              ],
+              [
+                pngs[cards[3].id],
+                {x:108, y:315}
+              ],
+              [
+                pngs[cards[4].id],
+                {x:306, y:315}
+              ],
+              [
+                pngs[cards[5].id],
+                {x:504, y:315}
+              ],
+              [
+                back, 
+                {x:108, y:45}
+              ],
+              [
+                back,
+                {x:306, y:45}
+              ],
+              [
+                back,
+                {x:504, y:45}
+              ],
+              [
+                back,
+                {x:108, y:315}
+              ],
+              [
+                back,
+                {x:306, y:315}
+              ],
+              [
+                back,
+                {x:504, y:315}
+              ],
+              [
+                pngs[cards[6].id],
+                {x:108, y:45}
+              ],
+              [
+                back, 
+                {x:108, y:45}
+              ],
             ]
           , imageCalls
           , curCall
           , curCard
           ;
 
-        deckPdfMaker.pipePdf(jobId, res, pdfConstructor);
+        deckPdfMaker.pipePdf(jobId, res, pdfConstructor, back);
         expect(pdf.pipe).to.have.been.calledOnce.calledWith(res);
         imageCalls = pdf.image.getCalls();
-        expect(imageCalls.length).to.equal(cards.length);
-
+        expect(imageCalls.length).to.equal(expectedCalls.length);
+        
         for (var i = 0; i < imageCalls.length; i++) {
           curCall = imageCalls[i];
-          curCard = cards[i];
+          expectedCall = expectedCalls[i];
 
-          expect(curCall.args[0]).to.equal(pngs[curCard.id]);
-          expect(curCall.args[1]).to.equal(expectedCoords[i].x);
-          expect(curCall.args[2]).to.equal(expectedCoords[i].y);
+          expect(curCall.args[0]).to.equal(expectedCall[0]);
+          expect(curCall.args[1]).to.equal(expectedCall[1].x);
+          expect(curCall.args[2]).to.equal(expectedCall[1].y);
           expect(curCall.args[3]).to.eql({
             width: 180
           });

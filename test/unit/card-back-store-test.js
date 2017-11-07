@@ -66,20 +66,28 @@ describe('card-back-store', () => {
   });
 
   describe('#get', () => {
-    beforeEach(() => {
-      cardBackStore.init()
-    });
+    context('when it is initialized', () => {
+      beforeEach(() => {
+        cardBackStore.init()
+      });
 
-    context('when called with a valid name', () => {
-      it('returns the correct buffer', () => {
-        expect(cardBackStore.get('back1')).to.equal(buf1);
-        expect(cardBackStore.get('back2')).to.equal(buf2);
+      context('when called with a valid name', () => {
+        it('returns the correct buffer', () => {
+          expect(cardBackStore.get('back1')).to.equal(buf1);
+          expect(cardBackStore.get('back2')).to.equal(buf2);
+        });
+      });
+
+      context('when called with an invalid name', () => {
+        it('throws a TypeError', () => {
+          expect(() => { cardBackStore.get('invalid') }).to.throw(TypeError);
+        });
       });
     });
 
-    context('when called with an invalid name', () => {
-      it('throws a TypeError', () => {
-        expect(() => { cardBackStore.get('invalid') }).to.throw(TypeError);
+    context('when called before init', () => {
+      it('throws a TypError', () => {
+        expect(() => { cardBackStore.get('back1') }).to.throw(TypeError, 'Not initialized - you must call init before this method');
       });
     });
   });

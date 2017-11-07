@@ -4,6 +4,8 @@ var mocha = require('mocha')
   , sinonChai = require('sinon-chai')
   , fs = require('fs')
   , decache = require('decache')
+  , path = require('path')
+  , appRoot = require('app-root-path')
   ;
 
 var expect = chai.expect
@@ -13,8 +15,11 @@ var expect = chai.expect
 chai.use(sinonChai);
 
 describe('card-back-store', () => {
-  var path1 = 'images/card_backs/back1.png'
-    , path2 = 'images/card_backs/back2.png'
+  var filename1 = 'back1.png'
+    , filename2 = 'back2.png'
+    , backsPath = path.join(appRoot.toString(), 'lib', 'images', 'card_backs')
+    , path1 = path.join(backsPath, filename1)
+    , path2 = path.join(backsPath, filename2)
     , buf1 = {
         id: 'back1'
       }
@@ -28,8 +33,8 @@ describe('card-back-store', () => {
     cardBackStore = require('_/card-back-store');
 
     sandbox.stub(fs, 'readdirSync').returns([
-      path1,
-      path2
+      filename1,
+      filename2
     ]);
 
     sandbox.stub(fs, 'readFileSync')
@@ -46,7 +51,7 @@ describe('card-back-store', () => {
 
     it('makes the expected calls', () => {
       cardBackStore.init();
-      expect(fs.readdirSync).to.have.been.calledOnce; // There's not a great way to verify the path it's called with
+      expect(fs.readdirSync).to.have.been.calledOnce.calledWith(backsPath);
       expect(fs.readFileSync).to.have.been.calledTwice
         .calledWith(path1)
         .calledWith(path2);
@@ -84,5 +89,4 @@ describe('card-back-store', () => {
     decache('_/card-back-store');
   });
 });
-
 

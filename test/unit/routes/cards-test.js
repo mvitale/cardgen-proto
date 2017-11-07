@@ -12,6 +12,9 @@ var cardRoutes = require('_/routes/cards')
   , MongooseWrapper = require('_/api-wrappers/mongoose-wrapper')
   , CardSummaryWrapper = require('_/api-wrappers/card-summary-wrapper')
   , cardSvgCache = require('_/card-svg-loading-cache')
+  , deckPdfMaker = require('_/deck-pdf-maker')
+  , cardBackStore = require('_/card-back-store')
+  , PDFDocument = require('pdfkit')
   ;
 
 var expect = chai.expect
@@ -1548,6 +1551,65 @@ describe('cards', () => {
 
       it('calls errJsonRes with the error', () => {
         expect(resUtils.errJsonRes).to.have.been.calledOnce.calledWith(res, err);
+      });
+    });
+  });
+
+  describe('#deckPdfResult', () => {
+    var cardBack = {
+          name: 'default'
+        }
+      , jobId = 'pdfJobId'
+      , req = {
+          params: {
+            id: jobId
+          }
+        }
+      ;
+
+    beforeEach(() => {
+      res.setHeader = sandbox.spy();
+      res.log = {
+        error: sandbox.spy()
+      };
+      sandbox.stub(cardBackStore, 'get').returns(cardBack);
+      sandbox.stub(deckPdfMaker, 'pipePdf');
+    });
+
+    it('sets the Content-Type header', () => {
+      cardRoutes.deckPdfResult(req, res);
+      expect(res.setHeader).to.have.been.calledOnce.calledWith('Content-Type', 'application/pdf');
+    });
+
+    it('calls cardBackStore.get with the name "default"', () => {
+      cardRoutes.deckPdfResult(req, res);
+      expect(cardBackStore.get).to.have.been.calledOnce.calledWith('default');
+    });
+
+    it('calls deckPdfMaker.pipePdf with the correct parameters', () => {
+      cardRoutes.deckPdfResult(req, res);
+      expect(deckPdfMaker.pipePdf).to.have.been.calledOnce.calledWith(jobId, res, PDFDocument, cardBack);
+    });
+
+    context('when deckPdfMaker.pipePdf throws an error', () => {
+      var err = new Error('failed to pipePdf');
+
+      beforeEach(() => {
+        deckPdfMaker.pipePdf.throws(err) 
+      });
+
+      it('calls jsonRes with not found message and status', () => {
+        cardRoutes.deckPdfResult(req, res);
+        expect(resUtils.jsonRes).to.have.been.calledOnce.
+          calledWith(res, resUtils.httpStatus.notFound, {
+            msg: 'Results of job pdfJobId not found'
+          });
+      });
+
+      it('logs the error', () => {
+        cardRoutes.deckPdfResult(req, res);
+        expect(res.log.error).to.have.been.calledOnce
+          .calledWith({ err: err }, 'Failed to generate PDF for job pdfJobId');
       });
     });
   });

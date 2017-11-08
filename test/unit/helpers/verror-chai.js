@@ -1,3 +1,4 @@
+var reqlib = require('app-root-path').reqlib;
 var VError = require('verror').VError;
 
 module.exports = function(chai, utils) {

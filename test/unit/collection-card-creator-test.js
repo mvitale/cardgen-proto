@@ -1,4 +1,3 @@
-var reqlib = require('app-root-path').reqlib;
 var mocha = require('mocha')
   , chai = require('chai')
   , sinon = require('sinon')

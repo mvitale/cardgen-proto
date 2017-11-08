@@ -1,4 +1,3 @@
-var reqlib = require('app-root-path').reqlib;
 var config = require('_/config/config')
   , i18n = require('_/i18n')
   ;

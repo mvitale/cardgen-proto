@@ -1,3 +1,4 @@
+var reqlib = require('app-root-path').require;
 /*
  * TODO: rewrite with correct dependencies, etc.
 var mocha = require('mocha');

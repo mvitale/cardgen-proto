@@ -1,3 +1,4 @@
+var reqlib = require('app-root-path').require;
 var fs = require('fs')
   , path = require('path')
   , Card = require('_/models/card')

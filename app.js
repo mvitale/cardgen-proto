@@ -1,3 +1,4 @@
+var reqlib = require('app-root-path').require;
 var init = require('_/init')
   , https = require('https')
   , fs = require('fs')

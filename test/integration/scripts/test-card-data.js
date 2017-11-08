@@ -1,3 +1,4 @@
+var reqlib = require('app-root-path').require;
 var args = require('minimist')(process.argv.slice(2))
   , fs = require('fs')
   , init = require('../../init')

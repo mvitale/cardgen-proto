@@ -5,8 +5,8 @@ var mocha = require('mocha')
   , sinonChai = require('sinon-chai')
   ;
 
-var CollectionCardsJob = require('_/collection-cards-job')
-  , Card = require('_/models/card')
+var CollectionCardsJob = reqlib('lib/collection-cards-job')
+  , Card = reqlib('lib/models/card')
   ;
 
 var expect = chai.expect

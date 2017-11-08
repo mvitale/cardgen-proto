@@ -11,10 +11,10 @@ chai.use(verrorChai);
 
 var sandbox = sinon.sandbox.create();
 
-var eolApiCaller = require('_/api-callers/eol-api-caller')
-  , speciesDataSupplier = require('_/suppliers/data/species-data-supplier')
-  , dataUtils = require('_/data-utils/data-utils')
-  , taxonGroup = require('_/suppliers/shared/taxon-group')
+var eolApiCaller = reqlib('lib/api-callers/eol-api-caller')
+  , speciesDataSupplier = reqlib('lib/suppliers/data/species-data-supplier')
+  , dataUtils = reqlib('lib/data-utils/data-utils')
+  , taxonGroup = reqlib('lib/suppliers/shared/taxon-group')
   ;
 
 describe('species-data-supplier', () => {

@@ -14,12 +14,12 @@ describe('server', () => {
   var server;
 
   beforeEach(() => {
-    server = require('_/server');
+    server = reqlib('lib/server');
   });
 
   /*
   describe('GET /templates/:templateName', () => {
-    var templateManager = require('_/template-manager')
+    var templateManager = reqlib('lib/template-manager')
       , getTemplateStub
       , spec
       ;
@@ -59,7 +59,7 @@ describe('server', () => {
   });
 
   describe('POST /users/:userId/cards', () => {
-    var card = require('_/models/card')
+    var card = reqlib('lib/models/card')
       , params = {
           templateName: 'trait',
           templateParams: { speciesId: 1234 }

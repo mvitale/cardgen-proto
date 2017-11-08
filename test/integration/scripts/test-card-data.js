@@ -3,7 +3,7 @@ var args = require('minimist')(process.argv.slice(2))
   , fs = require('fs')
   , init = require('../../init')
   , cardUtil = require('../util/card')
-  , speciesDataSupplier = require('_/suppliers/data/species-data-supplier')
+  , speciesDataSupplier = reqlib('lib/suppliers/data/species-data-supplier')
   ;
 
 var validModes = ['card', 'api'];

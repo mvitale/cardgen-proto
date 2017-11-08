@@ -1,5 +1,6 @@
-var reqlib = require('app-root-path').require;
-var mocha = require('mocha')
+var appRoot = require('app-root-path')
+  , reqlib = appRoot.require
+  , mocha = require('mocha')
   , chai = require('chai')
   , sinon = require('sinon')
   , sinonChai = require('sinon-chai')
@@ -7,7 +8,7 @@ var mocha = require('mocha')
   ;
 
 var cardSvgCache
-  , generator = require('_/generator')
+  , generator = reqlib('lib/generator')
   ;
 
 var expect = chai.expect
@@ -38,7 +39,7 @@ describe('card-svg-loading-cache', () => {
       ;
 
     beforeEach(() => {
-      cardSvgCache = require('_/card-svg-loading-cache');
+      cardSvgCache = reqlib('lib/card-svg-loading-cache');
       cb = sinon.spy();
       generateSvg = sandbox.stub(generator, 'generateSvg');
     });
@@ -90,6 +91,6 @@ describe('card-svg-loading-cache', () => {
 
   afterEach(() => {
     sandbox.restore();
-    decache('_/card-svg-loading-cache');
+    decache(appRoot + '/lib/card-svg-loading-cache');
   });
 });

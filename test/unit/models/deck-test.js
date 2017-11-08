@@ -6,8 +6,8 @@ var mocha = require('mocha')
   , sinonMongoose = require('sinon-mongoose')
   ;
 
-var Deck = require('_/models/deck')
-  , Card = require('_/models/card')
+var Deck = reqlib('lib/models/deck')
+  , Card = reqlib('lib/models/card')
   ;
 
 var expect = chai.expect

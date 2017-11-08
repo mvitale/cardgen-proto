@@ -3,12 +3,12 @@ var mocha = require('mocha')
   , chai = require('chai')
   , sinon = require('sinon')
   , sinonChai = require('sinon-chai')
-  , svgCanvasSupplier = require('_/svg-canvas-supplier')
-  , TemplateRenderer = require('_/template-renderer/template-renderer')
-  , CardWrapper = require('_/template-renderer/card-wrapper')
-  , imageFetcher = require('_/image-fetcher')
-  , generator = require('_/generator')
-  , pngCanvasSupplierFactory = require('_/png-canvas-supplier-factory')
+  , svgCanvasSupplier = reqlib('lib/svg-canvas-supplier')
+  , TemplateRenderer = reqlib('lib/template-renderer/template-renderer')
+  , CardWrapper = reqlib('lib/template-renderer/card-wrapper')
+  , imageFetcher = reqlib('lib/image-fetcher')
+  , generator = reqlib('lib/generator')
+  , pngCanvasSupplierFactory = reqlib('lib/png-canvas-supplier-factory')
   ;
 
 var expect = chai.expect

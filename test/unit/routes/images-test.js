@@ -5,10 +5,10 @@ var sinon = require('sinon');
 var sinonChai = require('sinon-chai');
 var path = require('path');
 
-var imageRoutes = require('_/routes/images')
-  , DedupFile = require('_/models/dedup-file')
-  , resUtils = require('_/routes/util/res-utils')
-  , urlHelper = require('_/url-helper')
+var imageRoutes = reqlib('lib/routes/images')
+  , DedupFile = reqlib('lib/models/dedup-file')
+  , resUtils = reqlib('lib/routes/util/res-utils')
+  , urlHelper = reqlib('lib/url-helper')
   ;
 
 var expect = chai.expect

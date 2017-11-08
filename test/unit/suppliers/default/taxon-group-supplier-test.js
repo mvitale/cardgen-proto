@@ -7,9 +7,9 @@ var sinon = require('sinon');
 var sinonChai = require('sinon-chai');
 
 var taxonGroupSupplier =
-  require('_/suppliers/default/taxon-group-supplier');
+  reqlib('lib/suppliers/default/taxon-group-supplier');
 var util =
-  require('_/suppliers/default/util/util');
+  reqlib('lib/suppliers/default/util/util');
 
 var expect = chai.expect
   , sandbox = sinon.sandbox.create()

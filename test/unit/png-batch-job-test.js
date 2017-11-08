@@ -3,8 +3,8 @@ var mocha = require('mocha')
   , chai = require('chai')
   , sinon = require('sinon')
   , sinonChai = require('sinon-chai')
-  , PngBatchJob = require('_/png-batch-job').PngBatchJob
-  , generator = require('_/generator')
+  , PngBatchJob = reqlib('lib/png-batch-job').PngBatchJob
+  , generator = reqlib('lib/generator')
   ;
 
 var expect = chai.expect

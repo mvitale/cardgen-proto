@@ -6,7 +6,7 @@ var sinonChai = require('sinon-chai');
 var fs = require('fs');
 var path = require('path');
 
-var templateLoader = require('_/template-loader');
+var templateLoader = reqlib('lib/template-loader');
 
 var expect = chai.expect
   , sandbox = sinon.sandbox.create()

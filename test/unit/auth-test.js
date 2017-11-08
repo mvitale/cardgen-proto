@@ -15,7 +15,7 @@ chai.use(sinonChai);
 
 describe('auth', () => {
   beforeEach(() => {
-    auth = require('_/auth');
+    auth = reqlib('lib/auth');
   });
 
   describe('#init', () => {

@@ -10,7 +10,7 @@ chai.use(sinonChai);
 var sandbox = sinon.sandbox.create();
 
 describe('eol-api-caller', () => {
-  var eolApiCaller = require('_/api-callers/eol-api-caller');
+  var eolApiCaller = reqlib('lib/api-callers/eol-api-caller');
 
   var result = { its: 'some json' }
     , jsonResult = JSON.stringify(result)

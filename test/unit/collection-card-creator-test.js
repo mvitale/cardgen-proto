@@ -1,5 +1,6 @@
-var reqlib = require('app-root-path').require;
-var mocha = require('mocha')
+var appRoot = require('app-root-path')
+  , reqlib = appRoot.require
+  , mocha = require('mocha')
   , chai = require('chai')
   , sinon = require('sinon')
   , sinonChai = require('sinon-chai')
@@ -7,8 +8,8 @@ var mocha = require('mocha')
   ;
 
 var collectionCardCreator
-  , eolApiCaller = require('_/api-callers/eol-api-caller')
-  , CollectionCardsJob = require('_/collection-cards-job')
+  , eolApiCaller = reqlib('lib/api-callers/eol-api-caller')
+  , CollectionCardsJob = reqlib('lib/collection-cards-job')
   ;
 
 var expect = chai.expect
@@ -42,7 +43,7 @@ describe('collectionCardCreator', () => {
     ;
 
   beforeEach(() => {
-    collectionCardCreator = require('_/collection-card-creator');
+    collectionCardCreator = reqlib('lib/collection-card-creator');
     getJson = sandbox.stub(eolApiCaller, 'getJson');
     newJob = sandbox.stub(CollectionCardsJob, 'new');
     startStub = sandbox.stub();
@@ -161,7 +162,7 @@ describe('collectionCardCreator', () => {
   });
 
   afterEach(() => {
-    decache('_/collection-card-creator');
+    decache(appRoot + '/lib/collection-card-creator');
     sandbox.restore();
   });
 });

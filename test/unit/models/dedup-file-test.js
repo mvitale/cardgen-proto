@@ -7,8 +7,8 @@ var mocha = require('mocha')
   , fs = require('fs')
   ;
 
-var DedupFile = require('_/models/dedup-file')
-  , fileUtil = require('_/models/util/file-util')
+var DedupFile = reqlib('lib/models/dedup-file')
+  , fileUtil = reqlib('lib/models/util/file-util')
   ;
 
 var expect = chai.expect

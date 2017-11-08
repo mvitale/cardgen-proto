@@ -1,5 +1,5 @@
 var reqlib = require('app-root-path').require;
-var init = require('_/init')
+var init = reqlib('lib/init')
   , https = require('https')
   , fs = require('fs')
   ;
@@ -19,8 +19,8 @@ init((err) => {
   logErrorAndDieIfExists(err);
 
   var httpsOptions
-    , server = require('_/server')
-    , config = require('_/config/config')
+    , server = reqlib('lib/server')
+    , config = reqlib('lib/config/config')
     , port = config.get('server.port')
     , readyMsgBound = readyMsg.bind(null, port)
     ;

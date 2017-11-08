@@ -5,7 +5,7 @@ var sinon = require('sinon');
 var sinonChai = require('sinon-chai');
 
 var firstChoiceSupplier =
-  require('_/suppliers/default/first-choice-supplier');
+  reqlib('lib/suppliers/default/first-choice-supplier');
 
 var expect = chai.expect
   , sandbox = sinon.sandbox.create()

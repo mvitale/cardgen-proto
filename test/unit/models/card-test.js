@@ -5,8 +5,8 @@ var mocha = require('mocha')
   , sinonChai = require('sinon-chai')
   ;
 
-var Card = require('_/models/card')
-  , templateManager = require('_/template-manager')
+var Card = reqlib('lib/models/card')
+  , templateManager = reqlib('lib/template-manager')
   ;
 
 var expect = chai.expect

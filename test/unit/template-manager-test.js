@@ -3,8 +3,8 @@ var chai = require('chai')
   , sinon = require('sinon')
   , sinonChai = require('sinon-chai')
   , fs = require('fs')
-  , i18n = require('_/i18n')
-  , config = require('_/config/config')
+  , i18n = reqlib('lib/i18n')
+  , config = reqlib('lib/config/config')
   ;
 
 var expect = chai.expect;
@@ -110,7 +110,7 @@ describe('template-manager', () => {
     ;
 
   beforeEach(() => {
-    templateManager = require('_/template-manager');
+    templateManager = reqlib('lib/template-manager');
 
     tStub = sandbox.stub(i18n, 't');
     tStub.withArgs('en', labelKeyPrefix + 'someText').returns('Some text');

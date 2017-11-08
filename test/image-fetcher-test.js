@@ -5,8 +5,8 @@ var mocha = require('mocha')
   , sinonChai = require('sinon-chai')
   ;
 
-var imageFetcher = require('_/image-fetcher')
-  , FetchedImage = require('_/models/fetched-image')
+var imageFetcher = reqlib('lib/image-fetcher')
+  , FetchedImage = reqlib('lib/models/fetched-image')
   , canvas = require('canvas')
   ;
 

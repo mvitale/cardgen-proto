@@ -1,8 +1,8 @@
 var reqlib = require('app-root-path').require;
 var fs = require('fs')
   , path = require('path')
-  , Card = require('_/models/card')
-  , speciesDataSupplier = require('_/suppliers/data/species-data-supplier')
+  , Card = reqlib('lib/models/card')
+  , speciesDataSupplier = reqlib('lib/suppliers/data/species-data-supplier')
   ;
 
 var taxonId = 327940;

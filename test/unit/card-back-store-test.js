@@ -1,5 +1,6 @@
-var reqlib = require('app-root-path').require;
-var mocha = require('mocha')
+var appRoot = require('app-root-path')
+  , reqlib = appRoot.require
+  , mocha = require('mocha')
   , chai = require('chai')
   , sinon = require('sinon')
   , sinonChai = require('sinon-chai')
@@ -31,7 +32,7 @@ describe('card-back-store', () => {
     ;
 
   beforeEach(() => {
-    cardBackStore = require('_/card-back-store');
+    cardBackStore = reqlib('lib/card-back-store');
 
     sandbox.stub(fs, 'readdirSync').returns([
       filename1,
@@ -95,7 +96,7 @@ describe('card-back-store', () => {
 
   afterEach(() => {
     sandbox.restore();
-    decache('_/card-back-store');
+    decache(appRoot + '/lib/card-back-store');
   });
 });
 

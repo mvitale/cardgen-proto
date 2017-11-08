@@ -3,11 +3,11 @@ var mocha = require('mocha')
   , chai = require('chai')
   , sinon = require('sinon')
   , sinonChai = require('sinon-chai')
-  , config = require('_/config/config')
+  , config = reqlib('lib/config/config')
   , mongoose = require('mongoose')
   ;
 
-var dbconnect = require('_/dbconnect');
+var dbconnect = reqlib('lib/dbconnect');
 
 var expect = chai.expect
   , sandbox = sinon.sandbox.create()

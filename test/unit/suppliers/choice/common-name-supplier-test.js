@@ -3,11 +3,11 @@ var mocha = require('mocha')
   , chai = require('chai')
   , sinon = require('sinon')
   , sinonChai = require('sinon-chai')
-  , dataUtils = require('_/data-utils/data-utils')
+  , dataUtils = reqlib('lib/data-utils/data-utils')
   ;
 
 var commonNameSupplier =
-  require('_/suppliers/choice/common-name-supplier');
+  reqlib('lib/suppliers/choice/common-name-supplier');
 
 chai.use(sinonChai);
 

@@ -6,15 +6,15 @@ var sinonChai = require('sinon-chai');
 var sinonMongoose = require('sinon-mongoose');
 var mongoose = require('mongoose');
 
-var cardRoutes = require('_/routes/cards')
-  , Card = require('_/models/card')
-  , Deck = require('_/models/deck')
-  , resUtils = require('_/routes/util/res-utils')
-  , MongooseWrapper = require('_/api-wrappers/mongoose-wrapper')
-  , CardSummaryWrapper = require('_/api-wrappers/card-summary-wrapper')
-  , cardSvgCache = require('_/card-svg-loading-cache')
-  , deckPdfMaker = require('_/deck-pdf-maker')
-  , cardBackStore = require('_/card-back-store')
+var cardRoutes = reqlib('lib/routes/cards')
+  , Card = reqlib('lib/models/card')
+  , Deck = reqlib('lib/models/deck')
+  , resUtils = reqlib('lib/routes/util/res-utils')
+  , MongooseWrapper = reqlib('lib/api-wrappers/mongoose-wrapper')
+  , CardSummaryWrapper = reqlib('lib/api-wrappers/card-summary-wrapper')
+  , cardSvgCache = reqlib('lib/card-svg-loading-cache')
+  , deckPdfMaker = reqlib('lib/deck-pdf-maker')
+  , cardBackStore = reqlib('lib/card-back-store')
   , PDFDocument = require('pdfkit')
   ;
 

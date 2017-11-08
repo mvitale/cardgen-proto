@@ -4,10 +4,10 @@ var chai = require('chai');
 var sinon = require('sinon');
 var sinonChai = require('sinon-chai');
 
-var templates = require('_/routes/templates')
-  , templateManager = require('_/template-manager')
-  , resUtils = require('_/routes/util/res-utils')
-  , TemplateWrapper = require('_/api-wrappers/template-wrapper')
+var templates = reqlib('lib/routes/templates')
+  , templateManager = reqlib('lib/template-manager')
+  , resUtils = reqlib('lib/routes/util/res-utils')
+  , TemplateWrapper = reqlib('lib/api-wrappers/template-wrapper')
   ;
 
 var expect = chai.expect

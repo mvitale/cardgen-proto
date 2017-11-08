@@ -11,7 +11,7 @@ chai.use(sinonChai);
 chai.use(verrorChai);
 
 var speciesImagesSupplier =
-  require('_/suppliers/choice/species-images-supplier');
+  reqlib('lib/suppliers/choice/species-images-supplier');
 
 
 var sandbox = sinon.sandbox.create();

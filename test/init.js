@@ -1,6 +1,6 @@
 var reqlib = require('app-root-path').require;
-var config = require('_/config/config')
-  , i18n = require('_/i18n')
+var config = reqlib('lib/config/config')
+  , i18n = reqlib('lib/i18n')
   ;
 
 process.env.NODE_ENV='test';
@@ -8,5 +8,5 @@ process.env.NODE_ENV='test';
 config.load();
 i18n.init();
 
-var templateManager = require('_/template-manager');
+var templateManager = reqlib('lib/template-manager');
 templateManager.load();

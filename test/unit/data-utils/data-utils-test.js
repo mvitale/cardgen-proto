@@ -5,7 +5,7 @@ var mocha = require('mocha')
   , sinonChai = require('sinon-chai')
   ;
 
-var dataUtils = require('_/data-utils/data-utils');
+var dataUtils = reqlib('lib/data-utils/data-utils');
 
 var expect = chai.expect
   , sandbox = sinon.sandbox.create()

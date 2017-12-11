@@ -1,5 +1,6 @@
 {
   "db": {
-    "dbName": "cards_test"
+    "user": "cardgen_test",
+    "dbName": "cardgen_test"
   }
 }

@@ -26,26 +26,16 @@ describe('dbconnect', () => {
 
       beforeEach(() => {
         var configGet = sandbox.stub(config, 'get')
-          , mongooseConnection
           ;
 
         cb = sandbox.spy();
         mongooseConnect = sandbox.stub(mongoose, 'connect');
-
-        onceStub = sandbox.stub();
-        onStub = sandbox.stub();
-        mongooseConnection = {
-          once: onceStub,
-          on: onStub
-        };
-        mongoose.connection = mongooseConnection;
 
         configGet.withArgs('db.host').returns('card-db');
         configGet.withArgs('db.port').returns('1234');
         configGet.withArgs('db.dbName').returns('cardgen');
         configGet.withArgs('db.user').returns('cardgenUser');
         configGet.withArgs('db.password').returns('cardgenPass');
-
       });
 
       it('calls mongoose.connect with the expected uri and cb', () => {

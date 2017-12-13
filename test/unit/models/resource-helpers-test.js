@@ -3,6 +3,7 @@ var reqlib = require('app-root-path').require
   , chai = require('chai')
   , sinon = require('sinon')
   , sinonChai = require('sinon-chai')
+  , mongoose = require('mongoose')
   , db = reqlib('test/util/db')
   , resourceHelpers = reqlib('lib/models/resource-helpers')
   , Card = reqlib('lib/models/card')
@@ -511,6 +512,101 @@ describe('resource-helpers', () => {
             expect(theCard._id).to.eql(card._id);
           });
       });
+    });
+  });
+
+  describe('#addUserToDeck', () => {
+    var newUserId = 10
+      , deckId
+      ;
+
+    function itRejects() {
+      it('rejects with the correct error', () => {
+          return resourceHelpers.addUserToDeck(appId, userId, newUserId, deckId.toString())
+            .then(expect.fail)
+            .catch((err) => {
+              expect(err).to.eql(
+                new TypeError('Deck not found (userId: ' + userId + ', deckId: ' + deckId + ')')
+              );
+            });
+
+      });
+    }
+
+    context('when the deck exists', () => {
+      function itAddsTheUserToTheDeck() {
+        it('adds the user to the deck idempotently', (done) => {
+          resourceHelpers.addUserToDeck(appId, userId, newUserId, deckId.toString())
+            .then((deck) => {
+              expect(deck).to.exist;
+              expect(deckId).to.eql(deck._id); 
+              expect(deck.userIds).to.include.members([newUserId]);
+
+              resourceHelpers.addUserToDeck(appId, userId, newUserId, deckId.toString())
+                .then((sameDeck) => {
+                  expect(sameDeck.userIds.length).to.equal(deck.userIds.length);
+                  done();
+                });
+            })
+        });
+      }
+
+      context('when the requesting user owns the deck', () => {
+        beforeEach((done) => {
+          Deck.create({
+            userId: userId,
+            appId: appId,
+            name: 'deck'
+          }, (err, deck) => {
+            if (err) throw err;
+            deckId = deck._id;
+            done();
+          });
+        });
+
+        itAddsTheUserToTheDeck();
+      });
+
+      context('when the requesting user has permission on the deck', () =>{
+        beforeEach((done) => {
+          Deck.create({
+            userId: 20,
+            appId: appId,
+            name: 'deck',
+            userIds: [userId]
+          }, (err, deck) => {
+            if (err) throw err;
+            deckId = deck._id;
+            done();
+          });
+        });
+
+        itAddsTheUserToTheDeck();
+      });
+
+      context("when the requesting user doesn't have permission on the deck", () => {
+        beforeEach((done) => {
+          Deck.create({
+            userId: 20,
+            appId: appId,
+            name: 'deck'
+          }, (err, deck) => {
+            if (err) throw err;
+            deckId = deck._id;
+            done();
+          });
+        });
+
+        itRejects();
+      });
+    });
+
+    context("when the deck doesn't exist", () => {
+      beforeEach(() => {
+        deckId = new mongoose.Types.ObjectId(fakeId);
+      });
+
+      itRejects();
     });
   });
 

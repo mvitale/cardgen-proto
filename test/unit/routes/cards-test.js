@@ -5,6 +5,7 @@ var sinon = require('sinon');
 var sinonChai = require('sinon-chai');
 var sinonMongoose = require('sinon-mongoose');
 var mongoose = require('mongoose');
+var PDFDocument = require('pdfkit')
 
 var cardRoutes = reqlib('lib/routes/cards')
   , Card = reqlib('lib/models/card')
@@ -15,7 +16,7 @@ var cardRoutes = reqlib('lib/routes/cards')
   , cardSvgCache = reqlib('lib/card-svg-loading-cache')
   , deckPdfMaker = reqlib('lib/deck-pdf-maker')
   , cardBackStore = reqlib('lib/card-back-store')
-  , PDFDocument = require('pdfkit')
+  , resourceHelpers = reqlib('lib/models/resource-helpers')
   ;
 
 var expect = chai.expect
@@ -607,7 +608,7 @@ describe('cards', () => {
     var userId = 1
       , appId = 'appId'
       , cards
-      , findMock
+      , allCardsForUser
       ;
 
     beforeEach(() => {
@@ -619,26 +620,26 @@ describe('cards', () => {
       };
     });
 
+    function sharedBefore() {
+      sandbox.stub(resourceHelpers, 'allCardsForUser').resolves(cards);
+      cardRoutes.cardSummariesForUser(req, res);
+    }
+
     context("when the user doesn't have any cards", () => {
       beforeEach(() => {
-        cards = [];
-
-        findMock = sandbox.mock(Card)
-          .expects('find').withArgs({ userId: userId, appId: appId })
-          .chain('sort').withArgs('-_id')
-          .chain('populate').withArgs('_deck')
-          .chain('exec')
-          .yields(null, cards)
-
-        cardRoutes.cardSummariesForUser(req, res);
+        cards = []
+        sharedBefore();
       });
 
       it('calls jsonRes with an empty Array', () => {
-        expect(jsonRes).to.have.been.calledOnce.calledWith(
-          res,
-          resUtils.httpStatus.ok,
-          []);
-        findMock.verify();
+        process.nextTick(() => {
+          expect(resourceHelpers.allCardsForUser).to.have.been.calledWith(appId, userId);
+          expect(resUtils.jsonRes).to.have.been.calledOnce.calledWith(
+            res,
+            resUtils.httpStatus.ok,
+            []
+          );
+        });
       });
     });
 
@@ -649,34 +650,25 @@ describe('cards', () => {
 
       beforeEach(() => {
         cards = [ card1, card2 ];
-
-        findMock = sandbox.mock(Card)
-          .expects('find').withArgs({ userId: userId, appId: appId })
-          .chain('sort').withArgs('-_id')
-          .chain('populate').withArgs('_deck')
-          .chain('exec')
-          .yields(null, cards)
-
-        cardRoutes.cardSummariesForUser(req, res);
+        sharedBefore();
       });
 
       it('calls jsonRes with those cards wrapped', () => {
-        var args;
+        process.nextTick(() => {
+          var args;
 
-        expect(jsonRes).to.have.been.calledOnce;
-
-        args = jsonRes.getCall(0).args;
-
-        expect(args.length).to.equal(3);
-        expect(args[0]).to.equal(res);
-        expect(args[1]).to.equal(resUtils.httpStatus.ok);
-        expect(args[2]).to.be.an.instanceof(Array);
-        expect(args[2][0]).to.be.an.instanceof(CardSummaryWrapper);
-        expect(args[2][0].delegate).to.equal(card1);
-        expect(args[2][1]).to.be.an.instanceof(CardSummaryWrapper);
-        expect(args[2][1].delegate).to.equal(card2);
-
-        findMock.verify();
+          expect(resourceHelpers.allCardsForUser).to.have.been.calledOnce.calledWith(appId, userId);
+          expect(jsonRes).to.have.been.calledOnce;
+          args = jsonRes.getCall(0).args;
+          expect(args.length).to.equal(3);
+          expect(args[0]).to.equal(res);
+          expect(args[1]).to.equal(resUtils.httpStatus.ok);
+          expect(args[2]).to.be.an.instanceof(Array);
+          expect(args[2][0]).to.be.an.instanceof(CardSummaryWrapper);
+          expect(args[2][0].delegate).to.equal(card1);
+          expect(args[2][1]).to.be.an.instanceof(CardSummaryWrapper);
+          expect(args[2][1].delegate).to.equal(card2);
+        });
       });
     });
 
@@ -684,19 +676,14 @@ describe('cards', () => {
       var error = new Error('error finding Cards');
 
       beforeEach(() => {
-        findMock = sandbox.mock(Card)
-          .expects('find').withArgs({ userId: userId, appId: appId })
-          .chain('sort').withArgs('-_id')
-          .chain('populate').withArgs('_deck')
-          .chain('exec')
-          .yields(error)
-
+        sandbox.stub(resourceHelpers, 'allCardsForUser').rejects(error);
         cardRoutes.cardSummariesForUser(req, res);
       });
 
       it('calls errJsonRes with the error', () => {
-        expect(errJsonRes).to.have.been.calledWith(res, error);
-        findMock.verify();
+        process.nextTick(() => {
+          expect(errJsonRes).to.have.been.calledWith(res, error);
+        });
       });
     });
   });
@@ -820,7 +807,6 @@ describe('cards', () => {
     var userId = 1
       , cardId = '1234adsf'
       , appId = 'appId'
-      , cardFindMock
       ;
 
     beforeEach(() => {
@@ -831,51 +817,48 @@ describe('cards', () => {
         },
         appId: appId
       };
-
-      cardFindMock = sandbox.mock(Card)
-        .expects('findOne').withArgs({
-            userId: userId,
-            _id: cardId,
-            appId: appId
-        })
-        .chain('populate').withArgs('_deck')
-        .chain('exec');
-     });
+    });
 
     context('when the card exists', () => {
       var card = { _id: cardId, foo: 'bar' };
 
       beforeEach(() => {
-        cardFindMock.yields(null, card);
+        sandbox.stub(resourceHelpers, 'cardForUser').resolves(card);
         cardRoutes.getCard(req, res);
       });
 
       it('calls jsonRes with the wrapped card', () => {
-        var args;
+        process.nextTick(() => {
+          var args;
 
-        expect(jsonRes).to.have.been.calledOnce;
+          expect(jsonRes).to.have.been.calledOnce;
+          expect(resourceHelpers.cardForUser).to.have.been.calledOnce.calledWith(appId, userId, cardId)
 
-        args = jsonRes.getCall(0).args;
+          args = jsonRes.getCall(0).args;
 
-        expect(args[0]).to.equal(res);
-        expect(args[1]).to.equal(resUtils.httpStatus.ok);
-        expect(args[2]).to.be.an.instanceof(MongooseWrapper);
-        expect(args[2].delegate).to.equal(card);
+          expect(args[0]).to.equal(res);
+          expect(args[1]).to.equal(resUtils.httpStatus.ok);
+          expect(args[2]).to.be.an.instanceof(MongooseWrapper);
+          expect(args[2].delegate).to.equal(card);
+        });
       });
     });
 
     context("when the card doesn't exist", () => {
       beforeEach(() => {
-        cardFindMock.yields(null, null);
+        sandbox.stub(resourceHelpers, 'cardForUser').resolves(null)
         cardRoutes.getCard(req, res);
       });
 
       it('calls jsonRes with not found status and message', () => {
-        expect(jsonRes).to.have.been.calledOnce.calledWith(
-          res,
-          resUtils.httpStatus.notFound,
-          { msg: cardNotFoundMessage(cardId, userId) }
-        );
+        process.nextTick(() => {
+          expect(jsonRes).to.have.been.calledOnce.calledWith(
+            res,
+            resUtils.httpStatus.notFound,
+            { msg: cardNotFoundMessage(cardId, userId) }
+          );
+          expect(resourceHelpers.cardForUser).to.have.been.calledOnce.calledWith(appId, userId, cardId);
+        });
       });
     });
 
@@ -883,12 +866,15 @@ describe('cards', () => {
       var error = new Error('error finding card');
 
       beforeEach(() => {
-        cardFindMock.yields(error);
+        sandbox.stub(resourceHelpers, 'cardForUser').rejects(error);
         cardRoutes.getCard(req, res);
       });
 
       it('calls errJsonRes with the error', () => {
-        expect(errJsonRes).to.have.been.calledOnce.calledWith(res, error);
+        process.nextTick(() => {
+          expect(resourceHelpers.cardForUser).to.have.been.calledOnce.calledWith(appId, userId, cardId);
+          expect(errJsonRes).to.have.been.calledOnce.calledWith(res, error);
+        });
       });
     });
   });
@@ -1024,8 +1010,7 @@ describe('cards', () => {
   });
 
   describe('#decksForUser', () => {
-    var deckFind
-      , userId = 1
+    var userId = 1
       , appId = appId
       ;
 
@@ -1036,11 +1021,6 @@ describe('cards', () => {
         },
         appId: appId
       };
-
-      deckFind = sandbox.mock(Deck)
-        .expects('find').withArgs({ userId: userId, appId: appId })
-        .chain('sort').withArgs('-_id')
-        .chain('exec');
     });
 
     context('when there are decks belonging to the user', () => {
@@ -1049,42 +1029,44 @@ describe('cards', () => {
         ;
 
       beforeEach(() => {
-        deckFind.yields(null, [ deck1, deck2 ]);
-
+        sandbox.stub(resourceHelpers, 'allDecksForUser').resolves([deck1, deck2]);
         cardRoutes.decksForUser(req, res);
       });
 
       it('calls jsonRes with the wrapped decks', () => {
-        var args;
+        process.nextTick(() => {
+          var args;
 
-        expect(jsonRes).to.have.been.calledOnce;
-
-        args = jsonRes.getCall(0).args;
-
-        expect(args.length).to.equal(3);
-        expect(args[0]).to.equal(res);
-        expect(args[1]).to.equal(resUtils.httpStatus.ok);
-        expect(args[2]).to.be.an.instanceof(Array);
-        expect(args[2][0]).to.be.an.instanceof(MongooseWrapper);
-        expect(args[2][0].delegate).to.equal(deck1);
-        expect(args[2][1]).to.be.an.instanceof(MongooseWrapper);
-        expect(args[2][1].delegate).to.equal(deck2);
+          expect(resourceHelpers.allDecksForUser).to.have.been.calledOnce.calledWith(appId, userId);
+          expect(jsonRes).to.have.been.calledOnce;
+          args = jsonRes.getCall(0).args;
+          expect(args.length).to.equal(3);
+          expect(args[0]).to.equal(res);
+          expect(args[1]).to.equal(resUtils.httpStatus.ok);
+          expect(args[2]).to.be.an.instanceof(Array);
+          expect(args[2][0]).to.be.an.instanceof(MongooseWrapper);
+          expect(args[2][0].delegate).to.equal(deck1);
+          expect(args[2][1]).to.be.an.instanceof(MongooseWrapper);
+          expect(args[2][1].delegate).to.equal(deck2);
+        });
       });
     });
 
     context("when there aren't decks belonging to the user", () => {
       beforeEach(() => {
-        deckFind.yields(null, []);
-
+        sandbox.stub(resourceHelpers, 'allDecksForUser').resolves([]);
         cardRoutes.decksForUser(req, res);
       });
 
       it('calls jsonRes with an empty Array', () => {
-        expect(jsonRes).to.have.been.calledOnce.calledWith(
-          res,
-          resUtils.httpStatus.ok,
-          []
-        );
+        process.nextTick(() => {
+          expect(jsonRes).to.have.been.calledOnce.calledWith(
+            res,
+            resUtils.httpStatus.ok,
+            []
+          );
+          expect(resourceHelpers.allDecksForUser).to.have.been.calledOnce.calledWith(appId, userId);
+        });
       });
     });
 
@@ -1092,12 +1074,15 @@ describe('cards', () => {
       var error = new Error('Error finding deck');
 
       beforeEach(() => {
-        deckFind.yields(error);
+        sandbox.stub(resourceHelpers, 'allDecksForUser').rejects(error);
         cardRoutes.decksForUser(req, res);
       });
 
       it('calls errJsonRes with the error', () => {
-        expect(errJsonRes).to.have.been.calledOnce.calledWith(res, error);
+        process.nextTick(() => {
+          expect(errJsonRes).to.have.been.calledOnce.calledWith(res, error);
+          expect(resourceHelpers.allDecksForUser).to.have.been.calledOnce.calledWith(appId, userId);
+        });
       });
     });
   });

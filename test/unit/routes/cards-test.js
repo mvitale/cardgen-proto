@@ -212,7 +212,6 @@ describe('cards', () => {
       , dataUpdate = { foo: 'bar' }
       , userDataUpdate = { baz: 'bop' }
       , update = { data: dataUpdate, userData: userDataUpdate }
-      , findOne
       , fakeCard = { version: 1 }
       ;
 
@@ -226,7 +225,7 @@ describe('cards', () => {
         body: update
       };
 
-      findOne = sandbox.stub(Card, 'findOne');
+      sandbox.stub(resourceHelpers, 'cardForUser');
     });
 
     context('success pathway', () => {
@@ -235,43 +234,45 @@ describe('cards', () => {
           cb(null, fakeCard);
         });
 
-        findOne.withArgs({ userId: userId, appId: appId, _id: cardId })
-          .yields(null, fakeCard);
-
+        resourceHelpers.cardForUser.withArgs(appId, userId, cardId)
+          .resolves(fakeCard);
         cardRoutes.save(req, res);
       });
 
       it('updates the card and calls jsonRes with the correct arguments', () => {
-        var args;
+        process.nextTick(() => {
+          var args;
 
-        expect(fakeCard.data).to.equal(dataUpdate);
-        expect(fakeCard.userData).to.equal(userDataUpdate);
-        expect(fakeCard.version).to.equal(2);
-        expect(fakeCard.save).to.have.been.calledOnce;
+          expect(fakeCard.data).to.equal(dataUpdate);
+          expect(fakeCard.userData).to.equal(userDataUpdate);
+          expect(fakeCard.version).to.equal(2);
+          expect(fakeCard.save).to.have.been.calledOnce;
 
-        expect(jsonRes).to.have.been.calledOnce;
-        args = jsonRes.getCall(0).args;
+          expect(jsonRes).to.have.been.calledOnce;
+          args = jsonRes.getCall(0).args;
 
-        expect(args[0]).to.equal(res);
-        expect(args[1]).to.equal(resUtils.httpStatus.ok);
-        expect(args[2]).to.be.an.instanceof(MongooseWrapper);
-        expect(args[2].delegate).to.equal(fakeCard);
+          expect(args[0]).to.equal(res);
+          expect(args[1]).to.equal(resUtils.httpStatus.ok);
+          expect(args[2]).to.be.an.instanceof(MongooseWrapper);
+          expect(args[2].delegate).to.equal(fakeCard);
+        });
       });
     });
 
     context('when card is not found', () => {
       beforeEach(() => {
-        findOne.yields(null, null);
-
+        resourceHelpers.cardForUser.resolves(null);
         cardRoutes.save(req, res);
       });
 
       it('calls jsonRes with the correct error message', () => {
-        expect(jsonRes).to.have.been.calledOnce.calledWith(
-          res,
-          resUtils.httpStatus.notFound,
-          { msg: cardNotFoundMessage(cardId, userId) }
-        );
+        process.nextTick(() => {
+          expect(jsonRes).to.have.been.calledOnce.calledWith(
+            res,
+            resUtils.httpStatus.notFound,
+            { msg: cardNotFoundMessage(cardId, userId) }
+          );
+        });
       });
     });
 
@@ -279,14 +280,15 @@ describe('cards', () => {
       var error = new Error('find error!');
 
       beforeEach(() =>  {
-        findOne.yields(error);
-
+        resourceHelpers.cardForUser.rejects(error);
         cardRoutes.save(req, res);
       });
 
       it('calls errJsonRes with the error', () => {
-        expect(errJsonRes).to.have.been.calledOnce.calledWith(res, error);
-        expect(jsonRes).not.to.have.been.called;
+        process.nextTick(() => {
+          expect(errJsonRes).to.have.been.calledOnce.calledWith(res, error);
+          expect(jsonRes).not.to.have.been.called;
+        });
       });
     });
 
@@ -294,15 +296,16 @@ describe('cards', () => {
       var error = new Error('failed to save card');
 
       beforeEach(() => {
-        findOne.yields(null, fakeCard);
+        resourceHelpers.cardForUser.resolves(fakeCard);
         fakeCard.save = sandbox.stub().yields(error);
-
         cardRoutes.save(req, res);
       });
 
       it('calls errJsonRes with the error', () => {
-        expect(errJsonRes).to.have.been.calledOnce.calledWith(res, error);
-        expect(jsonRes).not.to.have.been.called;
+        process.nextTick(() => {
+          expect(errJsonRes).to.have.been.calledOnce.calledWith(res, error);
+          expect(jsonRes).not.to.have.been.called;
+        });
       });
     });
   });

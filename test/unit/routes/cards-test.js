@@ -5,7 +5,7 @@ var sinon = require('sinon');
 var sinonChai = require('sinon-chai');
 var sinonMongoose = require('sinon-mongoose');
 var mongoose = require('mongoose');
-var PDFDocument = require('pdfkit')
+var PDFDocument = require('pdfkit');
 
 var cardRoutes = reqlib('lib/routes/cards')
   , Card = reqlib('lib/models/card')
@@ -17,6 +17,7 @@ var cardRoutes = reqlib('lib/routes/cards')
   , deckPdfMaker = reqlib('lib/deck-pdf-maker')
   , cardBackStore = reqlib('lib/card-back-store')
   , resourceHelpers = reqlib('lib/models/resource-helpers')
+  , collectionCardCreator = reqlib('lib/collection-card-creator')
   ;
 
 var expect = chai.expect
@@ -1603,6 +1604,138 @@ describe('cards', () => {
         cardRoutes.deckPdfResult(req, res);
         expect(res.log.error).to.have.been.calledOnce
           .calledWith({ err: err }, 'Failed to generate PDF for job pdfJobId');
+      });
+    });
+  });
+
+  describe('#populateDeckFromCollection', () => {
+    var deckId = 'deckid'
+      , userId = 5
+      , appId = 'appId'
+      , locale = 'fr'
+      , colId = 'colid'
+      , log = {
+          its: 'alogger'
+        }
+      , req
+      ;
+
+    beforeEach(() => {
+      req = {
+        params: {
+          deckId: deckId,
+          userId: userId,
+        },
+        body: {
+          colId: colId
+        },
+        appId: appId,
+        locale: locale,
+        log: log
+      };
+
+      sandbox.stub(resourceHelpers, 'deckForUser');
+    });
+
+    context('when colId is missing from the request body', () => {
+      beforeEach(() => {
+        delete req.body.colId;
+      });
+
+      it('sends a badrequest response', () => {
+        return cardRoutes.populateDeckFromCollection(req, res)
+          .then(() => {
+            expect(jsonRes).to.have.been.calledOnce.calledWith(res, 
+              resUtils.httpStatus.badRequest, {
+                msg: 'colId missing from request body'
+              }
+            );
+          });
+      });
+    });
+
+    context('when the deck is found', () => {
+      var deck = {
+        name: 'deck!'
+      }
+
+      beforeEach(() => {
+        resourceHelpers.deckForUser.resolves(deck);
+        sandbox.stub(collectionCardCreator, 'createJob');
+      });
+
+      context('when createJob succeeds', () => {
+        var jobId = 'jobid';
+
+        beforeEach(() => {
+          collectionCardCreator.createJob.resolves(jobId); 
+        });
+
+        it('responds with the job id', () => {
+          return cardRoutes.populateDeckFromCollection(req, res)
+            .then(() => {
+              expect(resourceHelpers.deckForUser).to.have.been.calledOnce
+                .calledWith(appId, userId, deckId);
+              expect(collectionCardCreator.createJob).to.have.been.calledOnce
+                .calledWith(appId, userId, locale, deck, colId, log);
+              expect(jsonRes).to.have.been.calledOnce.calledWith(res, 
+                resUtils.httpStatus.ok, { jobId: jobId });
+            });
+        });
+      });
+
+      context('when createJob results in an error', () => {
+        var err = new Error('createJob failed');
+
+        beforeEach(() => {
+          collectionCardCreator.createJob.rejects(err);
+        });
+
+        it('calls errJsonRes with the error', () => {
+          return cardRoutes.populateDeckFromCollection(req, res)
+            .then(() => {
+              expect(resourceHelpers.deckForUser).to.have.been.calledOnce
+                .calledWith(appId, userId, deckId);
+              expect(collectionCardCreator.createJob).to.have.been.calledOnce
+                .calledWith(appId, userId, locale, deck, colId, log);
+              expect(errJsonRes).to.have.been.calledOnce.calledWith(res, err); 
+            });
+        });
+      });
+    });
+
+    context('when the deck is not found', () => {
+      beforeEach(() => {
+        resourceHelpers.deckForUser.resolves(null);
+      });
+
+      it('sends a "not found" code and message', () => {
+        return cardRoutes.populateDeckFromCollection(req, res) 
+          .then(() => {
+            expect(resourceHelpers.deckForUser).to.have.been.calledOnce
+              .calledWith(appId, userId, deckId);
+            expect(jsonRes).to.have.been.calledOnce.calledWith(res, 
+              resUtils.httpStatus.notFound, {
+                msg: 'Deck deckid belonging to user 5 not found'
+              });
+          });
+      });
+    });
+
+    context('when finding the deck results in an error', () => {
+      var err = new Error('error in deckForUser');
+
+      beforeEach(() => {
+        resourceHelpers.deckForUser.rejects(err);
+      });
+
+      it('calls errJsonRes with the error', () => {
+        return cardRoutes.populateDeckFromCollection(req, res)
+          .then(() => {
+            expect(resourceHelpers.deckForUser).to.have.been.calledOnce
+              .calledWith(appId, userId, deckId);
+            expect(errJsonRes).to.have.been.calledOnce.calledWith(res, err);
+          });
       });
     });
   });

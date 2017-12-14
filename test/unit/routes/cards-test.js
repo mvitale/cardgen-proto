@@ -154,38 +154,38 @@ describe('cards', () => {
       beforeEach(() => {
         setUpSuccessCard();
         resourceHelpers.deckForUser.resolves(fakeDeck);
-        cardRoutes.createCardInDeck(req, res);
       });
 
       it('creates the Card and sets the correct response', () => {
-        process.nextTick(() => {
-          expect(Card.new).to.have.been.calledWith({
-            userId: userId,
-            appId: appId,
-            _deck: fakeDeck,
-            locale: locale
+        return cardRoutes.createCardInDeck(req, res)
+          .then(() => {
+            expect(Card.new).to.have.been.calledWith({
+              userId: userId,
+              appId: appId,
+              _deck: fakeDeck,
+              locale: locale
+            });
+            verifyCardCreated();
           });
-          verifyCardCreated();
-        });
       });
     });
 
     context('when the deck is not found', () => {
       beforeEach(() => {
         resourceHelpers.deckForUser.resolves(null);
-        cardRoutes.createCardInDeck(req, res);
       });
 
       it('sets the correct error on the response', () => {
-        process.nextTick(() => {
-          expect(jsonRes).to.have.been.calledWith(
-            res, 
-            resUtils.httpStatus.notFound, 
-            {
-              msg: 'Deck 2 belonging to user 1 not found'
-            }
-          );
-        });
+        return cardRoutes.createCardInDeck(req, res)
+          .then(() => {
+            expect(jsonRes).to.have.been.calledWith(
+              res, 
+              resUtils.httpStatus.notFound, 
+              {
+                msg: 'Deck 2 belonging to user 1 not found'
+              }
+            );
+          });
       });
     });
 
@@ -194,13 +194,13 @@ describe('cards', () => {
 
       beforeEach(() => {
         resourceHelpers.deckForUser.rejects(error);
-        cardRoutes.createCardInDeck(req, res);
       });
 
       it('calls errJsonRes with the error', () => {
-        process.nextTick(() => {
-          expect(errJsonRes).to.have.been.calledWith(res, error);
-        });
+        return cardRoutes.createCardInDeck(req, res)
+          .then(() => {
+            expect(errJsonRes).to.have.been.calledWith(res, error);
+          });
       });
     })
   });
@@ -212,7 +212,7 @@ describe('cards', () => {
       , dataUpdate = { foo: 'bar' }
       , userDataUpdate = { baz: 'bop' }
       , update = { data: dataUpdate, userData: userDataUpdate }
-      , fakeCard = { version: 1 }
+      , fakeCard
       ;
 
     beforeEach(() => {
@@ -225,54 +225,53 @@ describe('cards', () => {
         body: update
       };
 
+      fakeCard = { version: 1 };
+
       sandbox.stub(resourceHelpers, 'cardForUser');
     });
 
     context('success pathway', () => {
       beforeEach(() => {
-        fakeCard.save = sandbox.stub().callsFake((cb) => {
-          cb(null, fakeCard);
-        });
-
+        fakeCard.save = sandbox.stub().resolves();
         resourceHelpers.cardForUser.withArgs(appId, userId, cardId)
           .resolves(fakeCard);
-        cardRoutes.save(req, res);
       });
 
       it('updates the card and calls jsonRes with the correct arguments', () => {
-        process.nextTick(() => {
-          var args;
+        return cardRoutes.save(req, res)
+          .then(() => {
+            var args;
 
-          expect(fakeCard.data).to.equal(dataUpdate);
-          expect(fakeCard.userData).to.equal(userDataUpdate);
-          expect(fakeCard.version).to.equal(2);
-          expect(fakeCard.save).to.have.been.calledOnce;
+            expect(fakeCard.data).to.equal(dataUpdate);
+            expect(fakeCard.userData).to.equal(userDataUpdate);
+            expect(fakeCard.version).to.equal(2);
+            expect(fakeCard.save).to.have.been.calledOnce;
 
-          expect(jsonRes).to.have.been.calledOnce;
-          args = jsonRes.getCall(0).args;
+            expect(jsonRes).to.have.been.calledOnce;
+            args = jsonRes.getCall(0).args;
 
-          expect(args[0]).to.equal(res);
-          expect(args[1]).to.equal(resUtils.httpStatus.ok);
-          expect(args[2]).to.be.an.instanceof(MongooseWrapper);
-          expect(args[2].delegate).to.equal(fakeCard);
-        });
+            expect(args[0]).to.equal(res);
+            expect(args[1]).to.equal(resUtils.httpStatus.ok);
+            expect(args[2]).to.be.an.instanceof(MongooseWrapper);
+            expect(args[2].delegate).to.equal(fakeCard);
+          });
       });
     });
 
     context('when card is not found', () => {
       beforeEach(() => {
         resourceHelpers.cardForUser.resolves(null);
-        cardRoutes.save(req, res);
       });
 
       it('calls jsonRes with the correct error message', () => {
-        process.nextTick(() => {
-          expect(jsonRes).to.have.been.calledOnce.calledWith(
-            res,
-            resUtils.httpStatus.notFound,
-            { msg: cardNotFoundMessage(cardId, userId) }
-          );
-        });
+        return cardRoutes.save(req, res)
+          .then(() => {
+            expect(jsonRes).to.have.been.calledOnce.calledWith(
+              res,
+              resUtils.httpStatus.notFound,
+              { msg: cardNotFoundMessage(cardId, userId) }
+            );
+          });
       });
     });
 
@@ -281,14 +280,14 @@ describe('cards', () => {
 
       beforeEach(() =>  {
         resourceHelpers.cardForUser.rejects(error);
-        cardRoutes.save(req, res);
       });
 
       it('calls errJsonRes with the error', () => {
-        process.nextTick(() => {
-          expect(errJsonRes).to.have.been.calledOnce.calledWith(res, error);
-          expect(jsonRes).not.to.have.been.called;
-        });
+        return cardRoutes.save(req, res)
+          .then(() => {
+            expect(errJsonRes).to.have.been.calledOnce.calledWith(res, error);
+            expect(jsonRes).not.to.have.been.called;
+          });
       });
     });
 
@@ -297,15 +296,15 @@ describe('cards', () => {
 
       beforeEach(() => {
         resourceHelpers.cardForUser.resolves(fakeCard);
-        fakeCard.save = sandbox.stub().yields(error);
-        cardRoutes.save(req, res);
+        fakeCard.save = sandbox.stub().rejects(error);
       });
 
       it('calls errJsonRes with the error', () => {
-        process.nextTick(() => {
-          expect(errJsonRes).to.have.been.calledOnce.calledWith(res, error);
-          expect(jsonRes).not.to.have.been.called;
-        });
+        return cardRoutes.save(req, res)
+          .then(() => {
+            expect(errJsonRes).to.have.been.calledOnce.calledWith(res, error);
+            expect(jsonRes).not.to.have.been.called;
+          });
       });
     });
   });
@@ -633,26 +632,22 @@ describe('cards', () => {
       };
     });
 
-    function sharedBefore() {
-      sandbox.stub(resourceHelpers, 'allCardsForUser').resolves(cards);
-      cardRoutes.cardSummariesForUser(req, res);
-    }
-
     context("when the user doesn't have any cards", () => {
       beforeEach(() => {
-        cards = []
-        sharedBefore();
+        cards = [];
+        sandbox.stub(resourceHelpers, 'allCardsForUser').resolves(cards);
       });
 
       it('calls jsonRes with an empty Array', () => {
-        process.nextTick(() => {
-          expect(resourceHelpers.allCardsForUser).to.have.been.calledWith(appId, userId);
-          expect(resUtils.jsonRes).to.have.been.calledOnce.calledWith(
-            res,
-            resUtils.httpStatus.ok,
-            []
-          );
-        });
+        return cardRoutes.cardSummariesForUser(req, res)
+          .then(() => {
+            expect(resourceHelpers.allCardsForUser).to.have.been.calledWith(appId, userId);
+            expect(resUtils.jsonRes).to.have.been.calledOnce.calledWith(
+              res,
+              resUtils.httpStatus.ok,
+              []
+            );
+          });
       });
     });
 
@@ -663,25 +658,26 @@ describe('cards', () => {
 
       beforeEach(() => {
         cards = [ card1, card2 ];
-        sharedBefore();
+        sandbox.stub(resourceHelpers, 'allCardsForUser').resolves(cards);
       });
 
       it('calls jsonRes with those cards wrapped', () => {
-        process.nextTick(() => {
-          var args;
+        return cardRoutes.cardSummariesForUser(req, res)
+          .then(() => {
+            var args;
 
-          expect(resourceHelpers.allCardsForUser).to.have.been.calledOnce.calledWith(appId, userId);
-          expect(jsonRes).to.have.been.calledOnce;
-          args = jsonRes.getCall(0).args;
-          expect(args.length).to.equal(3);
-          expect(args[0]).to.equal(res);
-          expect(args[1]).to.equal(resUtils.httpStatus.ok);
-          expect(args[2]).to.be.an.instanceof(Array);
-          expect(args[2][0]).to.be.an.instanceof(CardSummaryWrapper);
-          expect(args[2][0].delegate).to.equal(card1);
-          expect(args[2][1]).to.be.an.instanceof(CardSummaryWrapper);
-          expect(args[2][1].delegate).to.equal(card2);
-        });
+            expect(resourceHelpers.allCardsForUser).to.have.been.calledOnce.calledWith(appId, userId);
+            expect(jsonRes).to.have.been.calledOnce;
+            args = jsonRes.getCall(0).args;
+            expect(args.length).to.equal(3);
+            expect(args[0]).to.equal(res);
+            expect(args[1]).to.equal(resUtils.httpStatus.ok);
+            expect(args[2]).to.be.an.instanceof(Array);
+            expect(args[2][0]).to.be.an.instanceof(CardSummaryWrapper);
+            expect(args[2][0].delegate).to.equal(card1);
+            expect(args[2][1]).to.be.an.instanceof(CardSummaryWrapper);
+            expect(args[2][1].delegate).to.equal(card2);
+          });
       });
     });
 
@@ -690,13 +686,14 @@ describe('cards', () => {
 
       beforeEach(() => {
         sandbox.stub(resourceHelpers, 'allCardsForUser').rejects(error);
-        cardRoutes.cardSummariesForUser(req, res);
       });
 
       it('calls errJsonRes with the error', () => {
-        process.nextTick(() => {
-          expect(errJsonRes).to.have.been.calledWith(res, error);
-        });
+        return cardRoutes.cardSummariesForUser(req, res)
+          .then(() => {
+
+            expect(errJsonRes).to.have.been.calledWith(res, error);
+          });
       });
     });
   });
@@ -755,7 +752,6 @@ describe('cards', () => {
       context("when the deck doesn't have cards in it", () => {
         beforeEach(() => {
           fakeDeck.cards.yields(null, []);
-
           cardRoutes.cardIdsForDeck(req, res);
         });
 
@@ -837,41 +833,41 @@ describe('cards', () => {
 
       beforeEach(() => {
         sandbox.stub(resourceHelpers, 'cardForUser').resolves(card);
-        cardRoutes.getCard(req, res);
       });
 
       it('calls jsonRes with the wrapped card', () => {
-        process.nextTick(() => {
-          var args;
+        cardRoutes.getCard(req, res)
+          .then(() => {
+            var args;
 
-          expect(jsonRes).to.have.been.calledOnce;
-          expect(resourceHelpers.cardForUser).to.have.been.calledOnce.calledWith(appId, userId, cardId)
+            expect(jsonRes).to.have.been.calledOnce;
+            expect(resourceHelpers.cardForUser).to.have.been.calledOnce.calledWith(appId, userId, cardId)
 
-          args = jsonRes.getCall(0).args;
+            args = jsonRes.getCall(0).args;
 
-          expect(args[0]).to.equal(res);
-          expect(args[1]).to.equal(resUtils.httpStatus.ok);
-          expect(args[2]).to.be.an.instanceof(MongooseWrapper);
-          expect(args[2].delegate).to.equal(card);
-        });
+            expect(args[0]).to.equal(res);
+            expect(args[1]).to.equal(resUtils.httpStatus.ok);
+            expect(args[2]).to.be.an.instanceof(MongooseWrapper);
+            expect(args[2].delegate).to.equal(card);
+          });
       });
     });
 
     context("when the card doesn't exist", () => {
       beforeEach(() => {
         sandbox.stub(resourceHelpers, 'cardForUser').resolves(null)
-        cardRoutes.getCard(req, res);
       });
 
       it('calls jsonRes with not found status and message', () => {
-        process.nextTick(() => {
-          expect(jsonRes).to.have.been.calledOnce.calledWith(
-            res,
-            resUtils.httpStatus.notFound,
-            { msg: cardNotFoundMessage(cardId, userId) }
-          );
-          expect(resourceHelpers.cardForUser).to.have.been.calledOnce.calledWith(appId, userId, cardId);
-        });
+        cardRoutes.getCard(req, res)
+          .then(() => {
+            expect(jsonRes).to.have.been.calledOnce.calledWith(
+              res,
+              resUtils.httpStatus.notFound,
+              { msg: cardNotFoundMessage(cardId, userId) }
+            );
+            expect(resourceHelpers.cardForUser).to.have.been.calledOnce.calledWith(appId, userId, cardId);
+          });
       });
     });
 
@@ -880,14 +876,14 @@ describe('cards', () => {
 
       beforeEach(() => {
         sandbox.stub(resourceHelpers, 'cardForUser').rejects(error);
-        cardRoutes.getCard(req, res);
       });
 
       it('calls errJsonRes with the error', () => {
-        process.nextTick(() => {
-          expect(resourceHelpers.cardForUser).to.have.been.calledOnce.calledWith(appId, userId, cardId);
-          expect(errJsonRes).to.have.been.calledOnce.calledWith(res, error);
-        });
+        cardRoutes.getCard(req, res)
+          .then(() => {
+            expect(resourceHelpers.cardForUser).to.have.been.calledOnce.calledWith(appId, userId, cardId);
+            expect(errJsonRes).to.have.been.calledOnce.calledWith(res, error);
+          });
       });
     });
   });
@@ -1043,11 +1039,10 @@ describe('cards', () => {
 
       beforeEach(() => {
         sandbox.stub(resourceHelpers, 'allDecksForUser').resolves([deck1, deck2]);
-        cardRoutes.decksForUser(req, res);
       });
 
       it('calls jsonRes with the wrapped decks', () => {
-        process.nextTick(() => {
+        return cardRoutes.decksForUser(req, res).then(() => {
           var args;
 
           expect(resourceHelpers.allDecksForUser).to.have.been.calledOnce.calledWith(appId, userId);
@@ -1068,11 +1063,10 @@ describe('cards', () => {
     context("when there aren't decks belonging to the user", () => {
       beforeEach(() => {
         sandbox.stub(resourceHelpers, 'allDecksForUser').resolves([]);
-        cardRoutes.decksForUser(req, res);
       });
 
       it('calls jsonRes with an empty Array', () => {
-        process.nextTick(() => {
+        return cardRoutes.decksForUser(req, res).then(() => {
           expect(jsonRes).to.have.been.calledOnce.calledWith(
             res,
             resUtils.httpStatus.ok,
@@ -1088,13 +1082,13 @@ describe('cards', () => {
 
       beforeEach(() => {
         sandbox.stub(resourceHelpers, 'allDecksForUser').rejects(error);
-        cardRoutes.decksForUser(req, res);
       });
 
       it('calls errJsonRes with the error', () => {
-        process.nextTick(() => {
+        cardRoutes.decksForUser(req, res).then(() => {
           expect(errJsonRes).to.have.been.calledOnce.calledWith(res, error);
           expect(resourceHelpers.allDecksForUser).to.have.been.calledOnce.calledWith(appId, userId);
+
         });
       });
     });

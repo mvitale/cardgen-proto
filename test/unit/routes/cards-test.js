@@ -131,8 +131,7 @@ describe('cards', () => {
   });
 
   describe('#createCardInDeck', () => {
-    var findDeck
-      , fakeDeck = { deck: true }
+    var fakeDeck = { deck: true }
       , userId = 1
       , deckId = 2
       , appId = 'appId'
@@ -148,37 +147,44 @@ describe('cards', () => {
         appId: appId,
         locale: locale
       };
-
-      findDeck = sandbox.stub(Deck, 'findOne');
+      sandbox.stub(resourceHelpers, 'deckForUser');
     });
 
     context('success pathway', () => {
       beforeEach(() => {
         setUpSuccessCard();
-        findDeck.yields(null, fakeDeck);
+        resourceHelpers.deckForUser.resolves(fakeDeck);
         cardRoutes.createCardInDeck(req, res);
       });
 
       it('creates the Card and sets the correct response', () => {
-        expect(Card.new).to.have.been.calledWith({
-          userId: userId,
-          appId: appId,
-          _deck: fakeDeck,
-          locale: locale
+        process.nextTick(() => {
+          expect(Card.new).to.have.been.calledWith({
+            userId: userId,
+            appId: appId,
+            _deck: fakeDeck,
+            locale: locale
+          });
+          verifyCardCreated();
         });
-        verifyCardCreated();
       });
     });
 
     context('when the deck is not found', () => {
       beforeEach(() => {
-        findDeck.yields(null, null);
+        resourceHelpers.deckForUser.resolves(null);
         cardRoutes.createCardInDeck(req, res);
       });
 
       it('sets the correct error on the response', () => {
-        expect(jsonRes).to.have.been.calledWith(res, resUtils.httpStatus.notFound, {
-          msg: 'Deck 2 belonging to user 1 not found'
+        process.nextTick(() => {
+          expect(jsonRes).to.have.been.calledWith(
+            res, 
+            resUtils.httpStatus.notFound, 
+            {
+              msg: 'Deck 2 belonging to user 1 not found'
+            }
+          );
         });
       });
     });
@@ -187,12 +193,14 @@ describe('cards', () => {
       var error = new Error('Something went wrong in find');
 
       beforeEach(() => {
-        findDeck.yields(error);
+        resourceHelpers.deckForUser.rejects(error);
         cardRoutes.createCardInDeck(req, res);
       });
 
       it('calls errJsonRes with the error', () => {
-        expect(errJsonRes).to.have.been.calledWith(res, error);
+        process.nextTick(() => {
+          expect(errJsonRes).to.have.been.calledWith(res, error);
+        });
       });
     })
   });
@@ -516,6 +524,7 @@ describe('cards', () => {
     });
   });
 
+  /*
   describe('#cardIdsForUser', () => {
     var findMock
       , userId = 10
@@ -603,6 +612,7 @@ describe('cards', () => {
       });
     });
   });
+  */
 
   describe('#cardSummariesForUser', () => {
     var userId = 1

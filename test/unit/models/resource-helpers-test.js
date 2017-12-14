@@ -27,38 +27,6 @@ describe('resource-helpers', () => {
     , fakeId = '111111111111111111111111'
     ;
 
-  describe('#allCardsForUser', () => {
-
-    context('when the user has a card that belongs to them', () => {
-      var card;
-
-      beforeEach((done) => {
-        Card.create({
-          userId: userId,
-          appId: appId,
-          locale: locale,
-          templateName: templateName,
-          templateVersion: templateVersion
-        }, (err, theCard) => {
-          if (err) {
-            throw err;
-          }
-
-          card = theCard; 
-          done();
-        });
-      });
-
-      it('returns them', () => {
-        return resourceHelpers.allCardsForUser(appId, userId)
-          .then((cards) => {
-            expect(cards.length).to.equal(1);
-            expect(cards[0]._id).to.eql(card._id);
-          });
-      });
-    });
-  });
-
   describe('#allDecksForUser', () => {
     var decks;
     
@@ -307,7 +275,7 @@ describe('resource-helpers', () => {
 
       itResolvesWithTheExpectedCards();
     });
-    
+
     function createUserCards(cb) {
       createCardsInDeck(null, userId, cb);
     }

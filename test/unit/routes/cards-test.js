@@ -1856,6 +1856,78 @@ describe('cards', () => {
     });
   });
 
+  describe('#setDeckDesc', () => {
+    var appId = 'appId'
+      , userId = 'userId'
+      , deckId = 'deckId'
+      , desc = 'Deck description'
+      , req
+      ;
+
+    beforeEach(() => {
+      req = {
+        appId: appId,
+        body: desc,
+        params: {
+          userId: userId,
+          deckId: deckId
+        }
+      }
+      sandbox.stub(resourceHelpers, 'deckForUser');
+    });
+
+    context('when the deck is found', () => {
+      var deck = {
+            name: 'thedeck'
+          } 
+        ;
+
+      beforeEach(() => {
+        resourceHelpers.deckForUser.resolves(deck);
+        deck.save = sandbox.stub().callsFake(() => {
+          expect(deck.desc).to.eql(desc);
+          return Promise.resolve(deck);
+        });
+      });
+
+      it('sets the description, saves it, and responds with "ok"', () => {
+        return cardRoutes.setDeckDesc(req, res).then(() => {
+          expect(resourceHelpers.deckForUser).to.have.been.calledOnce.calledWith(appId, userId, deckId);
+          expect(deck.save).to.have.been.calledOnce;
+          expect(jsonRes).to.have.been.calledOnce.calledWith(res, resUtils.httpStatus.ok, { status: 'ok' });
+        });
+      });
+    });
+
+    context('when the deck is not found', () => {
+      beforeEach(() => {
+        resourceHelpers.deckForUser.resolves(null);
+      });
+
+      it('responds with "deck not found"', () => {
+        return cardRoutes.setDeckDesc(req, res).then(() => {
+          expect(resourceHelpers.deckForUser).to.have.been.calledOnce.calledWith(appId, userId, deckId);
+          expectDeckNotFoundResponse(deckId, userId);
+        });
+      });
+    });
+
+    context('when finding the deck yields an error', () => {
+      var err = new Error('error in deckForUser');
+
+      beforeEach(() => {
+        resourceHelpers.deckForUser.rejects(err);
+      });
+
+      it('calls errJsonRes with the error', () => {
+        return cardRoutes.setDeckDesc(req, res).then(() => {
+          expect(resourceHelpers.deckForUser).to.have.been.calledOnce.calledWith(appId, userId, deckId);
+          expect(errJsonRes).to.have.been.calledOnce.calledWith(res, err);
+        });
+      });
+    });
+  });
+
   afterEach(() => {
     sandbox.restore();
   });

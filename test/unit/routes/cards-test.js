@@ -1416,7 +1416,7 @@ describe('cards', () => {
           itBehavesLikeCardFound(deck);
         });
 
-        context('when Deck.findOne yields an error', () => {
+        context('when deckForUser yields an error', () => {
           var err = new Error('Deck.findOne failed');
 
           beforeEach(() => {
@@ -1479,6 +1479,7 @@ describe('cards', () => {
     });
   });
 
+  /*
   describe('#userCardsWithTaxonId', () => {
     var userId = 'userId'
       , taxonId = 12345
@@ -1550,6 +1551,116 @@ describe('cards', () => {
 
       it('calls errJsonRes with the error', () => {
         expect(resUtils.errJsonRes).to.have.been.calledOnce.calledWith(res, err);
+      });
+    });
+  });
+  */
+
+  describe('#createDeckPdf', () => {
+    var userId = 'userId'
+      , appId = 'appId'
+      , deckId = 'deckId'
+      , req
+      ;
+    
+    beforeEach(() => {
+      sandbox.stub(resourceHelpers, 'deckForUser');
+      req = {
+        params: {
+          userId: userId
+        }, 
+        body: {
+          deckId: deckId
+        },
+        appId: appId
+      }
+    });
+
+    context('when the deck is found', () => {
+      var deck = { name: 'deckitydeck' };
+
+      beforeEach(() => {
+        deck.cards = sandbox.stub();
+        resourceHelpers.deckForUser.resolves(deck);
+      });
+
+      context('when there are no cards in the deck', () => {
+        beforeEach(() => {
+          deck.cards.yields(null, []);
+        });
+
+        it('returns a "not found" response', () => {
+          return cardRoutes.createDeckPdf(req, res).then(() => {
+            expect(resourceHelpers.deckForUser).to.have.been.calledOnce.calledWith(appId, userId, deckId);
+            expect(jsonRes).to.have.been.calledOnce.calledWith(res, resUtils.httpStatus.notFound, { msg: 'No cards found in deck' });
+          });
+        });
+      });
+
+      context('when there are cards in the deck', () => {
+        var cards = [
+              { id: 'card1' },
+              { id: 'card2' }
+            ]
+          , jobId = 'jobid'
+          ;
+
+        beforeEach(() => {
+          deck.cards.yields(null, cards);
+          sandbox.stub(deckPdfMaker, 'startJob').returns(jobId);
+        });
+
+        it('starts a pdf job and responds with its id', () => {
+          return cardRoutes.createDeckPdf(req, res).then(() => {
+            expect(resourceHelpers.deckForUser).to.have.been.calledOnce.calledWith(appId, userId, deckId);
+            expect(jsonRes).to.have.been.calledOnce
+              .calledWith(res, resUtils.httpStatus.ok, { jobId: jobId });
+          });
+        })
+      });
+
+      context('when deck.cards yields an error', () => {
+        var err = new Error('error in deck.cards');
+
+        beforeEach(() => {
+          deck.cards.yields(err);
+        });
+
+        it('calls errJsonRes with the error', () => {
+          return cardRoutes.createDeckPdf(req, res).then(() => {
+            expect(resourceHelpers.deckForUser).to.have.been.calledOnce
+              .calledWith(appId, userId, deckId);
+            expect(errJsonRes).to.have.been.calledOnce.calledWith(res, err);
+          });
+        });
+      });
+    });
+    
+    context('when the deck is not found', () => {
+      beforeEach(() => {
+        resourceHelpers.deckForUser.resolves(null);
+      });
+
+      it('responds with "deck not found"', () => {
+        return cardRoutes.createDeckPdf(req, res).then(() => {
+          expect(resourceHelpers.deckForUser).to.have.been.calledOnce
+          expectDeckNotFoundResponse(deckId, userId);
+        });
+      });
+    });
+
+    context('when finding the deck results in an error', () => {
+      var err = new Error('error in deckForUser');
+
+      beforeEach(() => {
+        resourceHelpers.deckForUser.rejects(err);
+      });
+
+      it('calls errJsonRes with the error', () => {
+        return cardRoutes.createDeckPdf(req, res).then(() => {
+          expect(resourceHelpers.deckForUser).to.have.been.calledOnce
+          expect(errJsonRes).to.have.been.calledOnce.calledWith(res, err);
+        });
       });
     });
   });

@@ -1928,9 +1928,158 @@ describe('cards', () => {
     });
   });
 
+  describe('#makeDeckPublic', () => {
+    var appId = 'appId'
+      , userId = 'userId'
+      , deckId = 'deckId'
+      , req
+      ;
+
+    beforeEach(() => {
+      req = {
+        appId: appId,
+        params: {
+          userId: userId,
+          deckId: deckId
+        }
+      }
+      sandbox.stub(resourceHelpers, 'deckForUser');
+    });
+
+    context('when the deck is found', () => {
+      var deck = {
+        name: 'deck',
+        public: false
+      };
+
+      beforeEach(() => {
+        resourceHelpers.deckForUser.resolves(deck);
+        deck.save = sandbox.stub().callsFake(() => {
+          expect(deck.public).to.be.true;
+          return Promise.resolve(deck);
+        });
+      });
+
+      it('sets public to true and responds appropriately', () => {
+        return cardRoutes.makeDeckPublic(req, res).then(() => {
+          expect(resourceHelpers.deckForUser).to.have.been.calledOnce
+            .calledWith(appId, userId, deckId);
+          expect(deck.save).to.have.been.calledOnce;
+          expect(jsonRes).to.have.been.calledOnce.calledWith(
+            res, resUtils.httpStatus.ok, { status: 'ok' });
+        });
+      });
+    });
+
+    context('when the deck is not found', () => {
+      beforeEach(() => {
+        resourceHelpers.deckForUser.resolves(null);
+      });
+
+      it('responds appropriately', () => {
+        return cardRoutes.makeDeckPublic(req, res).then(() => {
+          expect(resourceHelpers.deckForUser).to.have.been.calledOnce
+          expectDeckNotFoundResponse(deckId, userId);
+        });
+      });
+    });
+
+    context('when finding the deck results in an error', () => {
+      var err = new Error('error in deckForUser');
+
+      beforeEach(() => {
+        resourceHelpers.deckForUser.rejects(err);
+      });
+
+      it('calls errJsonRes with the error', () => {
+        return cardRoutes.makeDeckPublic(req, res).then(() => {
+          expect(resourceHelpers.deckForUser).to.have.been.calledOnce
+          expect(errJsonRes).to.have.been.calledOnce.calledWith(res, err);
+        });
+      });
+    });
+  });
+
+  // TODO
+  describe('getPublicDecks', () => {
+    itBehavesLikeGetPublicResource(
+      'publicDecks', 
+      'getPublicDecks',
+      [
+        { name: 'deck1' },
+        { name: 'deck2' },
+        { name: 'deck3' }
+      ]
+  );
+  });
+
+  describe('getPublicCards', () => {
+    itBehavesLikeGetPublicResource('publicCards', 'getPublicCards', 
+      [ { id: 'cardId1' }, { id: 'cardId2' } ]);
+  });
+
   afterEach(() => {
     sandbox.restore();
   });
+
+  function itBehavesLikeGetPublicResource(resourceFnName, routeFnName, resources) {
+    var appId = 'appId'
+      , req = {
+          appId: appId
+        }
+      ;
+
+    beforeEach(() => {
+      sandbox.stub(resourceHelpers, resourceFnName);
+    });
+
+    context('when there are no resources', () => {
+      beforeEach(() => {
+        resourceHelpers[resourceFnName].resolves([]);
+      });
+
+      it('responds with []', () => {
+        return cardRoutes[routeFnName](req, res).then(() => {
+          expect(resourceHelpers[resourceFnName]).to.have.been
+            .calledOnce.calledWith(appId);
+          expect(jsonRes).to.have.been.calledOnce
+            .calledWith(res, resUtils.httpStatus.ok, []);
+        });
+      });
+    });
+
+    context('when there are resources', () => {
+      beforeEach(() => {
+        resourceHelpers[resourceFnName].resolves(resources);
+      });
+
+      it('responds with them', () => {
+        return cardRoutes[routeFnName](req, res).then(() => {
+          expect(resourceHelpers[resourceFnName]).to.have.been
+            .calledOnce.calledWith(appId);
+          expect(jsonRes).to.have.been.calledOnce
+            .calledWith(res, resUtils.httpStatus.ok, resources);
+        });
+      });
+    });
+
+    context('when resourceHelpers function rejects with an error', () => {
+      var err = new Error('error in ' + resourceFnName);
+
+      beforeEach(() => {
+        resourceHelpers[resourceFnName].rejects(err);
+      });
+
+      it('calls errJsonRes with the error', () => {
+        return cardRoutes[routeFnName](req, res).then(() => {
+          expect(resourceHelpers[resourceFnName]).to.have.been
+            .calledOnce.calledWith(appId);
+          expect(errJsonRes).to.have.been.calledOnce.calledWith(res, err);
+        });
+      });
+    });
+
+  }
 
   function itSendsCardNotFoundResponse(cardId, userId) {
     it('sends card not found response', () => {

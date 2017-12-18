@@ -489,15 +489,18 @@ describe('resource-helpers', () => {
       ;
 
     function itRejects() {
-      it('rejects with the correct error', () => {
-          return resourceHelpers.addUserToDeck(appId, userId, newUserId, deckId.toString())
-            .then(expect.fail)
+      it('rejects with the correct error', (done) => {
+          resourceHelpers.addUserToDeck(appId, userId, newUserId, deckId.toString())
+            .then(() => {
+              expect.fail();
+              done();
+            })
             .catch((err) => {
               expect(err).to.eql(
                 new TypeError('Deck not found (userId: ' + userId + ', deckId: ' + deckId + ')')
               );
+              done();
             });
-
       });
     }
 
@@ -578,12 +581,141 @@ describe('resource-helpers', () => {
     });
   });
 
+  describe('#publicDecks', () => {
+    context('when there are no public decks', () => {
+      it('resolves with []', () => {
+        return resourceHelpers.publicDecks(appId)
+          .then((decks) => {
+            expect(decks).to.eql([]);
+          });
+      });
+    });
+
+    context('when there are public decks', () => {
+      var publicDeck1
+        , publicDeck2
+        ;
+
+      beforeEach((done) => {
+        Deck.create({
+          appId: appId,
+          userId: 3,
+          name: 'deck1',
+          public: true
+        })
+        .then((deck) => {
+          publicDeck1 = deck;
+          return Deck.create({
+            appId: appId,
+            userId: 2,
+            name: 'deck2',
+            public: false
+          })
+        })
+        .then((deck) => {
+          return Deck.create({
+            appId: appId,
+            userId: 5,
+            name: 'deck3',
+            public: true
+          })
+        })
+        .then((deck) => {
+          publicDeck2 = deck; 
+          done();
+        });
+      });
+
+      it('resolves with them', () => {
+        return resourceHelpers.publicDecks(appId)
+          .then((decks) => {
+            expect(decks).to.have.length(2);
+            expect(decks.find((deck) => {
+              return deck._id.toString() === publicDeck1._id.toString();
+            })).to.exist;
+            expect(decks.find((deck) => {
+              return deck._id.toString() === publicDeck2._id.toString();
+            })).to.exist;
+          });
+      });
+    });
+  });
+
+  describe('#publicCards', () => {
+    context('when there are no public decks', () => {
+      it('resolves with []', () => {
+        return resourceHelpers.publicCards(appId).then((cards) => {
+          expect(cards).to.eql([]); 
+        });
+      });
+    });
+
+    context('when there are public decks with cards', () => {
+      var publicCards = [];
+
+      beforeEach((done) => {
+        Deck.create({
+          name: 'publicDeck1', 
+          appId: appId,
+          userId: 1,
+          public: true
+        })
+        .then((deck) => {
+          return Card.create({
+            _deck: deck,
+            userId: 5,
+            appId: appId,
+            templateName: 'trait',
+            templateVersion: '1.1',
+            locale: locale
+          }).then((card) => {
+            publicCards.push(card);
+            return Card.create({
+              _deck: deck,
+              userId: 7,
+              appId: appId,
+              templateName: 'trait',
+              templateVersion: '1.0',
+              locale: locale
+            });
+          })
+        }).then((card) => {
+          publicCards.push(card);
+          return Deck.create({
+            name: 'publicDeck2',
+            appId: appId,
+            userId: 70,
+            public: true
+          });
+        }).then((deck) => {
+          return Card.create({
+            _deck: deck,
+            userId: 50,
+            appId: appId,
+            templateName: 'trait',
+            templateVersion: '1.0',
+            locale: locale
+          });
+        }).then((card) => {
+          publicCards.push(card);
+          return null;
+        }).then(done);
+      });
+    
+      it('resolves with their cards', () => {
+        return resourceHelpers.publicCards(appId).then((cards) => {
+          expect(cards).to.have.length(publicCards.length);
+        });
+      });
+    });
+  });
+
   function createUserDecks(cb) {
     var decks = []
       , n = 3
       ;  
 
-    for(var i = 0; i < n; i++) {
+    for (var i = 0; i < n; i++) {
       createUserDeck((deck) => {
         decks.push(deck);
         if (decks.length === n) {

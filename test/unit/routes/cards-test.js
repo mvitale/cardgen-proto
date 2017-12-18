@@ -2058,7 +2058,13 @@ describe('cards', () => {
           expect(resourceHelpers[resourceFnName]).to.have.been
             .calledOnce.calledWith(appId);
           expect(jsonRes).to.have.been.calledOnce
-            .calledWith(res, resUtils.httpStatus.ok, resources);
+            .calledWith(res, resUtils.httpStatus.ok);
+          var wrapped = jsonRes.args[0][2];
+          expect(wrapped).to.have.length(resources.length);
+          for (var i; i < wrapped.length; i++) {
+            expect(wrapped[i]).to.be.instanceof(MongooseWrapper);
+            expect(wrapped[i].delegate).to.eql(resources[i]);
+          }
         });
       });
     });

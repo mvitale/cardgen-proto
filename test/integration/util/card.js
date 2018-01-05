@@ -13,7 +13,7 @@ function getCard(cb) {
     if (err) return cb(err);
 
     speciesDataSupplier._setApiCaller({
-      getJson: function(apiName, params, cb) {
+      getJson: function(apiName, params, log, cb) {
         var result;
 
         if (apiName === 'pages') {
@@ -37,9 +37,14 @@ function getCard(cb) {
       appId: 'test',
       locale: 'en'
     });
+
+    var log = {
+      info: () => {},
+      error: () => {}
+    };
     
     try {
-      card.populateDefaultsAndChoices((err) => {
+      card.populateDefaultsAndChoices(log, (err) => {
         speciesDataSupplier._resetApiCaller();
 
         if (err) {

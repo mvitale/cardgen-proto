@@ -25,7 +25,7 @@ describe('collectionCardCreator', () => {
     , deck = 'deck'
     , colId = 871246
     , getJson
-    , log = sinon.stub()
+    , log = {}
     , newJob
     , startStub
     , job
@@ -60,12 +60,10 @@ describe('collectionCardCreator', () => {
     getJson.yields(null, {
       collection_items: collectionItems
     });
-  });
+});
 
   describe('#createJob', () => {
-    context('when eolApiCaller returns a collections result', () => {
-
-
+    context('when eolApiCaller yields a collections result', () => {
       it('creates a CollectionCardsJob and starts it', () => {
         return collectionCardCreator.createJob(appId, userId, locale, deck,
           colId, log)
@@ -80,7 +78,8 @@ describe('collectionCardCreator', () => {
                 filter: 'taxa',
                 sort_by: 'recently_added',
                 language: 'en'
-              }
+              },
+              log
             );
             expect(newJob).to.have.been.calledOnce.calledWith(appId,
               userId, locale, deck, [id1, id2]);
@@ -135,6 +134,7 @@ describe('collectionCardCreator', () => {
         return collectionCardCreator.createJob(appId, userId, locale, deck,
           colId, log)
             .then((jobId) => {
+              console.log('jobId', jobId);
               expect(collectionCardCreator.jobStatus(jobId)).to.equal('pending');
             });
       });

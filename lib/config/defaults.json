@@ -20,5 +20,6 @@
   "i18n": {
     "availableLocales": ["en"],
     "defaultLocale": "en"
-  }
+  },
+  "eolApiKey": "$secrets.eolApiKey"
 }

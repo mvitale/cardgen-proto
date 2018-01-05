@@ -187,7 +187,7 @@ describe('template-manager', () => {
     });
 
     var okDataSupplier = {
-      supply: function(templateParams, cb) {
+      supply: function(templateParams, log, cb) {
         cb(null, { data: true });
       }
     };
@@ -229,6 +229,7 @@ describe('template-manager', () => {
             v1,
             'en',
             { speciesId: 1234 },
+            {},
             callback
           );
 
@@ -258,6 +259,7 @@ describe('template-manager', () => {
             v1,
             'en',
             {},
+            {},
             callback
           );
 
@@ -275,7 +277,7 @@ describe('template-manager', () => {
           load: function(name, type) {
             if (name === 'species-data-supplier' && type === 'data') {
               return {
-                supply: function(templateParams, cb) {
+                supply: function(templateParams, log, cb) {
                   return cb(apiError);
                 }
               };
@@ -294,6 +296,7 @@ describe('template-manager', () => {
           v1,
           'en',
           { speciesId: 1234 },
+          {},
           callback
         );
 
@@ -329,6 +332,7 @@ describe('template-manager', () => {
           v1,
           'en',
           { speciesId: 1234 },
+          {},
           callback
         );
 
@@ -364,6 +368,7 @@ describe('template-manager', () => {
           v1,
           'en',
           { speciesId: 1234 },
+          {},
           callback
         );
 

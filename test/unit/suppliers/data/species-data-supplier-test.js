@@ -79,7 +79,7 @@ describe('species-data-supplier', () => {
       });
 
       it('yields the correct result', () => {
-        speciesDataSupplier.supply({}, cb);
+        speciesDataSupplier.supply({}, {}, cb);
         expect(cb).to.have.been.calledWith(null, {
           taxon: {
             commonName: commonName,
@@ -103,11 +103,8 @@ describe('species-data-supplier', () => {
 
       context('when the pages call fails', () => {
         beforeEach(() => {
-          getJson.withArgs('pages').callsFake((apiName, params, cb) => {
-            cb(new Error('API call failed'));
-          });
-
-          speciesDataSupplier.supply({}, cb);
+          getJson.withArgs('pages').yields(new Error('API call failed'));
+          speciesDataSupplier.supply({}, {}, cb);
         });
 
         it('yields the correct error', () => {
@@ -117,15 +114,9 @@ describe('species-data-supplier', () => {
 
       context('when the hierarchy_entries call fails', () => {
         beforeEach(() => {
-          getJson.withArgs('pages').callsFake((apiName, params, cb) => {
-            cb(null, pagesResult);
-          });
-
-          getJson.withArgs('hierarchy_entries').callsFake((apiName, params, cb) => {
-            cb(new Error('API call failed'));
-          });
-
-          speciesDataSupplier.supply({}, cb);
+          getJson.withArgs('pages').yields(null, pagesResult);
+          getJson.withArgs('hierarchy_entries').yields(new Error('API call failed'));
+          speciesDataSupplier.supply({}, {}, cb);
         });
 
         it('yields the correct error', () => {
@@ -137,13 +128,10 @@ describe('species-data-supplier', () => {
     context('when the pages call returns an unexpected result', () => {
       context('when there is no taxonConcepts array', () => {
         beforeEach(() => {
-          getJson.withArgs('pages').callsFake((apiName, params, cb) => {
-            cb(null, {
-              foo: 'bar'
-            });
+          getJson.withArgs('pages').yields(null, {
+            foo: 'bar'
           });
-
-          speciesDataSupplier.supply({}, cb);
+          speciesDataSupplier.supply({}, {}, cb);
         });
 
         it('produces the correct error', () => {
@@ -155,13 +143,10 @@ describe('species-data-supplier', () => {
 
       context('when the taxonConcepts array is empty', () => {
         beforeEach(() => {
-          getJson.withArgs('pages').callsFake((apiName, params, cb) => {
-            cb(null, {
-              taxonConcepts: []
-            });
+          getJson.withArgs('pages').yields(null, {
+            taxonConcepts: []
           });
-
-          speciesDataSupplier.supply({}, cb);
+          speciesDataSupplier.supply({}, {}, cb);
         });
 
         it('produces the correct error', () => {
@@ -175,13 +160,10 @@ describe('species-data-supplier', () => {
         'when there is no identifier in the first taxonConcepts element',
         () => {
           beforeEach(() => {
-            getJson.withArgs('pages').callsFake((apiName, params, cb) => {
-              cb(null, {
-                taxonConcepts: [{ foo: 'bar' }]
-              });
+            getJson.withArgs('pages').yields(null, {
+              taxonConcepts: [{ foo: 'bar' }]
             });
-
-            speciesDataSupplier.supply({}, cb);
+            speciesDataSupplier.supply({}, {}, cb);
           });
 
           it('produces the correct error', () => {

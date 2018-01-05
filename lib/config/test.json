@@ -2,5 +2,6 @@
   "db": {
     "user": "cardgen_test",
     "dbName": "cardgen_test"
-  }
+  },
+  "eolApiKey": "fakeapikey"
 }

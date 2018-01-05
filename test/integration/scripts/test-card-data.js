@@ -1,5 +1,6 @@
-var reqlib = require('app-root-path').require;
-var args = require('minimist')(process.argv.slice(2))
+var reqlib = require('app-root-path').require
+  , bunyan = require('bunyan')
+  , args = require('minimist')(process.argv.slice(2))
   , fs = require('fs')
   , init = require('../../init')
   , cardUtil = require('../util/card')
@@ -9,6 +10,8 @@ var args = require('minimist')(process.argv.slice(2))
 var validModes = ['card', 'api'];
 
 var mode = args.type;
+
+var log = bunyan.createLogger({name: 'test-card-data-script'});
 
 if (mode === 'card') {
   printCard();
@@ -25,7 +28,7 @@ function printCard() {
 function printApiResults() {
   speciesDataSupplier._makeApiCalls({
     speciesId: cardUtil.taxonId
-  }, printErrOrResult);
+  }, log, printErrOrResult);
 }
 
 function printErrOrResult(err, result) {

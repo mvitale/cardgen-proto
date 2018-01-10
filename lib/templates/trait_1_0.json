@@ -82,8 +82,8 @@
         "width": 240,
         "credit": {
           "x": 120,
-          "y": 328,
-          "font": "8px 'Open Sans'",
+          "y": 329,
+          "font": "7px 'Open Sans'",
           "textAlign": "center",
           "color": "$mainColors.text",
           "prefix": "Image: "
@@ -133,56 +133,34 @@
         "labelKey": "traits",
         "type": "key-val-list",
         "x": 0,
-        "y": 227,
+        "y": 213,
         "max": 5,
-        "yIncr": 11,
+        "yIncr": 13,
         "keyValSpec": {
-          "font": "7px 'Open Sans'",
-          "keyX": 14,
-          "valX": 125,
-          "color": "#252525",
+          "font": "9px 'Open Sans'",
+          "keyX": 15,
+          "valX": 133,
+          "color": "#505050",
           "y": 0
-        },
-        "additionalElements": [
-          {
-            "type": "line",
-            "color": "#a6a6a6",
-            "startX": 12,
-            "startY": 3,
-            "endX": 117,
-            "endY": 3,
-            "width": 1
-          },
-          {
-            "type": "line",
-            "color": "#a6a6a6",
-            "startX": 123,
-            "startY": 3,
-            "endX": 228,
-            "endY": 3,
-            "width": 1
-          }
-        ]
+        }
       },
-      "habitatText": {
-        "labelKey": "habitats",
-        "type": "text",
-        "font": "7px 'Open Sans'",
-        "color": "#252525",
-        "x": 120,
-        "y": 211,
-        "textAlign": "center",
-        "prefix": "Habitats: "
+      "miscInfoBg": {
+        "type": "color",
+        "x": 0,
+        "y": 274,
+        "height": 43,
+        "width": 240,
+        "value": { "color": "#e2e2e2" }
       },
       "miscInfo": {
         "labelKey": "additionalInfo",
         "type": "multiline-text",
-        "wrapAt": 221,
+        "wrapAt": 230,
         "fontFamily": "Open Sans",
-        "color": "#252525",
-        "x": 20,
+        "color": "#505050",
+        "x": 10,
         "y": 285,
-        "value": { "fontSz": 7 }
+        "value": { "fontSz": 8 }
       }
     }
   },

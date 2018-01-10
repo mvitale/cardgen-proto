@@ -99,9 +99,12 @@
       },
       "foodwebRole": {
         "labelKey": "foodWebRole",
-        "type": "labeled-choice-image",
+        "type": "text-icon",
+        "font": "9px 'Open Sans'",
+        "color": "#fff",
         "x": 14,
         "y": 181,
+        "textOffsetY": 9,
         "height": 11,
         "width": 32
       },
@@ -123,7 +126,10 @@
       },
       "biome" : {
         "labelKey": "biome",
-        "type": "labeled-choice-image",
+        "type": "text-icon",
+        "font": "12px 'Open Sans'",
+        "color": "#252525",
+        "textOffsetY": 18,
         "x": 61,
         "y": 167,
         "height": 29,
@@ -166,8 +172,8 @@
   },
   "templateChoiceSuppliers": {
     "mainColors": "standard-bg-color-supplier",
-    "biome": "biome-icon-supplier",
-    "foodwebRole": "foodweb-role-icon-supplier",
+    "biome": "biome-text-icon-supplier",
+    "foodwebRole": "foodweb-role-text-icon-supplier",
     "iucnStatus": "iucn-icon-supplier",
     "taxonClass": "taxon-group-supplier"
   },

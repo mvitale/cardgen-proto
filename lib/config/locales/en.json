@@ -66,6 +66,18 @@
       "herbivore": "Herbivore",
       "omnivore": "Omnivore",
       "sanguinivore": "Sanguinivore"
+    },
+    "icons": {
+      "apex": "APEX",
+      "auto": "AUTO",
+      "carn": "CARN",
+      "deco": "DECO",
+      "detr": "DETR",
+      "herb": "HERB",
+      "hete": "HETE",
+      "mult": "MULT",
+      "omni": "OMNI",
+      "sang": "SANG"
     }
   },
   "iucnIconSupplier": {
@@ -79,6 +91,17 @@
       "ex": "Extinct (EX)",
       "dd": "Data deficient (DD)",
       "ne": "Not evaluated (NE)"
+    }, 
+    "icons": {
+      "lc": "LC",
+      "nt": "NT",
+      "vu": "VU",
+      "en": "EN",
+      "cr": "CR",
+      "ew": "EW",
+      "ex": "EX",
+      "dd": "DD",
+      "ne": "NE"
     }
   }
 }

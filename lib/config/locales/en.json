@@ -40,12 +40,18 @@
   },
   "biomeIconSupplier": {
     "labels": {
+      "alpine": "Alpine",
+      "chaparral": "Chaparral",
+      "coral_reef": "Coral Reef",
       "desert": "Desert",
+      "estuary": "Estuary",
       "freshwater": "Freshwater",
       "grasslands": "Grasslands",
       "marine": "Marine",
-      "temperateForest": "Temperate Forest",
-      "tropicalForest": "Tropical Forest",
+      "multi": "Multi",
+      "taiga_forest": "Taiga Forest",
+      "temperate_forest": "Temperate Forest",
+      "tropical_rainforest": "Tropical Rainforest",
       "tundra": "Tundra",
       "urban": "Urban"
     }

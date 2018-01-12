@@ -91,18 +91,18 @@
       },
       "foodWebRoleTitle": {
         "type": "text",
-        "font": "7px 'Open Sans'",
-        "color": "#252525",
-        "value": { "text": "Food Web Role:" },
+        "font": "8px 'Open Sans'",
+        "color": "#505050",
+        "value": { "text": "Food Web Role" },
         "x": 4,
-        "y": 176
+        "y": 178
       },
       "foodwebRole": {
         "labelKey": "foodWebRole",
         "type": "text-icon",
         "font": "9px 'Open Sans'",
         "color": "#fff",
-        "x": 14,
+        "x": 6,
         "y": 181,
         "textOffsetY": 9,
         "height": 11,
@@ -110,11 +110,11 @@
       },
       "iucnTitle": {
         "type": "text",
-        "font": "7px 'Open Sans'",
-        "color": "#252525",
-        "value": { "text": "IUCN Status:" },
-        "x": 190,
-        "y": 176
+        "font": "8px 'Open Sans'",
+        "color": "#505050",
+        "value": { "text": "IUCN Status" },
+        "x": 180,
+        "y": 178
       },
       "iucnStatus": {
         "labelKey": "iucnStatus",
@@ -127,13 +127,13 @@
       "biome" : {
         "labelKey": "biome",
         "type": "text-icon",
-        "font": "12px 'Open Sans'",
-        "color": "#252525",
-        "textOffsetY": 18,
-        "x": 61,
-        "y": 167,
-        "height": 29,
-        "width": 120
+        "font": "8px 'Open Sans'",
+        "color": "#505050",
+        "textOffsetY": -4,
+        "x": 77,
+        "y": 182,
+        "height": 13,
+        "width": 86
       },
       "traits": {
         "labelKey": "traits",

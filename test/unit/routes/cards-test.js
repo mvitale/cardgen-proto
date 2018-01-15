@@ -1185,7 +1185,6 @@ describe('cards', () => {
       req = {
         params: {
           cardId: cardId,
-          userId: userId
         },
         appId: appId,
         log: logger
@@ -1193,7 +1192,7 @@ describe('cards', () => {
     });
 
     beforeEach(() => {
-      sandbox.stub(resourceHelpers, 'cardForUser')
+      sandbox.stub(Card, 'findOne')
     });
 
     context('when the Card is found', () => {
@@ -1204,7 +1203,7 @@ describe('cards', () => {
       beforeEach(() => {
         svgCacheGet = sandbox.stub(cardSvgCache, 'get')
           .withArgs(fakeCard, logger);
-        resourceHelpers.cardForUser.resolves(fakeCard);
+        Card.findOne.resolves(fakeCard);
       });
 
       context('when cardSvgCache yields an error', () => {
@@ -1243,7 +1242,7 @@ describe('cards', () => {
 
     context("when the Card isn't found", () => {
       beforeEach(() => {
-        resourceHelpers.cardForUser.resolves(null);
+        Card.findOne.resolves(null);
       });
 
       it('calls jsonRes with not found message and status', () => {
@@ -1251,7 +1250,7 @@ describe('cards', () => {
           expect(jsonRes).to.have.been.calledOnce.calledWith(
             res,
             resUtils.httpStatus.notFound,
-            { msg: cardNotFoundMessage(cardId, userId) }
+            { msg: 'Card asdf1234 not found' }
           );
         });
       });
@@ -1261,7 +1260,7 @@ describe('cards', () => {
       var error = new Error('error finding card');
 
       beforeEach(() => {
-        resourceHelpers.cardForUser.rejects(error);
+        Card.findOne.rejects(error);
       });
 
       it('calls errJsonRes with the error', () => {
@@ -1557,18 +1556,14 @@ describe('cards', () => {
   */
 
   describe('#createDeckPdf', () => {
-    var userId = 'userId'
-      , appId = 'appId'
+    var appId = 'appId'
       , deckId = 'deckId'
       , req
       ;
     
     beforeEach(() => {
-      sandbox.stub(resourceHelpers, 'deckForUser');
+      sandbox.stub(Deck, 'findOne');
       req = {
-        params: {
-          userId: userId
-        }, 
         body: {
           deckId: deckId
         },
@@ -1581,7 +1576,7 @@ describe('cards', () => {
 
       beforeEach(() => {
         deck.cards = sandbox.stub();
-        resourceHelpers.deckForUser.resolves(deck);
+        Deck.findOne.resolves(deck);
       });
 
       context('when there are no cards in the deck', () => {
@@ -1591,7 +1586,10 @@ describe('cards', () => {
 
         it('returns a "not found" response', () => {
           return cardRoutes.createDeckPdf(req, res).then(() => {
-            expect(resourceHelpers.deckForUser).to.have.been.calledOnce.calledWith(appId, userId, deckId);
+            expect(Deck.findOne).to.have.been.calledOnce.calledWith({
+              _id: deckId,
+              appId: appId
+            });
             expect(jsonRes).to.have.been.calledOnce.calledWith(res, resUtils.httpStatus.notFound, { msg: 'No cards found in deck' });
           });
         });
@@ -1612,7 +1610,10 @@ describe('cards', () => {
 
         it('starts a pdf job and responds with its id', () => {
           return cardRoutes.createDeckPdf(req, res).then(() => {
-            expect(resourceHelpers.deckForUser).to.have.been.calledOnce.calledWith(appId, userId, deckId);
+            expect(Deck.findOne).to.have.been.calledOnce.calledWith({
+              _id: deckId,
+              appId: appId
+            });
             expect(jsonRes).to.have.been.calledOnce
               .calledWith(res, resUtils.httpStatus.ok, { jobId: jobId });
           });
@@ -1628,8 +1629,10 @@ describe('cards', () => {
 
         it('calls errJsonRes with the error', () => {
           return cardRoutes.createDeckPdf(req, res).then(() => {
-            expect(resourceHelpers.deckForUser).to.have.been.calledOnce
-              .calledWith(appId, userId, deckId);
+            expect(Deck.findOne).to.have.been.calledOnce.calledWith({
+              _id: deckId,
+              appId: appId
+            });
             expect(errJsonRes).to.have.been.calledOnce.calledWith(res, err);
           });
         });
@@ -1638,13 +1641,16 @@ describe('cards', () => {
     
     context('when the deck is not found', () => {
       beforeEach(() => {
-        resourceHelpers.deckForUser.resolves(null);
+        Deck.findOne.resolves(null);
       });
 
       it('responds with "deck not found"', () => {
         return cardRoutes.createDeckPdf(req, res).then(() => {
-          expect(resourceHelpers.deckForUser).to.have.been.calledOnce
-          expectDeckNotFoundResponse(deckId, userId);
+          expect(Deck.findOne).to.have.been.calledOnce.calledWith({
+            _id: deckId,
+            appId: appId
+          });
+          expectDeckNotFoundResponse(deckId);
         });
       });
     });
@@ -1653,12 +1659,15 @@ describe('cards', () => {
       var err = new Error('error in deckForUser');
 
       beforeEach(() => {
-        resourceHelpers.deckForUser.rejects(err);
+        Deck.findOne.rejects(err);
       });
 
       it('calls errJsonRes with the error', () => {
         return cardRoutes.createDeckPdf(req, res).then(() => {
-          expect(resourceHelpers.deckForUser).to.have.been.calledOnce
+          expect(Deck.findOne).to.have.been.calledOnce.calledWith({
+            _id: deckId,
+            appId: appId
+          });
           expect(errJsonRes).to.have.been.calledOnce.calledWith(res, err);
         });
       });
@@ -2115,11 +2124,14 @@ describe('cards', () => {
     );
   }
 
+
   function cardNotFoundMessage(cardId, userId) {
     return 'Card ' + cardId + ' belonging to user ' + userId + ' not found';
   }
 
   function deckNotFoundMessage(deckId, userId) {
-    return 'Deck ' + deckId + ' belonging to user ' + userId + ' not found';
+    return userId ? 
+      'Deck ' + deckId + ' belonging to user ' + userId + ' not found' :
+      'Deck ' + deckId + ' not found';
   }
 });

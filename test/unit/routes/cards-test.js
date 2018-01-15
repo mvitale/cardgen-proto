@@ -34,6 +34,7 @@ describe('cards', () => {
     , jsonRes
     , errJsonRes
     , handleModelErr
+    , next
     ;
 
   function setUpSuccessCard() {
@@ -62,6 +63,7 @@ describe('cards', () => {
     errJsonRes = sandbox.stub(resUtils, 'errJsonRes');
     handleModelErr = sandbox.stub(resUtils, 'handleModelErr');
     res = sandbox.stub();
+    next = sandbox.spy();
   });
 
   describe('#createCard', () => {
@@ -198,9 +200,9 @@ describe('cards', () => {
       });
 
       it('calls errJsonRes with the error', () => {
-        return cardRoutes.createCardInDeck(req, res)
+        return cardRoutes.createCardInDeck(req, res, next)
           .then(() => {
-            expect(errJsonRes).to.have.been.calledWith(res, error);
+            expect(next).to.have.been.calledOnce.calledWith(error);
           });
       });
     })
@@ -283,10 +285,10 @@ describe('cards', () => {
         resourceHelpers.cardForUser.rejects(error);
       });
 
-      it('calls errJsonRes with the error', () => {
-        return cardRoutes.save(req, res)
+      it('calls next with the error', () => {
+        return cardRoutes.save(req, res, next)
           .then(() => {
-            expect(errJsonRes).to.have.been.calledOnce.calledWith(res, error);
+            expect(next).to.have.been.calledOnce.calledWith(error);
             expect(jsonRes).not.to.have.been.called;
           });
       });
@@ -300,10 +302,10 @@ describe('cards', () => {
         fakeCard.save = sandbox.stub().rejects(error);
       });
 
-      it('calls errJsonRes with the error', () => {
-        return cardRoutes.save(req, res)
+      it('calls next with the error', () => {
+        return cardRoutes.save(req, res, next)
           .then(() => {
-            expect(errJsonRes).to.have.been.calledOnce.calledWith(res, error);
+            expect(next).to.have.been.calledOnce.calledWith(error);
             expect(jsonRes).not.to.have.been.called;
           });
       });
@@ -689,11 +691,10 @@ describe('cards', () => {
         sandbox.stub(resourceHelpers, 'allCardsForUser').rejects(error);
       });
 
-      it('calls errJsonRes with the error', () => {
-        return cardRoutes.cardSummariesForUser(req, res)
+      it('calls next with the error', () => {
+        return cardRoutes.cardSummariesForUser(req, res, next)
           .then(() => {
-
-            expect(errJsonRes).to.have.been.calledWith(res, error);
+            expect(next).to.have.been.calledWith(error);
           });
       });
     });
@@ -837,7 +838,7 @@ describe('cards', () => {
       });
 
       it('calls jsonRes with the wrapped card', () => {
-        cardRoutes.getCard(req, res)
+        return cardRoutes.getCard(req, res)
           .then(() => {
             var args;
 
@@ -860,7 +861,7 @@ describe('cards', () => {
       });
 
       it('calls jsonRes with not found status and message', () => {
-        cardRoutes.getCard(req, res)
+        return cardRoutes.getCard(req, res)
           .then(() => {
             expect(jsonRes).to.have.been.calledOnce.calledWith(
               res,
@@ -880,10 +881,10 @@ describe('cards', () => {
       });
 
       it('calls errJsonRes with the error', () => {
-        cardRoutes.getCard(req, res)
+        return cardRoutes.getCard(req, res, next)
           .then(() => {
             expect(resourceHelpers.cardForUser).to.have.been.calledOnce.calledWith(appId, userId, cardId);
-            expect(errJsonRes).to.have.been.calledOnce.calledWith(res, error);
+            expect(next).to.have.been.calledOnce.calledWith(error);
           });
       });
     });
@@ -1085,9 +1086,9 @@ describe('cards', () => {
         sandbox.stub(resourceHelpers, 'allDecksForUser').rejects(error);
       });
 
-      it('calls errJsonRes with the error', () => {
-        cardRoutes.decksForUser(req, res).then(() => {
-          expect(errJsonRes).to.have.been.calledOnce.calledWith(res, error);
+      it('calls next with the error', () => {
+        return cardRoutes.decksForUser(req, res, next).then(() => {
+          expect(next).to.have.been.calledOnce.calledWith(error);
           expect(resourceHelpers.allDecksForUser).to.have.been.calledOnce.calledWith(appId, userId);
 
         });
@@ -1214,8 +1215,8 @@ describe('cards', () => {
         });
 
         it('calls errJsonRes with the error', () => {
-          return cardRoutes.cardSvg(req, res).then(() => {
-            expect(errJsonRes).to.have.been.calledOnce.calledWith(res, error);
+          return cardRoutes.cardSvg(req, res, next).then(() => {
+            expect(next).to.have.been.calledOnce.calledWith(error);
           });
         });
       });
@@ -1263,9 +1264,9 @@ describe('cards', () => {
         Card.findOne.rejects(error);
       });
 
-      it('calls errJsonRes with the error', () => {
-        return cardRoutes.cardSvg(req, res).then(() => {
-          expect(errJsonRes).to.have.been.calledOnce.calledWith(res, error);
+      it('calls next with the error', () => {
+        return cardRoutes.cardSvg(req, res, next).then(() => {
+          expect(next).to.have.been.calledOnce.calledWith(error);
         });
       });
     });
@@ -1316,7 +1317,7 @@ describe('cards', () => {
 
       function itBehavesLikeCardFound(deck) {
         it('calls resourceHelpers.cardForUser with the expected parameters', () => {
-          return cardRoutes.copyCard(req, res).then(() => {
+          return cardRoutes.copyCard(req, res, next).then(() => {
             expect(resourceHelpers.cardForUser).to.have.been.calledOnce.calledWith(
               appId, userId, cardId);
           });
@@ -1332,7 +1333,7 @@ describe('cards', () => {
 
 
           it('calls jsonRes with ok message and status', () => {
-            return cardRoutes.copyCard(req, res).then(() => {
+            return cardRoutes.copyCard(req, res, next).then(() => {
               verifySavedCard(deck);
               expect(jsonRes).to.have.been.calledOnce.calledWith(
                 res,
@@ -1350,9 +1351,9 @@ describe('cards', () => {
             resourceHelpers.cardForUser.rejects(err);
           });
 
-          it('calls errJsonRes with the error', () => {
-            return cardRoutes.copyCard(req, res).then(() => {
-              expect(errJsonRes).to.have.been.calledOnce.calledWith(res, err);
+          it('calls next with the error', () => {
+            return cardRoutes.copyCard(req, res, next).then(() => {
+              expect(next).to.have.been.calledOnce.calledWith(err);
             });
           });
         });
@@ -1392,8 +1393,10 @@ describe('cards', () => {
         });
 
         it('calls deckForUser with the correct options', () => {
-          cardRoutes.copyCard(req, res);
-          expect(resourceHelpers.deckForUser).to.have.been.calledOnce.calledWith(appId, userId, deckId);
+          return cardRoutes.copyCard(req, res, next)
+            .then(() => {
+              expect(resourceHelpers.deckForUser).to.have.been.calledOnce.calledWith(appId, userId, deckId);
+            });
         });
 
         context('when deckForUser is successful', () => {
@@ -1406,7 +1409,7 @@ describe('cards', () => {
           });
 
           it('calls deckForUser with the correct options', () => {
-            return cardRoutes.copyCard(req, res).then(() => {
+            return cardRoutes.copyCard(req, res, next).then(() => {
               expect(resourceHelpers.deckForUser).to.have.been.calledOnce.calledWith(
                 appId, userId, deckId); 
             });
@@ -1423,15 +1426,15 @@ describe('cards', () => {
           });
 
           it('calls deckForUser with the correct options', () => {
-            return cardRoutes.copyCard(req, res).then(() => {
+            return cardRoutes.copyCard(req, res, next).then(() => {
               expect(resourceHelpers.deckForUser).to.have.been.calledOnce.calledWith(
                 appId, userId, deckId); 
             });
           });
 
-          it('calls errJsonRes with the error', () => {
-            return cardRoutes.copyCard(req, res).then(() => {
-              expect(errJsonRes).to.have.been.calledOnce.calledWith(res, err);
+          it('calls next with the error', () => {
+            return cardRoutes.copyCard(req, res, next).then(() => {
+              expect(next).to.have.been.calledOnce.calledWith(err);
             });
           });
         });
@@ -1457,9 +1460,9 @@ describe('cards', () => {
         resourceHelpers.cardForUser.rejects(err);
       });
 
-      it('calls errJsonRes with the error', () => {
-        return cardRoutes.copyCard(req, res).then(() => {
-          expect(errJsonRes).to.have.been.calledOnce.calledWith(res, err);
+      it('calls next with the error', () => {
+        return cardRoutes.copyCard(req, res, next).then(() => {
+          expect(next).to.have.been.calledOnce.calledWith(err);
         });
       });
     });
@@ -1627,13 +1630,13 @@ describe('cards', () => {
           deck.cards.yields(err);
         });
 
-        it('calls errJsonRes with the error', () => {
-          return cardRoutes.createDeckPdf(req, res).then(() => {
+        it('calls next with the error', () => {
+          return cardRoutes.createDeckPdf(req, res, next).then(() => {
             expect(Deck.findOne).to.have.been.calledOnce.calledWith({
               _id: deckId,
               appId: appId
             });
-            expect(errJsonRes).to.have.been.calledOnce.calledWith(res, err);
+            expect(next).to.have.been.calledOnce.calledWith(err);
           });
         });
       });
@@ -1645,7 +1648,7 @@ describe('cards', () => {
       });
 
       it('responds with "deck not found"', () => {
-        return cardRoutes.createDeckPdf(req, res).then(() => {
+        return cardRoutes.createDeckPdf(req, res, next).then(() => {
           expect(Deck.findOne).to.have.been.calledOnce.calledWith({
             _id: deckId,
             appId: appId
@@ -1662,13 +1665,13 @@ describe('cards', () => {
         Deck.findOne.rejects(err);
       });
 
-      it('calls errJsonRes with the error', () => {
-        return cardRoutes.createDeckPdf(req, res).then(() => {
+      it('calls next with the error', () => {
+        return cardRoutes.createDeckPdf(req, res, next).then(() => {
           expect(Deck.findOne).to.have.been.calledOnce.calledWith({
             _id: deckId,
             appId: appId
           });
-          expect(errJsonRes).to.have.been.calledOnce.calledWith(res, err);
+          expect(next).to.have.been.calledOnce.calledWith(err);
         });
       });
     });
@@ -1817,13 +1820,13 @@ describe('cards', () => {
         });
 
         it('calls errJsonRes with the error', () => {
-          return cardRoutes.populateDeckFromCollection(req, res)
+          return cardRoutes.populateDeckFromCollection(req, res, next)
             .then(() => {
               expect(resourceHelpers.deckForUser).to.have.been.calledOnce
                 .calledWith(appId, userId, deckId);
               expect(collectionCardCreator.createJob).to.have.been.calledOnce
                 .calledWith(appId, userId, locale, deck, colId, log);
-              expect(errJsonRes).to.have.been.calledOnce.calledWith(res, err); 
+              expect(next).to.have.been.calledOnce.calledWith(err); 
             });
         });
       });
@@ -1855,11 +1858,11 @@ describe('cards', () => {
       });
 
       it('calls errJsonRes with the error', () => {
-        return cardRoutes.populateDeckFromCollection(req, res)
+        return cardRoutes.populateDeckFromCollection(req, res, next)
           .then(() => {
             expect(resourceHelpers.deckForUser).to.have.been.calledOnce
               .calledWith(appId, userId, deckId);
-            expect(errJsonRes).to.have.been.calledOnce.calledWith(res, err);
+            expect(next).to.have.been.calledOnce.calledWith(err);
           });
       });
     });
@@ -1928,10 +1931,10 @@ describe('cards', () => {
         resourceHelpers.deckForUser.rejects(err);
       });
 
-      it('calls errJsonRes with the error', () => {
-        return cardRoutes.setDeckDesc(req, res).then(() => {
+      it('calls next with the error', () => {
+        return cardRoutes.setDeckDesc(req, res, next).then(() => {
           expect(resourceHelpers.deckForUser).to.have.been.calledOnce.calledWith(appId, userId, deckId);
-          expect(errJsonRes).to.have.been.calledOnce.calledWith(res, err);
+          expect(next).to.have.been.calledOnce.calledWith(err);
         });
       });
     });
@@ -2000,16 +2003,15 @@ describe('cards', () => {
         resourceHelpers.deckForUser.rejects(err);
       });
 
-      it('calls errJsonRes with the error', () => {
-        return cardRoutes.makeDeckPublic(req, res).then(() => {
+      it('calls next with the error', () => {
+        return cardRoutes.makeDeckPublic(req, res, next).then(() => {
           expect(resourceHelpers.deckForUser).to.have.been.calledOnce
-          expect(errJsonRes).to.have.been.calledOnce.calledWith(res, err);
+          expect(next).to.have.been.calledOnce.calledWith(err);
         });
       });
     });
   });
 
-  // TODO
   describe('getPublicDecks', () => {
     itBehavesLikeGetPublicResource(
       'publicDecks', 
@@ -2025,10 +2027,6 @@ describe('cards', () => {
   describe('getPublicCards', () => {
     itBehavesLikeGetPublicResource('publicCards', 'getPublicCards', 
       [ { id: 'cardId1' }, { id: 'cardId2' } ]);
-  });
-
-  afterEach(() => {
-    sandbox.restore();
   });
 
   function itBehavesLikeGetPublicResource(resourceFnName, routeFnName, resources) {
@@ -2085,16 +2083,20 @@ describe('cards', () => {
         resourceHelpers[resourceFnName].rejects(err);
       });
 
-      it('calls errJsonRes with the error', () => {
-        return cardRoutes[routeFnName](req, res).then(() => {
+      it('calls next with the error', () => {
+        return cardRoutes[routeFnName](req, res, next).then(() => {
           expect(resourceHelpers[resourceFnName]).to.have.been
             .calledOnce.calledWith(appId);
-          expect(errJsonRes).to.have.been.calledOnce.calledWith(res, err);
+          expect(next).to.have.been.calledOnce.calledWith(err);
         });
       });
     });
-
   }
+
+  afterEach(() => {
+    sandbox.restore();
+  });
+
 
   function itSendsCardNotFoundResponse(cardId, userId) {
     it('sends card not found response', () => {

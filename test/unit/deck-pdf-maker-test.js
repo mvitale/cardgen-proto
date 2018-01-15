@@ -220,6 +220,26 @@ describe('deck-pdf-maker', () => {
                 back, 
                 {x:108, y:45}
               ],
+              [
+                back,
+                {x:306, y:45}
+              ],
+              [
+                back,
+                {x:504, y:45}
+              ],
+              [
+                back,
+                {x:108, y:315}
+              ],
+              [
+                back,
+                {x:306, y:315}
+              ],
+              [
+                back,
+                {x:504, y:315}
+              ],
             ]
           , imageCalls
           , curCall

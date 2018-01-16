@@ -153,13 +153,21 @@
           "y": 0
         }
       },
+      "miscInfoLine": {
+        "type": "color",
+        "x": 0,
+        "y": 274,
+        "height": 3,
+        "width": 240,
+        "value": { "color": "#e5e5e5" }
+      },
       "miscInfoBg": {
         "type": "color",
         "x": 0,
         "y": 274,
         "height": 43,
         "width": 240,
-        "value": { "color": "#e2e2e2" }
+        "value": { "color": "#f3f3f3" }
       },
       "miscInfo": {
         "labelKey": "additionalInfo",

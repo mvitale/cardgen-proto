@@ -153,14 +153,6 @@
           "y": 0
         }
       },
-      "miscInfoLine": {
-        "type": "color",
-        "x": 0,
-        "y": 274,
-        "height": 3,
-        "width": 240,
-        "value": { "color": "#e5e5e5" }
-      },
       "miscInfoBg": {
         "type": "color",
         "x": 0,
@@ -169,14 +161,23 @@
         "width": 240,
         "value": { "color": "#f3f3f3" }
       },
+      "miscInfoLine": {
+        "type": "color",
+        "x": 0,
+        "y": 274,
+        "height": 1,
+        "width": 240,
+        "value": { "color": "#e5e5e5" }
+      },
       "miscInfo": {
         "labelKey": "additionalInfo",
         "type": "multiline-text",
         "wrapAt": 230,
         "fontFamily": "Open Sans",
         "color": "#505050",
+        "lineHeight": 11,
         "x": 10,
-        "y": 285,
+        "y": 288,
         "value": { "fontSz": 8 }
       }
     }

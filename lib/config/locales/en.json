@@ -64,6 +64,7 @@
       "decomposer": "Decomposer",
       "detritivore": "Detritivore",
       "herbivore": "Herbivore",
+      "multiple": "Multiple",
       "omnivore": "Omnivore",
       "sanguinivore": "Sanguinivore"
     },

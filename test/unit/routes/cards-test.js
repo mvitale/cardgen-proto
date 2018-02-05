@@ -655,8 +655,18 @@ describe('cards', () => {
     });
 
     context('when the user has cards', () => {
-      var card1 = { _id: 3 }
-        , card2 = { _id: 5 }
+      var card1 = { 
+            _id: 3, 
+            locale: 'en', 
+            templateVersion: '1.0',
+            templateName: 'trait'
+          }
+        , card2 = { 
+            _id: 5, 
+            locale: 'en', 
+            templateVersion: '1.0',
+            templateName: 'trait'
+          }
         ;
 
       beforeEach(() => {
@@ -676,9 +686,7 @@ describe('cards', () => {
             expect(args[0]).to.equal(res);
             expect(args[1]).to.equal(resUtils.httpStatus.ok);
             expect(args[2]).to.be.an.instanceof(Array);
-            expect(args[2][0]).to.be.an.instanceof(CardSummaryWrapper);
             expect(args[2][0].delegate).to.equal(card1);
-            expect(args[2][1]).to.be.an.instanceof(CardSummaryWrapper);
             expect(args[2][1].delegate).to.equal(card2);
           });
       });

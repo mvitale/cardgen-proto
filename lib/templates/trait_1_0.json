@@ -9,8 +9,8 @@
   ],
   "dataSupplier": "species-data-supplier",
   "spec": {
-    "width": 240,
-    "height": 336,
+    "width": 268,
+    "height": 365,
     "fields": {
       "mainColors": {
         "labelKey": "background",
@@ -21,16 +21,16 @@
         "type": "color",
         "x": 0,
         "y": 0,
-        "width": 240,
-        "height": 336,
+        "width": 268,
+        "height": 365,
         "value": { "color": "$mainColors.bg" }
       },
       "traitBackground": {
         "type": "color",
         "x": 0,
-        "y": 167,
-        "height": 148,
-        "width": 240,
+        "y": 176,
+        "height": 104,
+        "width": 268,
         "value": { "color": "#fff" }
       },
       "commonName": {
@@ -39,8 +39,8 @@
         "fontFamily": "Open Sans",
         "fontSizes": [10, 11, 12, 13, 14, 16, 18, 20, 22],
         "color": "$mainColors.text",
-        "x": 13,
-        "y": 19,
+        "x": 20,
+        "y": 34,
         "value": { "fontSz": 14 }
       },
       "sciName": {
@@ -50,8 +50,8 @@
         "fontStyle": "italic",
         "fontSizes": [9, 10, 11, 12, 13, 14, 15],
         "color": "$mainColors.text",
-        "x": 13,
-        "y": 36,
+        "x": 20,
+        "y": 48,
         "value": { "fontSz": 10 }
       },
       "taxonClass": {
@@ -60,29 +60,29 @@
         "fontFamily": "Open Sans",
         "fontSizes": [9, 10, 11, 12, 13, 14, 15],
         "color": "$mainColors.text",
-        "x": 227,
-        "y": 36,
+        "x": 244,
+        "y": 48,
         "textAlign": "right",
         "value": { "fontSz": 10}
       },
       "mainPhotoBg": {
         "type": "color",
         "x": 0,
-        "y": 43,
+        "y": 52,
         "height": 124,
-        "width": 240,
+        "width": 268,
         "value": { "color": "#252525" }
       },
       "mainPhoto": {
         "labelKey": "mainPhoto",
         "type": "image",
         "x": 0,
-        "y": 43,
+        "y": 52,
         "height": 124,
-        "width": 240,
+        "width": 268,
         "credit": {
-          "x": 120,
-          "y": 329,
+          "x": 134,
+          "y": 348,
           "font": "7px 'Open Sans'",
           "textAlign": "center",
           "color": "$mainColors.text",
@@ -94,16 +94,16 @@
         "font": "8px 'Open Sans'",
         "color": "#505050",
         "value": { "text": "Food Web Role" },
-        "x": 6,
-        "y": 178
+        "x": 22,
+        "y": 187
       },
       "foodwebRole": {
         "labelKey": "foodWebRole",
         "type": "text-icon",
         "font": "8px 'Open Sans'",
         "color": "#fff",
-        "x": 18,
-        "y": 181,
+        "x": 37,
+        "y": 191,
         "textOffsetY": 9,
         "height": 13,
         "width": 30
@@ -112,9 +112,10 @@
         "type": "text",
         "font": "8px 'Open Sans'",
         "color": "#505050",
+        "textAlign": "right",
         "value": { "text": "IUCN Status" },
-        "x": 184,
-        "y": 178
+        "x": 246,
+        "y": 187
       },
       "iucnStatus": {
         "labelKey": "iucnStatus",
@@ -122,8 +123,8 @@
         "font": "8px 'Open Sans'",
         "color": "#fff",
         "textOffsetY": 9,
-        "x": 192,
-        "y": 181,
+        "x": 203,
+        "y": 191,
         "height": 13,
         "width": 30
       },
@@ -132,9 +133,9 @@
         "type": "text-icon",
         "font": "8px 'Open Sans'",
         "color": "#505050",
-        "textOffsetY": -4,
-        "x": 77,
-        "y": 182,
+        "textOffsetY": -3,
+        "x": 91,
+        "y": 189,
         "height": 13,
         "width": 86
       },
@@ -142,13 +143,13 @@
         "labelKey": "traits",
         "type": "key-val-list",
         "x": 0,
-        "y": 213,
+        "y": 222,
         "max": 5,
         "yIncr": 13,
         "keyValSpec": {
           "font": "9px 'Open Sans'",
-          "keyX": 15,
-          "valX": 133,
+          "keyX": 29,
+          "valX": 155,
           "color": "#505050",
           "y": 0
         }
@@ -156,15 +157,15 @@
       "miscInfoBg": {
         "type": "color",
         "x": 0,
-        "y": 274,
-        "height": 43,
-        "width": 240,
+        "y": 280,
+        "height": 54,
+        "width": 268,
         "value": { "color": "#f3f3f3" }
       },
       "miscInfoLine": {
         "type": "color",
         "x": 0,
-        "y": 274,
+        "y": 280,
         "height": 1,
         "width": 240,
         "value": { "color": "#e5e5e5" }
@@ -172,13 +173,13 @@
       "miscInfo": {
         "labelKey": "additionalInfo",
         "type": "multiline-text",
-        "wrapAt": 230,
+        "wrapAt": 246,
         "fontFamily": "Open Sans",
         "color": "#505050",
         "lineHeight": 11,
-        "x": 10,
-        "y": 288,
-        "value": { "fontSz": 8 }
+        "x": 22,
+        "y": 294,
+        "value": { "fontSz": 9 }
       }
     }
   },

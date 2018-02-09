@@ -147,7 +147,8 @@
         "max": 5,
         "yIncr": 13,
         "keyValSpec": {
-          "font": "9px 'Open Sans'",
+          "keyFont": "600 9px 'Open Sans'",
+          "valFont": "9px 'Open Sans'",
           "keyX": 29,
           "valX": 155,
           "color": "#505050",

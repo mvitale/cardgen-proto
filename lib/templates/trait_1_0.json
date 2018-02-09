@@ -10,7 +10,7 @@
   "dataSupplier": "species-data-supplier",
   "spec": {
     "width": 268,
-    "height": 365,
+    "height": 366,
     "fields": {
       "mainColors": {
         "labelKey": "background",
@@ -22,7 +22,7 @@
         "x": 0,
         "y": 0,
         "width": 268,
-        "height": 365,
+        "height": 366,
         "value": { "color": "$mainColors.bg" }
       },
       "traitBackground": {

@@ -10,7 +10,7 @@
   "dataSupplier": "species-data-supplier",
   "spec": {
     "width": 268,
-    "height": 365,
+    "height": 366,
     "fields": {
       "mainColors": {
         "labelKey": "background",
@@ -22,7 +22,7 @@
         "x": 0,
         "y": 0,
         "width": 268,
-        "height": 365,
+        "height": 366,
         "value": { "color": "$mainColors.bg" }
       },
       "traitBackground": {
@@ -39,8 +39,8 @@
         "fontFamily": "Open Sans",
         "fontSizes": [10, 11, 12, 13, 14, 16, 18, 20, 22],
         "color": "$mainColors.text",
-        "x": 20,
-        "y": 34,
+        "x": 21,
+        "y": 30,
         "value": { "fontSz": 14 }
       },
       "sciName": {
@@ -50,8 +50,8 @@
         "fontStyle": "italic",
         "fontSizes": [9, 10, 11, 12, 13, 14, 15],
         "color": "$mainColors.text",
-        "x": 20,
-        "y": 48,
+        "x": 21,
+        "y": 46,
         "value": { "fontSz": 10 }
       },
       "taxonClass": {
@@ -61,7 +61,7 @@
         "fontSizes": [9, 10, 11, 12, 13, 14, 15],
         "color": "$mainColors.text",
         "x": 244,
-        "y": 48,
+        "y": 46,
         "textAlign": "right",
         "value": { "fontSz": 10}
       },
@@ -82,7 +82,7 @@
         "width": 268,
         "credit": {
           "x": 134,
-          "y": 348,
+          "y": 346,
           "font": "7px 'Open Sans'",
           "textAlign": "center",
           "color": "$mainColors.text",
@@ -94,8 +94,9 @@
         "font": "8px 'Open Sans'",
         "color": "#505050",
         "value": { "text": "Food Web Role" },
-        "x": 22,
-        "y": 187
+        "x": 51,
+        "y": 187,
+        "textAlign": "center"
       },
       "foodwebRole": {
         "labelKey": "foodWebRole",
@@ -112,9 +113,9 @@
         "type": "text",
         "font": "8px 'Open Sans'",
         "color": "#505050",
-        "textAlign": "right",
+        "textAlign": "center",
         "value": { "text": "IUCN Status" },
-        "x": 246,
+        "x": 218,
         "y": 187
       },
       "iucnStatus": {
@@ -133,9 +134,9 @@
         "type": "text-icon",
         "font": "8px 'Open Sans'",
         "color": "#505050",
-        "textOffsetY": -3,
+        "textOffsetY": -4,
         "x": 91,
-        "y": 189,
+        "y": 191,
         "height": 13,
         "width": 86
       },
@@ -145,7 +146,7 @@
         "x": 0,
         "y": 222,
         "max": 5,
-        "yIncr": 13,
+        "yIncr": 12,
         "keyValSpec": {
           "keyFont": "600 9px 'Open Sans'",
           "valFont": "9px 'Open Sans'",

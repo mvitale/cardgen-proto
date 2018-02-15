@@ -11,7 +11,7 @@ module.exports = {
       script    : 'app.js',
       env: {
         NODE_ENV: 'development',
-        watch: true
+        watch: false
       },
       env_production : {
         NODE_ENV: 'production',

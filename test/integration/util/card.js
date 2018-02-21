@@ -8,66 +8,53 @@ var fs = require('fs')
 var taxonId = 327940;
 module.exports.taxonId = taxonId;
 
-function getCard(cb) {
-  readApiData((err, data) => {
-    if (err) return cb(err);
+function getCard() {
+  var data = readApiData();
 
-    speciesDataSupplier._setApiCaller({
-      getJson: function(apiName, params, log, cb) {
-        var result;
+  speciesDataSupplier._setApiCaller({
+    getJson: function(apiName, params, log, cb) {
+      var result;
 
-        if (apiName === 'pages') {
-          result = data.pages;
-        } else if (apiName === 'hierarchy_entries') {
-          result = data.hierarchyEntries;
-        }
-
-        if (!result) return cb(new Error('Unexpected api name in fake api caller: ' + apiName));
-
-        cb(null, result);
+      if (apiName === 'pages') {
+        result = data.pages;
+      } else if (apiName === 'hierarchy_entries') {
+        result = data.hierarchyEntries;
       }
-    });
 
-    var card = Card.new({
-      templateName: 'trait',
-      templateParams: {
-        speciesId: taxonId
-      },
-      userId: 1234,
-      appId: 'test',
-      locale: 'en'
-    });
+      if (!result) return cb(new Error('Unexpected api name in fake api caller: ' + apiName));
 
-    var log = {
-      info: () => {},
-      error: () => {}
-    };
-    
-    try {
-      card.populateDefaultsAndChoices(log, (err) => {
-        speciesDataSupplier._resetApiCaller();
-
-        if (err) {
-          return cb(err);
-        } else {
-          return cb(null, card);
-        }
-      });
-    } catch(e) {
-      speciesDataSupplier._resetApiCaller();
-      console.error(e);
+      cb(null, result);
     }
   });
+
+  var card = Card.new({
+    templateName: 'trait',
+    templateParams: {
+      speciesId: taxonId
+    },
+    userId: 1234,
+    appId: 'test',
+    locale: 'en'
+  });
+
+  var log = {
+    info: () => {},
+    error: () => {}
+  };
+    
+  return card.populateDefaultsAndChoices(log)
+    .then((card) => {
+      speciesDataSupplier._resetApiCaller();
+      return card;
+    })
+    .catch((e) => {
+      speciesDataSupplier._resetApiCaller();
+      throw e;
+    });
 }
 module.exports.getCard = getCard;
 
 function readApiData(cb) {
-  fs.readFile(path.join(__dirname, '../data/api-responses.json'), (err, data) => {
-    if (err) {
-      return cb(err);
-    }
-
-    cb(null, JSON.parse(data));
-  });
+  return JSON.parse(fs.readFileSync(path.join(__dirname, '../data/api-responses.json')));
 }
 

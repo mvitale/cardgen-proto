@@ -13,20 +13,18 @@ var expect = chai.expect
 
 var cardDataPath = path.join(__dirname, '/data/card.json');
 
-describe('Create card', () => {
+describe.only('Create card', () => {
   var savedCard = JSON.parse(fs.readFileSync(cardDataPath, 'utf-8'));
 
-  it('matches the saved card', (next) => {
-    cardUtil.getCard((err, card) => {
-      expect(err).not.to.exist;
+  it('matches the saved card', () => {
+    return cardUtil.getCard()
+      .then((card) => {
+        card = JSON.parse(JSON.stringify(card));
+        savedCard._id = 'asdf';
+        card._id = 'asdf';
 
-      card = JSON.parse(JSON.stringify(card));
-      savedCard._id = 'asdf';
-      card._id = 'asdf';
-
-      expect(card).to.eql(savedCard);
-      next();
-    });
+        expect(card).to.eql(savedCard);
+      });
   });
 });
 

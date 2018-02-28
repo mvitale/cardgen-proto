@@ -58,7 +58,7 @@
         "type": "image",
         "x": 210,
         "y": 18,
-        "height": 15,
+        "height": 14.71,
         "width": 34,
         "value": { "url": "$mainColors.eolLogoUrl" }
       },

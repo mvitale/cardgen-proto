@@ -54,6 +54,14 @@
         "y": 46,
         "value": { "fontSz": 10 }
       },
+      "eolLogo": {
+        "type": "image",
+        "x": 210,
+        "y": 18,
+        "height": 14,
+        "width": 34,
+        "value": { "url": "$mainColors.eolLogoUrl" }
+      },
       "taxonClass": {
         "labelKey": "taxonGroup",
         "type": "text",
@@ -203,7 +211,6 @@
     "sciName": "first-choice-supplier",
     "mainPhoto": "first-choice-supplier",
     "mainColors": "taxon-group-color-supplier",
-    "eolLogo": "eol-logo-supplier",
     "taxonClass": "taxon-group-supplier",
     "traits": "default-trait-supplier"
   }

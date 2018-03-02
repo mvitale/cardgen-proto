@@ -11,6 +11,6 @@
     "level": "info"
   },
   "cardSvgCache": {
-    "maxSize": 400
+    "maxSize": 1000 
   }
 }

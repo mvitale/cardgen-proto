@@ -104,7 +104,8 @@
         "value": { "text": "Food Web Role" },
         "x": 51,
         "y": 187,
-        "textAlign": "center"
+        "textAlign": "center",
+        "labelFor": "foodwebRole"
       },
       "foodwebRole": {
         "labelKey": "foodWebRole",
@@ -124,7 +125,8 @@
         "textAlign": "center",
         "value": { "text": "IUCN Status" },
         "x": 218,
-        "y": 187
+        "y": 187,
+        "labelFor": "iucnStatus"
       },
       "iucnStatus": {
         "labelKey": "iucnStatus",

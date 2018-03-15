@@ -21,5 +21,8 @@
     "availableLocales": ["en"],
     "defaultLocale": "en"
   },
-  "eolApiKey": "$secrets.eolApiKey"
+  "eolApiKey": "$secrets.eolApiKey",
+  "bugsnag": {
+    "enable": false
+  }
 }

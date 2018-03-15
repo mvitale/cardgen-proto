@@ -12,5 +12,9 @@
   },
   "cardSvgCache": {
     "maxSize": 1000 
+  },
+  "bugsnag": {
+    "enable": true,
+    "apiKey": "$secrets.bugsnagApiKey"
   }
 }

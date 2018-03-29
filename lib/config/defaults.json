@@ -24,5 +24,10 @@
   "eolApiKey": "$secrets.eolApiKey",
   "bugsnag": {
     "enable": false
+  },
+  "appTemplateVersions": {
+    "localTest": {
+      "trait": "1.1"
+    }
   }
 }

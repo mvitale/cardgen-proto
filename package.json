@@ -50,6 +50,7 @@
     "nocache": "^2.0.0",
     "on-finished": "^2.3.0",
     "opentype.js": "^0.8.0",
+    "parse-css-font": "^2.0.2",
     "pdfkit": "^0.8.3",
     "request": "^2.81.0",
     "sharp": "^0.17.3",

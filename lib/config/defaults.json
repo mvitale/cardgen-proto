@@ -24,5 +24,10 @@
   "eolApiKey": "$secrets.eolApiKey",
   "bugsnag": {
     "enable": false
+  },
+  "fontFamilies": {
+    "Open Sans": {
+      "dirname": "opensans"
+    }
   }
 }

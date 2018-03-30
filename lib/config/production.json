@@ -16,5 +16,13 @@
   "bugsnag": {
     "enable": true,
     "apiKey": "$secrets.bugsnagApiKey"
+  },
+  "appTemplateVersions": {
+    "eddev": {
+      "trait": "1.1"
+    },
+    "edu": {
+      "trait": "1.0"
+    }
   }
 }

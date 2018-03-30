@@ -146,6 +146,7 @@
         "y": 191,
         "height": 13,
         "width": 86,
+        "ctaKey": "selectABiome",
         "iconLabel": {
           "font": "8px 'Open Sans'",
           "color": "#505050",

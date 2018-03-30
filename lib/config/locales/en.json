@@ -12,6 +12,9 @@
       "traits": "Traits",
       "habitats": "Habitats",
       "additionalInfo": "Additional information"
+    },
+    "fieldCtas": {
+      "selectABiome": "select a biome"
     }
   },
   "taxa": {

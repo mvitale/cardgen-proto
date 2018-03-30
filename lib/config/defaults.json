@@ -25,6 +25,12 @@
   "bugsnag": {
     "enable": false
   },
+  "fontFamilies": [
+    {
+      "name": "Open Sans",
+      "dirname": "opensans"
+    }
+  ],
   "appTemplateVersions": {
     "localTest": {
       "trait": "1.1"

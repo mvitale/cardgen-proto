@@ -3,8 +3,8 @@
     "host": "104.236.81.218",
     "port": 9000,
     "enableHttps": true,
-    "httpsCert": "/etc/pki/tls/certs/card-svc-selfsigned.crt",
-    "httpsKey": "/etc/pki/tls/private/card-svc-selfsigned.key",
+    "httpsCert": "$secrets.https.cert",
+    "httpsKey": "$secrets.https.key",
     "staticResourceProxyPort": 80
   },
   "log": {

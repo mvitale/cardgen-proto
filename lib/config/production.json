@@ -19,10 +19,10 @@
   },
   "appTemplateVersions": {
     "eddev": {
-      "trait": "1.1"
+      "trait": "1.0"
     },
     "edu": {
-      "trait": "1.1"
+      "trait": "1.0"
     }
   }
 }

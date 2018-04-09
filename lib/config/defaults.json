@@ -33,7 +33,7 @@
   ],
   "appTemplateVersions": {
     "localTest": {
-      "trait": "1.1"
+      "trait": "1.0"
     }
   }
 }

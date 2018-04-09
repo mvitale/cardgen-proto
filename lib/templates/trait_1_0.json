@@ -37,7 +37,7 @@
         "labelKey": "commonName",
         "type": "text",
         "fontFamily": "Open Sans",
-        "fontSizes": [10, 11, 12, 13, 14, 16, 18, 20, 22],
+        "fontSizes": [10, 11, 12, 13, 14, 16, 18, 20],
         "color": "$mainColors.text",
         "x": 21,
         "y": 30,

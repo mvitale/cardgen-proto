@@ -100,7 +100,7 @@
       "foodWebRoleTitle": {
         "type": "text",
         "font": "8px 'Open Sans'",
-        "color": "#505050",
+        "color": "#000",
         "value": { "text": "Food Web Role" },
         "x": 51,
         "y": 187,
@@ -121,7 +121,7 @@
       "iucnTitle": {
         "type": "text",
         "font": "8px 'Open Sans'",
-        "color": "#505050",
+        "color": "#000",
         "textAlign": "center",
         "value": { "text": "IUCN Status" },
         "x": 218,
@@ -149,7 +149,7 @@
         "ctaKey": "selectABiome",
         "iconLabel": {
           "font": "8px 'Open Sans'",
-          "color": "#505050",
+          "color": "#000",
           "x": 134, 
           "y": 187,
           "textAlign": "center",
@@ -168,7 +168,7 @@
           "valFont": "9px 'Open Sans'",
           "keyX": 29,
           "valX": 155,
-          "color": "#505050",
+          "color": "#000",
           "y": 0
         }
       },
@@ -193,7 +193,7 @@
         "type": "multiline-text",
         "wrapAt": 246,
         "fontFamily": "Open Sans",
-        "color": "#505050",
+        "color": "#000",
         "lineHeight": 11,
         "x": 22,
         "y": 294,

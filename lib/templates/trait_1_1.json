@@ -164,10 +164,10 @@
         "max": 5,
         "yIncr": 12,
         "keyValSpec": {
-          "keyFont": "600 9px 'Open Sans'",
-          "valFont": "9px 'Open Sans'",
-          "keyX": 29,
-          "valX": 155,
+          "keyFont": "600 10px 'Open Sans'",
+          "valFont": "10px 'Open Sans'",
+          "keyX": 22,
+          "valX": 134,
           "color": "#000",
           "y": 0
         }

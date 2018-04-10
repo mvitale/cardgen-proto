@@ -13,7 +13,7 @@
     "height": 366,
     "fields": {
       "mainColors": {
-        "labelKey": "background",
+        "uiLabelKey": "background",
         "type": "color-scheme",
         "uiColor": "bg"
       },
@@ -34,7 +34,7 @@
         "value": { "color": "#fff" }
       },
       "commonName": {
-        "labelKey": "commonName",
+        "uiLabelKey": "commonName",
         "type": "text",
         "fontFamily": "Open Sans",
         "fontSizes": [10, 11, 12, 13, 14, 16, 18, 20, 22],
@@ -44,7 +44,7 @@
         "value": { "fontSz": 14 }
       },
       "sciName": {
-        "labelKey": "scientificName",
+        "uiLabelKey": "scientificName",
         "type": "text",
         "fontFamily": "Open Sans",
         "fontStyle": "italic",
@@ -63,7 +63,7 @@
         "value": { "url": "$mainColors.eolLogoUrl" }
       },
       "taxonClass": {
-        "labelKey": "taxonGroup",
+        "uiLabelKey": "taxonGroup",
         "type": "text",
         "fontFamily": "Open Sans",
         "fontSizes": [9, 10, 11, 12, 13, 14, 15],
@@ -82,7 +82,7 @@
         "value": { "color": "#252525" }
       },
       "mainPhoto": {
-        "labelKey": "mainPhoto",
+        "uiLabelKey": "mainPhoto",
         "type": "image",
         "x": 0,
         "y": 52,
@@ -108,7 +108,7 @@
         "labelFor": "foodwebRole"
       },
       "foodwebRole": {
-        "labelKey": "foodWebRole",
+        "uiLabelKey": "foodWebRole",
         "type": "text-icon",
         "font": "8px 'Open Sans'",
         "color": "#fff",
@@ -118,36 +118,38 @@
         "height": 13,
         "width": 30
       },
-      "iucnTitle": {
+      "iucnStatus": {
+        "uiLabelKey": "iucnStatus",
         "type": "text",
         "font": "8px 'Open Sans'",
-        "color": "#505050",
-        "textAlign": "center",
-        "value": { "text": "IUCN Status" },
-        "x": 218,
-        "y": 187,
-        "labelFor": "iucnStatus"
-      },
-      "iucnStatus": {
-        "labelKey": "iucnStatus",
-        "type": "text-icon",
-        "font": "8px 'Open Sans'",
         "color": "#fff",
-        "textOffsetY": 9,
-        "x": 203,
-        "y": 191,
-        "height": 13,
-        "width": 30
+        "x": 218,
+        "y": 200,
+        "textAlign": "center",
+        "width": 30,
+        "bg": {
+          "y": 191,
+          "height": 13,
+          "hPad": 8
+        },
+        "label": {
+          "font": "8px 'Open Sans'",
+          "color": "#000",
+          "textAlign": "center",
+          "value": { "text": "IUCN Status" },
+          "x": 218,
+          "y": 187
+        }
       },
       "biome" : {
-        "labelKey": "biome",
+        "uiLabelKey": "biome",
         "type": "icon",
         "x": 91,
         "y": 191,
         "height": 13,
         "width": 86,
         "ctaKey": "selectABiome",
-        "iconLabel": {
+        "label": {
           "font": "8px 'Open Sans'",
           "color": "#505050",
           "x": 134, 
@@ -157,7 +159,7 @@
         }
       },
       "traits": {
-        "labelKey": "traits",
+        "uiLabelKey": "traits",
         "type": "key-val-list",
         "x": 0,
         "y": 222,
@@ -189,7 +191,7 @@
         "value": { "color": "#e5e5e5" }
       },
       "miscInfo": {
-        "labelKey": "additionalInfo",
+        "uiLabelKey": "additionalInfo",
         "type": "multiline-text",
         "wrapAt": 246,
         "fontFamily": "Open Sans",

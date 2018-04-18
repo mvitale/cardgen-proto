@@ -120,13 +120,14 @@
       },
       "iucnStatus": {
         "uiLabelKey": "iucnStatus",
-        "type": "text",
+        "type": "labeled-text",
         "font": "8px 'Open Sans'",
         "color": "#fff",
         "x": 218,
         "y": 200,
         "textAlign": "center",
         "width": 30,
+        "allowCustom": true,
         "bg": {
           "y": 191,
           "height": 13,
@@ -154,9 +155,9 @@
           "color": "#505050",
           "x": 134, 
           "y": 187,
-          "textAlign": "center",
-          "allowCustom": true
-        }
+          "textAlign": "center"
+        },
+        "allowCustom": true
       },
       "traits": {
         "uiLabelKey": "traits",

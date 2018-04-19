@@ -37,7 +37,7 @@
         "uiLabelKey": "commonName",
         "type": "text",
         "fontFamily": "Open Sans",
-        "fontSizes": [10, 11, 12, 13, 14, 16, 18, 20, 22],
+        "fontSizes": [10, 11, 12, 13, 14, 16, 18, 20],
         "color": "$mainColors.text",
         "x": 21,
         "y": 30,
@@ -147,6 +147,9 @@
       "biome" : {
         "uiLabelKey": "biome",
         "type": "icon",
+        "font": "8px 'Open Sans'",
+        "color": "#000",
+        "textOffsetY": -4,
         "x": 91,
         "y": 191,
         "height": 13,
@@ -154,7 +157,7 @@
         "ctaKey": "selectABiome",
         "label": {
           "font": "8px 'Open Sans'",
-          "color": "#505050",
+          "color": "#000",
           "x": 134, 
           "y": 187,
           "textAlign": "center"
@@ -169,11 +172,11 @@
         "max": 5,
         "yIncr": 12,
         "keyValSpec": {
-          "keyFont": "600 9px 'Open Sans'",
-          "valFont": "9px 'Open Sans'",
-          "keyX": 29,
-          "valX": 155,
-          "color": "#505050",
+          "keyFont": "600 10px 'Open Sans'",
+          "valFont": "10px 'Open Sans'",
+          "keyX": 22,
+          "valX": 144,
+          "color": "#000",
           "y": 0
         }
       },
@@ -198,7 +201,7 @@
         "type": "multiline-text",
         "wrapAt": 246,
         "fontFamily": "Open Sans",
-        "color": "#505050",
+        "color": "#000",
         "lineHeight": 11,
         "x": 22,
         "y": 294,

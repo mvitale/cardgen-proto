@@ -87,6 +87,7 @@
     }
   },
   "iucnIconSupplier": {
+    "label": "IUCN Status",
     "labels": {
       "lc": "Least concern (LC)",
       "nt": "Near threatened (NT)",

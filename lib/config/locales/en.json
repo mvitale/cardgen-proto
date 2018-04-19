@@ -60,6 +60,7 @@
     }
   },
   "foodwebRoleIconSupplier": {
+    "label": "Food Web Role",
     "labels": {
       "apexPredator": "Apex predator",
       "autotroph": "Autotroph",
@@ -67,6 +68,7 @@
       "decomposer": "Decomposer",
       "detritivore": "Detritivore",
       "herbivore": "Herbivore",
+      "heterotroph": "Heterotroph",
       "multiple": "Multiple",
       "omnivore": "Omnivore",
       "sanguinivore": "Sanguinivore"

@@ -42,6 +42,7 @@
     "flat": "^2.0.1",
     "image-size": "^0.5.1",
     "lru-cache": "^4.0.2",
+    "memcached": "^2.2.2",
     "merge": "^1.2.0",
     "minimist": "^1.2.0",
     "mongodb": "^2.2.25",

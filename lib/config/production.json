@@ -1,6 +1,6 @@
 {
   "server": {
-    "host": "104.236.81.218",
+    "host": "$secrets.server.host",
     "port": 9000,
     "enableHttps": true,
     "httpsCert": "$secrets.https.cert",

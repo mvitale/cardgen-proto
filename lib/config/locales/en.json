@@ -15,6 +15,9 @@
     },
     "fieldCtas": {
       "selectABiome": "select a biome"
+    },
+    "fieldInfo": {
+      "commonName": "It's a common name, what more do you want?"
     }
   },
   "taxa": {

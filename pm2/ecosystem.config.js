@@ -15,7 +15,9 @@ module.exports = {
       },
       env_production : {
         NODE_ENV: 'production',
-        watch: false
+        watch: false,
+        exec_mode: 'cluster',
+        instances: -1
       },
       error_file      : "logs/err.log",
       out_file        : "logs/out.log"

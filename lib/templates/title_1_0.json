@@ -18,11 +18,72 @@
         "width": 268,
         "height": 366,
         "value": { "color": "$mainColors.bg" }
+      },
+      "eolLogo": {
+        "type": "image",
+        "x": 63,
+        "y": 15,
+        "height": 26,
+        "width": 60,
+        "value": { "url": "$mainColors.eolLogoUrl" }
+      },
+      "biodiversityCards": {
+        "type": "multiline-text",
+        "wrapAt": 268,
+        "font": "600 13px 'Open Sans'",
+        "color": "$mainColors.text",
+        "x": 127,
+        "y": 25 
+      },
+      "photoBg": {
+        "type": "color",
+        "x": 0,
+        "y": 52,
+        "height": 238,
+        "width": 268,
+        "value": { "color": "#252525" }
+      },
+      "photo": {
+        "uiLabelKey": "mainPhoto",
+        "type": "image",
+        "x": 0,
+        "y": 52,
+        "height": 238,
+        "width": 268,
+        "credit": {
+          "x": 134,
+          "y": 348,
+          "font": "10px 'Open Sans'",
+          "textAlign": "center",
+          "color": "$mainColors.text",
+          "prefix": "Image: "
+        }
+      },
+      "deckTitle": {
+        "uiLabelKey": "deckTitle",
+        "type": "text",
+        "font": "600 14px 'Open Sans'",
+        "color": "$mainColors.text",
+        "x": 134,
+        "y": 312,
+        "textAlign": "center"
+      },
+      "deckSubtitle": {
+        "uiLabelKey": "deckSubtitle",
+        "type": "text",
+        "font": "14px 'Open Sans'",
+        "color": "$mainColors.text",
+        "x": 134,
+        "y": 330,
+        "textAlign": "center"
       }
     }
   },
   "templateChoiceSuppliers": {
     "mainColors": "standard-bg-color-supplier"
+  },
+  "templateValueSuppliers": {
+    "biodiversityCards": "biodiversity-cards-text-supplier"
   }
 }
 

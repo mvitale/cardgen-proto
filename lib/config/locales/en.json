@@ -11,10 +11,15 @@
       "biome": "Biome",
       "traits": "Traits",
       "habitats": "Habitats",
-      "additionalInfo": "Additional information"
+      "additionalInfo": "Additional information",
+      "deckTitle": "Deck title",
+      "deckSubtitle": "Deck subtitle"
     },
     "fieldCtas": {
       "selectABiome": "select a biome"
+    },
+    "values": {
+      "bioCards": "Biodiversity\nCards"
     }
   },
   "taxa": {

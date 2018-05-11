@@ -1,0 +1,28 @@
+{
+  "name": "title",
+  "version": "1.0",
+  "params": [],
+  "spec": {
+    "width": 268,
+    "height": 366,
+    "fields": {
+      "mainColors": {
+        "uiLabelKey": "background",
+        "type": "color-scheme",
+        "uiColor": "bg"
+      },
+      "background": {
+        "type": "color",
+        "x": 0,
+        "y": 0,
+        "width": 268,
+        "height": 366,
+        "value": { "color": "$mainColors.bg" }
+      }
+    }
+  },
+  "templateChoiceSuppliers": {
+    "mainColors": "standard-bg-color-supplier"
+  }
+}
+

@@ -21,10 +21,10 @@
       },
       "eolLogo": {
         "type": "image",
-        "x": 63,
-        "y": 15,
+        "x": 62,
+        "y": 14,
         "height": 26,
-        "width": 60,
+        "width": 61,
         "value": { "url": "$mainColors.eolLogoUrl" }
       },
       "biodiversityCards": {

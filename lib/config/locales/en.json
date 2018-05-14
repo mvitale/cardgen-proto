@@ -13,7 +13,8 @@
       "habitats": "Habitats",
       "additionalInfo": "Additional information",
       "deckTitle": "Deck title",
-      "deckSubtitle": "Deck subtitle"
+      "deckSubtitle": "Deck subtitle",
+      "image": "Image"
     },
     "fieldCtas": {
       "selectABiome": "select a biome"

@@ -44,7 +44,7 @@
         "value": { "color": "#252525" }
       },
       "photo": {
-        "uiLabelKey": "mainPhoto",
+        "uiLabelKey": "image",
         "type": "image",
         "x": 0,
         "y": 52,
@@ -80,7 +80,7 @@
     }
   },
   "templateChoiceSuppliers": {
-    "mainColors": "standard-bg-color-supplier"
+    "mainColors": "standard-color-supplier"
   },
   "templateValueSuppliers": {
     "biodiversityCards": "biodiversity-cards-text-supplier"

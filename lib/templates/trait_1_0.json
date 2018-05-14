@@ -210,7 +210,7 @@
     }
   },
   "templateChoiceSuppliers": {
-    "mainColors": "standard-bg-color-supplier",
+    "mainColors": "labeled-standard-color-supplier",
     "biome": "biome-text-icon-supplier",
     "foodwebRole": "foodweb-role-supplier",
     "iucnStatus": "iucn-icon-supplier",

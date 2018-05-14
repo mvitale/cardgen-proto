@@ -1,0 +1,103 @@
+{
+  "name": "key",
+  "version": "1.0",
+  "params": [],
+  "spec": {
+    "width": 268,
+    "height": 366,
+    "fields": {
+      "mainColors": {
+        "uiLabelKey": "background",
+        "type": "color-scheme",
+        "uiColor": "bg"
+      },
+      "background": {
+        "type": "color",
+        "x": 0,
+        "y": 0,
+        "width": 268,
+        "height": 366,
+        "value": { "color": "$mainColors.bg" }
+      },
+      "commonName": {
+        "type": "text",
+        "font": "14px 'Open Sans'",
+        "color": "$mainColors.text",
+        "x": 21,
+        "y": 30,
+        "value": { "fontSz": 14 }
+      },
+      "sciName": {
+        "type": "text",
+        "fontStyle": "italic",
+        "font": "10px 'Open Sans'",
+        "color": "$mainColors.text",
+        "x": 21,
+        "y": 46,
+        "value": { "fontSz": 10 }
+      },
+      "eolLogo": {
+        "type": "image",
+        "x": 210,
+        "y": 18,
+        "height": 14.71,
+        "width": 34,
+        "value": { "url": "$mainColors.eolLogoUrl" }
+      },
+      "taxonGroup": {
+        "type": "text",
+        "font": "10px 'Open Sans'",
+        "color": "$mainColors.text",
+        "x": 244,
+        "y": 46,
+        "textAlign": "right"
+      },
+      "keyTitle": {
+        "type": "text",
+        "font": "14px 'Open Sans'",
+        "color": "$mainColors.text",
+        "x": 134,
+        "y": 348,
+        "textAlign": "center"
+      },
+      "keyBg": {
+        "type": "color",
+        "x": 0,
+        "y": 52,
+        "height": 273,
+        "width": 268,
+        "value": { "color": "#fff" }
+      },
+      "foodWebTitle": {
+        "uiKey": "section1Title",
+        "type": "text",
+        "x": 21,
+        "y": 72,
+        "color": "#505050",
+        "font": "14px 'Open Sans'"
+      },
+      "foodWebLine": {
+        "type": "color",
+        "x": 14,
+        "y": 76,
+        "height": 1,
+        "width": 242,
+        "value": { "color": "#505050" }
+      }
+    }
+  },
+  "defaultSuppliers": {
+    "foodWebTitle": "first-choice-supplier",
+    "mainColors": "last-choice-supplier"
+  },
+  "templateChoiceSuppliers": {
+    "mainColors": "standard-color-supplier",
+    "foodWebTitle": "food-web-role-literal-supplier"
+  },
+  "templateValueSuppliers": {
+    "commonName": "common-name-literal-supplier",
+    "sciName": "sci-name-literal-supplier",
+    "taxonGroup": "taxon-group-literal-supplier",
+    "keyTitle": "key-literal-supplier"
+  }
+}

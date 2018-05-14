@@ -20,7 +20,12 @@
       "selectABiome": "select a biome"
     },
     "values": {
-      "bioCards": "Biodiversity\nCards"
+      "bioCards": "Biodiversity\nCards",
+      "commonName": "Common name",
+      "foodWebRole": "Food web role",
+      "key": "Key",
+      "sciName": "Scientific name",
+      "taxonGroup": "Taxon group"
     }
   },
   "taxa": {

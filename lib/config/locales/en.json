@@ -14,7 +14,11 @@
       "additionalInfo": "Additional information",
       "deckTitle": "Deck title",
       "deckSubtitle": "Deck subtitle",
-      "image": "Image"
+      "image": "Image",
+      "section1Title": "Section 1 title",
+      "section1Values": "Section 1 values",
+      "section2Title": "Section 2 title",
+      "section2Values": "Section 2 values"
     },
     "fieldCtas": {
       "selectABiome": "select a biome"
@@ -25,7 +29,8 @@
       "foodWebRole": "Food web role",
       "key": "Key",
       "sciName": "Scientific name",
-      "taxonGroup": "Taxon group"
+      "taxonGroup": "Taxon group",
+      "iucnStatus": "IUCN status"
     }
   },
   "taxa": {
@@ -100,15 +105,15 @@
   "iucnIconSupplier": {
     "label": "IUCN Status",
     "labels": {
-      "lc": "Least concern (LC)",
-      "nt": "Near threatened (NT)",
-      "vu": "Vulnerable (VU)",
-      "en": "Endangered (EN)",
-      "cr": "Critically endangered (CR)",
-      "ew": "Extinct in the wild (EW)",
-      "ex": "Extinct (EX)",
-      "dd": "Data deficient (DD)",
-      "ne": "Not evaluated (NE)"
+      "lc": "Least concern",
+      "nt": "Near threatened",
+      "vu": "Vulnerable",
+      "en": "Endangered",
+      "cr": "Critically endangered",
+      "ew": "Extinct in the wild",
+      "ex": "Extinct",
+      "dd": "Data deficient",
+      "ne": "Not evaluated"
     }, 
     "icons": {
       "lc": "LC",

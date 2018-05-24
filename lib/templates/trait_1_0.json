@@ -171,12 +171,16 @@
         "y": 222,
         "max": 5,
         "yIncr": 12,
-        "keyValSpec": {
-          "keyFont": "600 10px 'Open Sans'",
-          "valFont": "10px 'Open Sans'",
-          "keyX": 22,
-          "valX": 144,
+        "key": {
+          "font": "600 10px 'Open Sans'",
           "color": "#000",
+          "x": 22,
+          "y": 0
+        },
+        "val": {
+          "font": "10px 'Open Sans'",
+          "color": "#000",
+          "x": 144,
           "y": 0
         }
       },
@@ -214,13 +218,13 @@
     "biome": "biome-text-icon-supplier",
     "foodwebRole": "foodweb-role-supplier",
     "iucnStatus": "iucn-icon-supplier",
-    "taxonClass": "taxon-group-supplier"
+    "taxonClass": "taxon-group-supplier",
+    "traits": "trait-supplier"
   },
   "choiceSuppliers": {
     "commonName": "common-name-supplier",
     "sciName": "sci-name-supplier",
-    "mainPhoto": "species-images-supplier",
-    "traits": "trait-supplier"
+    "mainPhoto": "species-images-supplier"
   },
   "defaultSuppliers": {
     "commonName": "first-choice-supplier",

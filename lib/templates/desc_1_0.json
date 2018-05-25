@@ -50,6 +50,15 @@
         "height": 273,
         "width": 268,
         "value": { "color": "#fff" }
+      },
+      "miscInfo": {
+        "uiLabelKey": "projDesc",
+        "type": "multiline-text",
+        "wrapAt": 248,
+        "font": "12px 'Open Sans'",
+        "color": "#000",
+        "x": 24,
+        "y": 70
       }
     }
   },

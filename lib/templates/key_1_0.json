@@ -166,7 +166,7 @@
     "iucnStatuses": "key-val-choices-supplier"
   },
   "templateChoiceSuppliers": {
-    "mainColors": "standard-color-supplier",
+    "mainColors": "labeled-standard-color-supplier",
     "foodWebTitle": "food-web-role-literal-supplier",
     "foodWebRoles": "food-web-role-key-val-supplier",
     "iucnTitle": "iucn-status-literal-supplier",

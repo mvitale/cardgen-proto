@@ -80,7 +80,7 @@
     }
   },
   "templateChoiceSuppliers": {
-    "mainColors": "standard-color-supplier"
+    "mainColors": "labeled-standard-color-supplier"
   },
   "templateValueSuppliers": {
     "biodiversityCards": "biodiversity-cards-text-supplier"

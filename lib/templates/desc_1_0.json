@@ -1,0 +1,66 @@
+{
+  "name": "desc",
+  "version": "1.0",
+  "params": [],
+  "spec": {
+    "width": 268,
+    "height": 366,
+    "fields": {
+      "mainColors": {
+        "uiLabelKey": "background",
+        "type": "color-scheme",
+        "uiColor": "bg"
+      },
+      "background": {
+        "type": "color",
+        "x": 0,
+        "y": 0,
+        "width": 268,
+        "height": 366,
+        "value": { "color": "$mainColors.bg" }
+      },
+      "eolLogo": {
+        "type": "image",
+        "x": 62,
+        "y": 14,
+        "height": 26,
+        "width": 61,
+        "value": { "url": "$mainColors.eolLogoUrl" }
+      },
+      "biodiversityCards": {
+        "type": "multiline-text",
+        "wrapAt": 268,
+        "font": "600 13px 'Open Sans'",
+        "color": "$mainColors.text",
+        "x": 127,
+        "y": 25 
+      },
+      "projDescTitle": {
+        "type": "text",
+        "font": "14px 'Open Sans'",
+        "color": "$mainColors.text",
+        "x": 134,
+        "y": 348,
+        "textAlign": "center"
+      },
+      "descBg": {
+        "type": "color",
+        "x": 0,
+        "y": 52,
+        "height": 273,
+        "width": 268,
+        "value": { "color": "#fff" }
+      }
+    }
+  },
+  "defaultSuppliers": {
+    "mainColors": "last-choice-supplier"
+  },
+  "templateChoiceSuppliers": {
+    "mainColors": "labeled-standard-color-supplier"
+  },
+  "templateValueSuppliers": {
+    "biodiversityCards": "biodiversity-cards-text-supplier",
+    "projDescTitle": "proj-desc-literal-supplier"
+  }
+}

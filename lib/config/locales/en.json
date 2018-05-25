@@ -30,7 +30,8 @@
       "key": "Key",
       "sciName": "Scientific name",
       "taxonGroup": "Taxon group",
-      "iucnStatus": "IUCN status"
+      "iucnStatus": "IUCN status",
+      "projDesc": "Project Description"
     }
   },
   "taxa": {

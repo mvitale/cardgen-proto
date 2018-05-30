@@ -1,0 +1,88 @@
+{
+  "name": "vocab",
+  "version": "1.0",
+  "params": [],
+  "spec": {
+    "width": 268,
+    "height": 366,
+    "fields": {
+      "mainColors": {
+        "uiLabelKey": "background",
+        "type": "color-scheme",
+        "uiColor": "bg"
+      },
+      "background": {
+        "type": "color",
+        "x": 0,
+        "y": 0,
+        "width": 268,
+        "height": 366,
+        "value": { "color": "$mainColors.bg" }
+      },
+      "vocabTitle": {
+        "type": "text",
+        "font": "14px 'Open Sans'",
+        "color": "$mainColors.text",
+        "x": 134,
+        "y": 348,
+        "textAlign": "center"
+      },
+      "mainBg": {
+        "type": "color",
+        "x": 0,
+        "y": 52,
+        "height": 273,
+        "width": 268,
+        "value": { "color": "#fff" }
+      },
+      "definitions": {
+        "uiLabelKey": "definitions",
+        "type": "key-val-list",
+        "y": 90,
+        "max": 8,
+        "yIncr": 10,
+        "key": {
+          "font": "600 10px 'Open Sans'",
+          "x": 21,
+          "y": 0,
+          "textAlign": "center",
+          "bg": {
+            "x": 0,
+            "y": -9,
+            "height": 13,
+            "width": 30 
+          },
+          "color": "#000"
+        }, 
+        "val": {
+          "font": "10px 'Open Sans'",
+          "x": 33,
+          "y": 1,
+          "color": "#000",
+          "wrapAt": 247,
+          "wrapToX": 21
+        }      
+      }    
+    }
+  },
+  "defaultSuppliers": {
+    "foodWebTitle": "first-choice-supplier",
+    "iucnTitle": "first-choice-supplier",
+    "mainColors": "last-choice-supplier",
+    "foodWebRoles": "key-val-choices-supplier",
+    "iucnStatuses": "key-val-choices-supplier"
+  },
+  "templateChoiceSuppliers": {
+    "mainColors": "labeled-standard-color-supplier",
+    "foodWebTitle": "food-web-role-literal-supplier",
+    "foodWebRoles": "food-web-role-key-val-supplier",
+    "iucnTitle": "iucn-status-literal-supplier",
+    "iucnStatuses": "iucn-status-key-val-supplier"
+  },
+  "templateValueSuppliers": {
+    "commonName": "common-name-literal-supplier",
+    "sciName": "sci-name-literal-supplier",
+    "taxonGroup": "taxon-group-literal-supplier",
+    "keyTitle": "key-literal-supplier"
+  }
+}

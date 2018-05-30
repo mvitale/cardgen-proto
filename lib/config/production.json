@@ -20,7 +20,9 @@
   "appTemplateVersions": {
     "eddev": {
       "trait": "1.0",
-      "title": "1.0"
+      "title": "1.0",
+      "key": "1.0",
+      "desc": "1.0"
     },
     "edu": {
       "trait": "1.0",

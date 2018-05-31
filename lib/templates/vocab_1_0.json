@@ -53,7 +53,7 @@
       },
       "definitions": {
         "uiLabelKey": "definitions",
-        "type": "definition-list",
+        "type": "text-list",
         "x": 21,
         "y": 72,
         "max": 14,

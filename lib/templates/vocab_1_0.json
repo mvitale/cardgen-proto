@@ -19,6 +19,22 @@
         "height": 366,
         "value": { "color": "$mainColors.bg" }
       },
+      "eolLogo": {
+        "type": "image",
+        "x": 62,
+        "y": 14,
+        "height": 26,
+        "width": 61,
+        "value": { "url": "$mainColors.eolLogoUrl" }
+      },
+      "biodiversityCards": {
+        "type": "multiline-text",
+        "wrapAt": 268,
+        "font": "600 13px 'Open Sans'",
+        "color": "$mainColors.text",
+        "x": 127,
+        "y": 25 
+      },
       "vocabTitle": {
         "type": "text",
         "font": "14px 'Open Sans'",
@@ -37,52 +53,32 @@
       },
       "definitions": {
         "uiLabelKey": "definitions",
-        "type": "key-val-list",
-        "y": 90,
-        "max": 8,
-        "yIncr": 10,
-        "key": {
-          "font": "600 10px 'Open Sans'",
-          "x": 21,
-          "y": 0,
-          "textAlign": "center",
-          "bg": {
-            "x": 0,
-            "y": -9,
-            "height": 13,
-            "width": 30 
-          },
-          "color": "#000"
-        }, 
-        "val": {
-          "font": "10px 'Open Sans'",
-          "x": 33,
-          "y": 1,
+        "type": "definition-list",
+        "x": 21,
+        "y": 72,
+        "max": 14,
+        "yIncr": 18,
+        "font": "10px 'Open Sans'",
+        "color": "#000",
+        "wrapAt": 247,
+        "separator": {
           "color": "#000",
-          "wrapAt": 247,
-          "wrapToX": 21
-        }      
+          "x": 14,
+          "width": 242,
+          "height": 1,
+          "yOffset": 5
+        }
       }    
     }
   },
   "defaultSuppliers": {
-    "foodWebTitle": "first-choice-supplier",
-    "iucnTitle": "first-choice-supplier",
-    "mainColors": "last-choice-supplier",
-    "foodWebRoles": "key-val-choices-supplier",
-    "iucnStatuses": "key-val-choices-supplier"
-  },
-  "templateChoiceSuppliers": {
-    "mainColors": "labeled-standard-color-supplier",
-    "foodWebTitle": "food-web-role-literal-supplier",
-    "foodWebRoles": "food-web-role-key-val-supplier",
-    "iucnTitle": "iucn-status-literal-supplier",
-    "iucnStatuses": "iucn-status-key-val-supplier"
+    "mainColors": "last-choice-supplier"
   },
   "templateValueSuppliers": {
-    "commonName": "common-name-literal-supplier",
-    "sciName": "sci-name-literal-supplier",
-    "taxonGroup": "taxon-group-literal-supplier",
-    "keyTitle": "key-literal-supplier"
+    "vocabTitle": "vocabulary-literal-supplier",
+    "biodiversityCards": "biodiversity-cards-text-supplier"
+  },
+  "templateChoiceSuppliers": {
+    "mainColors": "labeled-standard-color-supplier"
   }
 }

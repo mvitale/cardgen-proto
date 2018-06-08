@@ -1,0 +1,113 @@
+{
+  "template": {
+    "fieldLabels": {
+      "background": "Contexto",
+      "commonName": "Nombre común",
+      "scientificName": "Nombre científico",
+      "taxonGroup": "Grupo taxonómico",
+      "mainPhoto": "Foto principal",
+      "foodWebRole": "Rol en la cadena trófica",
+      "iucnStatus": "Categoría IUCN",
+      "biome": "Bioma",
+      "traits": "Características",
+      "habitats": "Hábitat",
+      "additionalInfo": "Información adicional"
+    },
+    "fieldCtas": {
+      "selectABiome": "Seleccione un Bioma"
+    }
+  },
+  "taxa": {
+    "animals": "Animales",
+    "annelids": "Anélidos",
+    "bacteria": "Bacterias",
+    "echinoderms": "Equinodermos",
+    "fishes": "Peces",
+    "archaea": "Arqueobacteria",
+    "platyhelminthes": "Platelmintos",
+    "mollusks": "Moluscos",
+    "plants": "Plantas",
+    "fungi": "Hongos",
+    "nematodes": "Nemátodos",
+    "reptiles": "Reptiles",
+    "arthropods": "Artrópodos",
+    "birds": "Aves",
+    "cnidarians": "Cnidarios",
+    "amphibians": "Anfibios",
+    "protists": "Protistas",
+    "sponges": "Esponjas",
+    "mammals": "Mamíferos",
+    "eukaryotes": "Eucariotas",
+    "cellularOrganisms": "Organismos unicelulares"
+  },
+  "biomeIconSupplier": {
+    "labels": {
+      "alpine": "Alpino",
+      "chaparral": "Chaparral",
+      "coral_reef": "Arrecife de coral",
+      "desert": "Desierto",
+      "estuary": "Estuario",
+      "freshwater": "Agua dulce",
+      "grasslands": "Praderas",
+      "marine": "Marino ",
+      "multi": "Multi",
+      "taiga_forest": "Taiga",
+      "temperate_forest": "Bosque templado",
+      "tropical_rainforest": "Selva húmeda tropical",
+      "tundra": "Tundra",
+      "urban": "Urbano, Urbana"
+    }
+  },
+  "foodwebRoleIconSupplier": {
+    "label": "Rol en la cadena trófica",
+    "labels": {
+      "apexPredator": "Predador principal",
+      "autotroph": "Autótrofo",
+      "carnivore": "Carnívoro",
+      "decomposer": "Descomponedor",
+      "detritivore": "Detritívoro",
+      "herbivore": "Herbívoro",
+      "heterotroph": "Heterótrofo",
+      "multiple": "Múltiple",
+      "omnivore": "Omnívoro",
+      "sanguinivore": "Hematófago"
+    },
+    "icons": {
+      "apex": "APEX",
+      "auto": "AUTO",
+      "carn": "CARN ",
+      "deco": "DESC ",
+      "detr": "DETR ",
+      "herb": "HERB ",
+      "hete": "HETE ",
+      "mult": "MULTI",
+      "omni": "OMNI",
+      "sang": "HEMAT "
+    }
+  },
+  "iucnIconSupplier": {
+    "label": "Categorización IUCN",
+    "labels": {
+      "lc": "Preocupación menor",
+      "nt": "Casi amenazada",
+      "vu": "Vulnerable",
+      "en": "En peligro",
+      "cr": "En peligro crítico",
+      "ew": "Extinto en estado silvestre",
+      "ex": "Extinto   ",
+      "dd": "Datos insuficientes",
+      "ne": "No evaluado"
+    },
+    "icons": {
+      "lc": "LC",
+      "nt": "NT",
+      "vu": "VU  ",
+      "en": "EN ",
+      "cr": "CR",
+      "ew": "EW",
+      "ex": "EX",
+      "dd": "DD",
+      "ne": "NE  "
+    }
+  }
+}

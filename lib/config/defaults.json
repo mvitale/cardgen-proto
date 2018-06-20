@@ -18,7 +18,7 @@
     "level": "debug"
   },
   "i18n": {
-    "availableLocales": ["en", "es_es"],
+    "availableLocales": ["en", "es-ES"],
     "defaultLocale": "en"
   },
   "eolApiKey": "$secrets.eolApiKey",

@@ -13,7 +13,7 @@ var expect = chai.expect
 
 var cardDataPath = path.join(__dirname, '/data/card.json');
 
-describe.only('Create card', () => {
+describe('Create card', () => {
   var savedCard = JSON.parse(fs.readFileSync(cardDataPath, 'utf-8'));
 
   it('matches the saved card', () => {

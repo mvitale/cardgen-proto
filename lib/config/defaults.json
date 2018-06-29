@@ -8,7 +8,7 @@
     "host": "localhost",
     "port": 27017,
     "dbName": "cardgen",
-    "user": "cardgen",
+    "user": "$secrets.db.user",
     "password": "$secrets.db.password"
   },
   "cardSvgCache": {

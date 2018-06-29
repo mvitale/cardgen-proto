@@ -3,5 +3,10 @@
     "user": "cardgen_test",
     "dbName": "cardgen_test"
   },
-  "eolApiKey": "fakeapikey"
+  "eolApiKey": "fakeapikey",
+  "appTemplateVersions": {
+    "test": {
+      "trait": "1.0"
+    }
+  }
 }

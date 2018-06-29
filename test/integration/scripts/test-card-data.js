@@ -22,7 +22,13 @@ if (mode === 'card') {
 }
 
 function printCard() {
-  cardUtil.getCard(printErrOrResult);
+  cardUtil.getCard()
+    .then((card) => {
+      printErrOrResult(null, card); 
+    })
+    .catch((err) => {
+      printErrOrResult(err); 
+    });
 }
 
 function printApiResults() {
@@ -41,6 +47,6 @@ function printErrOrResult(err, result) {
 
 function printUsage() {
   console.log('usage:\n' + 
-    '$ node scripts/test-card-api-data.js --type [api|card]');
+    '$ node scripts/test-card-data.js --type [api|card]');
 }
 

@@ -6,7 +6,7 @@
       "scientificName": "Nom scientifique",
       "taxonGroup": "Groupe taxonomique",
       "mainPhoto": "Photo principale",
-      "foodWebRole": "Rôle dans la chaine alimentaire",
+      "foodWebRole": "Niveau trophique",
       "iucnStatus": "Statut UICN",
       "biome": "Biome",
       "traits": "Caractéristiques",

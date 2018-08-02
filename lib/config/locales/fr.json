@@ -28,7 +28,7 @@
     "values": {
       "bioCards": "Cartes de biodiversité",
       "commonName": "Nom commun",
-      "foodWebRole": "Rôle dans la chaine alimentaire",
+      "foodWebRole": "Niveau trophique",
       "key": "Clé",
       "sciName": "Nom scientifique",
       "taxonGroup": "Le taxon",

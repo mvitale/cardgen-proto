@@ -79,7 +79,7 @@
     }
   },
   "foodwebRoleIconSupplier": {
-    "label": "Rôle dans la chaîne alimentaire",
+    "label": "Niveau trophique",
     "labels": {
       "apexPredator": "Superprédateur",
       "autotroph": "Autotrophe",

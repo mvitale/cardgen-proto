@@ -13,6 +13,7 @@
     "height": 366,
     "safeWidth": 244.53,
     "safeHeight": 342.51,
+    "safeLineColor": "$mainColors.safeSpaceLineColor",
     "fields": {
       "mainColors": {
         "uiLabelKey": "background",

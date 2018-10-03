@@ -11,6 +11,8 @@
   "spec": {
     "width": 268,
     "height": 366,
+    "safeWidth": 244.53,
+    "safeHeight": 342.51,
     "fields": {
       "mainColors": {
         "uiLabelKey": "background",

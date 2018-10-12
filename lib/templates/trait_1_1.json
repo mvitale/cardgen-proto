@@ -1,0 +1,239 @@
+{
+  "name": "trait",
+  "version": "1.1",
+  "params": [
+    {
+      "name": "speciesId",
+      "type": "eol-taxon-id"
+    }
+  ],
+  "dataSupplier": "species-data-supplier",
+  "spec": {
+    "width": 300,
+    "height": 400,
+    "safeWidth": 250,
+    "safeHeight": 350,
+    "safeLineColor": "$mainColors.safeSpaceLineColor",
+    "fields": {
+      "mainColors": {
+        "uiLabelKey": "background",
+        "type": "color-scheme",
+        "uiColor": "bg"
+      },
+      "mainBackground": {
+        "type": "color",
+        "x": 0,
+        "y": 0,
+        "width": 300, 
+        "height": 400,
+        "value": { "color": "$mainColors.bg" }
+      },
+      "commonName": {
+        "uiLabelKey": "commonName",
+        "type": "text",
+        "fontFamily": "Open Sans",
+        "fontSizes": [10, 11, 12, 13, 14, 16, 18, 20],
+        "color": "$mainColors.text",
+        "x": 43,
+        "y": 54,
+        "value": { "fontSz": 13 }
+      },
+      "sciName": {
+        "uiLabelKey": "scientificName",
+        "type": "text",
+        "fontFamily": "Open Sans",
+        "fontStyle": "italic",
+        "fontSizes": [9, 10, 11, 12, 13, 14, 15],
+        "color": "$mainColors.text",
+        "x": 43,
+        "y": 69,
+        "value": { "fontSz": 10 }
+      },
+      "eolLogo": {
+        "type": "image",
+        "x": 222,
+        "y": 42,
+        "height": 14.71,
+        "width": 34,
+        "value": { "url": "$mainColors.eolLogoUrl" }
+      },
+      "taxonClass": {
+        "uiLabelKey": "taxonGroup",
+        "type": "text",
+        "fontFamily": "Open Sans",
+        "fontSizes": [9, 10, 11, 12, 13, 14, 15],
+        "color": "$mainColors.text",
+        "x": 257,
+        "y": 69,
+        "textAlign": "right",
+        "value": { "fontSz": 10}
+      },
+      "mainPhotoBg": {
+        "type": "color",
+        "x": 0,
+        "y": 75,
+        "height": 118,
+        "width": 300,
+        "value": { "color": "#252525" }
+      },
+      "mainPhoto": {
+        "uiLabelKey": "mainPhoto",
+        "type": "image",
+        "x": 0,
+        "y": 75,
+        "height": 118,
+        "width": 300,
+        "credit": {
+          "x": 150,
+          "y": 361,
+          "font": "7px 'Open Sans'",
+          "textAlign": "center",
+          "color": "$mainColors.text",
+          "prefix": "Image: "
+        }
+      },
+      "traitBackground": {
+        "type": "color",
+        "x": 0,
+        "y": 193,
+        "height": 99,
+        "width": 600,
+        "value": { "color": "#fff" }
+      },
+      "miscInfoBg": {
+        "type": "color",
+        "x": 0,
+        "y": 292,
+        "height": 51,
+        "width": 300,
+        "value": { "color": "#f3f3f3" }
+      },
+      "miscInfoLine": {
+        "type": "color",
+        "x": 0,
+        "y": 292,
+        "height": 1,
+        "width": 600,
+        "value": { "color": "#e5e5e5" }
+      },
+      "foodwebRole": {
+        "uiLabelKey": "foodWebRole",
+        "type": "labeled-text",
+        "font": "8px 'Open Sans'",
+        "color": "#fff",
+        "x": 72,
+        "y": 216,
+        "height": 12,
+        "textAlign": "center",
+        "width": 28,
+        "allowCustom": true,
+        "label": {
+          "font": "8px 'Open Sans'",
+          "color": "#000",
+          "textAlign": "center",
+          "x": 72,
+          "y": 204
+        },
+        "bg": {
+          "y": 207,
+          "height": 13,
+          "hPad": 8
+        }
+      },
+      "iucnStatus": {
+        "uiLabelKey": "iucnStatus",
+        "type": "labeled-text",
+        "font": "8px 'Open Sans'",
+        "color": "#fff",
+        "x": 228,
+        "y": 216,
+        "textAlign": "center",
+        "width": 30,
+        "allowCustom": true,
+        "bg": {
+          "y": 207,
+          "height": 13,
+          "hPad": 8
+        },
+        "label": {
+          "font": "8px 'Open Sans'",
+          "color": "#000",
+          "textAlign": "center",
+          "x": 228,
+          "y": 204
+        }
+      },
+      "biome" : {
+        "uiLabelKey": "biome",
+        "type": "icon",
+        "font": "8px 'Open Sans'",
+        "color": "#000",
+        "x": 106,
+        "y": 207,
+        "height": 13,
+        "width": 88,
+        "ctaKey": "selectABiome",
+        "label": {
+          "font": "8px 'Open Sans'",
+          "color": "#000",
+          "x": 150, 
+          "y": 204,
+          "textAlign": "center"
+        },
+        "allowCustom": true
+      },
+      "traits": {
+        "uiLabelKey": "traits",
+        "type": "key-val-list",
+        "x": 0,
+        "y": 235,
+        "max": 5,
+        "yIncr": 12,
+        "key": {
+          "font": "600 8px 'Open Sans'",
+          "color": "#000",
+          "x": 43,
+          "y": 0
+        },
+        "val": {
+          "font": "8px 'Open Sans'",
+          "color": "#000",
+          "x": 170,
+          "y": 0
+        }
+      },
+      "miscInfo": {
+        "uiLabelKey": "additionalInfo",
+        "type": "multiline-text",
+        "wrapAt": 257,
+        "fontFamily": "Open Sans",
+        "color": "#000",
+        "lineHeight": 11,
+        "x": 43,
+        "y": 305,
+        "value": { "fontSz": 9 }
+      }
+    }
+  },
+  "templateChoiceSuppliers": {
+    "mainColors": "labeled-standard-color-supplier",
+    "biome": "biome-text-icon-supplier",
+    "foodwebRole": "foodweb-role-supplier",
+    "iucnStatus": "iucn-icon-supplier",
+    "taxonClass": "taxon-group-supplier",
+    "traits": "trait-supplier"
+  },
+  "choiceSuppliers": {
+    "commonName": "common-name-supplier",
+    "sciName": "sci-name-supplier",
+    "mainPhoto": "species-images-supplier"
+  },
+  "defaultSuppliers": {
+    "commonName": "first-choice-supplier",
+    "sciName": "first-choice-supplier",
+    "mainPhoto": "first-choice-supplier",
+    "mainColors": "taxon-group-color-supplier",
+    "taxonClass": "taxon-group-supplier",
+    "traits": "default-trait-supplier"
+  }
+}

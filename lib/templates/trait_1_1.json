@@ -190,13 +190,13 @@
         "max": 5,
         "yIncr": 12,
         "key": {
-          "font": "600 8px 'Open Sans'",
+          "font": "600 9px 'Open Sans'",
           "color": "#000",
           "x": 43,
           "y": 0
         },
         "val": {
-          "font": "8px 'Open Sans'",
+          "font": "9px 'Open Sans'",
           "color": "#000",
           "x": 170,
           "y": 0

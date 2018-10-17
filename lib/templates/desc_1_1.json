@@ -1,0 +1,79 @@
+{
+  "name": "desc",
+  "version": "1.1",
+  "params": [],
+  "spec": {
+    "width": 300,
+    "height": 400,
+    "safeWidth": 250,
+    "safeHeight": 350,
+    "safeLineColor": "$mainColors.safeSpaceLineColor",
+    "fields": {
+      "mainColors": {
+        "uiLabelKey": "background",
+        "type": "color-scheme",
+        "uiColor": "bg"
+      },
+      "background": {
+        "type": "color",
+        "x": 0,
+        "y": 0,
+        "width": 300,
+        "height": 400,
+        "value": { "color": "$mainColors.bg" }
+      },
+      "eolLogo": {
+        "type": "image",
+        "x": 90,
+        "y": 41,
+        "height": 22,
+        "width": 49,
+        "value": { "url": "$mainColors.eolLogoUrl" }
+      },
+      "biodiversityCards": {
+        "type": "multiline-text",
+        "wrapAt": 268,
+        "font": "13px 'Open Sans'",
+        "color": "$mainColors.text",
+        "lineHeight": 12,
+        "x": 147,
+        "y": 51 
+      },
+      "projDescTitle": {
+        "type": "text",
+        "font": "600 10px 'Open Sans'",
+        "color": "$mainColors.text",
+        "x": 150,
+        "y": 364,
+        "textAlign": "center"
+      },
+      "descBg": {
+        "type": "color",
+        "x": 0,
+        "y": 75,
+        "height": 273,
+        "width": 300,
+        "value": { "color": "#fff" }
+      },
+      "miscInfo": {
+        "uiLabelKey": "projDesc",
+        "type": "multiline-text",
+        "wrapAt": 260,
+        "font": "11px 'Open Sans'",
+        "color": "#000",
+        "x": 40,
+        "y": 98
+      }
+    }
+  },
+  "defaultSuppliers": {
+    "mainColors": "last-choice-supplier"
+  },
+  "templateChoiceSuppliers": {
+    "mainColors": "labeled-standard-color-supplier"
+  },
+  "templateValueSuppliers": {
+    "biodiversityCards": "biodiversity-cards-text-supplier",
+    "projDescTitle": "proj-desc-literal-supplier"
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "name": "title",
+  "version": "1.1",
+  "params": [],
+  "spec": {
+    "width": 300,
+    "height": 400,
+    "safeWidth": 250,
+    "safeHeight": 350,
+    "safeLineColor": "$mainColors.safeSpaceLineColor",
+    "fields": {
+      "mainColors": {
+        "uiLabelKey": "background",
+        "type": "color-scheme",
+        "uiColor": "bg"
+      },
+      "background": {
+        "type": "color",
+        "x": 0,
+        "y": 0,
+        "width": 300,
+        "height": 400,
+        "value": { "color": "$mainColors.bg" }
+      },
+      "eolLogo": {
+        "type": "image",
+        "x": 90,
+        "y": 41,
+        "height": 22,
+        "width": 49,
+        "value": { "url": "$mainColors.eolLogoUrl" }
+      },
+      "biodiversityCards": {
+        "type": "multiline-text",
+        "wrapAt": 268,
+        "font": "13px 'Open Sans'",
+        "color": "$mainColors.text",
+        "lineHeight": 12,
+        "x": 147,
+        "y": 51 
+      },
+      "photoBg": {
+        "type": "color",
+        "x": 0,
+        "y": 76,
+        "height": 229,
+        "width": 300,
+        "value": { "color": "#252525" }
+      },
+      "photo": {
+        "uiLabelKey": "image",
+        "type": "image",
+        "x": 0,
+        "y": 76,
+        "height": 229,
+        "width": 300,
+        "credit": {
+          "x": 150,
+          "y": 362,
+          "font": "7px 'Open Sans'",
+          "textAlign": "center",
+          "color": "$mainColors.text",
+          "prefix": "Image: "
+        }
+      },
+      "deckTitle": {
+        "uiLabelKey": "deckTitle",
+        "type": "text",
+        "font": "600 14px 'Open Sans'",
+        "color": "$mainColors.text",
+        "x": 150,
+        "y": 328,
+        "textAlign": "center"
+      },
+      "deckSubtitle": {
+        "uiLabelKey": "deckSubtitle",
+        "type": "text",
+        "font": "14px 'Open Sans'",
+        "color": "$mainColors.text",
+        "x": 150,
+        "y": 345,
+        "textAlign": "center"
+      }
+    }
+  },
+  "templateChoiceSuppliers": {
+    "mainColors": "labeled-standard-color-supplier"
+  },
+  "templateValueSuppliers": {
+    "biodiversityCards": "biodiversity-cards-text-supplier"
+  },
+  "defaultSuppliers": {
+    "mainColors": "last-choice-supplier"
+  }
+}
+

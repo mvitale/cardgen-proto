@@ -27,7 +27,7 @@
         "x": 90,
         "y": 41,
         "height": 22,
-        "width": 49,
+        "width": 51,
         "value": { "url": "$mainColors.eolLogoUrl" }
       },
       "biodiversityCards": {

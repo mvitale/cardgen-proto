@@ -1,0 +1,184 @@
+{
+  "name": "key",
+  "version": "1.1",
+  "params": [],
+  "spec": {
+    "width": 300,
+    "height": 400,
+    "safeWidth": 250,
+    "safeHeight": 350,
+    "safeLineColor": "$mainColors.safeSpaceLineColor",
+    "fields": {
+      "mainColors": {
+        "uiLabelKey": "background",
+        "type": "color-scheme",
+        "uiColor": "bg"
+      },
+      "background": {
+        "type": "color",
+        "x": 0,
+        "y": 0,
+        "width": 300,
+        "height": 400,
+        "value": { "color": "$mainColors.bg" }
+      },
+      "commonName": {
+        "type": "text",
+        "font": "600 14px 'Open Sans'",
+        "color": "$mainColors.text",
+        "x": 43,
+        "y": 54,
+        "value": { "fontSz": 13 }
+      },
+      "sciName": {
+        "type": "text",
+        "fontStyle": "italic",
+        "font": "10px 'Open Sans'",
+        "color": "$mainColors.text",
+        "x": 43,
+        "y": 69,
+        "value": { "fontSz": 10 }
+      },
+      "eolLogo": {
+        "type": "image",
+        "x": 222,
+        "y": 42,
+        "height": 14.71,
+        "width": 34,
+        "value": { "url": "$mainColors.eolLogoUrl" }
+      },
+      "taxonGroup": {
+        "type": "text",
+        "font": "10px 'Open Sans'",
+        "color": "$mainColors.text",
+        "x": 257,
+        "y": 69,
+        "textAlign": "right"
+      },
+      "keyTitle": {
+        "type": "text",
+        "font": "600 10px 'Open Sans'",
+        "color": "$mainColors.text",
+        "x": 150,
+        "y": 364,
+        "textAlign": "center"
+      },
+      "keyBg": {
+        "type": "color",
+        "x": 0,
+        "y": 75,
+        "height": 273,
+        "width": 300,
+        "value": { "color": "#fff" }
+      },
+      "foodWebTitle": {
+        "uiLabelKey": "section1Title",
+        "type": "text",
+        "x": 43,
+        "y": 96,
+        "color": "#505050",
+        "font": "12px 'Open Sans'"
+      },
+      "foodWebLine": {
+        "type": "color",
+        "x": 30,
+        "y": 100,
+        "height": 1,
+        "width": 240,
+        "value": { "color": "#505050" }
+      },
+      "foodWebRoles": {
+        "uiLabelKey": "section1Values",
+        "type": "key-val-list",
+        "y": 114,
+        "max": 10,
+        "perCol": 5,
+        "colXs": [43, 162],
+        "yIncr": 16,
+        "key": {
+          "font": "8px 'Open Sans'",
+          "x": 15,
+          "y": 0,
+          "textAlign": "center",
+          "bg": {
+            "x": 0,
+            "y": -9,
+            "height": 13,
+            "width": 30 
+          },
+          "color": "#fff"
+        }, 
+        "val": {
+          "font": "11px 'Open Sans'",
+          "x": 33,
+          "y": 1,
+          "color": "#000"
+        }
+      },
+      "iucnTitle": {
+        "uiLabelKey": "section2Title",
+        "type": "text",
+        "x": 43,
+        "y": 206,
+        "color": "#505050",
+        "font": "12px 'Open Sans'"
+      },
+      "iucnLine": {
+        "type": "color",
+        "x": 30,
+        "y": 208,
+        "height": 1,
+        "width": 240,
+        "value": { "color": "#505050" }
+      },
+      "iucnStatuses": {
+        "uiLabelKey": "section2Values",
+        "type": "key-val-list",
+        "y": 222,
+        "max": 9,
+        "perCol": 6,
+        "colXs": [43, 162],
+        "yIncr": 16,
+        "key": {
+          "font": "8px 'Open Sans'",
+          "x": 15,
+          "y": 0,
+          "textAlign": "center",
+          "bg": {
+            "x": 0,
+            "y": -9,
+            "height": 13,
+            "width": 30 
+          },
+          "color": "#fff"
+        }, 
+        "val": {
+          "font": "11px 'Open Sans'",
+          "x": 33,
+          "y": 1,
+          "color": "#000"
+        }
+      }    
+    }
+  },
+  "defaultSuppliers": {
+    "foodWebTitle": "first-choice-supplier",
+    "iucnTitle": "first-choice-supplier",
+    "mainColors": "last-choice-supplier",
+    "foodWebRoles": "key-val-choices-supplier",
+    "iucnStatuses": "key-val-choices-supplier"
+  },
+  "templateChoiceSuppliers": {
+    "mainColors": "labeled-standard-color-supplier",
+    "foodWebTitle": "food-web-role-literal-supplier",
+    "foodWebRoles": "food-web-role-key-val-supplier",
+    "iucnTitle": "iucn-status-literal-supplier",
+    "iucnStatuses": "iucn-status-key-val-supplier"
+  },
+  "templateValueSuppliers": {
+    "commonName": "common-name-literal-supplier",
+    "sciName": "sci-name-literal-supplier",
+    "taxonGroup": "taxon-group-literal-supplier",
+    "keyTitle": "key-literal-supplier"
+  }
+}

@@ -180,7 +180,7 @@
     "zonation": "Zonation"
   },
   "cardBacks": {
-    "color": "Color",
-    "bw": "Black & white"
+    "color": "color",
+    "bw": "black & white"
   }
 }

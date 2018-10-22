@@ -178,5 +178,9 @@
     "wings": "Wings",
     "wingspan": "Wingspan",
     "zonation": "Zonation"
+  },
+  "cardBacks": {
+    "color": "Color",
+    "bw": "Black & white"
   }
 }

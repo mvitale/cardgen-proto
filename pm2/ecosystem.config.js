@@ -24,7 +24,7 @@ module.exports = {
     },
     {
       name: 'card-worker',
-      script: 'worker.js'
+      script: 'worker.js',
       env: {
         NODE_ENV: 'development',
         watch: false

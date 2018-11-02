@@ -20,7 +20,7 @@ templateManager.load()
 
 dbconnect.mongooseInit()
 .then(() => {
-  reqlib('lib/agenda');
+  reqlib('lib/agenda').start();
 })
 .catch((err) => {
   console.log(err);

@@ -35,7 +35,7 @@
     "body-parser": "^1.18.3",
     "bugsnag": "^2.4.3",
     "bunyan": "^1.8.10",
-    "canvas": "1.6.7",
+    "canvas": "1.6.11",
     "concat-stream": "^1.6.2",
     "cors": "^2.8.3",
     "csv-parse": "^2.5.0",

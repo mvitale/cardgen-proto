@@ -20,7 +20,8 @@ module.exports = {
         instances: 1
       },
       error_file      : "logs/err.log",
-      out_file        : "logs/out.log"
+      out_file        : "logs/out.log",
+      ignore_watch: 'storage',
     },
     {
       name: 'card-worker',
@@ -36,7 +37,8 @@ module.exports = {
         instances: 1
       },
       error_file: 'logs/worker-err.log',
-      out_file: 'logs/worker-out.log'
+      out_file: 'logs/worker-out.log',
+      ignore_watch: 'storage',
     }
   ]
 };

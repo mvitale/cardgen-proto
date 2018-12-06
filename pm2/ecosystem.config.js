@@ -4,14 +4,14 @@ module.exports = {
    * http://pm2.keymetrics.io/docs/usage/application-declaration/
    */
   apps : [
-
     // Card service
     {
       name      : 'card-svc',
       script    : 'app.js',
+      ignore_watch: ['storage'],
       env: {
         NODE_ENV: 'development',
-        watch: true
+        watch: true,
       },
       env_production : {
         NODE_ENV: 'production',
@@ -40,3 +40,4 @@ module.exports = {
     }
   ]
 };
+

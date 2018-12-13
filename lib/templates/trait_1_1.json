@@ -35,8 +35,8 @@
         "fontStyle": "600",
         "fontSizes": [10, 11, 12, 13, 14, 16, 18, 20],
         "color": "$mainColors.text",
-        "x": 43,
-        "y": 54,
+        "x": 38,
+        "y": 43,
         "value": { "fontSz": 13 }
       },
       "sciName": {
@@ -46,14 +46,14 @@
         "fontStyle": "italic",
         "fontSizes": [9, 10, 11, 12, 13, 14, 15],
         "color": "$mainColors.text",
-        "x": 43,
-        "y": 69,
+        "x": 38,
+        "y": 58,
         "value": { "fontSz": 10 }
       },
       "eolLogo": {
         "type": "image",
-        "x": 222,
-        "y": 42,
+        "x": 227,
+        "y": 31,
         "height": 14.71,
         "width": 34,
         "value": { "url": "$mainColors.eolLogoUrl" }
@@ -64,16 +64,16 @@
         "fontFamily": "Open Sans",
         "fontSizes": [9, 10, 11, 12, 13, 14, 15],
         "color": "$mainColors.text",
-        "x": 257,
-        "y": 69,
+        "x": 262,
+        "y": 58,
         "textAlign": "right",
         "value": { "fontSz": 10}
       },
       "mainPhotoBg": {
         "type": "color",
         "x": 0,
-        "y": 75,
-        "height": 118,
+        "y": 66,
+        "height": 150,
         "width": 300,
         "value": { "color": "#252525" }
       },
@@ -81,12 +81,12 @@
         "uiLabelKey": "mainPhoto",
         "type": "image",
         "x": 0,
-        "y": 75,
-        "height": 118,
+        "y": 66,
+        "height": 150,
         "width": 300,
         "credit": {
           "x": 150,
-          "y": 361,
+          "y": 364,
           "font": "7px 'Open Sans'",
           "textAlign": "center",
           "color": "$mainColors.text",
@@ -96,7 +96,7 @@
       "traitBackground": {
         "type": "color",
         "x": 0,
-        "y": 193,
+        "y": 200,
         "height": 99,
         "width": 600,
         "value": { "color": "#fff" }
@@ -104,7 +104,7 @@
       "miscInfoBg": {
         "type": "color",
         "x": 0,
-        "y": 292,
+        "y": 299,
         "height": 51,
         "width": 300,
         "value": { "color": "#f3f3f3" }
@@ -112,7 +112,7 @@
       "miscInfoLine": {
         "type": "color",
         "x": 0,
-        "y": 292,
+        "y": 299,
         "height": 1,
         "width": 600,
         "value": { "color": "#e5e5e5" }
@@ -122,8 +122,8 @@
         "type": "labeled-text",
         "font": "8px 'Open Sans'",
         "color": "#fff",
-        "x": 72,
-        "y": 216,
+        "x": 67,
+        "y": 223,
         "height": 12,
         "textAlign": "center",
         "width": 28,
@@ -132,11 +132,11 @@
           "font": "8px 'Open Sans'",
           "color": "#000",
           "textAlign": "center",
-          "x": 72,
-          "y": 204
+          "x": 67,
+          "y": 211
         },
         "bg": {
-          "y": 207,
+          "y": 214,
           "height": 13,
           "hPad": 8
         }
@@ -146,13 +146,13 @@
         "type": "labeled-text",
         "font": "8px 'Open Sans'",
         "color": "#fff",
-        "x": 228,
-        "y": 216,
+        "x": 233,
+        "y": 223,
         "textAlign": "center",
         "width": 30,
         "allowCustom": true,
         "bg": {
-          "y": 207,
+          "y": 214,
           "height": 13,
           "hPad": 8
         },
@@ -160,8 +160,8 @@
           "font": "8px 'Open Sans'",
           "color": "#000",
           "textAlign": "center",
-          "x": 228,
-          "y": 204
+          "x": 233,
+          "y": 211 
         }
       },
       "biome" : {
@@ -170,7 +170,7 @@
         "font": "8px 'Open Sans'",
         "color": "#000",
         "x": 106,
-        "y": 207,
+        "y": 214,
         "height": 13,
         "width": 88,
         "ctaKey": "selectABiome",
@@ -178,7 +178,7 @@
           "font": "8px 'Open Sans'",
           "color": "#000",
           "x": 150, 
-          "y": 204,
+          "y": 211,
           "textAlign": "center"
         },
         "allowCustom": true
@@ -187,19 +187,19 @@
         "uiLabelKey": "traits",
         "type": "key-val-list",
         "x": 0,
-        "y": 235,
+        "y": 242,
         "max": 5,
         "yIncr": 12,
         "key": {
           "font": "600 9px 'Open Sans'",
           "color": "#000",
-          "x": 43,
+          "x": 38,
           "y": 0
         },
         "val": {
           "font": "9px 'Open Sans'",
           "color": "#000",
-          "x": 170,
+          "x": 165,
           "y": 0
         }
       },
@@ -210,8 +210,8 @@
         "fontFamily": "Open Sans",
         "color": "#000",
         "lineHeight": 11,
-        "x": 43,
-        "y": 305,
+        "x": 38,
+        "y": 312,
         "value": { "fontSz": 9 }
       }
     }

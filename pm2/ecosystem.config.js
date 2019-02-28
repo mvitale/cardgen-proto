@@ -27,7 +27,7 @@ module.exports = {
       script: 'worker.js',
       env: {
         NODE_ENV: 'development',
-        watch: false
+        watch: false // TODO: why doesn't watch work? Better to leave it as 'false' than have it deceptively be 'true'
       }, 
       env_production: {
         NODE_ENV: 'production',

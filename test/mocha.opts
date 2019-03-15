@@ -1,2 +1,4 @@
 --recursive
---require ./test/init
+--require ./test/before-root
+--delay
+

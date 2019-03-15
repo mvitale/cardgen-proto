@@ -1,52 +1,57 @@
-var reqlib = require('app-root-path').require
-  , bunyan = require('bunyan')
-  , args = require('minimist')(process.argv.slice(2))
-  , fs = require('fs')
-  , init = require('../../init')
-  , cardUtil = require('../util/card')
-  , speciesDataSupplier = reqlib('lib/suppliers/data/species-data-supplier')
-  ;
+var init = require('../../init');
 
-var validModes = ['card', 'api'];
+init.init()
+.then(() => {
+  var reqlib = require('app-root-path').require
+    , bunyan = require('bunyan')
+    , args = require('minimist')(process.argv.slice(2))
+    , fs = require('fs')
+    , cardUtil = require('../util/card')
+    , speciesDataSupplier = reqlib('lib/suppliers/data/species-data-supplier')
+    ;
 
-var mode = args.type;
+  var validModes = ['card', 'api'];
 
-var log = bunyan.createLogger({name: 'test-card-data-script'});
+  var mode = args.type;
 
-if (mode === 'card') {
-  printCard();
-} else if (mode === 'api') {
-  printApiResults();
-} else {
-  printUsage();
-}
+  var log = bunyan.createLogger({name: 'test-card-data-script'});
 
-function printCard() {
-  cardUtil.getCard()
-    .then((card) => {
-      printErrOrResult(null, card); 
-    })
-    .catch((err) => {
-      printErrOrResult(err); 
-    });
-}
-
-function printApiResults() {
-  speciesDataSupplier._makeApiCalls({
-    speciesId: cardUtil.taxonId
-  }, log, printErrOrResult);
-}
-
-function printErrOrResult(err, result) {
-  if (err) {
-    console.log(err);
+  if (mode === 'card') {
+    printCard();
+  } else if (mode === 'api') {
+    printApiResults();
   } else {
-    console.log(JSON.stringify(result, null, 2));
+    printUsage();
   }
-}
 
-function printUsage() {
-  console.log('usage:\n' + 
-    '$ node scripts/test-card-data.js --type [api|card]');
-}
+  function printCard() {
+    cardUtil.getCard()
+      .then((card) => {
+        printErrOrResult(null, card); 
+      })
+      .catch((err) => {
+        printErrOrResult(err); 
+      });
+  }
+
+  function printApiResults() {
+    speciesDataSupplier._makeApiCalls({
+      speciesId: cardUtil.taxonId
+    }, log, printErrOrResult);
+  }
+
+  function printErrOrResult(err, result) {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(JSON.stringify(result, null, 2));
+    }
+  }
+
+  function printUsage() {
+    console.log('usage:\n' + 
+      '$ node scripts/test-card-data.js --type [api|card]');
+  }
+});
+
 

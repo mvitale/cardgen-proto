@@ -4,24 +4,9 @@
   "userId": 1234,
   "appId": "test",
   "locale": "en",
-  "_id": "5b2a9bbd562ade3b51f3d93c",
+  "_id": "5c8be54dc5db7c1dee3bb5d8",
   "version": 0,
   "data": {
-    "commonName": {
-      "choiceKey": "Hazel Dormouse"
-    },
-    "sciName": {
-      "choiceKey": "Muscardinus avellanarius"
-    },
-    "mainPhoto": {
-      "choiceKey": "http://media.eol.org/content/2016/06/22/13/80122_580_360.jpg"
-    },
-    "mainColors": {
-      "choiceKey": "mammals"
-    },
-    "taxonClass": {
-      "choiceKey": "mammals"
-    },
     "traits": {
       "value": [
         {
@@ -65,13 +50,416 @@
           }
         }
       ]
+    },
+    "taxonClass": {
+      "choiceKey": "mammals"
+    },
+    "mainColors": {
+      "choiceKey": "mammals"
+    },
+    "mainPhoto": {
+      "choiceKey": "https://content.eol.org/data/media/31/bd/ca/18.https___www_inaturalist_org_photos_2661806.jpg"
+    },
+    "sciName": {
+      "choiceKey": "Muscardinus avellanarius"
+    },
+    "commonName": {
+      "choiceKey": "Dormouse"
     }
   },
   "choices": {
-    "commonName": [
+    "mainPhoto": [
       {
-        "choiceKey": "Hazel Dormouse",
-        "text": "Hazel Dormouse"
+        "credit": {
+          "text": "umbi24 CC-BY-NC"
+        },
+        "thumbUrl": "https://content.eol.org/data/media/31/bd/ca/18.https___www_inaturalist_org_photos_2661806.98x68.jpg",
+        "url": "https://content.eol.org/data/media/31/bd/ca/18.https___www_inaturalist_org_photos_2661806.jpg",
+        "choiceKey": "https://content.eol.org/data/media/31/bd/ca/18.https___www_inaturalist_org_photos_2661806.jpg"
+      },
+      {
+        "credit": {
+          "text": "Mattia Menchetti CC-BY-SA"
+        },
+        "thumbUrl": "https://content.eol.org/data/media/31/e9/1f/18.https___www_inaturalist_org_photos_2687693.98x68.jpg",
+        "url": "https://content.eol.org/data/media/31/e9/1f/18.https___www_inaturalist_org_photos_2687693.jpg",
+        "choiceKey": "https://content.eol.org/data/media/31/e9/1f/18.https___www_inaturalist_org_photos_2687693.jpg"
+      },
+      {
+        "credit": {
+          "text": "Julien Renoult CC-BY-NC"
+        },
+        "thumbUrl": "https://content.eol.org/data/media/34/2e/6d/18.https___www_inaturalist_org_photos_3024373.98x68.jpg",
+        "url": "https://content.eol.org/data/media/34/2e/6d/18.https___www_inaturalist_org_photos_3024373.jpg",
+        "choiceKey": "https://content.eol.org/data/media/34/2e/6d/18.https___www_inaturalist_org_photos_3024373.jpg"
+      },
+      {
+        "credit": {
+          "text": "lauragola CC-BY-NC"
+        },
+        "thumbUrl": "https://content.eol.org/data/media/34/40/2c/18.https___www_inaturalist_org_photos_3035058.98x68.jpg",
+        "url": "https://content.eol.org/data/media/34/40/2c/18.https___www_inaturalist_org_photos_3035058.jpg",
+        "choiceKey": "https://content.eol.org/data/media/34/40/2c/18.https___www_inaturalist_org_photos_3035058.jpg"
+      },
+      {
+        "credit": {
+          "text": "Flavio Rocchi CC-BY-NC"
+        },
+        "thumbUrl": "https://content.eol.org/data/media/34/6c/31/18.https___www_inaturalist_org_photos_3062152.98x68.jpg",
+        "url": "https://content.eol.org/data/media/34/6c/31/18.https___www_inaturalist_org_photos_3062152.jpg",
+        "choiceKey": "https://content.eol.org/data/media/34/6c/31/18.https___www_inaturalist_org_photos_3062152.jpg"
+      },
+      {
+        "credit": {
+          "text": "Flavio Rocchi CC-BY-NC"
+        },
+        "thumbUrl": "https://content.eol.org/data/media/34/6c/38/18.https___www_inaturalist_org_photos_3062164.98x68.jpg",
+        "url": "https://content.eol.org/data/media/34/6c/38/18.https___www_inaturalist_org_photos_3062164.jpg",
+        "choiceKey": "https://content.eol.org/data/media/34/6c/38/18.https___www_inaturalist_org_photos_3062164.jpg"
+      },
+      {
+        "credit": {
+          "text": "Dino Biancolini CC-BY-NC"
+        },
+        "thumbUrl": "https://content.eol.org/data/media/36/d8/fb/18.https___www_inaturalist_org_photos_3462734.98x68.jpg",
+        "url": "https://content.eol.org/data/media/36/d8/fb/18.https___www_inaturalist_org_photos_3462734.jpg",
+        "choiceKey": "https://content.eol.org/data/media/36/d8/fb/18.https___www_inaturalist_org_photos_3462734.jpg"
+      },
+      {
+        "credit": {
+          "text": "Almantas Kulbis CC-BY-NC"
+        },
+        "thumbUrl": "https://content.eol.org/data/media/40/c5/f1/18.https___www_inaturalist_org_photos_5190229.98x68.jpg",
+        "url": "https://content.eol.org/data/media/40/c5/f1/18.https___www_inaturalist_org_photos_5190229.jpg",
+        "choiceKey": "https://content.eol.org/data/media/40/c5/f1/18.https___www_inaturalist_org_photos_5190229.jpg"
+      },
+      {
+        "credit": {
+          "text": "Almantas Kulbis CC-BY-NC"
+        },
+        "thumbUrl": "https://content.eol.org/data/media/40/c5/f2/18.https___www_inaturalist_org_photos_5190230.98x68.jpg",
+        "url": "https://content.eol.org/data/media/40/c5/f2/18.https___www_inaturalist_org_photos_5190230.jpg",
+        "choiceKey": "https://content.eol.org/data/media/40/c5/f2/18.https___www_inaturalist_org_photos_5190230.jpg"
+      },
+      {
+        "credit": {
+          "text": "Almantas Kulbis CC-BY-NC"
+        },
+        "thumbUrl": "https://content.eol.org/data/media/40/c5/f3/18.https___www_inaturalist_org_photos_5190231.98x68.jpg",
+        "url": "https://content.eol.org/data/media/40/c5/f3/18.https___www_inaturalist_org_photos_5190231.jpg",
+        "choiceKey": "https://content.eol.org/data/media/40/c5/f3/18.https___www_inaturalist_org_photos_5190231.jpg"
+      },
+      {
+        "credit": {
+          "text": "Emiliano Mori CC-BY-NC"
+        },
+        "thumbUrl": "https://content.eol.org/data/media/47/ea/81/18.https___www_inaturalist_org_photos_6350259.98x68.jpg",
+        "url": "https://content.eol.org/data/media/47/ea/81/18.https___www_inaturalist_org_photos_6350259.jpg",
+        "choiceKey": "https://content.eol.org/data/media/47/ea/81/18.https___www_inaturalist_org_photos_6350259.jpg"
+      },
+      {
+        "credit": {
+          "text": "fabio_giuseppe CC-BY-NC"
+        },
+        "thumbUrl": "https://content.eol.org/data/media/48/11/ca/18.https___www_inaturalist_org_photos_6375046.98x68.jpg",
+        "url": "https://content.eol.org/data/media/48/11/ca/18.https___www_inaturalist_org_photos_6375046.jpg",
+        "choiceKey": "https://content.eol.org/data/media/48/11/ca/18.https___www_inaturalist_org_photos_6375046.jpg"
+      },
+      {
+        "credit": {
+          "text": "fabio_giuseppe CC-BY-NC"
+        },
+        "thumbUrl": "https://content.eol.org/data/media/48/a2/53/18.https___www_inaturalist_org_photos_6461989.98x68.jpg",
+        "url": "https://content.eol.org/data/media/48/a2/53/18.https___www_inaturalist_org_photos_6461989.jpg",
+        "choiceKey": "https://content.eol.org/data/media/48/a2/53/18.https___www_inaturalist_org_photos_6461989.jpg"
+      },
+      {
+        "credit": {
+          "text": "mak CC-BY-NC-SA"
+        },
+        "thumbUrl": "https://content.eol.org/data/media/49/9e/89/18.https___www_inaturalist_org_photos_6620915.98x68.jpg",
+        "url": "https://content.eol.org/data/media/49/9e/89/18.https___www_inaturalist_org_photos_6620915.jpg",
+        "choiceKey": "https://content.eol.org/data/media/49/9e/89/18.https___www_inaturalist_org_photos_6620915.jpg"
+      },
+      {
+        "credit": {
+          "text": "mak CC-BY-NC-SA"
+        },
+        "thumbUrl": "https://content.eol.org/data/media/49/9e/9c/18.https___www_inaturalist_org_photos_6620977.98x68.jpg",
+        "url": "https://content.eol.org/data/media/49/9e/9c/18.https___www_inaturalist_org_photos_6620977.jpg",
+        "choiceKey": "https://content.eol.org/data/media/49/9e/9c/18.https___www_inaturalist_org_photos_6620977.jpg"
+      },
+      {
+        "credit": {
+          "text": "Jakub PeÅka CC-BY-NC"
+        },
+        "thumbUrl": "https://content.eol.org/data/media/49/a0/6e/18.https___www_inaturalist_org_photos_6622083.98x68.jpg",
+        "url": "https://content.eol.org/data/media/49/a0/6e/18.https___www_inaturalist_org_photos_6622083.jpg",
+        "choiceKey": "https://content.eol.org/data/media/49/a0/6e/18.https___www_inaturalist_org_photos_6622083.jpg"
+      },
+      {
+        "credit": {
+          "text": "Francesco Cecere CC-BY"
+        },
+        "thumbUrl": "https://content.eol.org/data/media/4a/16/a4/18.https___www_inaturalist_org_photos_6699507.98x68.jpg",
+        "url": "https://content.eol.org/data/media/4a/16/a4/18.https___www_inaturalist_org_photos_6699507.jpg",
+        "choiceKey": "https://content.eol.org/data/media/4a/16/a4/18.https___www_inaturalist_org_photos_6699507.jpg"
+      },
+      {
+        "credit": {
+          "text": "Francesco Cecere CC-BY"
+        },
+        "thumbUrl": "https://content.eol.org/data/media/4a/16/b3/18.https___www_inaturalist_org_photos_6699537.98x68.jpg",
+        "url": "https://content.eol.org/data/media/4a/16/b3/18.https___www_inaturalist_org_photos_6699537.jpg",
+        "choiceKey": "https://content.eol.org/data/media/4a/16/b3/18.https___www_inaturalist_org_photos_6699537.jpg"
+      },
+      {
+        "credit": {
+          "text": "mak CC-BY-NC-SA"
+        },
+        "thumbUrl": "https://content.eol.org/data/media/4a/45/78/18.https___www_inaturalist_org_photos_6732523.98x68.jpg",
+        "url": "https://content.eol.org/data/media/4a/45/78/18.https___www_inaturalist_org_photos_6732523.jpg",
+        "choiceKey": "https://content.eol.org/data/media/4a/45/78/18.https___www_inaturalist_org_photos_6732523.jpg"
+      },
+      {
+        "credit": {
+          "text": "Alexandre Dulaunoy CC-BY-SA"
+        },
+        "thumbUrl": "https://content.eol.org/data/media/7f/ca/4b/542.3977566300.98x68.jpg",
+        "url": "https://content.eol.org/data/media/7f/ca/4b/542.3977566300.jpg",
+        "choiceKey": "https://content.eol.org/data/media/7f/ca/4b/542.3977566300.jpg"
+      },
+      {
+        "credit": {
+          "text": "Camponotus Vagus CC-BY-NC-SA"
+        },
+        "thumbUrl": "https://content.eol.org/data/media/80/90/f8/542.6245061840.98x68.jpg",
+        "url": "https://content.eol.org/data/media/80/90/f8/542.6245061840.jpg",
+        "choiceKey": "https://content.eol.org/data/media/80/90/f8/542.6245061840.jpg"
+      },
+      {
+        "credit": {
+          "text": "Biodiversity Heritage Library CC-BY"
+        },
+        "thumbUrl": "https://content.eol.org/data/media/80/ed/0d/542.7109309571.98x68.jpg",
+        "url": "https://content.eol.org/data/media/80/ed/0d/542.7109309571.jpg",
+        "choiceKey": "https://content.eol.org/data/media/80/ed/0d/542.7109309571.jpg"
+      },
+      {
+        "credit": {
+          "text": "Camponotus Vagus CC-BY-NC-SA"
+        },
+        "thumbUrl": "https://content.eol.org/data/media/80/f2/7c/542.7184697430.98x68.jpg",
+        "url": "https://content.eol.org/data/media/80/f2/7c/542.7184697430.jpg",
+        "choiceKey": "https://content.eol.org/data/media/80/f2/7c/542.7184697430.jpg"
+      },
+      {
+        "credit": {
+          "text": "Camponotus Vagus CC-BY-NC-SA"
+        },
+        "thumbUrl": "https://content.eol.org/data/media/80/f2/7d/542.7184698312.98x68.jpg",
+        "url": "https://content.eol.org/data/media/80/f2/7d/542.7184698312.jpg",
+        "choiceKey": "https://content.eol.org/data/media/80/f2/7d/542.7184698312.jpg"
+      },
+      {
+        "credit": {
+          "text": "AkBot CC-BY-SA"
+        },
+        "thumbUrl": "https://content.eol.org/data/media/57/22/82/509.19281955.98x68.jpg",
+        "url": "https://content.eol.org/data/media/57/22/82/509.19281955.jpg",
+        "choiceKey": "https://content.eol.org/data/media/57/22/82/509.19281955.jpg"
+      },
+      {
+        "credit": {
+          "text": "AkBot CC-BY"
+        },
+        "thumbUrl": "https://content.eol.org/data/media/59/86/f9/509.31307187.98x68.jpg",
+        "url": "https://content.eol.org/data/media/59/86/f9/509.31307187.jpg",
+        "choiceKey": "https://content.eol.org/data/media/59/86/f9/509.31307187.jpg"
+      },
+      {
+        "credit": {
+          "text": "Wikimedia Commons CC-BY-SA"
+        },
+        "thumbUrl": "https://content.eol.org/data/media/5c/23/c2/509.19281955.98x68.jpg",
+        "url": "https://content.eol.org/data/media/5c/23/c2/509.19281955.jpg",
+        "choiceKey": "https://content.eol.org/data/media/5c/23/c2/509.19281955.jpg"
+      },
+      {
+        "credit": {
+          "text": "Wikimedia Commons CC-BY"
+        },
+        "thumbUrl": "https://content.eol.org/data/media/5e/88/39/509.31307187.98x68.jpg",
+        "url": "https://content.eol.org/data/media/5e/88/39/509.31307187.jpg",
+        "choiceKey": "https://content.eol.org/data/media/5e/88/39/509.31307187.jpg"
+      },
+      {
+        "credit": {
+          "text": "Chris.urs-o CC-BY"
+        },
+        "thumbUrl": "https://content.eol.org/data/media/5f/f4/62/509.38664922.98x68.jpg",
+        "url": "https://content.eol.org/data/media/5f/f4/62/509.38664922.jpg",
+        "choiceKey": "https://content.eol.org/data/media/5f/f4/62/509.38664922.jpg"
+      },
+      {
+        "credit": {
+          "text": "AkBot CC-BY-SA"
+        },
+        "thumbUrl": "https://content.eol.org/data/media/60/21/51/509.39738260.98x68.jpg",
+        "url": "https://content.eol.org/data/media/60/21/51/509.39738260.jpg",
+        "choiceKey": "https://content.eol.org/data/media/60/21/51/509.39738260.jpg"
+      },
+      {
+        "credit": {
+          "text": "AkBot CC-BY-SA"
+        },
+        "thumbUrl": "https://content.eol.org/data/media/60/21/52/509.39738261.98x68.jpg",
+        "url": "https://content.eol.org/data/media/60/21/52/509.39738261.jpg",
+        "choiceKey": "https://content.eol.org/data/media/60/21/52/509.39738261.jpg"
+      },
+      {
+        "credit": {
+          "text": "Ruff tuff cream puff CC-BY"
+        },
+        "thumbUrl": "https://content.eol.org/data/media/61/30/28/509.43190822.98x68.jpg",
+        "url": "https://content.eol.org/data/media/61/30/28/509.43190822.jpg",
+        "choiceKey": "https://content.eol.org/data/media/61/30/28/509.43190822.jpg"
+      },
+      {
+        "credit": {
+          "text": "Internet Archive Book Images"
+        },
+        "thumbUrl": "https://content.eol.org/data/media/61/58/7c/509.43916627.98x68.jpg",
+        "url": "https://content.eol.org/data/media/61/58/7c/509.43916627.jpg",
+        "choiceKey": "https://content.eol.org/data/media/61/58/7c/509.43916627.jpg"
+      },
+      {
+        "credit": {
+          "text": "Deadstar CC-BY"
+        },
+        "thumbUrl": "https://content.eol.org/data/media/61/5e/4a/509.4406079.98x68.jpg",
+        "url": "https://content.eol.org/data/media/61/5e/4a/509.4406079.jpg",
+        "choiceKey": "https://content.eol.org/data/media/61/5e/4a/509.4406079.jpg"
+      },
+      {
+        "credit": {
+          "text": "Wmpearl"
+        },
+        "thumbUrl": "https://content.eol.org/data/media/61/96/13/509.4473164.98x68.jpg",
+        "url": "https://content.eol.org/data/media/61/96/13/509.4473164.jpg",
+        "choiceKey": "https://content.eol.org/data/media/61/96/13/509.4473164.jpg"
+      },
+      {
+        "credit": {
+          "text": "Iconographia Zoologica"
+        },
+        "thumbUrl": "https://content.eol.org/data/media/64/a2/6d/509.54900125.98x68.jpg",
+        "url": "https://content.eol.org/data/media/64/a2/6d/509.54900125.jpg",
+        "choiceKey": "https://content.eol.org/data/media/64/a2/6d/509.54900125.jpg"
+      },
+      {
+        "credit": {
+          "text": "Iconographia Zoologica"
+        },
+        "thumbUrl": "https://content.eol.org/data/media/64/a2/6e/509.54900127.98x68.jpg",
+        "url": "https://content.eol.org/data/media/64/a2/6e/509.54900127.jpg",
+        "choiceKey": "https://content.eol.org/data/media/64/a2/6e/509.54900127.jpg"
+      },
+      {
+        "credit": {
+          "text": "Iconographia Zoologica"
+        },
+        "thumbUrl": "https://content.eol.org/data/media/64/a2/70/509.54900129.98x68.jpg",
+        "url": "https://content.eol.org/data/media/64/a2/70/509.54900129.jpg",
+        "choiceKey": "https://content.eol.org/data/media/64/a2/70/509.54900129.jpg"
+      },
+      {
+        "credit": {
+          "text": "Iconographia Zoologica"
+        },
+        "thumbUrl": "https://content.eol.org/data/media/64/a2/71/509.54900130.98x68.jpg",
+        "url": "https://content.eol.org/data/media/64/a2/71/509.54900130.jpg",
+        "choiceKey": "https://content.eol.org/data/media/64/a2/71/509.54900130.jpg"
+      },
+      {
+        "credit": {
+          "text": "Iconographia Zoologica"
+        },
+        "thumbUrl": "https://content.eol.org/data/media/64/a2/72/509.54900131.98x68.jpg",
+        "url": "https://content.eol.org/data/media/64/a2/72/509.54900131.jpg",
+        "choiceKey": "https://content.eol.org/data/media/64/a2/72/509.54900131.jpg"
+      },
+      {
+        "credit": {
+          "text": "Iconographia Zoologica"
+        },
+        "thumbUrl": "https://content.eol.org/data/media/64/a2/73/509.54900132.98x68.jpg",
+        "url": "https://content.eol.org/data/media/64/a2/73/509.54900132.jpg",
+        "choiceKey": "https://content.eol.org/data/media/64/a2/73/509.54900132.jpg"
+      },
+      {
+        "credit": {
+          "text": "Iconographia Zoologica"
+        },
+        "thumbUrl": "https://content.eol.org/data/media/64/a2/77/509.54900147.98x68.jpg",
+        "url": "https://content.eol.org/data/media/64/a2/77/509.54900147.jpg",
+        "choiceKey": "https://content.eol.org/data/media/64/a2/77/509.54900147.jpg"
+      },
+      {
+        "credit": {
+          "text": "SiebenschÃ¤fer CC-BY"
+        },
+        "thumbUrl": "https://content.eol.org/data/media/64/f4/7e/509.56505527.98x68.jpg",
+        "url": "https://content.eol.org/data/media/64/f4/7e/509.56505527.jpg",
+        "choiceKey": "https://content.eol.org/data/media/64/f4/7e/509.56505527.jpg"
+      },
+      {
+        "credit": {
+          "text": "SiebenschÃ¤fer CC-BY"
+        },
+        "thumbUrl": "https://content.eol.org/data/media/64/f4/7f/509.56505618.98x68.jpg",
+        "url": "https://content.eol.org/data/media/64/f4/7f/509.56505618.jpg",
+        "choiceKey": "https://content.eol.org/data/media/64/f4/7f/509.56505618.jpg"
+      },
+      {
+        "credit": {
+          "text": "ArndBot CC-BY"
+        },
+        "thumbUrl": "https://content.eol.org/data/media/65/37/8e/509.5799672.98x68.jpg",
+        "url": "https://content.eol.org/data/media/65/37/8e/509.5799672.jpg",
+        "choiceKey": "https://content.eol.org/data/media/65/37/8e/509.5799672.jpg"
+      },
+      {
+        "credit": {
+          "text": "Hectonichus CC-BY"
+        },
+        "thumbUrl": "https://content.eol.org/data/media/65/98/bc/509.60620776.98x68.jpg",
+        "url": "https://content.eol.org/data/media/65/98/bc/509.60620776.jpg",
+        "choiceKey": "https://content.eol.org/data/media/65/98/bc/509.60620776.jpg"
+      },
+      {
+        "credit": {
+          "text": "BotAdventures"
+        },
+        "thumbUrl": "https://content.eol.org/data/media/67/5e/0d/509.6481760.98x68.jpg",
+        "url": "https://content.eol.org/data/media/67/5e/0d/509.6481760.jpg",
+        "choiceKey": "https://content.eol.org/data/media/67/5e/0d/509.6481760.jpg"
+      },
+      {
+        "credit": {
+          "text": "Rupert Clayton CC-BY"
+        },
+        "thumbUrl": "https://content.eol.org/data/media/67/86/44/509.6981345.98x68.jpg",
+        "url": "https://content.eol.org/data/media/67/86/44/509.6981345.jpg",
+        "choiceKey": "https://content.eol.org/data/media/67/86/44/509.6981345.jpg"
+      },
+      {
+        "credit": {
+          "text": "Biodiversity Heritage Library CC-BY"
+        },
+        "thumbUrl": "https://content.eol.org/data/media/00/2b/61/8.6383347231.98x68.jpg",
+        "url": "https://content.eol.org/data/media/00/2b/61/8.6383347231.jpg",
+        "choiceKey": "https://content.eol.org/data/media/00/2b/61/8.6383347231.jpg"
       }
     ],
     "sciName": [
@@ -80,382 +468,10 @@
         "text": "Muscardinus avellanarius"
       }
     ],
-    "mainPhoto": [
+    "commonName": [
       {
-        "credit": {
-          "text": "Danielle Schwarz CC-BY-SA"
-        },
-        "thumbUrl": "http://media.eol.org/content/2016/06/22/13/80122_130_130.jpg",
-        "url": "http://media.eol.org/content/2016/06/22/13/80122_580_360.jpg",
-        "choiceKey": "http://media.eol.org/content/2016/06/22/13/80122_580_360.jpg"
-      },
-      {
-        "credit": {
-          "text": "Biopix CC-BY-NC"
-        },
-        "thumbUrl": "http://media.eol.org/content/2013/06/20/07/99824_130_130.jpg",
-        "url": "http://media.eol.org/content/2013/06/20/07/99824_580_360.jpg",
-        "choiceKey": "http://media.eol.org/content/2013/06/20/07/99824_580_360.jpg"
-      },
-      {
-        "credit": {
-          "text": "Sasso Pisano CC-BY-SA"
-        },
-        "thumbUrl": "http://media.eol.org/content/2013/12/07/04/75495_130_130.jpg",
-        "url": "http://media.eol.org/content/2013/12/07/04/75495_580_360.jpg",
-        "choiceKey": "http://media.eol.org/content/2013/12/07/04/75495_580_360.jpg"
-      },
-      {
-        "credit": {
-          "text": "Björn Schulz (= User Bjoernschulz on de.wikipedia) CC-BY-SA"
-        },
-        "thumbUrl": "http://media.eol.org/content/2012/06/15/02/38482_130_130.jpg",
-        "url": "http://media.eol.org/content/2012/06/15/02/38482_580_360.jpg",
-        "choiceKey": "http://media.eol.org/content/2012/06/15/02/38482_580_360.jpg"
-      },
-      {
-        "credit": {
-          "text": "Massimo L. CC-BY-SA"
-        },
-        "thumbUrl": "http://media.eol.org/content/2012/06/15/02/64555_130_130.jpg",
-        "url": "http://media.eol.org/content/2012/06/15/02/64555_580_360.jpg",
-        "choiceKey": "http://media.eol.org/content/2012/06/15/02/64555_580_360.jpg"
-      },
-      {
-        "credit": {
-          "text": "Biopix CC-BY-NC"
-        },
-        "thumbUrl": "http://media.eol.org/content/2013/05/02/01/86277_130_130.jpg",
-        "url": "http://media.eol.org/content/2013/05/02/01/86277_580_360.jpg",
-        "choiceKey": "http://media.eol.org/content/2013/05/02/01/86277_580_360.jpg"
-      },
-      {
-        "credit": {
-          "text": "Jiří Duchoň CC-BY-NC"
-        },
-        "thumbUrl": "http://media.eol.org/content/2009/07/24/11/56205_130_130.jpg",
-        "url": "http://media.eol.org/content/2009/07/24/11/56205_580_360.jpg",
-        "choiceKey": "http://media.eol.org/content/2009/07/24/11/56205_580_360.jpg"
-      },
-      {
-        "credit": {
-          "text": "Massimo L. CC-BY-SA"
-        },
-        "thumbUrl": "http://media.eol.org/content/2012/06/15/02/80554_130_130.jpg",
-        "url": "http://media.eol.org/content/2012/06/15/02/80554_580_360.jpg",
-        "choiceKey": "http://media.eol.org/content/2012/06/15/02/80554_580_360.jpg"
-      },
-      {
-        "credit": {
-          "text": "Massimo L. CC-BY-SA"
-        },
-        "thumbUrl": "http://media.eol.org/content/2012/06/15/02/15777_130_130.jpg",
-        "url": "http://media.eol.org/content/2012/06/15/02/15777_580_360.jpg",
-        "choiceKey": "http://media.eol.org/content/2012/06/15/02/15777_580_360.jpg"
-      },
-      {
-        "credit": {
-          "text": "Massimo L. CC-BY-SA"
-        },
-        "thumbUrl": "http://media.eol.org/content/2012/06/15/02/52709_130_130.jpg",
-        "url": "http://media.eol.org/content/2012/06/15/02/52709_580_360.jpg",
-        "choiceKey": "http://media.eol.org/content/2012/06/15/02/52709_580_360.jpg"
-      },
-      {
-        "credit": {
-          "text": "Massimo L. CC-BY-SA"
-        },
-        "thumbUrl": "http://media.eol.org/content/2012/06/15/02/28414_130_130.jpg",
-        "url": "http://media.eol.org/content/2012/06/15/02/28414_580_360.jpg",
-        "choiceKey": "http://media.eol.org/content/2012/06/15/02/28414_580_360.jpg"
-      },
-      {
-        "credit": {
-          "text": "Biopix CC-BY-NC"
-        },
-        "thumbUrl": "http://media.eol.org/content/2013/05/02/01/26351_130_130.jpg",
-        "url": "http://media.eol.org/content/2013/05/02/01/26351_580_360.jpg",
-        "choiceKey": "http://media.eol.org/content/2013/05/02/01/26351_580_360.jpg"
-      },
-      {
-        "credit": {
-          "text": "Karlostachys CC-BY-SA"
-        },
-        "thumbUrl": "http://media.eol.org/content/2017/03/23/22/22149_130_130.jpg",
-        "url": "http://media.eol.org/content/2017/03/23/22/22149_580_360.jpg",
-        "choiceKey": "http://media.eol.org/content/2017/03/23/22/22149_580_360.jpg"
-      },
-      {
-        "credit": {
-          "text": "umbi24 CC-BY-NC"
-        },
-        "thumbUrl": "http://media.eol.org/content/2016/07/31/11/14944_130_130.jpg",
-        "url": "http://media.eol.org/content/2016/07/31/11/14944_580_360.jpg",
-        "choiceKey": "http://media.eol.org/content/2016/07/31/11/14944_580_360.jpg"
-      },
-      {
-        "credit": {
-          "text": "Julien Renoult CC-BY-NC"
-        },
-        "thumbUrl": "http://media.eol.org/content/2016/08/03/17/95133_130_130.jpg",
-        "url": "http://media.eol.org/content/2016/08/03/17/95133_580_360.jpg",
-        "choiceKey": "http://media.eol.org/content/2016/08/03/17/95133_580_360.jpg"
-      },
-      {
-        "credit": {
-          "text": "Flavio Rocchi CC-BY-NC"
-        },
-        "thumbUrl": "http://media.eol.org/content/2016/08/04/01/34996_130_130.jpg",
-        "url": "http://media.eol.org/content/2016/08/04/01/34996_580_360.jpg",
-        "choiceKey": "http://media.eol.org/content/2016/08/04/01/34996_580_360.jpg"
-      },
-      {
-        "credit": {
-          "text": "Mattia Menchetti CC-BY-NC"
-        },
-        "thumbUrl": "http://media.eol.org/content/2016/07/31/16/74685_130_130.jpg",
-        "url": "http://media.eol.org/content/2016/07/31/16/74685_580_360.jpg",
-        "choiceKey": "http://media.eol.org/content/2016/07/31/16/74685_580_360.jpg"
-      },
-      {
-        "credit": {
-          "text": "Camponotus Vagus CC-BY-NC-SA"
-        },
-        "thumbUrl": "http://media.eol.org/content/2015/04/29/23/96478_130_130.jpg",
-        "url": "http://media.eol.org/content/2015/04/29/23/96478_580_360.jpg",
-        "choiceKey": "http://media.eol.org/content/2015/04/29/23/96478_580_360.jpg"
-      },
-      {
-        "credit": {
-          "text": "Camponotus Vagus CC-BY-NC-SA"
-        },
-        "thumbUrl": "http://media.eol.org/content/2012/05/15/00/80347_130_130.jpg",
-        "url": "http://media.eol.org/content/2012/05/15/00/80347_580_360.jpg",
-        "choiceKey": "http://media.eol.org/content/2012/05/15/00/80347_580_360.jpg"
-      },
-      {
-        "credit": {
-          "text": "Massimo L. CC-BY-SA"
-        },
-        "thumbUrl": "http://media.eol.org/content/2012/06/15/02/52996_130_130.jpg",
-        "url": "http://media.eol.org/content/2012/06/15/02/52996_580_360.jpg",
-        "choiceKey": "http://media.eol.org/content/2012/06/15/02/52996_580_360.jpg"
-      },
-      {
-        "credit": {
-          "text": "Camponotus Vagus CC-BY-NC-SA"
-        },
-        "thumbUrl": "http://media.eol.org/content/2015/05/20/03/31582_130_130.jpg",
-        "url": "http://media.eol.org/content/2015/05/20/03/31582_580_360.jpg",
-        "choiceKey": "http://media.eol.org/content/2015/05/20/03/31582_580_360.jpg"
-      },
-      {
-        "credit": {
-          "text": "Wikimedia Commons"
-        },
-        "thumbUrl": "http://media.eol.org/content/2012/06/15/02/89674_130_130.jpg",
-        "url": "http://media.eol.org/content/2012/06/15/02/89674_580_360.jpg",
-        "choiceKey": "http://media.eol.org/content/2012/06/15/02/89674_580_360.jpg"
-      },
-      {
-        "credit": {
-          "text": "Flavio Rocchi CC-BY-NC"
-        },
-        "thumbUrl": "http://media.eol.org/content/2016/08/04/01/23265_130_130.jpg",
-        "url": "http://media.eol.org/content/2016/08/04/01/23265_580_360.jpg",
-        "choiceKey": "http://media.eol.org/content/2016/08/04/01/23265_580_360.jpg"
-      },
-      {
-        "credit": {
-          "text": "Massimo L. CC-BY-SA"
-        },
-        "thumbUrl": "http://media.eol.org/content/2012/06/15/02/72473_130_130.jpg",
-        "url": "http://media.eol.org/content/2012/06/15/02/72473_580_360.jpg",
-        "choiceKey": "http://media.eol.org/content/2012/06/15/02/72473_580_360.jpg"
-      },
-      {
-        "credit": {
-          "text": "Biopix CC-BY-NC"
-        },
-        "thumbUrl": "http://media.eol.org/content/2013/05/02/01/99776_130_130.jpg",
-        "url": "http://media.eol.org/content/2013/05/02/01/99776_580_360.jpg",
-        "choiceKey": "http://media.eol.org/content/2013/05/02/01/99776_580_360.jpg"
-      },
-      {
-        "credit": {
-          "text": "Alexandre Dulaunoy CC-BY-SA"
-        },
-        "thumbUrl": "http://media.eol.org/content/2015/04/30/19/69975_130_130.jpg",
-        "url": "http://media.eol.org/content/2015/04/30/19/69975_580_360.jpg",
-        "choiceKey": "http://media.eol.org/content/2015/04/30/19/69975_580_360.jpg"
-      },
-      {
-        "credit": {
-          "text": "Alexandre Dulaunoy CC-BY-SA"
-        },
-        "thumbUrl": "http://media.eol.org/content/2011/12/20/01/07706_130_130.jpg",
-        "url": "http://media.eol.org/content/2011/12/20/01/07706_580_360.jpg",
-        "choiceKey": "http://media.eol.org/content/2011/12/20/01/07706_580_360.jpg"
-      },
-      {
-        "credit": {
-          "text": "Jiří Duchoň CC-BY-NC"
-        },
-        "thumbUrl": "http://media.eol.org/content/2010/03/24/02/12056_130_130.jpg",
-        "url": "http://media.eol.org/content/2010/03/24/02/12056_580_360.jpg",
-        "choiceKey": "http://media.eol.org/content/2010/03/24/02/12056_580_360.jpg"
-      },
-      {
-        "credit": {
-          "text": "Massimo L. CC-BY-SA"
-        },
-        "thumbUrl": "http://media.eol.org/content/2012/06/15/02/82974_130_130.jpg",
-        "url": "http://media.eol.org/content/2012/06/15/02/82974_580_360.jpg",
-        "choiceKey": "http://media.eol.org/content/2012/06/15/02/82974_580_360.jpg"
-      },
-      {
-        "credit": {
-          "text": "lauragola CC-BY-NC"
-        },
-        "thumbUrl": "http://media.eol.org/content/2017/03/23/22/93750_130_130.jpg",
-        "url": "http://media.eol.org/content/2017/03/23/22/93750_580_360.jpg",
-        "choiceKey": "http://media.eol.org/content/2017/03/23/22/93750_580_360.jpg"
-      },
-      {
-        "credit": {
-          "text": "Wikimedia Commons"
-        },
-        "thumbUrl": "http://media.eol.org/content/2016/03/30/17/05882_130_130.jpg",
-        "url": "http://media.eol.org/content/2016/03/30/17/05882_580_360.jpg",
-        "choiceKey": "http://media.eol.org/content/2016/03/30/17/05882_580_360.jpg"
-      },
-      {
-        "credit": {
-          "text": "AlexisMartin mb CC-BY-SA"
-        },
-        "thumbUrl": "http://media.eol.org/content/2013/11/17/08/23912_130_130.jpg",
-        "url": "http://media.eol.org/content/2013/11/17/08/23912_580_360.jpg",
-        "choiceKey": "http://media.eol.org/content/2013/11/17/08/23912_580_360.jpg"
-      },
-      {
-        "credit": {
-          "text": "Biodiversity Heritage Library CC-BY"
-        },
-        "thumbUrl": "http://media.eol.org/content/2015/02/27/02/58939_130_130.jpg",
-        "url": "http://media.eol.org/content/2015/02/27/02/58939_580_360.jpg",
-        "choiceKey": "http://media.eol.org/content/2015/02/27/02/58939_580_360.jpg"
-      },
-      {
-        "credit": {
-          "text": "Biodiversity Heritage Library CC-BY"
-        },
-        "thumbUrl": "http://media.eol.org/content/2016/08/16/00/88948_130_130.jpg",
-        "url": "http://media.eol.org/content/2016/08/16/00/88948_580_360.jpg",
-        "choiceKey": "http://media.eol.org/content/2016/08/16/00/88948_580_360.jpg"
-      },
-      {
-        "credit": {
-          "text": "Biodiversity Heritage Library CC-BY"
-        },
-        "thumbUrl": "http://media.eol.org/content/2016/07/19/22/18866_130_130.jpg",
-        "url": "http://media.eol.org/content/2016/07/19/22/18866_580_360.jpg",
-        "choiceKey": "http://media.eol.org/content/2016/07/19/22/18866_580_360.jpg"
-      },
-      {
-        "credit": {
-          "text": "Camponotus Vagus CC-BY-NC-SA"
-        },
-        "thumbUrl": "http://media.eol.org/content/2012/05/15/00/39216_130_130.jpg",
-        "url": "http://media.eol.org/content/2012/05/15/00/39216_580_360.jpg",
-        "choiceKey": "http://media.eol.org/content/2012/05/15/00/39216_580_360.jpg"
-      },
-      {
-        "credit": {
-          "text": "gbohne from Berlin, Germany CC-BY-SA"
-        },
-        "thumbUrl": "http://media.eol.org/content/2015/03/21/18/97662_130_130.jpg",
-        "url": "http://media.eol.org/content/2015/03/21/18/97662_580_360.jpg",
-        "choiceKey": "http://media.eol.org/content/2015/03/21/18/97662_580_360.jpg"
-      },
-      {
-        "credit": {
-          "text": "Biodiversity Heritage Library CC-BY"
-        },
-        "thumbUrl": "http://media.eol.org/content/2014/10/11/04/43165_130_130.jpg",
-        "url": "http://media.eol.org/content/2014/10/11/04/43165_580_360.jpg",
-        "choiceKey": "http://media.eol.org/content/2014/10/11/04/43165_580_360.jpg"
-      },
-      {
-        "credit": {
-          "text": "Haruta Ovidiu, University of Oradea, Bugwood.org CC-BY"
-        },
-        "thumbUrl": "http://media.eol.org/content/2014/06/12/11/49670_130_130.jpg",
-        "url": "http://media.eol.org/content/2014/06/12/11/49670_580_360.jpg",
-        "choiceKey": "http://media.eol.org/content/2014/06/12/11/49670_580_360.jpg"
-      },
-      {
-        "credit": {
-          "text": "Wikimedia Commons"
-        },
-        "thumbUrl": "http://media.eol.org/content/2013/11/17/03/92745_130_130.jpg",
-        "url": "http://media.eol.org/content/2013/11/17/03/92745_580_360.jpg",
-        "choiceKey": "http://media.eol.org/content/2013/11/17/03/92745_580_360.jpg"
-      },
-      {
-        "credit": {
-          "text": "Ambica"
-        },
-        "thumbUrl": "http://media.eol.org/content/2013/11/24/23/62407_130_130.jpg",
-        "url": "http://media.eol.org/content/2013/11/24/23/62407_580_360.jpg",
-        "choiceKey": "http://media.eol.org/content/2013/11/24/23/62407_580_360.jpg"
-      },
-      {
-        "credit": {
-          "text": "Wikimedia Commons"
-        },
-        "thumbUrl": "http://media.eol.org/content/2013/11/30/23/53596_130_130.jpg",
-        "url": "http://media.eol.org/content/2013/11/30/23/53596_580_360.jpg",
-        "choiceKey": "http://media.eol.org/content/2013/11/30/23/53596_580_360.jpg"
-      },
-      {
-        "credit": {
-          "text": "Creator:Archibald Thorburn"
-        },
-        "thumbUrl": "http://media.eol.org/content/2013/12/01/19/35630_130_130.jpg",
-        "url": "http://media.eol.org/content/2013/12/01/19/35630_580_360.jpg",
-        "choiceKey": "http://media.eol.org/content/2013/12/01/19/35630_580_360.jpg"
-      },
-      {
-        "credit": {
-          "text": "Camponotus Vagus CC-BY-NC-SA"
-        },
-        "thumbUrl": "http://media.eol.org/content/2015/05/20/03/10380_130_130.jpg",
-        "url": "http://media.eol.org/content/2015/05/20/03/10380_580_360.jpg",
-        "choiceKey": "http://media.eol.org/content/2015/05/20/03/10380_580_360.jpg"
-      },
-      {
-        "credit": {
-          "text": "Massimo L. CC-BY-SA"
-        },
-        "thumbUrl": "http://media.eol.org/content/2012/06/15/02/19580_130_130.jpg",
-        "url": "http://media.eol.org/content/2012/06/15/02/19580_580_360.jpg",
-        "choiceKey": "http://media.eol.org/content/2012/06/15/02/19580_580_360.jpg"
-      },
-      {
-        "credit": {
-          "text": "Massimo L. CC-BY-SA"
-        },
-        "thumbUrl": "http://media.eol.org/content/2012/06/15/02/14366_130_130.jpg",
-        "url": "http://media.eol.org/content/2012/06/15/02/14366_580_360.jpg",
-        "choiceKey": "http://media.eol.org/content/2012/06/15/02/14366_580_360.jpg"
-      },
-      {
-        "credit": {
-          "text": "Wikimedia Commons CC-BY"
-        },
-        "thumbUrl": "http://media.eol.org/content/2012/06/15/02/37640_130_130.jpg",
-        "url": "http://media.eol.org/content/2012/06/15/02/37640_580_360.jpg",
-        "choiceKey": "http://media.eol.org/content/2012/06/15/02/37640_580_360.jpg"
+        "choiceKey": "Dormouse",
+        "text": "Dormouse"
       }
     ]
   },
@@ -463,3 +479,4 @@
     "speciesId": 327940
   }
 }
+

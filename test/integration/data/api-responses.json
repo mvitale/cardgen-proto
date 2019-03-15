@@ -1,1 +1,2448 @@
-{"pages":{"identifier":327940,"scientificName":"Muscardinus avellanarius (Linnaeus, 1758)","richness_score":400,"vernacularNames":[{"vernacularName":"Haselmaus","language":"de","eol_preferred":true},{"vernacularName":"hazel dormouse","language":"en","eol_preferred":true},{"vernacularName":"Common dormouse","language":"en"},{"vernacularName":"Muscardino","language":"es","eol_preferred":true},{"vernacularName":"Pähkinähiiri","language":"fi","eol_preferred":true},{"vernacularName":"Muscardin","language":"fr","eol_preferred":true},{"vernacularName":"Moscardino","language":"it","eol_preferred":true},{"vernacularName":"Hazelmuis","language":"nl","eol_preferred":true},{"vernacularName":"Arganaz-castanho","language":"pt-BR","eol_preferred":true},{"vernacularName":"Орешниковая соня","language":"ru","eol_preferred":true},{"vernacularName":"Соня орешниковая","language":"ru"}],"taxonConcepts":[{"identifier":52571231,"scientificName":"Muscardinus avellanarius (Linnaeus, 1758)","nameAccordingTo":"Species 2000 & ITIS Catalogue of Life: April 2013","canonicalForm":"Muscardinus avellanarius","sourceIdentifier":"6884431","taxonRank":"Species"},{"identifier":49345977,"scientificName":"Muscardinus avellanarius (Linnaeus, 1758)","nameAccordingTo":"Paleobiology Database","canonicalForm":"Muscardinus avellanarius","sourceIdentifier":"urn:paleodb:tn131716","taxonRank":"Species"},{"identifier":55939212,"scientificName":"Muscardinus avellanarius (Linnaeus, 1758)","nameAccordingTo":"Integrated Taxonomic Information System (ITIS)","canonicalForm":"Muscardinus avellanarius","sourceIdentifier":"584974","taxonRank":"Species"},{"identifier":61412349,"scientificName":"Muscardinus avellanarius (Linnaeus, 1758)","nameAccordingTo":"Integrated Taxonomic Information System (ITIS)","canonicalForm":"Muscardinus avellanarius","sourceIdentifier":"584974","taxonRank":"Species"},{"identifier":49232061,"scientificName":"Muscardinus avellanarius Linnaeus 1758","nameAccordingTo":"Paleobiology Database","canonicalForm":"Muscardinus avellanarius","sourceIdentifier":"urn:paleodb:tn131716","taxonRank":"Species"},{"identifier":46595306,"scientificName":"Muscardinus avellanarius (Linnaeus, 1758)","nameAccordingTo":"Integrated Taxonomic Information System (ITIS)","canonicalForm":"Muscardinus avellanarius","sourceIdentifier":"584974","taxonRank":"Species"},{"identifier":59664605,"scientificName":"Muscardinus avellanarius (Linnaeus, 1758)","nameAccordingTo":"Paleobiology Database","canonicalForm":"Muscardinus avellanarius","sourceIdentifier":"104206","taxonRank":"Species"},{"identifier":59753357,"scientificName":"Muscardinus avellanarius (Linnaeus, 1758)","nameAccordingTo":"Paleobiology Database","canonicalForm":"Muscardinus avellanarius","sourceIdentifier":"104206","taxonRank":"Species"},{"identifier":51379476,"scientificName":"Muscardinus avellanarius","nameAccordingTo":"NCBI Taxonomy","canonicalForm":"Muscardinus avellanarius","sourceIdentifier":"39082","taxonRank":"Species"},{"identifier":57453682,"scientificName":"Muscardinus avellanarius","nameAccordingTo":"NCBI Taxonomy","canonicalForm":"Muscardinus avellanarius","sourceIdentifier":"39082","taxonRank":"Species"},{"identifier":24946946,"scientificName":"Muscardinus avellanarius","nameAccordingTo":"IUCN Red List (Species Assessed for Global Conservation)","canonicalForm":"Muscardinus avellanarius","sourceIdentifier":"IUCN-13992"}],"dataObjects":[{"identifier":"fc6f5f71acb5882e6e9ea254ab5a53be","dataObjectVersionID":6686823,"dataType":"http://purl.org/dc/dcmitype/Text","dataSubtype":"","vettedStatus":"Trusted","dataRatings":{"1":0,"2":0,"3":0,"4":0,"5":0},"dataRating":2.5,"subject":"http://rs.tdwg.org/ontology/voc/SPMInfoItems#TaxonBiology","mimeType":"text/html","title":"Biology","language":"en","license":"http://creativecommons.org/licenses/by-nc-sa/3.0/","rights":"Copyright Wildscreen 2003-2008","rightsHolder":"Wildscreen","audience":["General public"],"source":"http://www.arkive.org/common-dormouse/muscardinus-avellanarius/","description":"Dormice are well known for their habit of sleeping for much of the time. Their popular English name is thought to derive from the French word 'dormir' meaning 'to sleep'. Dormice are known to hibernate for as much as seven months of the year. At the onset of colder weather in October, the animals will select a suitable site close to the ground to build a nest. They then curl up and go to sleep until April.  During hibernation, dormice slow down their bodily functions and enter a state of extreme torpor. In this state they feel cold to the touch and take some time to rouse themselves when handled. However, they do wake up periodically for a few hours at a time. They survive extended periods without food by living off stored reserves of fat laid down in the fruitful autumn months.&nbsp;Dormice feed high up in the trees on a variety of food. They eat flowers and pollen during the spring, fruit in summer and nuts, particularly hazel nuts, in autumn. It is thought that insects are taken too. This variety of food must be available within a small area, a requirement which limits the suitability of some sites for dormice.&nbsp;Dormice become sexually mature at one year old and their breeding season is from May to September. They produce between two and seven young and can raise two litters a year. The young dormice stay with their mother until they are about ten weeks old. As well as their grass-woven nests, dormice are known to use tree cavities and boxes for rearing young. They hibernate in nests built just below ground.","agents":[{"full_name":"ARKive","homepage":"http://www.arkive.org/","role":"provider"}],"references":[]},{"identifier":"4d73fe46d1166e98dffd9003ead65561","dataObjectVersionID":27712240,"dataType":"http://purl.org/dc/dcmitype/StillImage","dataSubtype":"","vettedStatus":"Trusted","dataRatings":{"1":0,"2":0,"3":1,"4":4,"5":10},"dataRating":4.6,"height":2112,"width":2816,"crop_x":"647.68","crop_y":"295.68","crop_width":"1408.0","mimeType":"image/jpeg","title":"File:Haselmaus.jpg","language":"en","license":"http://creativecommons.org/licenses/by-sa/3.0/","source":"http://commons.wikimedia.org/wiki/File:Haselmaus.jpg","description":"<b>German:</b> 1=Haselmaus (<i>Muscardinus avellanarius</i>) auf einem Mittelmeer-Feuerdorn (<i>Pyracantha coccinea</i>) <b>French:</b> 1=Muscardin (<i>Muscardinus avellanarius</i>) sur un Buisson ardent (<i>Pyracantha coccinea</i>) <b>English:</b> 1=Hazel dormouse (<i>Muscardinus avellanarius</i>) on a Firethorn (<i>Pyracantha coccinea</i>)","mediaURL":"http://upload.wikimedia.org/wikipedia/commons/e/ea/Haselmaus.jpg","eolMediaURL":"http://media.eol.org/content/2016/06/22/13/80122_orig.jpg","eolThumbnailURL":"http://media.eol.org/content/2016/06/22/13/80122_98_68.jpg","agents":[{"full_name":"Danielle Schwarz","homepage":"","role":"photographer"},{"full_name":"Wikimedia Commons","homepage":"http://commons.wikimedia.org/","role":"provider"}],"references":[]},{"identifier":"16bad447452568436b6e161f7f838c16","dataObjectVersionID":24258828,"dataType":"http://purl.org/dc/dcmitype/StillImage","dataSubtype":"","vettedStatus":"Trusted","dataRatings":{"1":0,"2":0,"3":0,"4":3,"5":0},"dataRating":4,"height":411,"width":640,"crop_x":"143.744","crop_y":"0.0","crop_width":"409.536","mimeType":"image/jpeg","license":"http://creativecommons.org/licenses/by-nc/3.0/","source":"http://www.biopix.com/muscardinus-avellanarius_photo-104241.aspx","mediaURL":"http://www.biopix.com/photos/JCS-Muscardinus-avellanarius-62382.JPG","eolMediaURL":"http://media.eol.org/content/2013/06/20/07/99824_orig.jpg","eolThumbnailURL":"http://media.eol.org/content/2013/06/20/07/99824_98_68.jpg","location":"Aqua Silkeborg","agents":[{"full_name":"Biopix","homepage":"http://www.biopix.com/","role":"provider"}],"references":[]},{"identifier":"f6c035a247318644d978d5df3e9d4291","dataObjectVersionID":27229227,"dataType":"http://purl.org/dc/dcmitype/StillImage","dataSubtype":"","vettedStatus":"Trusted","dataRatings":{"1":0,"2":0,"3":0,"4":3,"5":0},"dataRating":4,"mimeType":"image/jpeg","title":"File:Ghiro a Sasso Pisano.JPG","language":"en","license":"http://creativecommons.org/licenses/by-sa/3.0/","source":"http://commons.wikimedia.org/wiki/File:Ghiro_a_Sasso_Pisano.JPG","description":"<b>English:</b> 1=dormouse in Sasso Pisano","mediaURL":"http://upload.wikimedia.org/wikipedia/commons/5/54/Ghiro_a_Sasso_Pisano.JPG","eolMediaURL":"http://media.eol.org/content/2013/12/07/04/75495_orig.jpg","eolThumbnailURL":"http://media.eol.org/content/2013/12/07/04/75495_98_68.jpg","agents":[{"full_name":"Sasso Pisano","homepage":"http://commons.wikimedia.org/wiki/User:Edatoscana","role":"photographer"},{"full_name":"Wikimedia Commons","homepage":"http://commons.wikimedia.org/","role":"provider"}],"references":[]},{"identifier":"ebb187ebf506afcd1b91d5570cffe6aa","dataObjectVersionID":25662093,"dataType":"http://purl.org/dc/dcmitype/StillImage","dataSubtype":"","vettedStatus":"Trusted","dataRatings":{"1":0,"2":0,"3":0,"4":0,"5":0},"dataRating":3.5,"mimeType":"image/jpeg","title":"File:Haselmaus.JPG","language":"en","license":"http://creativecommons.org/licenses/by-sa/3.0/","source":"http://commons.wikimedia.org/wiki/File:Haselmaus.JPG","description":"<b>German:</b> Haselmaus (<i>Muscardinus avellanarius</i>) in Wallhecke; aufgenommen in Ostholstein (Schleswig-Holstein, Deutschland)","mediaURL":"http://upload.wikimedia.org/wikipedia/commons/1/13/Haselmaus.JPG","eolMediaURL":"http://media.eol.org/content/2012/06/15/02/38482_orig.jpg","eolThumbnailURL":"http://media.eol.org/content/2012/06/15/02/38482_98_68.jpg","agents":[{"full_name":"Björn Schulz (= User Bjoernschulz on de.wikipedia)","homepage":"http://commons.wikimedia.org/wiki/User:Bjoernschulz","role":"photographer"},{"full_name":"Wikimedia Commons","homepage":"http://commons.wikimedia.org/","role":"provider"}],"references":[]},{"identifier":"9b3231d154596efd43a0b447e380da71","dataObjectVersionID":26811974,"dataType":"http://purl.org/dc/dcmitype/StillImage","dataSubtype":"","vettedStatus":"Trusted","dataRatings":{"1":0,"2":0,"3":3,"4":3,"5":0},"dataRating":3.5,"mimeType":"image/jpeg","title":"File:Muscardinus avellanarius con piccolo.jpg","language":"en","license":"http://creativecommons.org/licenses/by-sa/3.0/","source":"http://commons.wikimedia.org/wiki/File:Muscardinus_avellanarius_con_piccolo.jpg","description":"<i>Muscardinus avellanarius</i>, Moscardino, San Giorgio del Sannio , Località <i>I Marzani</i> (<a href='http://commons.wikimedia.org/wiki/Benevento'>Benevento</a>), <a href='http://commons.wikimedia.org/wiki/Italia'>Italia</a>","mediaURL":"http://upload.wikimedia.org/wikipedia/commons/3/32/Muscardinus_avellanarius_con_piccolo.jpg","eolMediaURL":"http://media.eol.org/content/2012/06/15/02/64555_orig.jpg","eolThumbnailURL":"http://media.eol.org/content/2012/06/15/02/64555_98_68.jpg","agents":[{"full_name":"Massimo L.","homepage":"","role":"photographer"},{"full_name":"Wikimedia Commons","homepage":"http://commons.wikimedia.org/","role":"provider"}],"references":[]},{"identifier":"7779e99683727200687eb5de6fe4d555","dataObjectVersionID":24258829,"dataType":"http://purl.org/dc/dcmitype/StillImage","dataSubtype":"","vettedStatus":"Trusted","dataRatings":{"1":0,"2":0,"3":0,"4":0,"5":0},"dataRating":3.5,"mimeType":"image/jpeg","license":"http://creativecommons.org/licenses/by-nc/3.0/","source":"http://www.biopix.com/muscardinus-avellanarius_photo-104243.aspx","mediaURL":"http://www.biopix.com/photos/JCS-Muscardinus-avellanarius-62384.JPG","eolMediaURL":"http://media.eol.org/content/2013/05/02/01/86277_orig.jpg","eolThumbnailURL":"http://media.eol.org/content/2013/05/02/01/86277_98_68.jpg","location":"Aqua Silkeborg","agents":[{"full_name":"Biopix","homepage":"http://www.biopix.com/","role":"provider"}],"references":[]},{"identifier":"6ed46569a0a3bf571876610d1e769163","dataObjectVersionID":2005957,"dataType":"http://purl.org/dc/dcmitype/StillImage","dataSubtype":"","vettedStatus":"Trusted","dataRatings":{"1":0,"2":1,"3":0,"4":1,"5":0},"dataRating":3,"mimeType":"image/jpeg","language":"en","license":"http://creativecommons.org/licenses/by-nc/3.0/","rightsHolder":"Jiří Duchoň","audience":["Expert users","General public"],"source":"http://www.biolib.cz/en/image/id42694/","mediaURL":"http://www.biolib.cz/IMG/GAL/42694.jpg","eolMediaURL":"http://media.eol.org/content/2009/07/24/11/56205_orig.jpg","eolThumbnailURL":"http://media.eol.org/content/2009/07/24/11/56205_98_68.jpg","location":"Czech Republic, Písecké hory","agents":[{"full_name":"Jiří Duchoň","homepage":"http://www.biolib.cz/en/person/id2191/","role":"photographer"},{"full_name":"BioLib.cz","homepage":"http://www.biolib.cz/en/","role":"provider"}],"references":[]},{"identifier":"837d4224e6feea91c7cf16b68ba6347e","dataObjectVersionID":26811978,"dataType":"http://purl.org/dc/dcmitype/StillImage","dataSubtype":"","vettedStatus":"Trusted","dataRatings":{"1":0,"2":0,"3":4,"4":0,"5":0},"dataRating":3,"mimeType":"image/jpeg","title":"File:Muscardinus avellanarius 4.jpg","language":"en","license":"http://creativecommons.org/licenses/by-sa/3.0/","source":"http://commons.wikimedia.org/wiki/File:Muscardinus_avellanarius_4.jpg","description":"<i>Muscardinus avellanarius</i>, Moscardino, San Giorgio del Sannio , Località <i>I Marzani</i> (<a href='http://commons.wikimedia.org/wiki/Benevento'>Benevento</a>), <a href='http://commons.wikimedia.org/wiki/Italia'>Italia</a>","mediaURL":"http://upload.wikimedia.org/wikipedia/commons/4/4c/Muscardinus_avellanarius_4.jpg","eolMediaURL":"http://media.eol.org/content/2012/06/15/02/80554_orig.jpg","eolThumbnailURL":"http://media.eol.org/content/2012/06/15/02/80554_98_68.jpg","agents":[{"full_name":"Massimo L.","homepage":"","role":"photographer"},{"full_name":"Wikimedia Commons","homepage":"http://commons.wikimedia.org/","role":"provider"}],"references":[]},{"identifier":"ef5ad3fd4657deca109fb18d46b4785a","dataObjectVersionID":26811979,"dataType":"http://purl.org/dc/dcmitype/StillImage","dataSubtype":"","vettedStatus":"Trusted","dataRatings":{"1":0,"2":0,"3":4,"4":0,"5":0},"dataRating":3,"mimeType":"image/jpeg","title":"File:Muscardinus avellanarius 6.jpg","language":"en","license":"http://creativecommons.org/licenses/by-sa/3.0/","source":"http://commons.wikimedia.org/wiki/File:Muscardinus_avellanarius_6.jpg","description":"<i>Muscardinus avellanarius</i>, Moscardino, San Giorgio del Sannio , Località <i>I Marzani</i> (<a href='http://commons.wikimedia.org/wiki/Benevento'>Benevento</a>), <a href='http://commons.wikimedia.org/wiki/Italia'>Italia</a>","mediaURL":"http://upload.wikimedia.org/wikipedia/commons/f/fd/Muscardinus_avellanarius_6.jpg","eolMediaURL":"http://media.eol.org/content/2012/06/15/02/15777_orig.jpg","eolThumbnailURL":"http://media.eol.org/content/2012/06/15/02/15777_98_68.jpg","agents":[{"full_name":"Massimo L.","homepage":"","role":"photographer"},{"full_name":"Wikimedia Commons","homepage":"http://commons.wikimedia.org/","role":"provider"}],"references":[]},{"identifier":"bc943c2bc6c8e99f8f6cc5b2f61de74d","dataObjectVersionID":26811980,"dataType":"http://purl.org/dc/dcmitype/StillImage","dataSubtype":"","vettedStatus":"Trusted","dataRatings":{"1":0,"2":0,"3":1,"4":0,"5":0},"dataRating":3,"mimeType":"image/jpeg","title":"File:Muscardinus avellanarius 7.jpg","language":"en","license":"http://creativecommons.org/licenses/by-sa/3.0/","source":"http://commons.wikimedia.org/wiki/File:Muscardinus_avellanarius_7.jpg","description":"<i>Muscardinus avellanarius</i>, Moscardino, San Giorgio del Sannio , Località <i>I Marzani</i> (<a href='http://commons.wikimedia.org/wiki/Benevento'>Benevento</a>), <a href='http://commons.wikimedia.org/wiki/Italia'>Italia</a>","mediaURL":"http://upload.wikimedia.org/wikipedia/commons/4/45/Muscardinus_avellanarius_7.jpg","eolMediaURL":"http://media.eol.org/content/2012/06/15/02/52709_orig.jpg","eolThumbnailURL":"http://media.eol.org/content/2012/06/15/02/52709_98_68.jpg","agents":[{"full_name":"Massimo L.","homepage":"","role":"photographer"},{"full_name":"Wikimedia Commons","homepage":"http://commons.wikimedia.org/","role":"provider"}],"references":[]},{"identifier":"e5614b11a9f58e9afa2f396625501c38","dataObjectVersionID":26811982,"dataType":"http://purl.org/dc/dcmitype/StillImage","dataSubtype":"","vettedStatus":"Trusted","dataRatings":{"1":0,"2":0,"3":4,"4":0,"5":0},"dataRating":3,"mimeType":"image/jpeg","title":"File:Muscardinus avellanarius con piccolo 2.jpg","language":"en","license":"http://creativecommons.org/licenses/by-sa/3.0/","source":"http://commons.wikimedia.org/wiki/File:Muscardinus_avellanarius_con_piccolo_2.jpg","description":"<i>Muscardinus avellanarius</i>, Moscardino, San Giorgio del Sannio , Località <i>I Marzani</i> (<a href='http://commons.wikimedia.org/wiki/Benevento'>Benevento</a>), <a href='http://commons.wikimedia.org/wiki/Italia'>Italia</a>","mediaURL":"http://upload.wikimedia.org/wikipedia/commons/c/cf/Muscardinus_avellanarius_con_piccolo_2.jpg","eolMediaURL":"http://media.eol.org/content/2012/06/15/02/28414_orig.jpg","eolThumbnailURL":"http://media.eol.org/content/2012/06/15/02/28414_98_68.jpg","agents":[{"full_name":"Massimo L.","homepage":"","role":"photographer"},{"full_name":"Wikimedia Commons","homepage":"http://commons.wikimedia.org/","role":"provider"}],"references":[]},{"identifier":"0197648cfc5b3973d1d028a642f57197","dataObjectVersionID":24258830,"dataType":"http://purl.org/dc/dcmitype/StillImage","dataSubtype":"","vettedStatus":"Trusted","dataRatings":{"1":0,"2":0,"3":0,"4":0,"5":0},"dataRating":3,"mimeType":"image/jpeg","license":"http://creativecommons.org/licenses/by-nc/3.0/","source":"http://www.biopix.com/muscardinus-avellanarius_photo-104242.aspx","mediaURL":"http://www.biopix.com/photos/JCS-Muscardinus-avellanarius-62383.JPG","eolMediaURL":"http://media.eol.org/content/2013/05/02/01/26351_orig.jpg","eolThumbnailURL":"http://media.eol.org/content/2013/05/02/01/26351_98_68.jpg","location":"Aqua Silkeborg","agents":[{"full_name":"Biopix","homepage":"http://www.biopix.com/","role":"provider"}],"references":[]},{"identifier":"10db4d6d51b7eac3fdd8424c2f88b313","dataObjectVersionID":31657134,"dataType":"http://purl.org/dc/dcmitype/StillImage","dataSubtype":"","vettedStatus":"Trusted","dataRatings":{"1":0,"2":0,"3":3,"4":0,"5":0},"dataRating":3,"height":480,"width":640,"crop_x":"25.6","crop_y":"19.2","crop_width":"339.2","mimeType":"image/jpeg","title":"File:Muscardinus avellanarius au jardin jungle.jpg","language":"en","license":"http://creativecommons.org/licenses/by-sa/3.0/","source":"http://commons.wikimedia.org/wiki/File:Muscardinus_avellanarius_au_jardin_jungle.jpg","description":"<b>French:</b> 1=Muscardinus avellanarius, muscardin","mediaURL":"http://upload.wikimedia.org/wikipedia/commons/a/a6/Muscardinus_avellanarius_au_jardin_jungle.jpg","eolMediaURL":"http://media.eol.org/content/2017/03/23/22/22149_orig.jpg","eolThumbnailURL":"http://media.eol.org/content/2017/03/23/22/22149_98_68.jpg","agents":[{"full_name":"Karlostachys","homepage":"http://commons.wikimedia.org/wiki/User:Karlostachys","role":"photographer"},{"full_name":"Wikimedia Commons","homepage":"http://commons.wikimedia.org/","role":"provider"}],"references":[]},{"identifier":"f1550465fe3db8d05a34d8de21137562","dataObjectVersionID":33990625,"dataType":"http://purl.org/dc/dcmitype/StillImage","dataSubtype":"","vettedStatus":"Trusted","dataRatings":{"1":0,"2":0,"3":3,"4":0,"5":0},"dataRating":3,"mimeType":"application/octet-stream","created":"2015-11-16T20:15:00Z","modified":"2015-11-16T20:15:03Z","license":"http://creativecommons.org/licenses/by-nc/4.0/","rights":"Copyright umbi24, licensed under a Creative Commons Attribution-NonCommercial License license: http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"umbi24","source":"http://www.inaturalist.org/photos/2661806","mediaURL":"http://static.inaturalist.org/photos/2661806/original.jpg?1447704901","eolMediaURL":"http://media.eol.org/content/2016/07/31/11/14944_orig.jpg","eolThumbnailURL":"http://media.eol.org/content/2016/07/31/11/14944_98_68.jpg","latitude":45.5226792904,"longitude":11.5863268822,"agents":[{"full_name":"inaturalist","homepage":"","role":"publisher"},{"full_name":"umbi24","homepage":"","role":"creator"},{"full_name":"iNaturalist.org","homepage":"http://www.inaturalist.org","role":"provider"}],"references":[]},{"identifier":"5f53a4551a91a814de0108b22295aa5c","dataObjectVersionID":34122065,"dataType":"http://purl.org/dc/dcmitype/StillImage","dataSubtype":"","vettedStatus":"Trusted","dataRatings":{"1":0,"2":0,"3":0,"4":0,"5":0},"dataRating":2.5,"mimeType":"image/jpeg","created":"2016-02-16T22:30:23Z","modified":"2016-02-16T22:30:27Z","license":"http://creativecommons.org/licenses/by-nc/4.0/","rights":"Copyright Julien Renoult, licensed under a Creative Commons Attribution-NonCommercial License license: http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Julien Renoult","source":"http://www.inaturalist.org/photos/3024373","mediaURL":"http://static.inaturalist.org/photos/3024373/original.JPG?1455661825","eolMediaURL":"http://media.eol.org/content/2016/08/03/17/95133_orig.jpg","eolThumbnailURL":"http://media.eol.org/content/2016/08/03/17/95133_98_68.jpg","latitude":46.372739,"longitude":6.042738,"agents":[{"full_name":"inaturalist","homepage":"","role":"publisher"},{"full_name":"Julien Renoult","homepage":"","role":"creator"},{"full_name":"iNaturalist.org","homepage":"http://www.inaturalist.org","role":"provider"}],"references":[]},{"identifier":"8ab74d2fab0bd798de0b26190f4e8741","dataObjectVersionID":34135059,"dataType":"http://purl.org/dc/dcmitype/StillImage","dataSubtype":"","vettedStatus":"Trusted","dataRatings":{"1":0,"2":0,"3":0,"4":0,"5":0},"dataRating":2.5,"mimeType":"image/png","created":"2016-02-25T19:02:37Z","modified":"2016-02-25T19:02:43Z","license":"http://creativecommons.org/licenses/by-nc/4.0/","rights":"Copyright Flavio Rocchi, licensed under a Creative Commons Attribution-NonCommercial License license: http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Flavio Rocchi","source":"http://www.inaturalist.org/photos/3062164","description":"Two photo-trapped specimens on/near dormouse nest box","mediaURL":"http://static.inaturalist.org/photos/3062164/original.png?1456426961","eolMediaURL":"http://media.eol.org/content/2016/08/04/01/34996_orig.jpg","eolThumbnailURL":"http://media.eol.org/content/2016/08/04/01/34996_98_68.jpg","latitude":41.77854,"longitude":13.013019,"agents":[{"full_name":"inaturalist","homepage":"","role":"publisher"},{"full_name":"Flavio Rocchi","homepage":"","role":"creator"},{"full_name":"iNaturalist.org","homepage":"http://www.inaturalist.org","role":"provider"}],"references":[]},{"identifier":"53687006fde9e3d31bc80fcda04af992","dataObjectVersionID":33999420,"dataType":"http://purl.org/dc/dcmitype/StillImage","dataSubtype":"","vettedStatus":"Trusted","dataRatings":{"1":0,"2":0,"3":0,"4":0,"5":0},"dataRating":2.5,"mimeType":"image/png","created":"2015-11-22T20:30:21Z","modified":"2015-11-22T20:30:47Z","license":"http://creativecommons.org/licenses/by-nc/4.0/","rights":"Copyright Mattia Menchetti, licensed under a Creative Commons Attribution-NonCommercial License license: http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Mattia Menchetti","source":"http://www.inaturalist.org/photos/2687693","mediaURL":"http://static.inaturalist.org/photos/2687693/original.png?1448224245","eolMediaURL":"http://media.eol.org/content/2016/07/31/16/74685_orig.jpg","eolThumbnailURL":"http://media.eol.org/content/2016/07/31/16/74685_98_68.jpg","latitude":44.046906,"longitude":10.843508,"agents":[{"full_name":"inaturalist","homepage":"","role":"publisher"},{"full_name":"Mattia Menchetti","homepage":"http://commons.wikimedia.org/wiki/User:MattiaMen","role":"creator"},{"full_name":"iNaturalist.org","homepage":"http://www.inaturalist.org","role":"provider"}],"references":[]},{"identifier":"c34ef15cd24d1ebe64face3157b2d17a","dataObjectVersionID":32540107,"dataType":"http://purl.org/dc/dcmitype/StillImage","dataSubtype":"","vettedStatus":"Trusted","dataRatings":{"1":0,"2":0,"3":0,"4":0,"5":0},"dataRating":2.5,"mimeType":"image/jpeg","created":"2012-01-01T00:00:00Z","title":"Muscardinus avellanarius","language":"en","license":"http://creativecommons.org/licenses/by-nc-sa/2.0/","rightsHolder":"Camponotus Vagus","source":"https://www.flickr.com/photos/65645208@N05/6245061840/","description":"Tuscany, Italy","mediaURL":"https://farm7.staticflickr.com/6053/6245061840_6722a19c57_o.jpg","eolMediaURL":"http://media.eol.org/content/2015/04/29/23/96478_orig.jpg","eolThumbnailURL":"http://media.eol.org/content/2015/04/29/23/96478_98_68.jpg","agents":[{"full_name":"Camponotus Vagus","homepage":"http://www.flickr.com/photos/65645208@N05","role":"photographer"},{"full_name":"Flickr: EOL Images","homepage":"http://www.flickr.com/groups/encyclopedia_of_life","role":"provider"}],"references":[]},{"identifier":"c34ef15cd24d1ebe64face3157b2d17a","dataObjectVersionID":24926925,"dataType":"http://purl.org/dc/dcmitype/StillImage","dataSubtype":"","vettedStatus":"Trusted","dataRatings":{"1":0,"2":0,"3":0,"4":0,"5":0},"dataRating":2.5,"mimeType":"image/jpeg","created":"2012-01-01T05:00:00Z","title":"Muscardinus avellanarius","language":"en","license":"http://creativecommons.org/licenses/by-nc-sa/2.0/","rightsHolder":"Camponotus Vagus","source":"http://www.flickr.com/photos/65645208@N05/6245061840/","description":"Tuscany, Italy","mediaURL":"http://farm7.staticflickr.com/6053/6245061840_6722a19c57_o.jpg","eolMediaURL":"http://media.eol.org/content/2012/05/15/00/80347_orig.jpg","eolThumbnailURL":"http://media.eol.org/content/2012/05/15/00/80347_98_68.jpg","agents":[{"full_name":"Camponotus Vagus","homepage":"http://www.flickr.com/photos/65645208@N05","role":"photographer"},{"full_name":"Flickr: EOL Images","homepage":"http://www.flickr.com/groups/encyclopedia_of_life","role":"provider"}],"references":[]},{"identifier":"cd590175147b9309257adfd3b604d5f6","dataObjectVersionID":26811977,"dataType":"http://purl.org/dc/dcmitype/StillImage","dataSubtype":"","vettedStatus":"Trusted","dataRatings":{"1":0,"2":0,"3":0,"4":0,"5":0},"dataRating":2.5,"mimeType":"image/jpeg","title":"File:Muscardinus avellanarius 3.jpg","language":"en","license":"http://creativecommons.org/licenses/by-sa/3.0/","source":"http://commons.wikimedia.org/wiki/File:Muscardinus_avellanarius_3.jpg","description":"<i>Muscardinus avellanarius</i>, Moscardino, San Giorgio del Sannio , Località <i>I Marzani</i> (<a href='http://commons.wikimedia.org/wiki/Benevento'>Benevento</a>), <a href='http://commons.wikimedia.org/wiki/Italia'>Italia</a>","mediaURL":"http://upload.wikimedia.org/wikipedia/commons/2/25/Muscardinus_avellanarius_3.jpg","eolMediaURL":"http://media.eol.org/content/2012/06/15/02/52996_orig.jpg","eolThumbnailURL":"http://media.eol.org/content/2012/06/15/02/52996_98_68.jpg","agents":[{"full_name":"Massimo L.","homepage":"","role":"photographer"},{"full_name":"Wikimedia Commons","homepage":"http://commons.wikimedia.org/","role":"provider"}],"references":[]},{"identifier":"22b7fb97f840c75a13d50f5d176fb18c","dataObjectVersionID":32632155,"dataType":"http://purl.org/dc/dcmitype/StillImage","dataSubtype":"","vettedStatus":"Trusted","dataRatings":{"1":0,"2":0,"3":0,"4":0,"5":0},"dataRating":2.5,"mimeType":"image/jpeg","created":"2012-01-01T00:00:00Z","title":"Muscardinus avellanarius","language":"en","license":"http://creativecommons.org/licenses/by-nc-sa/2.0/","rightsHolder":"Camponotus Vagus","source":"https://www.flickr.com/photos/65645208@N05/7184697430/","description":"The only way to feed it, a little bit of milk on the finger tip.&nbsp;&nbsp;Tuscany, Italy","mediaURL":"https://farm6.staticflickr.com/5031/7184697430_372d24fcfb_o.jpg","eolMediaURL":"http://media.eol.org/content/2015/05/20/03/31582_orig.jpg","eolThumbnailURL":"http://media.eol.org/content/2015/05/20/03/31582_98_68.jpg","agents":[{"full_name":"Camponotus Vagus","homepage":"http://www.flickr.com/photos/65645208@N05","role":"photographer"},{"full_name":"Flickr: EOL Images","homepage":"http://www.flickr.com/groups/encyclopedia_of_life","role":"provider"}],"references":[]},{"identifier":"b99e4bb491a6cd2043d9ee989d44af06","dataObjectVersionID":26853894,"dataType":"http://purl.org/dc/dcmitype/StillImage","dataSubtype":"","vettedStatus":"Trusted","dataRatings":{"1":0,"2":0,"3":0,"4":0,"5":0},"dataRating":2.5,"mimeType":"image/jpeg","title":"File:Thorburn Archibald Dormice.jpg","language":"en","license":"http://creativecommons.org/publicdomain/mark/1.0/","source":"http://commons.wikimedia.org/wiki/File:Thorburn_Archibald_Dormice.jpg","mediaURL":"http://upload.wikimedia.org/wikipedia/commons/3/3d/Thorburn_Archibald_Dormice.jpg","eolMediaURL":"http://media.eol.org/content/2012/06/15/02/89674_orig.jpg","eolThumbnailURL":"http://media.eol.org/content/2012/06/15/02/89674_98_68.jpg","agents":[{"full_name":"Wikimedia Commons","homepage":"http://commons.wikimedia.org/","role":"provider"}],"references":[]},{"identifier":"23132f9f649debba6e9ae117db746d9e","dataObjectVersionID":34135052,"dataType":"http://purl.org/dc/dcmitype/StillImage","dataSubtype":"","vettedStatus":"Trusted","dataRatings":{"1":0,"2":0,"3":0,"4":0,"5":0},"dataRating":2.5,"mimeType":"image/jpeg","created":"2016-02-25T19:00:53Z","modified":"2016-02-25T19:00:56Z","license":"http://creativecommons.org/licenses/by-nc/4.0/","rights":"Copyright Flavio Rocchi, licensed under a Creative Commons Attribution-NonCommercial License license: http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Flavio Rocchi","source":"http://www.inaturalist.org/photos/3062152","description":"Two photo-trapped specimens on/near dormouse nest box","mediaURL":"http://static.inaturalist.org/photos/3062152/original.jpg?1456426855","eolMediaURL":"http://media.eol.org/content/2016/08/04/01/23265_orig.jpg","eolThumbnailURL":"http://media.eol.org/content/2016/08/04/01/23265_98_68.jpg","latitude":41.77854,"longitude":13.013019,"agents":[{"full_name":"inaturalist","homepage":"","role":"publisher"},{"full_name":"Flavio Rocchi","homepage":"","role":"creator"},{"full_name":"iNaturalist.org","homepage":"http://www.inaturalist.org","role":"provider"}],"references":[]},{"identifier":"c631becc439e1d84fefc9ead5a5e81c3","dataObjectVersionID":26811983,"dataType":"http://purl.org/dc/dcmitype/StillImage","dataSubtype":"","vettedStatus":"Trusted","dataRatings":{"1":0,"2":0,"3":0,"4":0,"5":0},"dataRating":2.5,"mimeType":"image/jpeg","title":"File:Muscardinus avellanarius con piccolo 3.jpg","language":"en","license":"http://creativecommons.org/licenses/by-sa/3.0/","source":"http://commons.wikimedia.org/wiki/File:Muscardinus_avellanarius_con_piccolo_3.jpg","description":"<i>Muscardinus avellanarius</i>, Moscardino, San Giorgio del Sannio , Località <i>I Marzani</i> (<a href='http://commons.wikimedia.org/wiki/Benevento'>Benevento</a>), <a href='http://commons.wikimedia.org/wiki/Italia'>Italia</a>","mediaURL":"http://upload.wikimedia.org/wikipedia/commons/a/a0/Muscardinus_avellanarius_con_piccolo_3.jpg","eolMediaURL":"http://media.eol.org/content/2012/06/15/02/72473_orig.jpg","eolThumbnailURL":"http://media.eol.org/content/2012/06/15/02/72473_98_68.jpg","agents":[{"full_name":"Massimo L.","homepage":"","role":"photographer"},{"full_name":"Wikimedia Commons","homepage":"http://commons.wikimedia.org/","role":"provider"}],"references":[]},{"identifier":"3d151ce276e21d0bcf3f70e1be0ae223","dataObjectVersionID":24258831,"dataType":"http://purl.org/dc/dcmitype/StillImage","dataSubtype":"","vettedStatus":"Trusted","dataRatings":{"1":0,"2":0,"3":0,"4":0,"5":0},"dataRating":2.5,"mimeType":"image/jpeg","license":"http://creativecommons.org/licenses/by-nc/3.0/","source":"http://www.biopix.com/muscardinus-avellanarius_photo-104240.aspx","mediaURL":"http://www.biopix.com/photos/JCS-Muscardinus-avellanarius-62381.JPG","eolMediaURL":"http://media.eol.org/content/2013/05/02/01/99776_orig.jpg","eolThumbnailURL":"http://media.eol.org/content/2013/05/02/01/99776_98_68.jpg","location":"Aqua Silkeborg","agents":[{"full_name":"Biopix","homepage":"http://www.biopix.com/","role":"provider"}],"references":[]},{"identifier":"b4236fdd55bbcfb16902810199b2f100","dataObjectVersionID":32583125,"dataType":"http://purl.org/dc/dcmitype/StillImage","dataSubtype":"","vettedStatus":"Trusted","dataRatings":{"1":0,"2":3,"3":1,"4":0,"5":0},"dataRating":2.25,"mimeType":"image/jpeg","created":"2009-10-03T13:10:36Z","title":"Muscardinus Avellanarius","language":"en","license":"http://creativecommons.org/licenses/by-sa/2.0/","rightsHolder":"Alexandre Dulaunoy","source":"https://www.flickr.com/photos/adulau/3977566300/","description":"Muscardinus Avellanarius found dead on a road in Neufchateau, Belgium. I hope to see one alive next time...&nbsp;&nbsp;Un muscardin trouvé mort sur une route de Neufchateau. J'espère en voir un vivant dans le future...&nbsp;&nbsp;","mediaURL":"https://farm4.staticflickr.com/3452/3977566300_6d887c07ac_o.jpg","eolMediaURL":"http://media.eol.org/content/2015/04/30/19/69975_orig.jpg","eolThumbnailURL":"http://media.eol.org/content/2015/04/30/19/69975_98_68.jpg","location":"Sberchamps, Luxemburg, Belgium","latitude":49.87608,"longitude":5.452651,"agents":[{"full_name":"Alexandre Dulaunoy","homepage":"http://www.flickr.com/photos/31797858@N00","role":"photographer"},{"full_name":"Flickr: EOL Images","homepage":"http://www.flickr.com/groups/encyclopedia_of_life","role":"provider"}],"references":[]},{"identifier":"b4236fdd55bbcfb16902810199b2f100","dataObjectVersionID":24980372,"dataType":"http://purl.org/dc/dcmitype/StillImage","dataSubtype":"","vettedStatus":"Trusted","dataRatings":{"1":0,"2":3,"3":1,"4":0,"5":0},"dataRating":2.25,"mimeType":"image/jpeg","created":"2009-10-03T17:10:36Z","title":"Muscardinus Avellanarius","language":"en","license":"http://creativecommons.org/licenses/by-sa/2.0/","rightsHolder":"Alexandre Dulaunoy","source":"http://www.flickr.com/photos/adulau/3977566300/","description":"Muscardinus Avellanarius found dead on a road in Neufchateau, Belgium. I hope to see one alive next time...&nbsp;&nbsp;Un muscardin trouvé mort sur une route de Neufchateau. J'espère en voir un vivant dans le future...&nbsp;&nbsp;","mediaURL":"http://farm4.staticflickr.com/3452/3977566300_6d887c07ac_o.jpg","eolMediaURL":"http://media.eol.org/content/2011/12/20/01/07706_orig.jpg","eolThumbnailURL":"http://media.eol.org/content/2011/12/20/01/07706_98_68.jpg","location":"Sberchamps, Luxemburg, Belgium","latitude":49.87608,"longitude":5.452651,"agents":[{"full_name":"Alexandre Dulaunoy","homepage":"http://www.flickr.com/photos/31797858@N00","role":"photographer"},{"full_name":"Flickr: EOL Images","homepage":"http://www.flickr.com/groups/encyclopedia_of_life","role":"provider"}],"references":[]},{"identifier":"0a2ea69725b004db8e6967e3bc2dbc0f","dataObjectVersionID":5817931,"dataType":"http://purl.org/dc/dcmitype/StillImage","dataSubtype":"","vettedStatus":"Trusted","dataRatings":{"1":0,"2":1,"3":0,"4":0,"5":0},"dataRating":2,"mimeType":"image/jpeg","created":"2009-10-13T02:15:54Z","modified":"2009-10-13T02:15:54Z","language":"en","license":"http://creativecommons.org/licenses/by-nc/3.0/","rightsHolder":"Jiří Duchoň","source":"http://www.biolib.cz/en/image/id102987/","mediaURL":"http://www.biolib.cz/IMG/GAL/102987.jpg","eolMediaURL":"http://media.eol.org/content/2010/03/24/02/12056_orig.jpg","eolThumbnailURL":"http://media.eol.org/content/2010/03/24/02/12056_98_68.jpg","location":"Czech Republic, Písecko","agents":[{"full_name":"Jiří Duchoň","homepage":"http://www.biolib.cz/en/person/id2191/","role":"photographer"},{"full_name":"BioLib.cz","homepage":"http://www.biolib.cz/en/","role":"provider"}],"references":[]},{"identifier":"62c776033933e4dbf8e62c72b9cb6217","dataObjectVersionID":26811981,"dataType":"http://purl.org/dc/dcmitype/StillImage","dataSubtype":"","vettedStatus":"Trusted","dataRatings":{"1":0,"2":1,"3":0,"4":0,"5":0},"dataRating":2,"mimeType":"image/jpeg","title":"File:Muscardinus avellanarius 5.jpg","language":"en","license":"http://creativecommons.org/licenses/by-sa/3.0/","source":"http://commons.wikimedia.org/wiki/File:Muscardinus_avellanarius_5.jpg","description":"<i>Muscardinus avellanarius</i>, Moscardino, San Giorgio del Sannio , Località <i>I Marzani</i> (<a href='http://commons.wikimedia.org/wiki/Benevento'>Benevento</a>), <a href='http://commons.wikimedia.org/wiki/Italia'>Italia</a>","mediaURL":"http://upload.wikimedia.org/wikipedia/commons/0/01/Muscardinus_avellanarius_5.jpg","eolMediaURL":"http://media.eol.org/content/2012/06/15/02/82974_orig.jpg","eolThumbnailURL":"http://media.eol.org/content/2012/06/15/02/82974_98_68.jpg","agents":[{"full_name":"Massimo L.","homepage":"","role":"photographer"},{"full_name":"Wikimedia Commons","homepage":"http://commons.wikimedia.org/","role":"provider"}],"references":[]},{"identifier":"c8cb57448ff7304f18c68e29156bbb89","dataObjectVersionID":34125652,"dataType":"http://purl.org/dc/dcmitype/StillImage","dataSubtype":"","vettedStatus":"Trusted","dataRatings":{"1":0,"2":3,"3":0,"4":0,"5":0},"dataRating":2,"height":484,"width":644,"crop_x":"296.24","crop_y":"121.0","crop_width":"199.64","mimeType":"image/jpeg","created":"2016-02-19T10:34:32Z","modified":"2016-02-19T10:34:36Z","license":"http://creativecommons.org/licenses/by-nc/4.0/","rights":"Copyright lauragola, licensed under a Creative Commons Attribution-NonCommercial License license: http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"lauragola","source":"http://www.inaturalist.org/photos/3035058","mediaURL":"http://static.inaturalist.org/photos/3035058/original.jpg?1455878075","eolMediaURL":"http://media.eol.org/content/2017/03/23/22/93750_orig.jpg","eolThumbnailURL":"http://media.eol.org/content/2017/03/23/22/93750_98_68.jpg","latitude":45.233165,"longitude":8.232386,"agents":[{"full_name":"inaturalist","homepage":"","role":"publisher"},{"full_name":"lauragola","homepage":"","role":"creator"},{"full_name":"iNaturalist.org","homepage":"http://www.inaturalist.org","role":"provider"}],"references":[]},{"identifier":"5458439d6e825ec38ec02ab42ca889f4","dataObjectVersionID":26786226,"dataType":"http://purl.org/dc/dcmitype/StillImage","dataSubtype":"","vettedStatus":"Trusted","dataRatings":{"1":3,"2":0,"3":0,"4":1,"5":0},"dataRating":1.75,"height":380,"width":506,"crop_x":"187.22","crop_y":"79.8","crop_width":"237.82","mimeType":"image/jpeg","title":"File:Dormouse on hand.jpg","language":"en","license":"http://creativecommons.org/publicdomain/mark/1.0/","source":"http://commons.wikimedia.org/wiki/File:Dormouse_on_hand.jpg","mediaURL":"http://upload.wikimedia.org/wikipedia/commons/3/3d/Dormouse_on_hand.jpg","eolMediaURL":"http://media.eol.org/content/2016/03/30/17/05882_orig.jpg","eolThumbnailURL":"http://media.eol.org/content/2016/03/30/17/05882_98_68.jpg","agents":[{"full_name":"Wikimedia Commons","homepage":"http://commons.wikimedia.org/","role":"provider"}],"references":[]},{"identifier":"a490179b73eef4485c5941f73b2c63a3","dataObjectVersionID":26928927,"dataType":"http://purl.org/dc/dcmitype/StillImage","dataSubtype":"","vettedStatus":"Unreviewed","dataRatings":{"1":0,"2":0,"3":0,"4":0,"5":0},"dataRating":2.5,"mimeType":"image/jpeg","title":"File:Muscardinus avellanarius nest.JPG","language":"en","license":"http://creativecommons.org/licenses/by-sa/3.0/","source":"http://commons.wikimedia.org/wiki/File:Muscardinus_avellanarius_nest.JPG","description":"<b>English:</b> 1=Nest of a common dormouse (Muscardinus avellanarius)in France.","mediaURL":"http://upload.wikimedia.org/wikipedia/commons/d/d3/Muscardinus_avellanarius_nest.JPG","eolMediaURL":"http://media.eol.org/content/2013/11/17/08/23912_orig.jpg","eolThumbnailURL":"http://media.eol.org/content/2013/11/17/08/23912_98_68.jpg","agents":[{"full_name":"AlexisMartin mb","homepage":"http://commons.wikimedia.org/wiki/User:AlexisMartin_mb","role":"photographer"},{"full_name":"Wikimedia Commons","homepage":"http://commons.wikimedia.org/","role":"provider"}],"references":[]},{"identifier":"e174e43b84dbc1d047978823c04c942b","dataObjectVersionID":32156050,"dataType":"http://purl.org/dc/dcmitype/StillImage","dataSubtype":"","vettedStatus":"Unreviewed","dataRatings":{"1":0,"2":0,"3":0,"4":0,"5":0},"dataRating":2.5,"mimeType":"image/jpeg","created":"2011-11-04T13:13:25Z","title":"n58_w1150","language":"en","license":"http://creativecommons.org/licenses/by/2.0/","rightsHolder":"Biodiversity Heritage Library","source":"https://www.flickr.com/photos/biodivlibrary/6312165102/","description":"Atlas de poche des mammifères de France, de la Suisse romane et de la Belgique&nbsp;Paris :L. Lhomme,1910.&nbsp;<a href=\"http://biodiversitylibrary.org/page/14961655\" rel=\"nofollow\">biodiversitylibrary.org/page/14961655</a>","mediaURL":"https://farm7.staticflickr.com/6098/6312165102_35944e6e0e_o.jpg","eolMediaURL":"http://media.eol.org/content/2015/02/27/02/58939_orig.jpg","eolThumbnailURL":"http://media.eol.org/content/2015/02/27/02/58939_98_68.jpg","agents":[{"full_name":"Biodiversity Heritage Library","homepage":"http://www.flickr.com/photos/61021753@N02","role":"photographer"},{"full_name":"Flickr: EOL Images","homepage":"http://www.flickr.com/groups/encyclopedia_of_life","role":"provider"}],"references":[]},{"identifier":"1dd99ac9ef6a36dd48546d819ef098cd","dataObjectVersionID":34247166,"dataType":"http://purl.org/dc/dcmitype/StillImage","dataSubtype":"","vettedStatus":"Unreviewed","dataRatings":{"1":0,"2":0,"3":0,"4":0,"5":0},"dataRating":2.5,"mimeType":"image/jpeg","created":"2015-10-02T13:24:59Z","title":"n11_w1150","language":"en","license":"http://creativecommons.org/licenses/by/2.0/","rightsHolder":"Biodiversity Heritage Library","source":"https://www.flickr.com/photos/biodivlibrary/21879640502/","description":"British mammals /.London, ;Longmans, Green,1920-21..<a href=\"http://biodiversitylibrary.org/page/48418566\" rel=\"nofollow\">biodiversitylibrary.org/page/48418566</a>","mediaURL":"https://farm6.staticflickr.com/5646/21879640502_22397ffc94_o.jpg","eolMediaURL":"http://media.eol.org/content/2016/08/16/00/88948_orig.jpg","eolThumbnailURL":"http://media.eol.org/content/2016/08/16/00/88948_98_68.jpg","agents":[{"full_name":"Biodiversity Heritage Library","homepage":"http://www.flickr.com/photos/61021753@N02","role":"photographer"},{"full_name":"Biodiversity Heritage Library","homepage":"http://biodiversitylibrary.org","role":"provider"}],"references":[]},{"identifier":"1fae1f2b3f23310f83bf548907f8313c","dataObjectVersionID":34235740,"dataType":"http://purl.org/dc/dcmitype/StillImage","dataSubtype":"","vettedStatus":"Unreviewed","dataRatings":{"1":0,"2":0,"3":0,"4":0,"5":0},"dataRating":2.5,"mimeType":"image/jpeg","created":"2011-11-22T10:07:14Z","title":"n100_w1150","language":"en","license":"http://creativecommons.org/licenses/by/2.0/","rightsHolder":"Biodiversity Heritage Library","source":"https://www.flickr.com/photos/biodivlibrary/6383347231/","description":"A history of British mammals. v.1.London :Gurney and Jackson,1910-1921.<a href=\"http://biodiversitylibrary.org/page/16024795\" rel=\"nofollow\">biodiversitylibrary.org/page/16024795</a>","mediaURL":"https://farm7.staticflickr.com/6235/6383347231_fb9404966c_o.jpg","eolMediaURL":"http://media.eol.org/content/2016/07/19/22/18866_orig.jpg","eolThumbnailURL":"http://media.eol.org/content/2016/07/19/22/18866_98_68.jpg","agents":[{"full_name":"Biodiversity Heritage Library","homepage":"http://www.flickr.com/photos/61021753@N02","role":"photographer"},{"full_name":"Biodiversity Heritage Library","homepage":"http://biodiversitylibrary.org","role":"provider"}],"references":[]},{"identifier":"1fae1f2b3f23310f83bf548907f8313c","dataObjectVersionID":33172968,"dataType":"http://purl.org/dc/dcmitype/StillImage","dataSubtype":"","vettedStatus":"Unreviewed","dataRatings":{"1":0,"2":0,"3":0,"4":0,"5":0},"dataRating":2.5,"mimeType":"image/jpeg","created":"2011-11-22T10:07:14Z","title":"n100_w1150","language":"en","license":"http://creativecommons.org/licenses/by/2.0/","rightsHolder":"Biodiversity Heritage Library","source":"https://www.flickr.com/photos/biodivlibrary/6383347231/","description":"A history of British mammals. v.1.&nbsp;London :Gurney and Jackson,1910-1921.&nbsp;<a href=\"http://biodiversitylibrary.org/page/16024795\" rel=\"nofollow\">biodiversitylibrary.org/page/16024795</a>","mediaURL":"https://farm7.staticflickr.com/6235/6383347231_fb9404966c_o.jpg","eolMediaURL":"http://media.eol.org/content/2016/07/19/22/18866_orig.jpg","eolThumbnailURL":"http://media.eol.org/content/2016/07/19/22/18866_98_68.jpg","agents":[{"full_name":"Biodiversity Heritage Library","homepage":"http://www.flickr.com/photos/61021753@N02","role":"photographer"},{"full_name":"Biodiversity Heritage Library","homepage":"http://biodiversitylibrary.org","role":"provider"}],"references":[]},{"identifier":"30480d03756c3fc9eb18dbafab9db487","dataObjectVersionID":24904346,"dataType":"http://purl.org/dc/dcmitype/StillImage","dataSubtype":"","vettedStatus":"Unreviewed","dataRatings":{"1":0,"2":0,"3":0,"4":0,"5":0},"dataRating":2.5,"mimeType":"image/jpeg","created":"2012-01-01T05:00:00Z","title":"Muscardinus_avellanarius2","language":"en","license":"http://creativecommons.org/licenses/by-nc-sa/2.0/","rightsHolder":"Camponotus Vagus","source":"http://www.flickr.com/photos/65645208@N05/7184698312/","description":"Tuscany, Italy","mediaURL":"http://farm8.staticflickr.com/7228/7184698312_37fa602c43_o.jpg","eolMediaURL":"http://media.eol.org/content/2012/05/15/00/39216_orig.jpg","eolThumbnailURL":"http://media.eol.org/content/2012/05/15/00/39216_98_68.jpg","agents":[{"full_name":"Camponotus Vagus","homepage":"http://www.flickr.com/photos/65645208@N05","role":"photographer"},{"full_name":"Flickr: EOL Images","homepage":"http://www.flickr.com/groups/encyclopedia_of_life","role":"provider"}],"references":[]},{"identifier":"2a0e754bc0b028502dc930712d38d666","dataObjectVersionID":32397671,"dataType":"http://purl.org/dc/dcmitype/StillImage","dataSubtype":"","vettedStatus":"Unreviewed","dataRatings":{"1":0,"2":0,"3":0,"4":0,"5":0},"dataRating":2.5,"mimeType":"image/jpeg","title":"File:Muscardinus avellanarius - Hazel Dormouse - Haselmaus (7615322874).jpg","language":"en","license":"http://creativecommons.org/licenses/by-sa/2.0/","source":"http://commons.wikimedia.org/wiki/File:Muscardinus_avellanarius_-_Hazel_Dormouse_-_Haselmaus_(7615322874).jpg","description":"Family: Gliridae (Bilche)&nbsp;&nbsp;NE-Slovakia, Slovak Paradise (Slovak: Slovenský raj) National Park, vic Cingov, 500-900m asl., 27.06.2012&nbsp;&nbsp;IMG_1544","mediaURL":"http://upload.wikimedia.org/wikipedia/commons/a/ac/Muscardinus_avellanarius_-_Hazel_Dormouse_-_Haselmaus_%287615322874%29.jpg","eolMediaURL":"http://media.eol.org/content/2015/03/21/18/97662_orig.jpg","eolThumbnailURL":"http://media.eol.org/content/2015/03/21/18/97662_98_68.jpg","agents":[{"full_name":"gbohne from Berlin, Germany","homepage":"","role":"photographer"},{"full_name":"Wikimedia Commons","homepage":"http://commons.wikimedia.org/","role":"provider"}],"references":[]},{"identifier":"f65fb538a8c5e87fc3e917025668ba9e","dataObjectVersionID":31445480,"dataType":"http://purl.org/dc/dcmitype/StillImage","dataSubtype":"","vettedStatus":"Unreviewed","dataRatings":{"1":0,"2":0,"3":0,"4":0,"5":0},"dataRating":2.5,"mimeType":"image/jpeg","created":"2012-04-24T12:31:14Z","title":"n168_w1150","language":"en","license":"http://creativecommons.org/licenses/by/2.0/","rightsHolder":"Biodiversity Heritage Library","source":"https://www.flickr.com/photos/biodivlibrary/7109309571/","description":"The class Mammalia /.&nbsp;London :Printed for Geo. B. Whittaker,1827..&nbsp;<a href=\"http://biodiversitylibrary.org/page/33268050\" rel=\"nofollow\">biodiversitylibrary.org/page/33268050</a>","mediaURL":"https://farm8.staticflickr.com/7221/7109309571_39e34d7987_o.jpg","eolMediaURL":"http://media.eol.org/content/2014/10/11/04/43165_orig.jpg","eolThumbnailURL":"http://media.eol.org/content/2014/10/11/04/43165_98_68.jpg","agents":[{"full_name":"Biodiversity Heritage Library","homepage":"http://www.flickr.com/photos/61021753@N02","role":"photographer"},{"full_name":"Flickr: EOL Images","homepage":"http://www.flickr.com/groups/encyclopedia_of_life","role":"provider"}],"references":[]},{"identifier":"4e0ace5223955ac059c35c4b537fd33b","dataObjectVersionID":27731881,"dataType":"http://purl.org/dc/dcmitype/StillImage","dataSubtype":"","vettedStatus":"Unreviewed","dataRatings":{"1":0,"2":0,"3":0,"4":0,"5":0},"dataRating":2.5,"height":551,"width":768,"crop_x":"263.1168","crop_y":"93.3394","crop_width":"362.5728","mimeType":"image/jpeg","title":"File:Muscardinus avellanarius.jpg","language":"en","license":"http://creativecommons.org/licenses/by/3.0/","source":"http://commons.wikimedia.org/wiki/File:Muscardinus_avellanarius.jpg","description":"<i>Muscardinus avellanarius</i> (Linnaeus, 1758)","mediaURL":"http://upload.wikimedia.org/wikipedia/commons/2/2e/Muscardinus_avellanarius.jpg","eolMediaURL":"http://media.eol.org/content/2014/06/12/11/49670_orig.jpg","eolThumbnailURL":"http://media.eol.org/content/2014/06/12/11/49670_98_68.jpg","agents":[{"full_name":"Haruta Ovidiu, University of Oradea, Bugwood.org","homepage":"","role":"photographer"},{"full_name":"Wikimedia Commons","homepage":"http://commons.wikimedia.org/","role":"provider"}],"references":[]},{"identifier":"e9b4def57a5bf1736dadf120d0f57594","dataObjectVersionID":26919421,"dataType":"http://purl.org/dc/dcmitype/StillImage","dataSubtype":"","vettedStatus":"Unreviewed","dataRatings":{"1":0,"2":0,"3":0,"4":0,"5":0},"dataRating":2.5,"mimeType":"image/jpeg","title":"File:Die Gartenlaube (1883) 045.jpg","language":"en","license":"http://creativecommons.org/publicdomain/mark/1.0/","source":"http://commons.wikimedia.org/wiki/File:Die_Gartenlaube_(1883)_045.jpg","mediaURL":"http://upload.wikimedia.org/wikipedia/commons/4/40/Die_Gartenlaube_%281883%29_045.jpg","eolMediaURL":"http://media.eol.org/content/2013/11/17/03/92745_orig.jpg","eolThumbnailURL":"http://media.eol.org/content/2013/11/17/03/92745_98_68.jpg","agents":[{"full_name":"Wikimedia Commons","homepage":"http://commons.wikimedia.org/","role":"provider"}],"references":[]},{"identifier":"48c4acd16a82f51303f66083c7ba81d1","dataObjectVersionID":27045320,"dataType":"http://purl.org/dc/dcmitype/StillImage","dataSubtype":"","vettedStatus":"Unreviewed","dataRatings":{"1":0,"2":0,"3":0,"4":0,"5":0},"dataRating":2.5,"mimeType":"image/jpeg","title":"File:Orzesznica.JPG","language":"en","license":"http://creativecommons.org/publicdomain/mark/1.0/","source":"http://commons.wikimedia.org/wiki/File:Orzesznica.JPG","description":"<b>English:</b> 1=Hazel Dormouse (Muscardinus avellanarius) caught by a dog. Taken away from the dog - alive - and set free. &nbsp;<b>Polish:</b> 1=Orzesznica, którą upolował pies. Odebrana żywa i wypuszczona na wolność.","mediaURL":"http://upload.wikimedia.org/wikipedia/commons/b/b2/Orzesznica.JPG","eolMediaURL":"http://media.eol.org/content/2013/11/24/23/62407_orig.jpg","eolThumbnailURL":"http://media.eol.org/content/2013/11/24/23/62407_98_68.jpg","agents":[{"full_name":"Ambica","homepage":"http://commons.wikimedia.org/wiki/User:Ambica","role":"photographer"},{"full_name":"Wikimedia Commons","homepage":"http://commons.wikimedia.org/","role":"provider"}],"references":[]},{"identifier":"56b00d71dec9b87d4eb62abf21e5c779","dataObjectVersionID":27152745,"dataType":"http://purl.org/dc/dcmitype/StillImage","dataSubtype":"","vettedStatus":"Unreviewed","dataRatings":{"1":0,"2":0,"3":0,"4":0,"5":0},"dataRating":2.5,"mimeType":"image/jpeg","title":"File:Die Gartenlaube (1883) b 045.jpg","language":"en","license":"http://creativecommons.org/publicdomain/mark/1.0/","source":"http://commons.wikimedia.org/wiki/File:Die_Gartenlaube_(1883)_b_045.jpg","mediaURL":"http://upload.wikimedia.org/wikipedia/commons/8/89/Die_Gartenlaube_%281883%29_b_045.jpg","eolMediaURL":"http://media.eol.org/content/2013/11/30/23/53596_orig.jpg","eolThumbnailURL":"http://media.eol.org/content/2013/11/30/23/53596_98_68.jpg","agents":[{"full_name":"Wikimedia Commons","homepage":"http://commons.wikimedia.org/","role":"provider"}],"references":[]},{"identifier":"2b0016688ccc3ee69db5031768891c0e","dataObjectVersionID":27183800,"dataType":"http://purl.org/dc/dcmitype/StillImage","dataSubtype":"","vettedStatus":"Unreviewed","dataRatings":{"1":0,"2":0,"3":0,"4":0,"5":0},"dataRating":2.5,"mimeType":"image/jpeg","title":"File:Archibald Thorburn Dormice 1903.jpg","language":"en","license":"http://creativecommons.org/publicdomain/mark/1.0/","source":"http://commons.wikimedia.org/wiki/File:Archibald_Thorburn_Dormice_1903.jpg","description":"Dormice. Signed and dated <i>Archibald Thorburn/1903</i>. Watercolour and bodycolour, 25 x 19.5 cm","mediaURL":"http://upload.wikimedia.org/wikipedia/commons/2/27/Archibald_Thorburn_Dormice_1903.jpg","eolMediaURL":"http://media.eol.org/content/2013/12/01/19/35630_orig.jpg","eolThumbnailURL":"http://media.eol.org/content/2013/12/01/19/35630_98_68.jpg","agents":[{"full_name":"Creator:Archibald Thorburn","homepage":"","role":"photographer"},{"full_name":"Wikimedia Commons","homepage":"http://commons.wikimedia.org/","role":"provider"}],"references":[]},{"identifier":"30480d03756c3fc9eb18dbafab9db487","dataObjectVersionID":32632156,"dataType":"http://purl.org/dc/dcmitype/StillImage","dataSubtype":"","vettedStatus":"Unreviewed","dataRatings":{"1":0,"2":0,"3":0,"4":0,"5":0},"dataRating":2.5,"mimeType":"image/jpeg","created":"2012-01-01T00:00:00Z","title":"Muscardinus_avellanarius2","language":"en","license":"http://creativecommons.org/licenses/by-nc-sa/2.0/","rightsHolder":"Camponotus Vagus","source":"https://www.flickr.com/photos/65645208@N05/7184698312/","description":"Tuscany, Italy","mediaURL":"https://farm8.staticflickr.com/7228/7184698312_37fa602c43_o.jpg","eolMediaURL":"http://media.eol.org/content/2015/05/20/03/10380_orig.jpg","eolThumbnailURL":"http://media.eol.org/content/2015/05/20/03/10380_98_68.jpg","agents":[{"full_name":"Camponotus Vagus","homepage":"http://www.flickr.com/photos/65645208@N05","role":"photographer"},{"full_name":"Flickr: EOL Images","homepage":"http://www.flickr.com/groups/encyclopedia_of_life","role":"provider"}],"references":[]},{"identifier":"7398240168f60996c55ea457acb85fa3","dataObjectVersionID":26811975,"dataType":"http://purl.org/dc/dcmitype/StillImage","dataSubtype":"","vettedStatus":"Unreviewed","dataRatings":{"1":0,"2":1,"3":0,"4":0,"5":0},"dataRating":2,"mimeType":"image/jpeg","title":"File:Muscardinus avellanarius 1.jpg","language":"en","license":"http://creativecommons.org/licenses/by-sa/3.0/","source":"http://commons.wikimedia.org/wiki/File:Muscardinus_avellanarius_1.jpg","description":"<i>Muscardinus avellanarius</i>, Moscardino, San Giorgio del Sannio , Località <i>I Marzani</i> (<a href='http://commons.wikimedia.org/wiki/Benevento'>Benevento</a>), <a href='http://commons.wikimedia.org/wiki/Italia'>Italia</a>","mediaURL":"http://upload.wikimedia.org/wikipedia/commons/a/a9/Muscardinus_avellanarius_1.jpg","eolMediaURL":"http://media.eol.org/content/2012/06/15/02/19580_orig.jpg","eolThumbnailURL":"http://media.eol.org/content/2012/06/15/02/19580_98_68.jpg","agents":[{"full_name":"Massimo L.","homepage":"","role":"photographer"},{"full_name":"Wikimedia Commons","homepage":"http://commons.wikimedia.org/","role":"provider"}],"references":[]},{"identifier":"6ad8c5e24d8e27e4f9d63a6e328b68b9","dataObjectVersionID":26811976,"dataType":"http://purl.org/dc/dcmitype/StillImage","dataSubtype":"","vettedStatus":"Unreviewed","dataRatings":{"1":0,"2":1,"3":0,"4":0,"5":0},"dataRating":2,"mimeType":"image/jpeg","title":"File:Muscardinus avellanarius 2.jpg","language":"en","license":"http://creativecommons.org/licenses/by-sa/3.0/","source":"http://commons.wikimedia.org/wiki/File:Muscardinus_avellanarius_2.jpg","description":"<i>Muscardinus avellanarius</i>, Moscardino, San Giorgio del Sannio , Località <i>I Marzani</i> (<a href='http://commons.wikimedia.org/wiki/Benevento'>Benevento</a>), <a href='http://commons.wikimedia.org/wiki/Italia'>Italia</a>","mediaURL":"http://upload.wikimedia.org/wikipedia/commons/2/27/Muscardinus_avellanarius_2.jpg","eolMediaURL":"http://media.eol.org/content/2012/06/15/02/14366_orig.jpg","eolThumbnailURL":"http://media.eol.org/content/2012/06/15/02/14366_98_68.jpg","agents":[{"full_name":"Massimo L.","homepage":"","role":"photographer"},{"full_name":"Wikimedia Commons","homepage":"http://commons.wikimedia.org/","role":"provider"}],"references":[]},{"identifier":"2787460001d8e467cf0c5d23f3a74199","dataObjectVersionID":26853569,"dataType":"http://purl.org/dc/dcmitype/StillImage","dataSubtype":"","vettedStatus":"Unreviewed","dataRatings":{"1":1,"2":0,"3":0,"4":0,"5":0},"dataRating":1,"mimeType":"image/jpeg","title":"File:Muscardinus avellanarius nestbox.JPG","language":"en","license":"http://creativecommons.org/licenses/by/3.0/","source":"http://commons.wikimedia.org/wiki/File:Muscardinus_avellanarius_nestbox.JPG","description":"<b>English:</b> 1=A nest of a <i>Muscardinus avellanarius</i> in a nest box in Interlaken, Switzerland. &nbsp;<b>German:</b> 1=Nest einer Haselmaus, <i>Muscardinus avellanarius</i> in einem Nistkasten im Wald. <br/>Das Photo stammt aus Interlaken, Schweiz.","mediaURL":"http://upload.wikimedia.org/wikipedia/commons/2/28/Muscardinus_avellanarius_nestbox.JPG","eolMediaURL":"http://media.eol.org/content/2012/06/15/02/37640_orig.jpg","eolThumbnailURL":"http://media.eol.org/content/2012/06/15/02/37640_98_68.jpg","agents":[{"full_name":"Wikimedia Commons","homepage":"http://commons.wikimedia.org/","role":"provider"}],"references":[]}]},"hierarchyEntries":{"sourceIdentifier":"6884431","taxonID":52571231,"parentNameUsageID":52571230,"taxonConceptID":327940,"scientificName":"Muscardinus avellanarius (Linnaeus, 1758)","taxonRank":"Species","source":"http://eol.org/pages/327940/hierarchy_entries/52571231/overview","nameAccordingTo":["Species 2000 & ITIS Catalogue of Life: April 2013","ITIS Global: The Integrated Taxonomic Information System by Orrell T. (custodian)"],"vernacularNames":[],"synonyms":[],"ancestors":[{"sourceIdentifier":"13021388","taxonID":51521761,"parentNameUsageID":0,"taxonConceptID":1,"scientificName":"Animalia","taxonRank":"kingdom","source":"http://eol.org/pages/1/hierarchy_entries/51521761/overview"},{"sourceIdentifier":"13021452","taxonID":52569917,"parentNameUsageID":51521761,"taxonConceptID":694,"scientificName":"Chordata","taxonRank":"phylum","source":"http://eol.org/pages/694/hierarchy_entries/52569917/overview"},{"sourceIdentifier":"13021748","taxonID":52569943,"parentNameUsageID":52569917,"taxonConceptID":1642,"scientificName":"Mammalia","taxonRank":"class","source":"http://eol.org/pages/1642/hierarchy_entries/52569943/overview"},{"sourceIdentifier":"13021791","taxonID":52570794,"parentNameUsageID":52569943,"taxonConceptID":8677,"scientificName":"Rodentia","taxonRank":"order","source":"http://eol.org/pages/8677/hierarchy_entries/52570794/overview"},{"sourceIdentifier":"13021814","taxonID":52571203,"parentNameUsageID":52570794,"taxonConceptID":8699,"scientificName":"Myoxidae","taxonRank":"family","source":"http://eol.org/pages/8699/hierarchy_entries/52571203/overview"},{"sourceIdentifier":"13111225","taxonID":52571230,"parentNameUsageID":52571203,"taxonConceptID":42259,"scientificName":"Muscardinus","taxonRank":"genus","source":"http://eol.org/pages/42259/hierarchy_entries/52571230/overview"}],"children":[]}}
+{
+  "pages": {
+    "taxonConcept": {
+      "identifier": 327940,
+      "scientificName": "Muscardinus avellanarius (Linnaeus, 1758)",
+      "richness_score": null,
+      "vernacularNames": [
+        {
+          "vernacularName": "dormouse",
+          "language": "en",
+          "eol_preferred": true
+        },
+        {
+          "vernacularName": "dormouse",
+          "language": "en",
+          "eol_preferred": false
+        },
+        {
+          "vernacularName": "hazel dormouse",
+          "language": "en",
+          "eol_preferred": false
+        },
+        {
+          "vernacularName": "Hazel dormouse",
+          "language": "en",
+          "eol_preferred": false
+        },
+        {
+          "vernacularName": "Common Dormouse",
+          "language": "en",
+          "eol_preferred": false
+        },
+        {
+          "vernacularName": "Common Hazel Dormouse",
+          "language": "en",
+          "eol_preferred": false
+        },
+        {
+          "vernacularName": "Common dormouse",
+          "language": "en",
+          "eol_preferred": false
+        },
+        {
+          "vernacularName": "Europäische Haselmaus",
+          "language": "de",
+          "eol_preferred": false
+        },
+        {
+          "vernacularName": "Haselmaus",
+          "language": "de",
+          "eol_preferred": false
+        },
+        {
+          "vernacularName": "Hazel Dormouse",
+          "language": "en",
+          "eol_preferred": false
+        },
+        {
+          "vernacularName": "Muscardin",
+          "language": "fr",
+          "eol_preferred": false
+        },
+        {
+          "vernacularName": "Muscardino",
+          "language": "es",
+          "eol_preferred": false
+        },
+        {
+          "vernacularName": "hazel dormouse",
+          "language": "en",
+          "eol_preferred": false
+        },
+        {
+          "vernacularName": "hazel dormouse",
+          "language": "en",
+          "eol_preferred": false
+        }
+      ],
+      "taxonConcepts": [
+        {
+          "identifier": 2734877,
+          "scientificName": "Muscardinus avellanarius",
+          "name": "Muscardinus avellanarius",
+          "nameAccordingTo": "Flickr BHL",
+          "canonicalForm": "<i>Muscardinus avellanarius</i>",
+          "sourceIdentifier": "6829ce90e5ecc06fd52aae3e01248f84"
+        },
+        {
+          "identifier": 7194010,
+          "scientificName": "Muscardinus avellanarius (Linnaeus, 1758)",
+          "name": "Muscardinus avellanarius (Linnaeus, 1758)",
+          "nameAccordingTo": "EOL Dynamic Hierarchy",
+          "canonicalForm": "<i>Muscardinus avellanarius</i>",
+          "sourceIdentifier": "-2420482",
+          "taxonRank": "species"
+        },
+        {
+          "identifier": 10234267,
+          "scientificName": "Muscardinus avellanarius",
+          "name": "Muscardinus avellanarius",
+          "nameAccordingTo": "iNaturalist",
+          "canonicalForm": "<i>Muscardinus avellanarius</i>",
+          "sourceIdentifier": "https://www.inaturalist.org/taxa/45856"
+        },
+        {
+          "identifier": 11147391,
+          "scientificName": "Muscardinus avellanarius",
+          "name": "Muscardinus avellanarius",
+          "nameAccordingTo": "United Kingdom Species List",
+          "canonicalForm": "<i>Muscardinus avellanarius</i>",
+          "sourceIdentifier": "T103222",
+          "taxonRank": "species"
+        },
+        {
+          "identifier": 13041071,
+          "scientificName": "Muscardinus avellanarius",
+          "name": "Muscardinus avellanarius",
+          "nameAccordingTo": "The Netherlands Species List",
+          "canonicalForm": "<i>Muscardinus avellanarius</i>",
+          "sourceIdentifier": "T106351",
+          "taxonRank": "species"
+        },
+        {
+          "identifier": 13102502,
+          "scientificName": "Muscardinus avellanarius",
+          "name": "Muscardinus avellanarius",
+          "nameAccordingTo": "Slovakia Species List",
+          "canonicalForm": "<i>Muscardinus avellanarius</i>",
+          "sourceIdentifier": "T102245",
+          "taxonRank": "species"
+        },
+        {
+          "identifier": 13126480,
+          "scientificName": "Muscardinus avellanarius",
+          "name": "Muscardinus avellanarius",
+          "nameAccordingTo": "Slovenia Species List",
+          "canonicalForm": "<i>Muscardinus avellanarius</i>",
+          "sourceIdentifier": "T110011",
+          "taxonRank": "species"
+        },
+        {
+          "identifier": 13339827,
+          "scientificName": "Muscardinus avellanarius",
+          "name": "Muscardinus avellanarius",
+          "nameAccordingTo": "Sweden Species List",
+          "canonicalForm": "<i>Muscardinus avellanarius</i>",
+          "sourceIdentifier": "T104023",
+          "taxonRank": "species"
+        },
+        {
+          "identifier": 13469136,
+          "scientificName": "Muscardinus avellanarius",
+          "name": "Muscardinus avellanarius",
+          "nameAccordingTo": "Switzerland Species List",
+          "canonicalForm": "<i>Muscardinus avellanarius</i>",
+          "sourceIdentifier": "T102284",
+          "taxonRank": "species"
+        },
+        {
+          "identifier": 13504120,
+          "scientificName": "Muscardinus avellanarius",
+          "name": "Muscardinus avellanarius",
+          "nameAccordingTo": "Turkey Species List",
+          "canonicalForm": "<i>Muscardinus avellanarius</i>",
+          "sourceIdentifier": "T104531",
+          "taxonRank": "species"
+        },
+        {
+          "identifier": 13537853,
+          "scientificName": "Muscardinus avellanarius",
+          "name": "Muscardinus avellanarius",
+          "nameAccordingTo": "Ukraine Species List",
+          "canonicalForm": "<i>Muscardinus avellanarius</i>",
+          "sourceIdentifier": "T105529",
+          "taxonRank": "species"
+        },
+        {
+          "identifier": 14279738,
+          "scientificName": "Muscardinus avellanarius",
+          "name": "Muscardinus avellanarius",
+          "nameAccordingTo": "Poland Species List",
+          "canonicalForm": "<i>Muscardinus avellanarius</i>",
+          "sourceIdentifier": "T101875",
+          "taxonRank": "species"
+        },
+        {
+          "identifier": 14354938,
+          "scientificName": "Muscardinus avellanarius",
+          "name": "Muscardinus avellanarius",
+          "nameAccordingTo": "Romania Species List",
+          "canonicalForm": "<i>Muscardinus avellanarius</i>",
+          "sourceIdentifier": "T102301",
+          "taxonRank": "species"
+        },
+        {
+          "identifier": 14535791,
+          "scientificName": "Muscardinus avellanarius",
+          "name": "Muscardinus avellanarius",
+          "nameAccordingTo": "Ireland Species List",
+          "canonicalForm": "<i>Muscardinus avellanarius</i>",
+          "sourceIdentifier": "T111970",
+          "taxonRank": "species"
+        },
+        {
+          "identifier": 14578682,
+          "scientificName": "Muscardinus avellanarius",
+          "name": "Muscardinus avellanarius",
+          "nameAccordingTo": "Italy Species List",
+          "canonicalForm": "<i>Muscardinus avellanarius</i>",
+          "sourceIdentifier": "T105667",
+          "taxonRank": "species"
+        },
+        {
+          "identifier": 14769814,
+          "scientificName": "Muscardinus avellanarius",
+          "name": "Muscardinus avellanarius",
+          "nameAccordingTo": "Luxembourg Species List",
+          "canonicalForm": "<i>Muscardinus avellanarius</i>",
+          "sourceIdentifier": "T103282",
+          "taxonRank": "species"
+        },
+        {
+          "identifier": 14952892,
+          "scientificName": "Muscardinus avellanarius",
+          "name": "Muscardinus avellanarius",
+          "nameAccordingTo": "Lithuania Species List",
+          "canonicalForm": "<i>Muscardinus avellanarius</i>",
+          "sourceIdentifier": "T101824",
+          "taxonRank": "species"
+        },
+        {
+          "identifier": 15163204,
+          "scientificName": "Muscardinus avellanarius",
+          "name": "Muscardinus avellanarius",
+          "nameAccordingTo": "Macedonia Species List",
+          "canonicalForm": "<i>Muscardinus avellanarius</i>",
+          "sourceIdentifier": "T102106",
+          "taxonRank": "species"
+        },
+        {
+          "identifier": 15244955,
+          "scientificName": "Muscardinus avellanarius",
+          "name": "Muscardinus avellanarius",
+          "nameAccordingTo": "France Species List",
+          "canonicalForm": "<i>Muscardinus avellanarius</i>",
+          "sourceIdentifier": "T105348",
+          "taxonRank": "species"
+        },
+        {
+          "identifier": 15307284,
+          "scientificName": "Muscardinus avellanarius",
+          "name": "Muscardinus avellanarius",
+          "nameAccordingTo": "Hungary Species List",
+          "canonicalForm": "<i>Muscardinus avellanarius</i>",
+          "sourceIdentifier": "T102140",
+          "taxonRank": "species"
+        },
+        {
+          "identifier": 15412380,
+          "scientificName": "Muscardinus avellanarius",
+          "name": "Muscardinus avellanarius",
+          "nameAccordingTo": "Estonia Species List",
+          "canonicalForm": "<i>Muscardinus avellanarius</i>",
+          "sourceIdentifier": "T106885",
+          "taxonRank": "species"
+        },
+        {
+          "identifier": 15578580,
+          "scientificName": "Muscardinus avellanarius",
+          "name": "Muscardinus avellanarius",
+          "nameAccordingTo": "Germany Species List",
+          "canonicalForm": "<i>Muscardinus avellanarius</i>",
+          "sourceIdentifier": "T102608",
+          "taxonRank": "species"
+        },
+        {
+          "identifier": 15990322,
+          "scientificName": "Muscardinus avellanarius",
+          "name": "Muscardinus avellanarius",
+          "nameAccordingTo": "Belgium Species List",
+          "canonicalForm": "<i>Muscardinus avellanarius</i>",
+          "sourceIdentifier": "T103747",
+          "taxonRank": "species"
+        },
+        {
+          "identifier": 17024543,
+          "scientificName": "Muscardinus avellanarius",
+          "name": "Muscardinus avellanarius",
+          "nameAccordingTo": "Austria Species List",
+          "canonicalForm": "<i>Muscardinus avellanarius</i>",
+          "sourceIdentifier": "T121724",
+          "taxonRank": "species"
+        },
+        {
+          "identifier": 17711276,
+          "scientificName": "Muscardinus avellanarius",
+          "name": "Muscardinus avellanarius",
+          "nameAccordingTo": "Pantheria",
+          "canonicalForm": "<i>Muscardinus avellanarius</i>",
+          "sourceIdentifier": "Muscardinus avellanarius"
+        },
+        {
+          "identifier": 18586569,
+          "scientificName": "Muscardinus avellanarius (Linnaeus, 1758)",
+          "name": "Muscardinus avellanarius (Linnaeus, 1758)",
+          "nameAccordingTo": "IUCN",
+          "canonicalForm": "<i>Muscardinus avellanarius</i>",
+          "sourceIdentifier": "13992"
+        },
+        {
+          "identifier": 19415098,
+          "scientificName": "Muscardinus avellanarius",
+          "name": "Muscardinus avellanarius",
+          "nameAccordingTo": "Denmark Species List",
+          "canonicalForm": "<i>Muscardinus avellanarius</i>",
+          "sourceIdentifier": "T120999",
+          "taxonRank": "species"
+        },
+        {
+          "identifier": 20930134,
+          "scientificName": "Muscardinus avellanarius",
+          "name": "Muscardinus avellanarius",
+          "nameAccordingTo": "Barcode of Life Data Systems",
+          "canonicalForm": "<i>Muscardinus avellanarius</i>",
+          "sourceIdentifier": "159784",
+          "taxonRank": "species"
+        },
+        {
+          "identifier": 21311060,
+          "scientificName": "Muscardinus avellanarius",
+          "name": "Muscardinus avellanarius",
+          "nameAccordingTo": "AnAge",
+          "canonicalForm": "<i>Muscardinus avellanarius</i>",
+          "sourceIdentifier": "74c4ae830598867578799745179941d0"
+        },
+        {
+          "identifier": 21425192,
+          "scientificName": "Muscardinus avellanarius",
+          "name": "Muscardinus avellanarius",
+          "nameAccordingTo": "Flickr Group",
+          "canonicalForm": "<i>Muscardinus avellanarius</i>",
+          "sourceIdentifier": "6829ce90e5ecc06fd52aae3e01248f84"
+        },
+        {
+          "identifier": 21547153,
+          "scientificName": "Muscardinus avellanarius",
+          "name": "Muscardinus avellanarius",
+          "nameAccordingTo": "Wikimedia Commons",
+          "canonicalForm": "<i>Muscardinus avellanarius</i>",
+          "sourceIdentifier": "Q207148",
+          "taxonRank": "species"
+        },
+        {
+          "identifier": 21636959,
+          "scientificName": null,
+          "name": null,
+          "nameAccordingTo": "Wikimedia Commons",
+          "canonicalForm": null,
+          "sourceIdentifier": "Q207148",
+          "taxonRank": "species"
+        },
+        {
+          "identifier": 23937636,
+          "scientificName": "Muscardinus avellanarius",
+          "name": "Muscardinus avellanarius",
+          "nameAccordingTo": "Wildfinder (WWF)",
+          "canonicalForm": "<i>Muscardinus avellanarius</i>",
+          "sourceIdentifier": "Muscardinus_avellanarius",
+          "taxonRank": "species"
+        },
+        {
+          "identifier": 24548292,
+          "scientificName": "Muscardinus avellanarius",
+          "name": "Muscardinus avellanarius",
+          "nameAccordingTo": "Russia Species List",
+          "canonicalForm": "<i>Muscardinus avellanarius</i>",
+          "sourceIdentifier": "T129616",
+          "taxonRank": "species"
+        },
+        {
+          "identifier": 24663309,
+          "scientificName": "Muscardinus avellanarius",
+          "name": "Muscardinus avellanarius",
+          "nameAccordingTo": "Global Biotic Interactions",
+          "canonicalForm": "<i>Muscardinus avellanarius</i>",
+          "sourceIdentifier": "EOL:327940",
+          "taxonRank": "species"
+        },
+        {
+          "identifier": 26029010,
+          "scientificName": "Muscardinus avellanarius",
+          "name": "Muscardinus avellanarius",
+          "nameAccordingTo": "AnAge articles",
+          "canonicalForm": "<i>Muscardinus avellanarius</i>",
+          "sourceIdentifier": "Muscardinus_avellanarius"
+        },
+        {
+          "identifier": 26081457,
+          "scientificName": "Muscardinus avellanarius",
+          "name": "Muscardinus avellanarius",
+          "nameAccordingTo": "Wikidata",
+          "canonicalForm": "<i>Muscardinus avellanarius</i>",
+          "sourceIdentifier": "Q207148",
+          "taxonRank": "species"
+        },
+        {
+          "identifier": 26242918,
+          "scientificName": "Muscardinus avellanarius",
+          "name": "Muscardinus avellanarius",
+          "nameAccordingTo": "wikipedia Italiano",
+          "canonicalForm": "<i>Muscardinus avellanarius</i>",
+          "sourceIdentifier": "Q207148",
+          "taxonRank": "species"
+        },
+        {
+          "identifier": 29214739,
+          "scientificName": "Muscardinus avellanarius",
+          "name": "Muscardinus avellanarius",
+          "nameAccordingTo": "wikipedia Español",
+          "canonicalForm": "<i>Muscardinus avellanarius</i>",
+          "sourceIdentifier": "Q207148",
+          "taxonRank": "species"
+        },
+        {
+          "identifier": 29409555,
+          "scientificName": "Muscardinus avellanarius",
+          "name": "Muscardinus avellanarius",
+          "nameAccordingTo": "Kissling et al, 2014",
+          "canonicalForm": "<i>Muscardinus avellanarius</i>",
+          "sourceIdentifier": "2579",
+          "taxonRank": "species"
+        },
+        {
+          "identifier": 30280896,
+          "scientificName": "Muscardinus avellanarius",
+          "name": "Muscardinus avellanarius",
+          "nameAccordingTo": "Paleobiology Database",
+          "canonicalForm": "<i>Muscardinus avellanarius</i>",
+          "sourceIdentifier": "104206",
+          "taxonRank": "species"
+        },
+        {
+          "identifier": 30706821,
+          "scientificName": "Muscardinus avellanarius (Linnaeus, 1758)",
+          "name": "Muscardinus avellanarius (Linnaeus, 1758)",
+          "nameAccordingTo": "Environments EOL",
+          "canonicalForm": "<i>Muscardinus avellanarius</i>",
+          "sourceIdentifier": "EOL:327940"
+        },
+        {
+          "identifier": 31083626,
+          "scientificName": "Muscardinus avellanarius",
+          "name": "Muscardinus avellanarius",
+          "nameAccordingTo": "wikipedia",
+          "canonicalForm": "<i>Muscardinus avellanarius</i>",
+          "sourceIdentifier": "Q207148",
+          "taxonRank": "species"
+        },
+        {
+          "identifier": 31390101,
+          "scientificName": "Muscardinus avellanarius",
+          "name": "Muscardinus avellanarius",
+          "nameAccordingTo": "Animal Diversity Web",
+          "canonicalForm": "<i>Muscardinus avellanarius</i>",
+          "sourceIdentifier": "Muscardinus_avellanarius"
+        },
+        {
+          "identifier": 31748403,
+          "scientificName": "Muscardinus avellanarius",
+          "name": "Muscardinus avellanarius",
+          "nameAccordingTo": "wikipedia 中文维基百科",
+          "canonicalForm": "<i>Muscardinus avellanarius</i>",
+          "sourceIdentifier": "Q207148",
+          "taxonRank": "species"
+        },
+        {
+          "identifier": 31863840,
+          "scientificName": "Muscardinus avellanarius",
+          "name": "Muscardinus avellanarius",
+          "nameAccordingTo": "wikipedia Français",
+          "canonicalForm": "<i>Muscardinus avellanarius</i>",
+          "sourceIdentifier": "Q207148",
+          "taxonRank": "species"
+        },
+        {
+          "identifier": 31961816,
+          "scientificName": "Muscardinus avellanarius",
+          "name": "Muscardinus avellanarius",
+          "nameAccordingTo": "wikipedia 日本語",
+          "canonicalForm": "<i>Muscardinus avellanarius</i>",
+          "sourceIdentifier": "Q207148",
+          "taxonRank": "species"
+        },
+        {
+          "identifier": 32073677,
+          "scientificName": "Muscardinus avellanarius",
+          "name": "Muscardinus avellanarius",
+          "nameAccordingTo": "wikipedia русскую Википедию",
+          "canonicalForm": "<i>Muscardinus avellanarius</i>",
+          "sourceIdentifier": "Q207148",
+          "taxonRank": "species"
+        },
+        {
+          "identifier": 32126319,
+          "scientificName": "Muscardinus avellanarius",
+          "name": "Muscardinus avellanarius",
+          "nameAccordingTo": "wikipedia 한국어 위키백과",
+          "canonicalForm": "<i>Muscardinus avellanarius</i>",
+          "sourceIdentifier": "Q207148",
+          "taxonRank": "species"
+        },
+        {
+          "identifier": 32256197,
+          "scientificName": "Muscardinus avellanarius",
+          "name": "Muscardinus avellanarius",
+          "nameAccordingTo": "wikipedia Deutsch",
+          "canonicalForm": "<i>Muscardinus avellanarius</i>",
+          "sourceIdentifier": "Q207148",
+          "taxonRank": "species"
+        }
+      ],
+      "dataObjects": [
+        {
+          "identifier": "EOL-media-18-https://www.inaturalist.org/photos/2661806",
+          "dataObjectVersionID": 3863913,
+          "dataType": "http://purl.org/dc/dcmitype/StillImage",
+          "dataSubtype": "jpg",
+          "vettedStatus": "Trusted",
+          "dataRatings": [],
+          "dataRating": "2.5",
+          "mimeType": "image/jpeg",
+          "height": "1600",
+          "width": "898",
+          "created": "2018-03-15T09:47:35.000Z",
+          "modified": "2018-10-19T19:20:13.000Z",
+          "license": "http://creativecommons.org/licenses/by-nc/4.0/",
+          "license_id": 7,
+          "rightsHolder": "umbi24",
+          "source": "https://www.inaturalist.org/photos/2661806",
+          "mediaURL": "https://static.inaturalist.org/photos/2661806/original.jpg?1447704901",
+          "eolMediaURL": "https://content.eol.org/data/media/31/bd/ca/18.https___www_inaturalist_org_photos_2661806.jpg",
+          "eolThumbnailURL": "https://content.eol.org/data/media/31/bd/ca/18.https___www_inaturalist_org_photos_2661806.98x68.jpg",
+          "agents": [
+            {
+              "full_name": "iNaturalist",
+              "homepage": null,
+              "role": "provider"
+            }
+          ]
+        },
+        {
+          "identifier": "EOL-media-18-https://www.inaturalist.org/photos/2687693",
+          "dataObjectVersionID": 3863914,
+          "dataType": "http://purl.org/dc/dcmitype/StillImage",
+          "dataSubtype": "jpg",
+          "vettedStatus": "Trusted",
+          "dataRatings": [],
+          "dataRating": "2.5",
+          "mimeType": "image/jpeg",
+          "height": "729",
+          "width": "640",
+          "created": "2018-03-15T09:47:35.000Z",
+          "modified": "2018-10-19T19:20:13.000Z",
+          "license": "http://creativecommons.org/licenses/by-sa/4.0/",
+          "license_id": 8,
+          "rightsHolder": "Mattia Menchetti",
+          "source": "https://www.inaturalist.org/photos/2687693",
+          "mediaURL": "https://static.inaturalist.org/photos/2687693/original.png?1448224245",
+          "eolMediaURL": "https://content.eol.org/data/media/31/e9/1f/18.https___www_inaturalist_org_photos_2687693.jpg",
+          "eolThumbnailURL": "https://content.eol.org/data/media/31/e9/1f/18.https___www_inaturalist_org_photos_2687693.98x68.jpg",
+          "agents": [
+            {
+              "full_name": "iNaturalist",
+              "homepage": null,
+              "role": "provider"
+            }
+          ]
+        },
+        {
+          "identifier": "EOL-media-18-https://www.inaturalist.org/photos/3024373",
+          "dataObjectVersionID": 3863915,
+          "dataType": "http://purl.org/dc/dcmitype/StillImage",
+          "dataSubtype": "jpg",
+          "vettedStatus": "Trusted",
+          "dataRatings": [],
+          "dataRating": "2.5",
+          "mimeType": "image/jpeg",
+          "height": "1200",
+          "width": "900",
+          "created": "2018-03-15T09:47:35.000Z",
+          "modified": "2018-10-19T19:20:13.000Z",
+          "license": "http://creativecommons.org/licenses/by-nc/4.0/",
+          "license_id": 7,
+          "rightsHolder": "Julien Renoult",
+          "source": "https://www.inaturalist.org/photos/3024373",
+          "mediaURL": "https://static.inaturalist.org/photos/3024373/original.JPG?1455661825",
+          "eolMediaURL": "https://content.eol.org/data/media/34/2e/6d/18.https___www_inaturalist_org_photos_3024373.jpg",
+          "eolThumbnailURL": "https://content.eol.org/data/media/34/2e/6d/18.https___www_inaturalist_org_photos_3024373.98x68.jpg",
+          "agents": [
+            {
+              "full_name": "iNaturalist",
+              "homepage": null,
+              "role": "provider"
+            }
+          ]
+        },
+        {
+          "identifier": "EOL-media-18-https://www.inaturalist.org/photos/3035058",
+          "dataObjectVersionID": 3863916,
+          "dataType": "http://purl.org/dc/dcmitype/StillImage",
+          "dataSubtype": "jpg",
+          "vettedStatus": "Trusted",
+          "dataRatings": [],
+          "dataRating": "2.5",
+          "mimeType": "image/jpeg",
+          "height": "644",
+          "width": "484",
+          "created": "2018-03-15T09:47:35.000Z",
+          "modified": "2018-10-19T19:20:13.000Z",
+          "license": "http://creativecommons.org/licenses/by-nc/4.0/",
+          "license_id": 7,
+          "rightsHolder": "lauragola",
+          "source": "https://www.inaturalist.org/photos/3035058",
+          "mediaURL": "https://static.inaturalist.org/photos/3035058/original.jpg?1455878075",
+          "eolMediaURL": "https://content.eol.org/data/media/34/40/2c/18.https___www_inaturalist_org_photos_3035058.jpg",
+          "eolThumbnailURL": "https://content.eol.org/data/media/34/40/2c/18.https___www_inaturalist_org_photos_3035058.98x68.jpg",
+          "agents": [
+            {
+              "full_name": "iNaturalist",
+              "homepage": null,
+              "role": "provider"
+            }
+          ]
+        },
+        {
+          "identifier": "EOL-media-18-https://www.inaturalist.org/photos/3062152",
+          "dataObjectVersionID": 3863917,
+          "dataType": "http://purl.org/dc/dcmitype/StillImage",
+          "dataSubtype": "jpg",
+          "vettedStatus": "Trusted",
+          "dataRatings": [],
+          "dataRating": "2.5",
+          "mimeType": "image/jpeg",
+          "height": "818",
+          "width": "609",
+          "created": "2018-03-15T09:47:35.000Z",
+          "modified": "2018-10-19T19:20:13.000Z",
+          "license": "http://creativecommons.org/licenses/by-nc/4.0/",
+          "license_id": 7,
+          "rightsHolder": "Flavio Rocchi",
+          "source": "https://www.inaturalist.org/photos/3062152",
+          "mediaURL": "https://static.inaturalist.org/photos/3062152/original.jpg?1456426855",
+          "description": "Two photo-trapped specimens on/near dormouse nest box",
+          "eolMediaURL": "https://content.eol.org/data/media/34/6c/31/18.https___www_inaturalist_org_photos_3062152.jpg",
+          "eolThumbnailURL": "https://content.eol.org/data/media/34/6c/31/18.https___www_inaturalist_org_photos_3062152.98x68.jpg",
+          "agents": [
+            {
+              "full_name": "iNaturalist",
+              "homepage": null,
+              "role": "provider"
+            }
+          ]
+        },
+        {
+          "identifier": "EOL-media-18-https://www.inaturalist.org/photos/3062164",
+          "dataObjectVersionID": 3863918,
+          "dataType": "http://purl.org/dc/dcmitype/StillImage",
+          "dataSubtype": "jpg",
+          "vettedStatus": "Trusted",
+          "dataRatings": [],
+          "dataRating": "2.5",
+          "mimeType": "image/jpeg",
+          "height": "819",
+          "width": "611",
+          "created": "2018-03-15T09:47:35.000Z",
+          "modified": "2018-10-19T19:20:13.000Z",
+          "license": "http://creativecommons.org/licenses/by-nc/4.0/",
+          "license_id": 7,
+          "rightsHolder": "Flavio Rocchi",
+          "source": "https://www.inaturalist.org/photos/3062164",
+          "mediaURL": "https://static.inaturalist.org/photos/3062164/original.png?1456426961",
+          "description": "Two photo-trapped specimens on/near dormouse nest box",
+          "eolMediaURL": "https://content.eol.org/data/media/34/6c/38/18.https___www_inaturalist_org_photos_3062164.jpg",
+          "eolThumbnailURL": "https://content.eol.org/data/media/34/6c/38/18.https___www_inaturalist_org_photos_3062164.98x68.jpg",
+          "agents": [
+            {
+              "full_name": "iNaturalist",
+              "homepage": null,
+              "role": "provider"
+            }
+          ]
+        },
+        {
+          "identifier": "EOL-media-18-https://www.inaturalist.org/photos/3462734",
+          "dataObjectVersionID": 3863919,
+          "dataType": "http://purl.org/dc/dcmitype/StillImage",
+          "dataSubtype": "jpg",
+          "vettedStatus": "Trusted",
+          "dataRatings": [],
+          "dataRating": "2.5",
+          "mimeType": "image/jpeg",
+          "height": "2048",
+          "width": "1536",
+          "created": "2018-03-15T09:47:35.000Z",
+          "modified": "2018-10-19T19:20:13.000Z",
+          "license": "http://creativecommons.org/licenses/by-nc/4.0/",
+          "license_id": 7,
+          "rightsHolder": "Dino Biancolini",
+          "source": "https://www.inaturalist.org/photos/3462734",
+          "mediaURL": "https://static.inaturalist.org/photos/3462734/original.JPG?1461410574",
+          "description": "Old nest",
+          "eolMediaURL": "https://content.eol.org/data/media/36/d8/fb/18.https___www_inaturalist_org_photos_3462734.jpg",
+          "eolThumbnailURL": "https://content.eol.org/data/media/36/d8/fb/18.https___www_inaturalist_org_photos_3462734.98x68.jpg",
+          "agents": [
+            {
+              "full_name": "iNaturalist",
+              "homepage": null,
+              "role": "provider"
+            }
+          ]
+        },
+        {
+          "identifier": "EOL-media-18-https://www.inaturalist.org/photos/5190229",
+          "dataObjectVersionID": 3863920,
+          "dataType": "http://purl.org/dc/dcmitype/StillImage",
+          "dataSubtype": "jpg",
+          "vettedStatus": "Trusted",
+          "dataRatings": [],
+          "dataRating": "2.5",
+          "mimeType": "image/jpeg",
+          "created": "2018-03-15T09:47:35.000Z",
+          "modified": "2018-10-19T19:20:13.000Z",
+          "license": "http://creativecommons.org/licenses/by-nc/4.0/",
+          "license_id": 7,
+          "rightsHolder": "Almantas Kulbis",
+          "source": "https://www.inaturalist.org/photos/5190229",
+          "mediaURL": "https://static.inaturalist.org/photos/5190229/original.jpeg?1476177851",
+          "eolMediaURL": "https://content.eol.org/data/media/40/c5/f1/18.https___www_inaturalist_org_photos_5190229.jpg",
+          "eolThumbnailURL": "https://content.eol.org/data/media/40/c5/f1/18.https___www_inaturalist_org_photos_5190229.98x68.jpg",
+          "agents": [
+            {
+              "full_name": "iNaturalist",
+              "homepage": null,
+              "role": "provider"
+            }
+          ]
+        },
+        {
+          "identifier": "EOL-media-18-https://www.inaturalist.org/photos/5190230",
+          "dataObjectVersionID": 3863921,
+          "dataType": "http://purl.org/dc/dcmitype/StillImage",
+          "dataSubtype": "jpg",
+          "vettedStatus": "Trusted",
+          "dataRatings": [],
+          "dataRating": "2.5",
+          "mimeType": "image/jpeg",
+          "created": "2018-03-15T09:47:35.000Z",
+          "modified": "2018-10-19T19:20:13.000Z",
+          "license": "http://creativecommons.org/licenses/by-nc/4.0/",
+          "license_id": 7,
+          "rightsHolder": "Almantas Kulbis",
+          "source": "https://www.inaturalist.org/photos/5190230",
+          "mediaURL": "https://static.inaturalist.org/photos/5190230/original.jpeg?1476177858",
+          "eolMediaURL": "https://content.eol.org/data/media/40/c5/f2/18.https___www_inaturalist_org_photos_5190230.jpg",
+          "eolThumbnailURL": "https://content.eol.org/data/media/40/c5/f2/18.https___www_inaturalist_org_photos_5190230.98x68.jpg",
+          "agents": [
+            {
+              "full_name": "iNaturalist",
+              "homepage": null,
+              "role": "provider"
+            }
+          ]
+        },
+        {
+          "identifier": "EOL-media-18-https://www.inaturalist.org/photos/5190231",
+          "dataObjectVersionID": 3863922,
+          "dataType": "http://purl.org/dc/dcmitype/StillImage",
+          "dataSubtype": "jpg",
+          "vettedStatus": "Trusted",
+          "dataRatings": [],
+          "dataRating": "2.5",
+          "mimeType": "image/jpeg",
+          "created": "2018-03-15T09:47:35.000Z",
+          "modified": "2018-10-19T19:20:13.000Z",
+          "license": "http://creativecommons.org/licenses/by-nc/4.0/",
+          "license_id": 7,
+          "rightsHolder": "Almantas Kulbis",
+          "source": "https://www.inaturalist.org/photos/5190231",
+          "mediaURL": "https://static.inaturalist.org/photos/5190231/original.jpeg?1476177866",
+          "eolMediaURL": "https://content.eol.org/data/media/40/c5/f3/18.https___www_inaturalist_org_photos_5190231.jpg",
+          "eolThumbnailURL": "https://content.eol.org/data/media/40/c5/f3/18.https___www_inaturalist_org_photos_5190231.98x68.jpg",
+          "agents": [
+            {
+              "full_name": "iNaturalist",
+              "homepage": null,
+              "role": "provider"
+            }
+          ]
+        },
+        {
+          "identifier": "EOL-media-18-https://www.inaturalist.org/photos/6350259",
+          "dataObjectVersionID": 3863923,
+          "dataType": "http://purl.org/dc/dcmitype/StillImage",
+          "dataSubtype": "jpg",
+          "vettedStatus": "Trusted",
+          "dataRatings": [],
+          "dataRating": "2.5",
+          "mimeType": "image/jpeg",
+          "created": "2018-03-15T09:47:35.000Z",
+          "modified": "2018-10-19T19:20:13.000Z",
+          "license": "http://creativecommons.org/licenses/by-nc/4.0/",
+          "license_id": 7,
+          "rightsHolder": "Emiliano Mori",
+          "source": "https://www.inaturalist.org/photos/6350259",
+          "mediaURL": "https://static.inaturalist.org/photos/6350259/original.jpeg?1487760827",
+          "eolMediaURL": "https://content.eol.org/data/media/47/ea/81/18.https___www_inaturalist_org_photos_6350259.jpg",
+          "eolThumbnailURL": "https://content.eol.org/data/media/47/ea/81/18.https___www_inaturalist_org_photos_6350259.98x68.jpg",
+          "agents": [
+            {
+              "full_name": "iNaturalist",
+              "homepage": null,
+              "role": "provider"
+            }
+          ]
+        },
+        {
+          "identifier": "EOL-media-18-https://www.inaturalist.org/photos/6375046",
+          "dataObjectVersionID": 3863924,
+          "dataType": "http://purl.org/dc/dcmitype/StillImage",
+          "dataSubtype": "jpg",
+          "vettedStatus": "Trusted",
+          "dataRatings": [],
+          "dataRating": "2.5",
+          "mimeType": "image/jpeg",
+          "created": "2018-03-15T09:47:35.000Z",
+          "modified": "2018-10-19T19:20:13.000Z",
+          "license": "http://creativecommons.org/licenses/by-nc/4.0/",
+          "license_id": 7,
+          "rightsHolder": "fabio_giuseppe",
+          "source": "https://www.inaturalist.org/photos/6375046",
+          "mediaURL": "https://static.inaturalist.org/photos/6375046/original.jpg?1487972255",
+          "description": "trovato attivo alle ore 14.00 circa in bosco",
+          "eolMediaURL": "https://content.eol.org/data/media/48/11/ca/18.https___www_inaturalist_org_photos_6375046.jpg",
+          "eolThumbnailURL": "https://content.eol.org/data/media/48/11/ca/18.https___www_inaturalist_org_photos_6375046.98x68.jpg",
+          "agents": [
+            {
+              "full_name": "iNaturalist",
+              "homepage": null,
+              "role": "provider"
+            }
+          ]
+        },
+        {
+          "identifier": "EOL-media-18-https://www.inaturalist.org/photos/6461989",
+          "dataObjectVersionID": 3863925,
+          "dataType": "http://purl.org/dc/dcmitype/StillImage",
+          "dataSubtype": "jpg",
+          "vettedStatus": "Trusted",
+          "dataRatings": [],
+          "dataRating": "2.5",
+          "mimeType": "image/jpeg",
+          "created": "2018-03-15T09:47:35.000Z",
+          "modified": "2018-10-19T19:20:13.000Z",
+          "license": "http://creativecommons.org/licenses/by-nc/4.0/",
+          "license_id": 7,
+          "rightsHolder": "fabio_giuseppe",
+          "source": "https://www.inaturalist.org/photos/6461989",
+          "mediaURL": "https://static.inaturalist.org/photos/6461989/original.jpg?1488697874",
+          "description": "trovato attivo alle ore 14.00 circa in bosco",
+          "eolMediaURL": "https://content.eol.org/data/media/48/a2/53/18.https___www_inaturalist_org_photos_6461989.jpg",
+          "eolThumbnailURL": "https://content.eol.org/data/media/48/a2/53/18.https___www_inaturalist_org_photos_6461989.98x68.jpg",
+          "agents": [
+            {
+              "full_name": "iNaturalist",
+              "homepage": null,
+              "role": "provider"
+            }
+          ]
+        },
+        {
+          "identifier": "EOL-media-18-https://www.inaturalist.org/photos/6620915",
+          "dataObjectVersionID": 3863926,
+          "dataType": "http://purl.org/dc/dcmitype/StillImage",
+          "dataSubtype": "jpg",
+          "vettedStatus": "Trusted",
+          "dataRatings": [],
+          "dataRating": "2.5",
+          "mimeType": "image/jpeg",
+          "created": "2018-03-15T09:47:35.000Z",
+          "modified": "2018-10-19T19:20:13.000Z",
+          "license": "http://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_id": 9,
+          "rightsHolder": "mak",
+          "source": "https://www.inaturalist.org/photos/6620915",
+          "mediaURL": "https://static.inaturalist.org/photos/6620915/original.jpg?1489864875",
+          "eolMediaURL": "https://content.eol.org/data/media/49/9e/89/18.https___www_inaturalist_org_photos_6620915.jpg",
+          "eolThumbnailURL": "https://content.eol.org/data/media/49/9e/89/18.https___www_inaturalist_org_photos_6620915.98x68.jpg",
+          "agents": [
+            {
+              "full_name": "iNaturalist",
+              "homepage": null,
+              "role": "provider"
+            }
+          ]
+        },
+        {
+          "identifier": "EOL-media-18-https://www.inaturalist.org/photos/6620977",
+          "dataObjectVersionID": 3863927,
+          "dataType": "http://purl.org/dc/dcmitype/StillImage",
+          "dataSubtype": "jpg",
+          "vettedStatus": "Trusted",
+          "dataRatings": [],
+          "dataRating": "2.5",
+          "mimeType": "image/jpeg",
+          "created": "2018-03-15T09:47:35.000Z",
+          "modified": "2018-10-19T19:20:13.000Z",
+          "license": "http://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_id": 9,
+          "rightsHolder": "mak",
+          "source": "https://www.inaturalist.org/photos/6620977",
+          "mediaURL": "https://static.inaturalist.org/photos/6620977/original.jpg?1489865253",
+          "description": "nido",
+          "eolMediaURL": "https://content.eol.org/data/media/49/9e/9c/18.https___www_inaturalist_org_photos_6620977.jpg",
+          "eolThumbnailURL": "https://content.eol.org/data/media/49/9e/9c/18.https___www_inaturalist_org_photos_6620977.98x68.jpg",
+          "agents": [
+            {
+              "full_name": "iNaturalist",
+              "homepage": null,
+              "role": "provider"
+            }
+          ]
+        },
+        {
+          "identifier": "EOL-media-18-https://www.inaturalist.org/photos/6622083",
+          "dataObjectVersionID": 3863928,
+          "dataType": "http://purl.org/dc/dcmitype/StillImage",
+          "dataSubtype": "jpg",
+          "vettedStatus": "Trusted",
+          "dataRatings": [],
+          "dataRating": "2.5",
+          "mimeType": "image/jpeg",
+          "created": "2018-03-15T09:47:35.000Z",
+          "modified": "2018-10-19T19:20:13.000Z",
+          "license": "http://creativecommons.org/licenses/by-nc/4.0/",
+          "license_id": 7,
+          "rightsHolder": "Jakub PeÅka",
+          "source": "https://www.inaturalist.org/photos/6622083",
+          "mediaURL": "https://static.inaturalist.org/photos/6622083/original.jpeg?1489871536",
+          "description": "Quite common in the forest",
+          "eolMediaURL": "https://content.eol.org/data/media/49/a0/6e/18.https___www_inaturalist_org_photos_6622083.jpg",
+          "eolThumbnailURL": "https://content.eol.org/data/media/49/a0/6e/18.https___www_inaturalist_org_photos_6622083.98x68.jpg",
+          "agents": [
+            {
+              "full_name": "iNaturalist",
+              "homepage": null,
+              "role": "provider"
+            }
+          ]
+        },
+        {
+          "identifier": "EOL-media-18-https://www.inaturalist.org/photos/6699507",
+          "dataObjectVersionID": 3863929,
+          "dataType": "http://purl.org/dc/dcmitype/StillImage",
+          "dataSubtype": "jpg",
+          "vettedStatus": "Trusted",
+          "dataRatings": [],
+          "dataRating": "2.5",
+          "mimeType": "image/jpeg",
+          "created": "2018-03-15T09:47:35.000Z",
+          "modified": "2018-10-19T19:20:13.000Z",
+          "license": "http://creativecommons.org/licenses/by/4.0/",
+          "license_id": 10,
+          "rightsHolder": "Francesco Cecere",
+          "source": "https://www.inaturalist.org/photos/6699507",
+          "mediaURL": "https://static.inaturalist.org/photos/6699507/original.jpeg?1490377628",
+          "description": "3 es. in un nido artificiale",
+          "eolMediaURL": "https://content.eol.org/data/media/4a/16/a4/18.https___www_inaturalist_org_photos_6699507.jpg",
+          "eolThumbnailURL": "https://content.eol.org/data/media/4a/16/a4/18.https___www_inaturalist_org_photos_6699507.98x68.jpg",
+          "agents": [
+            {
+              "full_name": "iNaturalist",
+              "homepage": null,
+              "role": "provider"
+            }
+          ]
+        },
+        {
+          "identifier": "EOL-media-18-https://www.inaturalist.org/photos/6699537",
+          "dataObjectVersionID": 3863930,
+          "dataType": "http://purl.org/dc/dcmitype/StillImage",
+          "dataSubtype": "jpg",
+          "vettedStatus": "Trusted",
+          "dataRatings": [],
+          "dataRating": "2.5",
+          "mimeType": "image/jpeg",
+          "created": "2018-03-15T09:47:35.000Z",
+          "modified": "2018-10-19T19:20:13.000Z",
+          "license": "http://creativecommons.org/licenses/by/4.0/",
+          "license_id": 10,
+          "rightsHolder": "Francesco Cecere",
+          "source": "https://www.inaturalist.org/photos/6699537",
+          "mediaURL": "https://static.inaturalist.org/photos/6699537/original.jpeg?1490377746",
+          "description": "3 es. in un nido artificiale",
+          "eolMediaURL": "https://content.eol.org/data/media/4a/16/b3/18.https___www_inaturalist_org_photos_6699537.jpg",
+          "eolThumbnailURL": "https://content.eol.org/data/media/4a/16/b3/18.https___www_inaturalist_org_photos_6699537.98x68.jpg",
+          "agents": [
+            {
+              "full_name": "iNaturalist",
+              "homepage": null,
+              "role": "provider"
+            }
+          ]
+        },
+        {
+          "identifier": "EOL-media-18-https://www.inaturalist.org/photos/6732523",
+          "dataObjectVersionID": 3863931,
+          "dataType": "http://purl.org/dc/dcmitype/StillImage",
+          "dataSubtype": "jpg",
+          "vettedStatus": "Trusted",
+          "dataRatings": [],
+          "dataRating": "2.5",
+          "mimeType": "image/jpeg",
+          "created": "2018-03-15T09:47:35.000Z",
+          "modified": "2018-10-19T19:20:13.000Z",
+          "license": "http://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_id": 9,
+          "rightsHolder": "mak",
+          "source": "https://www.inaturalist.org/photos/6732523",
+          "mediaURL": "https://static.inaturalist.org/photos/6732523/original.jpg?1490555931",
+          "eolMediaURL": "https://content.eol.org/data/media/4a/45/78/18.https___www_inaturalist_org_photos_6732523.jpg",
+          "eolThumbnailURL": "https://content.eol.org/data/media/4a/45/78/18.https___www_inaturalist_org_photos_6732523.98x68.jpg",
+          "agents": [
+            {
+              "full_name": "iNaturalist",
+              "homepage": null,
+              "role": "provider"
+            }
+          ]
+        },
+        {
+          "identifier": "EOL-media-542-3977566300",
+          "dataObjectVersionID": 6721214,
+          "dataType": "http://purl.org/dc/dcmitype/StillImage",
+          "dataSubtype": "jpg",
+          "vettedStatus": "Trusted",
+          "dataRatings": [],
+          "dataRating": "2.5",
+          "mimeType": "image/jpeg",
+          "created": "2018-05-23T13:26:13.000Z",
+          "modified": "2018-10-20T02:45:59.000Z",
+          "title": "Muscardinus Avellanarius",
+          "license": "http://creativecommons.org/licenses/by-sa/2.0/",
+          "license_id": 17,
+          "rightsHolder": "Alexandre Dulaunoy",
+          "source": "https://www.flickr.com/photos/adulau/3977566300/",
+          "mediaURL": "https://farm4.staticflickr.com/3452/3977566300_6d887c07ac_o.jpg",
+          "description": "Muscardinus Avellanarius found dead on a road in Neufchateau, Belgium. I hope to see one alive next time...Un muscardin trouv mort sur une route de Neufchateau. J'espre en voir un vivant dans le future...",
+          "eolMediaURL": "https://content.eol.org/data/media/7f/ca/4b/542.3977566300.jpg",
+          "eolThumbnailURL": "https://content.eol.org/data/media/7f/ca/4b/542.3977566300.98x68.jpg",
+          "agents": [
+            {
+              "full_name": "<a href='http://www.flickr.com/photos/31797858@N00'>Alexandre Dulaunoy</a>",
+              "homepage": "http://www.flickr.com/photos/31797858@N00",
+              "role": "photographer"
+            },
+            {
+              "full_name": "Flickr Group",
+              "homepage": null,
+              "role": "provider"
+            }
+          ]
+        },
+        {
+          "identifier": "EOL-media-542-6245061840",
+          "dataObjectVersionID": 6721215,
+          "dataType": "http://purl.org/dc/dcmitype/StillImage",
+          "dataSubtype": "jpg",
+          "vettedStatus": "Trusted",
+          "dataRatings": [],
+          "dataRating": "2.5",
+          "mimeType": "image/jpeg",
+          "created": "2018-05-23T13:26:13.000Z",
+          "modified": "2018-10-20T02:45:59.000Z",
+          "title": "Muscardinus avellanarius",
+          "license": "http://creativecommons.org/licenses/by-nc-sa/2.0/",
+          "license_id": 4,
+          "rightsHolder": "Camponotus Vagus",
+          "source": "https://www.flickr.com/photos/65645208@N05/6245061840/",
+          "mediaURL": "https://farm7.staticflickr.com/6053/6245061840_6722a19c57_o.jpg",
+          "description": "Tuscany, Italy",
+          "eolMediaURL": "https://content.eol.org/data/media/80/90/f8/542.6245061840.jpg",
+          "eolThumbnailURL": "https://content.eol.org/data/media/80/90/f8/542.6245061840.98x68.jpg",
+          "agents": [
+            {
+              "full_name": "<a href='http://www.flickr.com/photos/65645208@N05'>Camponotus Vagus</a>",
+              "homepage": "http://www.flickr.com/photos/65645208@N05",
+              "role": "photographer"
+            },
+            {
+              "full_name": "Flickr Group",
+              "homepage": null,
+              "role": "provider"
+            }
+          ]
+        },
+        {
+          "identifier": "EOL-media-542-7109309571",
+          "dataObjectVersionID": 6721216,
+          "dataType": "http://purl.org/dc/dcmitype/StillImage",
+          "dataSubtype": "jpg",
+          "vettedStatus": "Trusted",
+          "dataRatings": [],
+          "dataRating": "2.5",
+          "mimeType": "image/jpeg",
+          "created": "2018-05-23T13:26:13.000Z",
+          "modified": "2018-10-24T12:38:06.000Z",
+          "title": "n168_w1150",
+          "license": "http://creativecommons.org/licenses/by/2.0/",
+          "license_id": 3,
+          "rightsHolder": "Biodiversity Heritage Library",
+          "source": "https://www.flickr.com/photos/biodivlibrary/7109309571/",
+          "mediaURL": "https://farm8.staticflickr.com/7221/7109309571_39e34d7987_o.jpg",
+          "description": "The class Mammalia /.London :Printed for Geo. B. Whittaker,1827..<a href=\"http://biodiversitylibrary.org/page/33268050\">biodiversitylibrary.org/page/33268050</a>",
+          "eolMediaURL": "https://content.eol.org/data/media/80/ed/0d/542.7109309571.jpg",
+          "eolThumbnailURL": "https://content.eol.org/data/media/80/ed/0d/542.7109309571.98x68.jpg",
+          "agents": [
+            {
+              "full_name": "<a href='http://www.flickr.com/photos/61021753@N02'>Biodiversity Heritage Library</a>",
+              "homepage": "http://www.flickr.com/photos/61021753@N02",
+              "role": "photographer"
+            },
+            {
+              "full_name": "Flickr Group",
+              "homepage": null,
+              "role": "provider"
+            }
+          ]
+        },
+        {
+          "identifier": "EOL-media-542-7184697430",
+          "dataObjectVersionID": 6721217,
+          "dataType": "http://purl.org/dc/dcmitype/StillImage",
+          "dataSubtype": "jpg",
+          "vettedStatus": "Trusted",
+          "dataRatings": [],
+          "dataRating": "2.5",
+          "mimeType": "image/jpeg",
+          "created": "2018-05-23T13:26:13.000Z",
+          "modified": "2018-10-20T02:45:59.000Z",
+          "title": "Muscardinus avellanarius",
+          "license": "http://creativecommons.org/licenses/by-nc-sa/2.0/",
+          "license_id": 4,
+          "rightsHolder": "Camponotus Vagus",
+          "source": "https://www.flickr.com/photos/65645208@N05/7184697430/",
+          "mediaURL": "https://farm6.staticflickr.com/5031/7184697430_372d24fcfb_o.jpg",
+          "description": "The only way to feed it, a little bit of milk on the finger tip.Tuscany, Italy",
+          "eolMediaURL": "https://content.eol.org/data/media/80/f2/7c/542.7184697430.jpg",
+          "eolThumbnailURL": "https://content.eol.org/data/media/80/f2/7c/542.7184697430.98x68.jpg",
+          "agents": [
+            {
+              "full_name": "<a href='http://www.flickr.com/photos/65645208@N05'>Camponotus Vagus</a>",
+              "homepage": "http://www.flickr.com/photos/65645208@N05",
+              "role": "photographer"
+            },
+            {
+              "full_name": "Flickr Group",
+              "homepage": null,
+              "role": "provider"
+            }
+          ]
+        },
+        {
+          "identifier": "EOL-media-542-7184698312",
+          "dataObjectVersionID": 6721218,
+          "dataType": "http://purl.org/dc/dcmitype/StillImage",
+          "dataSubtype": "jpg",
+          "vettedStatus": "Trusted",
+          "dataRatings": [],
+          "dataRating": "2.5",
+          "mimeType": "image/jpeg",
+          "created": "2018-05-23T13:26:13.000Z",
+          "modified": "2018-10-20T02:45:59.000Z",
+          "title": "Muscardinus_avellanarius2",
+          "license": "http://creativecommons.org/licenses/by-nc-sa/2.0/",
+          "license_id": 4,
+          "rightsHolder": "Camponotus Vagus",
+          "source": "https://www.flickr.com/photos/65645208@N05/7184698312/",
+          "mediaURL": "https://farm8.staticflickr.com/7228/7184698312_37fa602c43_o.jpg",
+          "description": "Tuscany, Italy",
+          "eolMediaURL": "https://content.eol.org/data/media/80/f2/7d/542.7184698312.jpg",
+          "eolThumbnailURL": "https://content.eol.org/data/media/80/f2/7d/542.7184698312.98x68.jpg",
+          "agents": [
+            {
+              "full_name": "<a href='http://www.flickr.com/photos/65645208@N05'>Camponotus Vagus</a>",
+              "homepage": "http://www.flickr.com/photos/65645208@N05",
+              "role": "photographer"
+            },
+            {
+              "full_name": "Flickr Group",
+              "homepage": null,
+              "role": "provider"
+            }
+          ]
+        },
+        {
+          "identifier": "EOL-media-509-19281955",
+          "dataObjectVersionID": 7416264,
+          "dataType": "http://purl.org/dc/dcmitype/StillImage",
+          "dataSubtype": "jpg",
+          "vettedStatus": "Trusted",
+          "dataRatings": [],
+          "dataRating": "2.5",
+          "mimeType": "image/jpeg",
+          "created": "2018-04-05T10:24:41.000Z",
+          "modified": "2018-10-24T13:01:49.000Z",
+          "title": "Ghiro a Sasso Pisano.JPG",
+          "license": "http://creativecommons.org/licenses/by-sa/3.0/",
+          "license_id": 12,
+          "source": "https://commons.wikimedia.org/wiki/File:Ghiro_a_Sasso_Pisano.JPG",
+          "mediaURL": "https://upload.wikimedia.org/wikipedia/commons/5/54/Ghiro_a_Sasso_Pisano.JPG",
+          "description": "Summary[<a href=\"https://commons.wikimedia.org/w/index.php?title=API&amp;action=edit&amp;section=1\" title=\"Edit section: Summary\">edit</a>]   DescriptionAPI  English: dormouse in Sasso Pisano    Date 01- maggio 2012   Source Own work   Author <a href=\"https://commons.wikimedia.org/w/index.php?title=User:Edatoscana&amp;action=edit&amp;redlink=1\" title=\"User:Edatoscana\">Sasso Pisano</a>   Sasso Pisano Licensing[<a href=\"https://commons.wikimedia.org/w/index.php?title=API&amp;action=edit&amp;section=2\" title=\"Edit section: Licensing\">edit</a>]      <br>  This file is licensed under the <a href=\"https://en.wikipedia.org/wiki/en:Creative_Commons\" title=\"w:en:Creative Commons\">Creative Commons</a> <a href=\"http://creativecommons.org/licenses/by-sa/3.0/deed.en\">Attribution-Share Alike 3.0 Unported</a> license.        https://creativecommons.org/licenses/by-sa/3.0 CC BY-SA 3.0 Creative Commons Attribution-Share Alike 3.0 truetrue      ",
+          "eolMediaURL": "https://content.eol.org/data/media/57/22/82/509.19281955.jpg",
+          "eolThumbnailURL": "https://content.eol.org/data/media/57/22/82/509.19281955.98x68.jpg",
+          "agents": [
+            {
+              "full_name": "<a href='https://commons.wikimedia.org/wiki/User:AkBot'>AkBot</a>",
+              "homepage": "https://commons.wikimedia.org/wiki/User:AkBot",
+              "role": "source"
+            },
+            {
+              "full_name": "<a href='https://commons.wikimedia.org/wiki/User:AkBot'>AkBot</a>",
+              "homepage": "https://commons.wikimedia.org/wiki/User:AkBot",
+              "role": "source"
+            },
+            {
+              "full_name": "Wikimedia Commons",
+              "homepage": null,
+              "role": "provider"
+            }
+          ]
+        },
+        {
+          "identifier": "EOL-media-509-31307187",
+          "dataObjectVersionID": 7416265,
+          "dataType": "http://purl.org/dc/dcmitype/StillImage",
+          "dataSubtype": "jpg",
+          "vettedStatus": "Trusted",
+          "dataRatings": [],
+          "dataRating": "2.5",
+          "mimeType": "image/jpeg",
+          "created": "2018-04-05T10:24:41.000Z",
+          "modified": "2018-10-24T13:01:49.000Z",
+          "title": "Muscardinus avellanarius au jardin jungle.jpg",
+          "license": "http://creativecommons.org/licenses/by/3.0/",
+          "license_id": 11,
+          "source": "https://commons.wikimedia.org/wiki/File:Muscardinus_avellanarius_au_jardin_jungle.jpg",
+          "mediaURL": "https://upload.wikimedia.org/wikipedia/commons/a/a6/Muscardinus_avellanarius_au_jardin_jungle.jpg",
+          "description": "Summary[<a href=\"https://commons.wikimedia.org/w/index.php?title=API&amp;action=edit&amp;section=1\" title=\"Edit section: Summary\">edit</a>]   DescriptionAPI  FranÃ§ais : Muscardinus avellanarius, muscardin    Date 25 September 2005, 11:54:24   Source Own work   Author <a href=\"https://commons.wikimedia.org/w/index.php?title=User:Karlostachys&amp;action=edit&amp;redlink=1\" title=\"User:Karlostachys\">Karlostachys</a>  ",
+          "eolMediaURL": "https://content.eol.org/data/media/59/86/f9/509.31307187.jpg",
+          "eolThumbnailURL": "https://content.eol.org/data/media/59/86/f9/509.31307187.98x68.jpg",
+          "agents": [
+            {
+              "full_name": "<a href='https://commons.wikimedia.org/wiki/User:AkBot'>AkBot</a>",
+              "homepage": "https://commons.wikimedia.org/wiki/User:AkBot",
+              "role": "source"
+            },
+            {
+              "full_name": "<a href='https://commons.wikimedia.org/wiki/User:AkBot'>AkBot</a>",
+              "homepage": "https://commons.wikimedia.org/wiki/User:AkBot",
+              "role": "source"
+            },
+            {
+              "full_name": "Wikimedia Commons",
+              "homepage": null,
+              "role": "provider"
+            }
+          ]
+        },
+        {
+          "identifier": "EOL-media-509-19281955",
+          "dataObjectVersionID": 7416266,
+          "dataType": "http://purl.org/dc/dcmitype/StillImage",
+          "dataSubtype": "jpg",
+          "vettedStatus": "Trusted",
+          "dataRatings": [],
+          "dataRating": "2.5",
+          "mimeType": "image/jpeg",
+          "created": "2018-04-05T10:24:41.000Z",
+          "modified": "2018-10-24T13:01:49.000Z",
+          "title": "Ghiro a Sasso Pisano.JPG",
+          "license": "http://creativecommons.org/licenses/by-sa/3.0/",
+          "license_id": 12,
+          "source": "https://commons.wikimedia.org/wiki/File:Ghiro_a_Sasso_Pisano.JPG",
+          "mediaURL": "https://upload.wikimedia.org/wikipedia/commons/5/54/Ghiro_a_Sasso_Pisano.JPG",
+          "description": "Summary[<a href=\"https://commons.wikimedia.org/w/index.php?title=API&amp;action=edit&amp;section=1\" title=\"Edit section: Summary\">edit</a>]   DescriptionAPI  English: dormouse in Sasso Pisano    Date 01- maggio 2012   Source Own work   Author <a href=\"https://commons.wikimedia.org/w/index.php?title=User:Edatoscana&amp;action=edit&amp;redlink=1\" title=\"User:Edatoscana\">Sasso Pisano</a>   Sasso Pisano Licensing[<a href=\"https://commons.wikimedia.org/w/index.php?title=API&amp;action=edit&amp;section=2\" title=\"Edit section: Licensing\">edit</a>]      <br>  This file is licensed under the <a href=\"https://en.wikipedia.org/wiki/en:Creative_Commons\" title=\"w:en:Creative Commons\">Creative Commons</a> <a href=\"http://creativecommons.org/licenses/by-sa/3.0/deed.en\">Attribution-Share Alike 3.0 Unported</a> license.        https://creativecommons.org/licenses/by-sa/3.0 CC BY-SA 3.0 Creative Commons Attribution-Share Alike 3.0 truetrue      ",
+          "eolMediaURL": "https://content.eol.org/data/media/5c/23/c2/509.19281955.jpg",
+          "eolThumbnailURL": "https://content.eol.org/data/media/5c/23/c2/509.19281955.98x68.jpg",
+          "agents": [
+            {
+              "full_name": "Wikimedia Commons",
+              "homepage": null,
+              "role": "provider"
+            }
+          ]
+        },
+        {
+          "identifier": "EOL-media-509-31307187",
+          "dataObjectVersionID": 7416267,
+          "dataType": "http://purl.org/dc/dcmitype/StillImage",
+          "dataSubtype": "jpg",
+          "vettedStatus": "Trusted",
+          "dataRatings": [],
+          "dataRating": "2.5",
+          "mimeType": "image/jpeg",
+          "created": "2018-04-05T10:24:41.000Z",
+          "modified": "2018-10-24T13:01:49.000Z",
+          "title": "Muscardinus avellanarius au jardin jungle.jpg",
+          "license": "http://creativecommons.org/licenses/by/3.0/",
+          "license_id": 11,
+          "source": "https://commons.wikimedia.org/wiki/File:Muscardinus_avellanarius_au_jardin_jungle.jpg",
+          "mediaURL": "https://upload.wikimedia.org/wikipedia/commons/a/a6/Muscardinus_avellanarius_au_jardin_jungle.jpg",
+          "description": "Summary[<a href=\"https://commons.wikimedia.org/w/index.php?title=API&amp;action=edit&amp;section=1\" title=\"Edit section: Summary\">edit</a>]   DescriptionAPI  FranÃ§ais : Muscardinus avellanarius, muscardin    Date 25 September 2005, 11:54:24   Source Own work   Author <a href=\"https://commons.wikimedia.org/w/index.php?title=User:Karlostachys&amp;action=edit&amp;redlink=1\" title=\"User:Karlostachys\">Karlostachys</a>  ",
+          "eolMediaURL": "https://content.eol.org/data/media/5e/88/39/509.31307187.jpg",
+          "eolThumbnailURL": "https://content.eol.org/data/media/5e/88/39/509.31307187.98x68.jpg",
+          "agents": [
+            {
+              "full_name": "Wikimedia Commons",
+              "homepage": null,
+              "role": "provider"
+            }
+          ]
+        },
+        {
+          "identifier": "EOL-media-509-38664922",
+          "dataObjectVersionID": 7416268,
+          "dataType": "http://purl.org/dc/dcmitype/StillImage",
+          "dataSubtype": "jpg",
+          "vettedStatus": "Trusted",
+          "dataRatings": [],
+          "dataRating": "2.5",
+          "mimeType": "image/jpeg",
+          "created": "2018-04-05T10:24:41.000Z",
+          "modified": "2018-10-24T13:01:49.000Z",
+          "title": "Muscardinus avellanarius - Hazel Dormouse - Haselmaus (7615322874).jpg",
+          "license": "http://creativecommons.org/licenses/by/3.0/",
+          "license_id": 11,
+          "source": "https://commons.wikimedia.org/wiki/File:Muscardinus_avellanarius_-_Hazel_Dormouse_-_Haselmaus_(7615322874).jpg",
+          "mediaURL": "https://upload.wikimedia.org/wikipedia/commons/a/ac/Muscardinus_avellanarius_-_Hazel_Dormouse_-_Haselmaus_(7615322874).jpg",
+          "description": "DescriptionAPI  Family: Gliridae (Bilche) NE-Slovakia, Slovak Paradise (Slovak: SlovenskÃ½ raj) National Park, vic Cingov, 500-900m asl., 27.06.2012 IMG_1544    Date 27 June 2012, 15:14   Source <a href=\"https://www.flickr.com/photos/gbohne/7615322874/\">Muscardinus avellanarius - Hazel Dormouse / Haselmaus</a>   Author <a href=\"https://www.flickr.com/people/51216897@N07\">gbohne</a> from Berlin, Germany  ",
+          "eolMediaURL": "https://content.eol.org/data/media/5f/f4/62/509.38664922.jpg",
+          "eolThumbnailURL": "https://content.eol.org/data/media/5f/f4/62/509.38664922.98x68.jpg",
+          "agents": [
+            {
+              "full_name": "<a href='https://commons.wikimedia.org/wiki/User:Chris.urs-o'>Chris.urs-o</a>",
+              "homepage": "https://commons.wikimedia.org/wiki/User:Chris.urs-o",
+              "role": "source"
+            },
+            {
+              "full_name": "<a href='https://commons.wikimedia.org/wiki/User:Chris.urs-o'>Chris.urs-o</a>",
+              "homepage": "https://commons.wikimedia.org/wiki/User:Chris.urs-o",
+              "role": "source"
+            },
+            {
+              "full_name": "Wikimedia Commons",
+              "homepage": null,
+              "role": "provider"
+            }
+          ]
+        },
+        {
+          "identifier": "EOL-media-509-39738260",
+          "dataObjectVersionID": 7416269,
+          "dataType": "http://purl.org/dc/dcmitype/StillImage",
+          "dataSubtype": "jpg",
+          "vettedStatus": "Trusted",
+          "dataRatings": [],
+          "dataRating": "2.5",
+          "mimeType": "image/jpeg",
+          "created": "2018-04-05T10:24:41.000Z",
+          "modified": "2018-10-24T13:01:49.000Z",
+          "title": "Thinktank Birmingham - object 2010.0008 (2).jpg",
+          "license": "http://creativecommons.org/licenses/by-sa/3.0/",
+          "license_id": 12,
+          "source": "https://commons.wikimedia.org/wiki/File:Thinktank_Birmingham_-_object_2010.0008_(2).jpg",
+          "mediaURL": "https://upload.wikimedia.org/wikipedia/commons/1/1a/Thinktank_Birmingham_-_object_2010.0008_(2).jpg",
+          "description": "Summary[<a href=\"https://commons.wikimedia.org/w/index.php?title=API&amp;action=edit&amp;section=1\" title=\"Edit section: Summary\">edit</a>]   DescriptionAPI  English: Taxidermied specimen in the collection of <a href=\"https://en.wikipedia.org/wiki/Birmingham_Museums_Trust\" title=\"en:Birmingham Museums Trust\">Birmingham Museums Trust</a>.    Date 30 March 2010, 10:54:01   Source Birmingham Museums Trust   Author Birmingham Museums Trust     <a href=\"https://commons.wikimedia.org/wiki/File:Move_It_-_Thinktank_Birmingham_Science_Museum_-_Supermarine_Spitfire_Mark_IX_(8620396038).jpg\"></a> This file was uploaded a part of a <a href=\"https://commons.wikimedia.org/wiki/Commons:Thinktank,_Birmingham\" title=\"Commons:Thinktank, Birmingham\">2015 Wikipedia residency</a> at <a href=\"https://en.wikipedia.org/wiki/Thinktank,_Birmingham_Science_Museum\" title=\"en:Thinktank, Birmingham Science Museum\">Thinktank, Birmingham Science Museum</a>. <a href=\"https://commons.wikimedia.org/wiki/File:Eastside_City_Park_-_by_Andy_Mabbett_-_20.JPG\"></a>       This work is <a href=\"http://freedomdefined.org/Definition\" title=\"freedomdefined:Definition\">free</a> and may be used by anyone for any purpose. If you wish to <a href=\"https://commons.wikimedia.org/wiki/Commons:Reusing_content_outside_Wikimedia\" title=\"Commons:Reusing content outside Wikimedia\">use this content</a>, you do not need to request permission as long as you follow any licensing requirements mentioned on this page. Wikimedia has received an e-mail confirming that the copyright holder has approved publication under the terms mentioned on this page. This correspondence has been reviewed by an <a href=\"https://commons.wikimedia.org/wiki/Category:Commons_OTRS_volunteers\" title=\"Category:Commons OTRS volunteers\">OTRS member</a> and stored in our <a href=\"https://commons.wikimedia.org/wiki/Commons:OTRS\" title=\"Commons:OTRS\">permission archive</a>. The correspondence is available to trusted volunteers as <a href=\"https://ticket.wikimedia.org/otrs/index.pl?Action=AgentTicketZoom&amp;TicketNumber=2015020510014668\">ticket #2015020510014668</a>. If you have questions about the archived correspondence, please use the <a href=\"https://commons.wikimedia.org/wiki/Commons:OTRS/Noticeboard\" title=\"Commons:OTRS/Noticeboard\">OTRS noticeboard</a>.<br> Ticket link: <a href=\"https://ticket.wikimedia.org/otrs/index.pl?Action=AgentTicketZoom&amp;TicketNumber=2015020510014668\">https://ticket.wikimedia.org/otrs/index.pl?Action=AgentTicketZoom&amp;TicketNumber=2015020510014668</a>    <br> Licensing[<a href=\"https://commons.wikimedia.org/w/index.php?title=API&amp;action=edit&amp;section=2\" title=\"Edit section: Licensing\">edit</a>]   <br>  This file is licensed under the <a href=\"https://en.wikipedia.org/wiki/en:Creative_Commons\" title=\"w:en:Creative Commons\">Creative Commons</a> <a href=\"http://creativecommons.org/licenses/by-sa/4.0/deed.en\">Attribution-Share Alike 4.0 International</a> license.        https://creativecommons.org/licenses/by-sa/4.0 CC BY-SA 4.0 Creative Commons Attribution-Share Alike 4.0 truetrue   ",
+          "eolMediaURL": "https://content.eol.org/data/media/60/21/51/509.39738260.jpg",
+          "eolThumbnailURL": "https://content.eol.org/data/media/60/21/51/509.39738260.98x68.jpg",
+          "agents": [
+            {
+              "full_name": "<a href='https://commons.wikimedia.org/wiki/User:AkBot'>AkBot</a>",
+              "homepage": "https://commons.wikimedia.org/wiki/User:AkBot",
+              "role": "source"
+            },
+            {
+              "full_name": "<a href='https://commons.wikimedia.org/wiki/User:AkBot'>AkBot</a>",
+              "homepage": "https://commons.wikimedia.org/wiki/User:AkBot",
+              "role": "source"
+            },
+            {
+              "full_name": "Wikimedia Commons",
+              "homepage": null,
+              "role": "provider"
+            }
+          ]
+        },
+        {
+          "identifier": "EOL-media-509-39738261",
+          "dataObjectVersionID": 7416270,
+          "dataType": "http://purl.org/dc/dcmitype/StillImage",
+          "dataSubtype": "jpg",
+          "vettedStatus": "Trusted",
+          "dataRatings": [],
+          "dataRating": "2.5",
+          "mimeType": "image/jpeg",
+          "created": "2018-04-05T10:24:41.000Z",
+          "modified": "2018-10-24T13:01:49.000Z",
+          "title": "Thinktank Birmingham - object 2010.0008 (1).jpg",
+          "license": "http://creativecommons.org/licenses/by-sa/3.0/",
+          "license_id": 12,
+          "source": "https://commons.wikimedia.org/wiki/File:Thinktank_Birmingham_-_object_2010.0008_(1).jpg",
+          "mediaURL": "https://upload.wikimedia.org/wikipedia/commons/3/32/Thinktank_Birmingham_-_object_2010.0008_(1).jpg",
+          "description": "Summary[<a href=\"https://commons.wikimedia.org/w/index.php?title=API&amp;action=edit&amp;section=1\" title=\"Edit section: Summary\">edit</a>]   DescriptionAPI  English: Taxidermied specimen in the collection of <a href=\"https://en.wikipedia.org/wiki/Birmingham_Museums_Trust\" title=\"en:Birmingham Museums Trust\">Birmingham Museums Trust</a>.    Date 30 March 2010, 10:48:27   Source Birmingham Museums Trust   Author Birmingham Museums Trust     <a href=\"https://commons.wikimedia.org/wiki/File:Move_It_-_Thinktank_Birmingham_Science_Museum_-_Supermarine_Spitfire_Mark_IX_(8620396038).jpg\"></a> This file was uploaded a part of a <a href=\"https://commons.wikimedia.org/wiki/Commons:Thinktank,_Birmingham\" title=\"Commons:Thinktank, Birmingham\">2015 Wikipedia residency</a> at <a href=\"https://en.wikipedia.org/wiki/Thinktank,_Birmingham_Science_Museum\" title=\"en:Thinktank, Birmingham Science Museum\">Thinktank, Birmingham Science Museum</a>. <a href=\"https://commons.wikimedia.org/wiki/File:Eastside_City_Park_-_by_Andy_Mabbett_-_20.JPG\"></a>       This work is <a href=\"http://freedomdefined.org/Definition\" title=\"freedomdefined:Definition\">free</a> and may be used by anyone for any purpose. If you wish to <a href=\"https://commons.wikimedia.org/wiki/Commons:Reusing_content_outside_Wikimedia\" title=\"Commons:Reusing content outside Wikimedia\">use this content</a>, you do not need to request permission as long as you follow any licensing requirements mentioned on this page. Wikimedia has received an e-mail confirming that the copyright holder has approved publication under the terms mentioned on this page. This correspondence has been reviewed by an <a href=\"https://commons.wikimedia.org/wiki/Category:Commons_OTRS_volunteers\" title=\"Category:Commons OTRS volunteers\">OTRS member</a> and stored in our <a href=\"https://commons.wikimedia.org/wiki/Commons:OTRS\" title=\"Commons:OTRS\">permission archive</a>. The correspondence is available to trusted volunteers as <a href=\"https://ticket.wikimedia.org/otrs/index.pl?Action=AgentTicketZoom&amp;TicketNumber=2015020510014668\">ticket #2015020510014668</a>. If you have questions about the archived correspondence, please use the <a href=\"https://commons.wikimedia.org/wiki/Commons:OTRS/Noticeboard\" title=\"Commons:OTRS/Noticeboard\">OTRS noticeboard</a>.<br> Ticket link: <a href=\"https://ticket.wikimedia.org/otrs/index.pl?Action=AgentTicketZoom&amp;TicketNumber=2015020510014668\">https://ticket.wikimedia.org/otrs/index.pl?Action=AgentTicketZoom&amp;TicketNumber=2015020510014668</a>    <br> Licensing[<a href=\"https://commons.wikimedia.org/w/index.php?title=API&amp;action=edit&amp;section=2\" title=\"Edit section: Licensing\">edit</a>]   <br>  This file is licensed under the <a href=\"https://en.wikipedia.org/wiki/en:Creative_Commons\" title=\"w:en:Creative Commons\">Creative Commons</a> <a href=\"http://creativecommons.org/licenses/by-sa/4.0/deed.en\">Attribution-Share Alike 4.0 International</a> license.        https://creativecommons.org/licenses/by-sa/4.0 CC BY-SA 4.0 Creative Commons Attribution-Share Alike 4.0 truetrue   ",
+          "eolMediaURL": "https://content.eol.org/data/media/60/21/52/509.39738261.jpg",
+          "eolThumbnailURL": "https://content.eol.org/data/media/60/21/52/509.39738261.98x68.jpg",
+          "agents": [
+            {
+              "full_name": "<a href='https://commons.wikimedia.org/wiki/User:AkBot'>AkBot</a>",
+              "homepage": "https://commons.wikimedia.org/wiki/User:AkBot",
+              "role": "source"
+            },
+            {
+              "full_name": "<a href='https://commons.wikimedia.org/wiki/User:AkBot'>AkBot</a>",
+              "homepage": "https://commons.wikimedia.org/wiki/User:AkBot",
+              "role": "source"
+            },
+            {
+              "full_name": "Wikimedia Commons",
+              "homepage": null,
+              "role": "provider"
+            }
+          ]
+        },
+        {
+          "identifier": "EOL-media-509-43190822",
+          "dataObjectVersionID": 7416271,
+          "dataType": "http://purl.org/dc/dcmitype/StillImage",
+          "dataSubtype": "jpg",
+          "vettedStatus": "Trusted",
+          "dataRatings": [],
+          "dataRating": "2.5",
+          "mimeType": "image/jpeg",
+          "created": "2018-04-05T10:24:41.000Z",
+          "modified": "2018-10-24T13:01:49.000Z",
+          "title": "The animal kingdom (Pl. 19) (7109309571).jpg",
+          "license": "http://creativecommons.org/licenses/by/3.0/",
+          "license_id": 11,
+          "source": "https://commons.wikimedia.org/wiki/File:The_animal_kingdom_(Pl._19)_(7109309571).jpg",
+          "mediaURL": "https://upload.wikimedia.org/wikipedia/commons/3/39/The_animal_kingdom_(Pl._19)_(7109309571).jpg",
+          "description": "Summary[<a href=\"https://commons.wikimedia.org/w/index.php?title=API&amp;action=edit&amp;section=1\" title=\"Edit section: Summary\">edit</a>]   DescriptionAPI  S MUSCARE \"<br> ' ,<br> '4*.<br> . . . . ' â     Date 1827   Source <a href=\"http://www.flickr.com/photos/biodivlibrary/7109309571\">http://www.flickr.com/photos/biodivlibrary/7109309571</a>   Author Bull; Cuvier, Georges; Gray, George Robert; Gray, John Edward; Griffith, Edward; Pidgeon, Edward.; Smith, Charles Hamilton; Westwood, J. O.   Full title The animal kingdom : arranged in conformity with its organization /   Page ID 33268050   Item ID 103872 (<a href=\"https://commons.wikimedia.org/w/index.php?title=Special%3ASearch&amp;profile=default&amp;search=insource%3Aitemid.103872&amp;fulltext=Search\">Find related Wikimedia Commons images</a>)   Title ID 45021 (<a href=\"https://commons.wikimedia.org/w/index.php?title=Special%3ASearch&amp;profile=default&amp;search=insource%3A10.5962/bhl.title.45021&amp;fulltext=Search\">Find related Wikimedia Commons images</a>)   Page numbers Pl. 19   BHL Page URL <a href=\"http://www.biodiversitylibrary.org/page/33268050\">http://www.biodiversitylibrary.org/page/33268050</a>   DOI <a href=\"http://doi.org/10.5962/bhl.title.45021\">10.5962/bhl.title.45021</a>   Page type Illustration   Flickr sets  The class Mammalia v.3    Flickr pools  Encyclopedia of Life Images    Flickr tags  Mammals Smithsonian Institution Libraries bhl:page 33268050 dc:identifier <a href=\"http://biodiversitylibrary.org/page/33268050\">http://biodiversitylibrary.org/page/33268050</a> dormouse Common Dormouse Hazel Dormouse taxonomy:binomial Muscardinus avellanarius smithsonian institution libraries common dormouse hazel dormouse taxonomy:binomial muscardinus avellanarius    Flickr posted date 24 April 2012   Credit    <a href=\"https://commons.wikimedia.org/wiki/Commons:Biodiversity_Heritage_Library\" title=\"Commons:Biodiversity Heritage Library\"></a>  This file comes from the <a href=\"https://commons.wikimedia.org/wiki/Commons:Biodiversity_Heritage_Library\" title=\"Commons:Biodiversity Heritage Library\">Biodiversity Heritage Library</a>. This tag does not indicate the copyright status of the attached work. A normal <a href=\"https://commons.wikimedia.org/wiki/Special:MyLanguage/Commons:Copyright_tags\" title=\"Special:MyLanguage/Commons:Copyright tags\">copyright tag</a> is still required. See <a href=\"https://commons.wikimedia.org/wiki/Special:MyLanguage/Commons:Licensing\" title=\"Special:MyLanguage/Commons:Licensing\">Commons:Licensing</a> for more information. <a href=\"http://commons.wikimedia.org/wiki/Template:Biodiversity_Heritage_Library/de\">Deutsch</a> | <a href=\"http://commons.wikimedia.org/wiki/Template:Biodiversity_Heritage_Library/en\">English</a> | <a href=\"http://commons.wikimedia.org/wiki/Template:Biodiversity_Heritage_Library/es\">EspaÃ±ol</a> | <a href=\"http://commons.wikimedia.org/wiki/Template:Biodiversity_Heritage_Library/fr\">FranÃ§ais</a> | <a href=\"http://commons.wikimedia.org/wiki/Template:Biodiversity_Heritage_Library/it\">Italiano</a> | <a href=\"http://commons.wikimedia.org/wiki/Template:Biodiversity_Heritage_Library/mk\">ÐÐ°ÐºÐµÐ´Ð¾Ð½ÑÐºÐ¸</a> | <a href=\"http://commons.wikimedia.org/wiki/Template:Biodiversity_Heritage_Library/nl\">Nederlands</a> | <a href=\"http://commons.wikimedia.org/w/index.php?title=Template:Biodiversity_Heritage_Library/lang&amp;action=edit\">+/â</a>       <br> Licensing[<a href=\"https://commons.wikimedia.org/w/index.php?title=API&amp;action=edit&amp;section=2\" title=\"Edit section: Licensing\">edit</a>]   <br>  This file is licensed under the <a href=\"https://en.wikipedia.org/wiki/en:Creative_Commons\" title=\"w:en:Creative Commons\">Creative Commons</a> <a href=\"http://creativecommons.org/licenses/by/2.0/deed.en\">Attribution 2.0 Generic</a> license.        You are free: to share â to copy, distribute and transmit the work to remix â to adapt the work Under the following conditions: attribution â You must attribute the work in the manner specified by the author or licensor (but not in any way that suggests that they endorse you or your use of the work). http://creativecommons.org/licenses/by/2.0 CC BY 2.0 Creative Commons Attribution 2.0 truetrue    <br>   This image is in the <a href=\"https://en.wikipedia.org/wiki/public_domain\" title=\"w:public domain\">public domain</a> because it is a mere mechanical scan or photocopy of a public domain original, or â from the available evidence â is so similar to such a scan or photocopy that no copyright protection can be expected to arise. The original itself is in the public domain for the following reason:   Public domainPublic domainfalsefalse       This work is in the <a href=\"https://en.wikipedia.org/wiki/public_domain\" title=\"en:public domain\">public domain</a> in its country of origin and other countries and areas where the <a href=\"https://en.wikipedia.org/wiki/List_of_countries%27_copyright_length\" title=\"w:List of countries' copyright length\">copyright term</a> is the author's life plus 70 years or less. This work is in the <a href=\"https://en.wikipedia.org/wiki/public_domain\" title=\"en:public domain\">public domain</a> in the <a href=\"https://en.wikipedia.org/wiki/United_States\" title=\"en:United States\">United States</a> because it was <a href=\"https://commons.wikimedia.org/wiki/Commons:Publication\" title=\"Commons:Publication\">published</a> (or registered with the <a href=\"https://en.wikipedia.org/wiki/United_States_Copyright_Office\" title=\"en:United States Copyright Office\">U.S. Copyright Office</a>) before January 1, 1923.     <a href=\"https://creativecommons.org/publicdomain/mark/1.0/deed.en\">This file has been identified as being free of known restrictions under copyright law, including all related and neighboring rights.</a>    This tag is designed for use where there may be a need to assert that any enhancements (eg brightness, contrast, colour-matching, sharpening) are in themselves insufficiently creative to generate a new copyright. It can be used where it is unknown whether any enhancements have been made, as well as when the enhancements are clear but insufficient. For known raw unenhanced scans you can use an appropriate <a href=\"https://commons.wikimedia.org/wiki/Template:PD-old\" title=\"Template:PD-old\">{{PD-old}}</a> tag instead. For usage, see <a href=\"https://commons.wikimedia.org/wiki/Commons:When_to_use_the_PD-scan_tag\" title=\"Commons:When to use the PD-scan tag\">Commons:When to use the PD-scan tag</a>. Note: This tag applies to scans and photocopies only. For photographs of public domain originals taken from afar, <a href=\"https://commons.wikimedia.org/wiki/Template:PD-Art\" title=\"Template:PD-Art\">{{PD-Art}}</a> may be applicable. See <a href=\"https://commons.wikimedia.org/wiki/Commons:When_to_use_the_PD-Art_tag\" title=\"Commons:When to use the PD-Art tag\">Commons:When to use the PD-Art tag</a>.  ",
+          "eolMediaURL": "https://content.eol.org/data/media/61/30/28/509.43190822.jpg",
+          "eolThumbnailURL": "https://content.eol.org/data/media/61/30/28/509.43190822.98x68.jpg",
+          "agents": [
+            {
+              "full_name": "<a href='https://commons.wikimedia.org/wiki/User:Ruff%20tuff%20cream%20puff'>Ruff tuff cream puff</a>",
+              "homepage": "https://commons.wikimedia.org/wiki/User:Ruff%20tuff%20cream%20puff",
+              "role": "source"
+            },
+            {
+              "full_name": "<a href='https://commons.wikimedia.org/wiki/User:Ruff%20tuff%20cream%20puff'>Ruff tuff cream puff</a>",
+              "homepage": "https://commons.wikimedia.org/wiki/User:Ruff%20tuff%20cream%20puff",
+              "role": "source"
+            },
+            {
+              "full_name": "Wikimedia Commons",
+              "homepage": null,
+              "role": "provider"
+            }
+          ]
+        },
+        {
+          "identifier": "EOL-media-509-43916627",
+          "dataObjectVersionID": 7416272,
+          "dataType": "http://purl.org/dc/dcmitype/StillImage",
+          "dataSubtype": "jpg",
+          "vettedStatus": "Trusted",
+          "dataRatings": [],
+          "dataRating": "2.5",
+          "mimeType": "image/jpeg",
+          "created": "2018-04-05T10:24:41.000Z",
+          "modified": "2018-10-24T13:01:49.000Z",
+          "title": "Bonner zoologische BeitrÃ¤ge : Herausgeber: Zoologisches Forschungsinstitut und Museum Alexander Koenig, Bonn",
+          "license": "http://creativecommons.org/licenses/publicdomain/",
+          "license_id": 6,
+          "source": "https://commons.wikimedia.org/wiki/File:Bonner_zoologische_Beitr%C3%A4ge_-_Herausgeber-_Zoologisches_Forschungsinstitut_und_Museum_Alexander_Koenig,_Bonn_(1982)_(20367112046).jpg",
+          "mediaURL": "https://upload.wikimedia.org/wikipedia/commons/8/8f/Bonner_zoologische_BeitrÃ¤ge_-_Herausgeber-_Zoologisches_Forschungsinstitut_und_Museum_Alexander_Koenig,_Bonn_(1982)_(20367112046).jpg",
+          "description": "<br><b>Title</b>: Bonner zoologische BeitrÃ¤ge : Herausgeber: Zoologisches Forschungsinstitut und Museum Alexander Koenig, Bonn<br><b>Identifier</b>: bonnerzoo333419821983zool (<a class=\"external text\" href=\"https://commons.wikimedia.org/w/index.php?title=Special%3ASearch&amp;profile=default&amp;fulltext=Search&amp;search=insource%3A%2Fbonnerzoo333419821983zool%2F\">find matches</a>)<br><b>Year</b>: <a class=\"external text\" href=\"https://www.flickr.com/search/?tags=bookyear1950\">1950</a> (<a class=\"external text\" href=\"https://www.flickr.com/search/?tags=bookdecade1950\">1950s</a>)<br><b>Authors</b>: <a class=\"external text\" href=\"https://www.flickr.com/search/?tags=bookauthorZoologisches_Forschungsinstitut_und_Museum_Alexander_Koenig\">Zoologisches Forschungsinstitut und Museum Alexander Koenig</a><br><b>Subjects</b>: <a class=\"external text\" href=\"https://www.flickr.com/search/?tags=booksubjectBiology\">Biology</a>; <a class=\"external text\" href=\"https://www.flickr.com/search/?tags=booksubjectZoology\">Zoology</a><br><b>Publisher</b>: <a class=\"external text\" href=\"https://www.flickr.com/search/?tags=bookpublisherBonn_Das_Forschungsinstitut\">Bonn : Das Forschungsinstitut</a><br><b>Contributing Library</b>: <a class=\"external text\" href=\"https://www.flickr.com/search/?tags=bookcontributorSmithsonian_Libraries\">Smithsonian Libraries</a><br><b>Digitizing Sponsor</b>: <a class=\"external text\" href=\"https://www.flickr.com/search/?tags=booksponsorBiodiversity_Heritage_Library\">Biodiversity Heritage Library</a><br><br><b>View Book Page</b>: <a class=\"external text\" href=\"https://archive.org/stream/bonnerzoo333419821983zool/#page/n861/mode/1up\">Book Viewer</a><br><b>About This Book</b>: <a class=\"external text\" href=\"https://archive.org/details/bonnerzoo333419821983zool\">Catalog Entry</a><br><b>View All Images</b>: <a class=\"external text\" href=\"https://www.flickr.com/search/?tags=bookidbonnerzoo333419821983zool\">All Images From Book</a><br> Click here to <a class=\"external text\" href=\"https://archive.org/stream/bonnerzoo333419821983zool/#page/n861/mode/1up\"><b>view book online</b></a> to see this illustration in context in a browseable online version of this book.<br><br>",
+          "eolMediaURL": "https://content.eol.org/data/media/61/58/7c/509.43916627.jpg",
+          "eolThumbnailURL": "https://content.eol.org/data/media/61/58/7c/509.43916627.98x68.jpg",
+          "agents": [
+            {
+              "full_name": "<a href='https://www.flickr.com/people/126377022@N07'>Internet Archive Book Images</a>",
+              "homepage": "https://www.flickr.com/people/126377022@N07",
+              "role": "author"
+            },
+            {
+              "full_name": "<a href='https://www.flickr.com/people/126377022@N07'>Internet Archive Book Images</a>",
+              "homepage": "https://www.flickr.com/people/126377022@N07",
+              "role": "author"
+            },
+            {
+              "full_name": "Wikimedia Commons",
+              "homepage": null,
+              "role": "provider"
+            }
+          ]
+        },
+        {
+          "identifier": "EOL-media-509-4406079",
+          "dataObjectVersionID": 7416273,
+          "dataType": "http://purl.org/dc/dcmitype/StillImage",
+          "dataSubtype": "jpg",
+          "vettedStatus": "Trusted",
+          "dataRatings": [],
+          "dataRating": "2.5",
+          "mimeType": "image/jpeg",
+          "created": "2018-04-05T10:24:41.000Z",
+          "modified": "2018-10-24T13:01:49.000Z",
+          "title": "Muscardinus avellanarius nestbox.JPG",
+          "license": "http://creativecommons.org/licenses/by/3.0/",
+          "license_id": 11,
+          "source": "https://commons.wikimedia.org/wiki/File:Muscardinus_avellanarius_nestbox.JPG",
+          "mediaURL": "https://upload.wikimedia.org/wikipedia/commons/2/28/Muscardinus_avellanarius_nestbox.JPG",
+          "description": "Summary[<a href=\"https://commons.wikimedia.org/w/index.php?title=API&amp;action=edit&amp;section=1\" title=\"Edit section: Summary\">edit</a>]   DescriptionAPI  English: A nest of a <i>Muscardinus avellanarius</i> in a nest box in Interlaken, Switzerland. Deutsch: Nest einer Haselmaus, <i>Muscardinus avellanarius</i> in einem Nistkasten im Wald.<br> Das Photo stammt aus Interlaken, Schweiz.    Date 19 July 2008   Source Own work   Author <a href=\"https://commons.wikimedia.org/wiki/User:Hannibal%27s_back\" title=\"User:Hannibal's back\">Manuel R.</a>  ",
+          "eolMediaURL": "https://content.eol.org/data/media/61/5e/4a/509.4406079.jpg",
+          "eolThumbnailURL": "https://content.eol.org/data/media/61/5e/4a/509.4406079.98x68.jpg",
+          "agents": [
+            {
+              "full_name": "<a href='https://commons.wikimedia.org/wiki/User:Deadstar'>Deadstar</a>",
+              "homepage": "https://commons.wikimedia.org/wiki/User:Deadstar",
+              "role": "source"
+            },
+            {
+              "full_name": "<a href='https://commons.wikimedia.org/wiki/User:Deadstar'>Deadstar</a>",
+              "homepage": "https://commons.wikimedia.org/wiki/User:Deadstar",
+              "role": "source"
+            },
+            {
+              "full_name": "Wikimedia Commons",
+              "homepage": null,
+              "role": "provider"
+            }
+          ]
+        },
+        {
+          "identifier": "EOL-media-509-4473164",
+          "dataObjectVersionID": 7416274,
+          "dataType": "http://purl.org/dc/dcmitype/StillImage",
+          "dataSubtype": "jpg",
+          "vettedStatus": "Trusted",
+          "dataRatings": [],
+          "dataRating": "2.5",
+          "mimeType": "image/jpeg",
+          "created": "2018-04-05T10:24:41.000Z",
+          "modified": "2018-10-24T13:01:49.000Z",
+          "title": "Thorburn Archibald Dormice.jpg",
+          "license": "http://creativecommons.org/licenses/publicdomain/",
+          "license_id": 6,
+          "source": "https://commons.wikimedia.org/wiki/File:Thorburn_Archibald_Dormice.jpg",
+          "mediaURL": "https://upload.wikimedia.org/wikipedia/commons/3/3d/Thorburn_Archibald_Dormice.jpg",
+          "description": "Summary[<a href=\"https://commons.wikimedia.org/w/index.php?title=API&amp;action=edit&amp;section=1\" title=\"Edit section: Summary\">edit</a>]   Author    <a href=\"https://en.wikipedia.org/wiki/en:Archibald_Thorburn\" title=\"w:en:Archibald Thorburn\">Archibald Thorburn</a> (1860â1935) <a href=\"https://commons.wikimedia.org/wiki/Creator:Archibald_Thorburn\" title=\"Link back to Creator infobox template\"></a> <a href=\"https://www.wikidata.org/wiki/Q2860099\" title=\"wikidata:Q2860099\"></a>   <a href=\"https://commons.wikimedia.org/wiki/File:Archibald_Thorburn06.png\"></a>   Description Scottish painter and illustrator   Date of birth/death 31 May 1860 9 October 1935   Location of birth/death Viewfield House, Lasswade, Midlothian, Scotland Hascombe, Surrey   <a href=\"https://en.wikipedia.org/wiki/en:Help:Authority_control\" title=\"w:en:Help:Authority control\">Authority control</a>  <a href=\"https://www.wikidata.org/wiki/Q2860099\" title=\"wikidata:Q2860099\"></a>: <a href=\"https://www.wikidata.org/wiki/Q2860099\" title=\"d:Q2860099\">Q2860099</a> <a href=\"https://en.wikipedia.org/wiki/en:Virtual_International_Authority_File\" title=\"w:en:Virtual International Authority File\">VIAF</a>:â<a href=\"https://viaf.org/viaf/41942046\">41942046</a> <a href=\"https://en.wikipedia.org/wiki/en:International_Standard_Name_Identifier\" title=\"w:en:International Standard Name Identifier\">ISNI</a>:â<a href=\"https://tools.wmflabs.org/wikidata-externalid-url/?p=213&amp;url_prefix=http://isni.org/&amp;id=0000000081206457\">0000 0000 8120 6457</a> <a href=\"https://en.wikipedia.org/wiki/en:Union_List_of_Artist_Names\" title=\"w:en:Union List of Artist Names\">ULAN</a>:â<a href=\"http://vocab.getty.edu/page/ulan/500001701\">500001701</a> <a href=\"https://en.wikipedia.org/wiki/en:Library_of_Congress\" title=\"w:en:Library of Congress\">LCCN</a>:â<a href=\"http://id.loc.gov/authorities/n50012231\">n50012231</a> <a href=\"https://en.wikipedia.org/wiki/en:National_Library_of_Australia\" title=\"w:en:National Library of Australia\">NLA</a>:â<a href=\"http://nla.gov.au/anbd.aut-an35548745\">35548745</a> <a href=\"http://www.worldcat.org/identities/lccn-n50012231\">WorldCat</a>       Description  English: Dormice    Date 1919, upload 2008   Source/Photographer <a href=\"http://www.artrenewal.org/asp/database/art.asp?aid=566\">[1]</a>  ",
+          "eolMediaURL": "https://content.eol.org/data/media/61/96/13/509.4473164.jpg",
+          "eolThumbnailURL": "https://content.eol.org/data/media/61/96/13/509.4473164.98x68.jpg",
+          "agents": [
+            {
+              "full_name": "<a href='https://commons.wikimedia.org/wiki/User:Wmpearl'>Wmpearl</a>",
+              "homepage": "https://commons.wikimedia.org/wiki/User:Wmpearl",
+              "role": "source"
+            },
+            {
+              "full_name": "<a href='https://commons.wikimedia.org/wiki/User:Wmpearl'>Wmpearl</a>",
+              "homepage": "https://commons.wikimedia.org/wiki/User:Wmpearl",
+              "role": "source"
+            },
+            {
+              "full_name": "Wikimedia Commons",
+              "homepage": null,
+              "role": "provider"
+            }
+          ]
+        },
+        {
+          "identifier": "EOL-media-509-54900125",
+          "dataObjectVersionID": 7416280,
+          "dataType": "http://purl.org/dc/dcmitype/StillImage",
+          "dataSubtype": "jpg",
+          "vettedStatus": "Trusted",
+          "dataRatings": [],
+          "dataRating": "2.5",
+          "mimeType": "image/jpeg",
+          "created": "2018-04-05T10:24:41.000Z",
+          "modified": "2018-10-20T05:38:09.000Z",
+          "title": "File:Muscardinus avellanarius - 1700-1880 - Print - Iconographia Zoologica - Special Collections University of Amsterdam - UBA01 IZ20400177.tif",
+          "license": "http://creativecommons.org/licenses/publicdomain/",
+          "license_id": 6,
+          "source": "https://commons.wikimedia.org/wiki/File:Muscardinus_avellanarius_-_1700-1880_-_Print_-_Iconographia_Zoologica_-_Special_Collections_University_of_Amsterdam_-_UBA01_IZ20400177.tif",
+          "mediaURL": "https://upload.wikimedia.org/wikipedia/commons/e/ed/Muscardinus_avellanarius_-_1700-1880_-_Print_-_Iconographia_Zoologica_-_Special_Collections_University_of_Amsterdam_-_UBA01_IZ20400177.tif",
+          "description": "Muscardinus avellanarius",
+          "eolMediaURL": "https://content.eol.org/data/media/64/a2/6d/509.54900125.jpg",
+          "eolThumbnailURL": "https://content.eol.org/data/media/64/a2/6d/509.54900125.98x68.jpg",
+          "agents": [
+            {
+              "full_name": "<a href='https://commons.wikimedia.org/wiki/Category:Iconographia_Zoologica'>Iconographia Zoologica</a>",
+              "homepage": "https://commons.wikimedia.org/wiki/Category:Iconographia_Zoologica",
+              "role": "source"
+            },
+            {
+              "full_name": "<a href='https://commons.wikimedia.org/wiki/Category:Iconographia_Zoologica'>Iconographia Zoologica</a>",
+              "homepage": "https://commons.wikimedia.org/wiki/Category:Iconographia_Zoologica",
+              "role": "source"
+            },
+            {
+              "full_name": "Wikimedia Commons",
+              "homepage": null,
+              "role": "provider"
+            }
+          ]
+        },
+        {
+          "identifier": "EOL-media-509-54900127",
+          "dataObjectVersionID": 7416281,
+          "dataType": "http://purl.org/dc/dcmitype/StillImage",
+          "dataSubtype": "jpg",
+          "vettedStatus": "Trusted",
+          "dataRatings": [],
+          "dataRating": "2.5",
+          "mimeType": "image/jpeg",
+          "created": "2018-04-05T10:24:41.000Z",
+          "modified": "2018-10-20T05:38:09.000Z",
+          "title": "File:Muscardinus avellanarius - 1700-1880 - Print - Iconographia Zoologica - Special Collections University of Amsterdam - UBA01 IZ20400169.tif",
+          "license": "http://creativecommons.org/licenses/publicdomain/",
+          "license_id": 6,
+          "source": "https://commons.wikimedia.org/wiki/File:Muscardinus_avellanarius_-_1700-1880_-_Print_-_Iconographia_Zoologica_-_Special_Collections_University_of_Amsterdam_-_UBA01_IZ20400169.tif",
+          "mediaURL": "https://upload.wikimedia.org/wikipedia/commons/d/da/Muscardinus_avellanarius_-_1700-1880_-_Print_-_Iconographia_Zoologica_-_Special_Collections_University_of_Amsterdam_-_UBA01_IZ20400169.tif",
+          "description": "Muscardinus avellanarius",
+          "eolMediaURL": "https://content.eol.org/data/media/64/a2/6e/509.54900127.jpg",
+          "eolThumbnailURL": "https://content.eol.org/data/media/64/a2/6e/509.54900127.98x68.jpg",
+          "agents": [
+            {
+              "full_name": "<a href='https://commons.wikimedia.org/wiki/Category:Iconographia_Zoologica'>Iconographia Zoologica</a>",
+              "homepage": "https://commons.wikimedia.org/wiki/Category:Iconographia_Zoologica",
+              "role": "source"
+            },
+            {
+              "full_name": "<a href='https://commons.wikimedia.org/wiki/Category:Iconographia_Zoologica'>Iconographia Zoologica</a>",
+              "homepage": "https://commons.wikimedia.org/wiki/Category:Iconographia_Zoologica",
+              "role": "source"
+            },
+            {
+              "full_name": "Wikimedia Commons",
+              "homepage": null,
+              "role": "provider"
+            }
+          ]
+        },
+        {
+          "identifier": "EOL-media-509-54900129",
+          "dataObjectVersionID": 7416282,
+          "dataType": "http://purl.org/dc/dcmitype/StillImage",
+          "dataSubtype": "jpg",
+          "vettedStatus": "Trusted",
+          "dataRatings": [],
+          "dataRating": "2.5",
+          "mimeType": "image/jpeg",
+          "created": "2018-04-05T10:24:41.000Z",
+          "modified": "2018-10-20T05:38:09.000Z",
+          "title": "File:Muscardinus avellanarius - nest - 1700-1880 - Print - Iconographia Zoologica - Special Collections University of Amsterdam - UBA01 IZ20400171.tif",
+          "license": "http://creativecommons.org/licenses/publicdomain/",
+          "license_id": 6,
+          "source": "https://commons.wikimedia.org/wiki/File:Muscardinus_avellanarius_-_nest_-_1700-1880_-_Print_-_Iconographia_Zoologica_-_Special_Collections_University_of_Amsterdam_-_UBA01_IZ20400171.tif",
+          "mediaURL": "https://upload.wikimedia.org/wikipedia/commons/b/bc/Muscardinus_avellanarius_-_nest_-_1700-1880_-_Print_-_Iconographia_Zoologica_-_Special_Collections_University_of_Amsterdam_-_UBA01_IZ20400171.tif",
+          "description": "Muscardinus avellanarius - nest",
+          "eolMediaURL": "https://content.eol.org/data/media/64/a2/70/509.54900129.jpg",
+          "eolThumbnailURL": "https://content.eol.org/data/media/64/a2/70/509.54900129.98x68.jpg",
+          "agents": [
+            {
+              "full_name": "<a href='https://commons.wikimedia.org/wiki/Category:Iconographia_Zoologica'>Iconographia Zoologica</a>",
+              "homepage": "https://commons.wikimedia.org/wiki/Category:Iconographia_Zoologica",
+              "role": "source"
+            },
+            {
+              "full_name": "<a href='https://commons.wikimedia.org/wiki/Category:Iconographia_Zoologica'>Iconographia Zoologica</a>",
+              "homepage": "https://commons.wikimedia.org/wiki/Category:Iconographia_Zoologica",
+              "role": "source"
+            },
+            {
+              "full_name": "Wikimedia Commons",
+              "homepage": null,
+              "role": "provider"
+            }
+          ]
+        },
+        {
+          "identifier": "EOL-media-509-54900130",
+          "dataObjectVersionID": 7416283,
+          "dataType": "http://purl.org/dc/dcmitype/StillImage",
+          "dataSubtype": "jpg",
+          "vettedStatus": "Trusted",
+          "dataRatings": [],
+          "dataRating": "2.5",
+          "mimeType": "image/jpeg",
+          "created": "2018-04-05T10:24:41.000Z",
+          "modified": "2018-10-20T05:38:09.000Z",
+          "title": "File:Muscardinus avellanarius - 1700-1880 - Print - Iconographia Zoologica - Special Collections University of Amsterdam - UBA01 IZ20400173.tif",
+          "license": "http://creativecommons.org/licenses/publicdomain/",
+          "license_id": 6,
+          "source": "https://commons.wikimedia.org/wiki/File:Muscardinus_avellanarius_-_1700-1880_-_Print_-_Iconographia_Zoologica_-_Special_Collections_University_of_Amsterdam_-_UBA01_IZ20400173.tif",
+          "mediaURL": "https://upload.wikimedia.org/wikipedia/commons/1/13/Muscardinus_avellanarius_-_1700-1880_-_Print_-_Iconographia_Zoologica_-_Special_Collections_University_of_Amsterdam_-_UBA01_IZ20400173.tif",
+          "description": "Muscardinus avellanarius",
+          "eolMediaURL": "https://content.eol.org/data/media/64/a2/71/509.54900130.jpg",
+          "eolThumbnailURL": "https://content.eol.org/data/media/64/a2/71/509.54900130.98x68.jpg",
+          "agents": [
+            {
+              "full_name": "<a href='https://commons.wikimedia.org/wiki/Category:Iconographia_Zoologica'>Iconographia Zoologica</a>",
+              "homepage": "https://commons.wikimedia.org/wiki/Category:Iconographia_Zoologica",
+              "role": "source"
+            },
+            {
+              "full_name": "<a href='https://commons.wikimedia.org/wiki/Category:Iconographia_Zoologica'>Iconographia Zoologica</a>",
+              "homepage": "https://commons.wikimedia.org/wiki/Category:Iconographia_Zoologica",
+              "role": "source"
+            },
+            {
+              "full_name": "Wikimedia Commons",
+              "homepage": null,
+              "role": "provider"
+            }
+          ]
+        },
+        {
+          "identifier": "EOL-media-509-54900131",
+          "dataObjectVersionID": 7416284,
+          "dataType": "http://purl.org/dc/dcmitype/StillImage",
+          "dataSubtype": "jpg",
+          "vettedStatus": "Trusted",
+          "dataRatings": [],
+          "dataRating": "2.5",
+          "mimeType": "image/jpeg",
+          "created": "2018-04-05T10:24:41.000Z",
+          "modified": "2018-10-20T05:38:09.000Z",
+          "title": "File:Muscardinus avellanarius - 1700-1880 - Print - Iconographia Zoologica - Special Collections University of Amsterdam - UBA01 IZ20400175.tif",
+          "license": "http://creativecommons.org/licenses/publicdomain/",
+          "license_id": 6,
+          "source": "https://commons.wikimedia.org/wiki/File:Muscardinus_avellanarius_-_1700-1880_-_Print_-_Iconographia_Zoologica_-_Special_Collections_University_of_Amsterdam_-_UBA01_IZ20400175.tif",
+          "mediaURL": "https://upload.wikimedia.org/wikipedia/commons/7/72/Muscardinus_avellanarius_-_1700-1880_-_Print_-_Iconographia_Zoologica_-_Special_Collections_University_of_Amsterdam_-_UBA01_IZ20400175.tif",
+          "description": "Muscardinus avellanarius",
+          "eolMediaURL": "https://content.eol.org/data/media/64/a2/72/509.54900131.jpg",
+          "eolThumbnailURL": "https://content.eol.org/data/media/64/a2/72/509.54900131.98x68.jpg",
+          "agents": [
+            {
+              "full_name": "<a href='https://commons.wikimedia.org/wiki/Category:Iconographia_Zoologica'>Iconographia Zoologica</a>",
+              "homepage": "https://commons.wikimedia.org/wiki/Category:Iconographia_Zoologica",
+              "role": "source"
+            },
+            {
+              "full_name": "<a href='https://commons.wikimedia.org/wiki/Category:Iconographia_Zoologica'>Iconographia Zoologica</a>",
+              "homepage": "https://commons.wikimedia.org/wiki/Category:Iconographia_Zoologica",
+              "role": "source"
+            },
+            {
+              "full_name": "Wikimedia Commons",
+              "homepage": null,
+              "role": "provider"
+            }
+          ]
+        },
+        {
+          "identifier": "EOL-media-509-54900132",
+          "dataObjectVersionID": 7416285,
+          "dataType": "http://purl.org/dc/dcmitype/StillImage",
+          "dataSubtype": "jpg",
+          "vettedStatus": "Trusted",
+          "dataRatings": [],
+          "dataRating": "2.5",
+          "mimeType": "image/jpeg",
+          "created": "2018-04-05T10:24:41.000Z",
+          "modified": "2018-10-20T05:38:09.000Z",
+          "title": "File:Muscardinus avellanarius - 1700-1880 - Print - Iconographia Zoologica - Special Collections University of Amsterdam - UBA01 IZ20400167.tif",
+          "license": "http://creativecommons.org/licenses/publicdomain/",
+          "license_id": 6,
+          "source": "https://commons.wikimedia.org/wiki/File:Muscardinus_avellanarius_-_1700-1880_-_Print_-_Iconographia_Zoologica_-_Special_Collections_University_of_Amsterdam_-_UBA01_IZ20400167.tif",
+          "mediaURL": "https://upload.wikimedia.org/wikipedia/commons/2/26/Muscardinus_avellanarius_-_1700-1880_-_Print_-_Iconographia_Zoologica_-_Special_Collections_University_of_Amsterdam_-_UBA01_IZ20400167.tif",
+          "description": "Muscardinus avellanarius",
+          "eolMediaURL": "https://content.eol.org/data/media/64/a2/73/509.54900132.jpg",
+          "eolThumbnailURL": "https://content.eol.org/data/media/64/a2/73/509.54900132.98x68.jpg",
+          "agents": [
+            {
+              "full_name": "<a href='https://commons.wikimedia.org/wiki/Category:Iconographia_Zoologica'>Iconographia Zoologica</a>",
+              "homepage": "https://commons.wikimedia.org/wiki/Category:Iconographia_Zoologica",
+              "role": "source"
+            },
+            {
+              "full_name": "<a href='https://commons.wikimedia.org/wiki/Category:Iconographia_Zoologica'>Iconographia Zoologica</a>",
+              "homepage": "https://commons.wikimedia.org/wiki/Category:Iconographia_Zoologica",
+              "role": "source"
+            },
+            {
+              "full_name": "Wikimedia Commons",
+              "homepage": null,
+              "role": "provider"
+            }
+          ]
+        },
+        {
+          "identifier": "EOL-media-509-54900147",
+          "dataObjectVersionID": 7416286,
+          "dataType": "http://purl.org/dc/dcmitype/StillImage",
+          "dataSubtype": "jpg",
+          "vettedStatus": "Trusted",
+          "dataRatings": [],
+          "dataRating": "2.5",
+          "mimeType": "image/jpeg",
+          "created": "2018-04-05T10:24:41.000Z",
+          "modified": "2018-10-20T05:38:09.000Z",
+          "title": "File:Muscardinus avellanarius - nest - 1700-1880 - Print - Iconographia Zoologica - Special Collections University of Amsterdam - UBA01 IZ20400179.tif",
+          "license": "http://creativecommons.org/licenses/publicdomain/",
+          "license_id": 6,
+          "source": "https://commons.wikimedia.org/wiki/File:Muscardinus_avellanarius_-_nest_-_1700-1880_-_Print_-_Iconographia_Zoologica_-_Special_Collections_University_of_Amsterdam_-_UBA01_IZ20400179.tif",
+          "mediaURL": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Muscardinus_avellanarius_-_nest_-_1700-1880_-_Print_-_Iconographia_Zoologica_-_Special_Collections_University_of_Amsterdam_-_UBA01_IZ20400179.tif",
+          "description": "Muscardinus avellanarius - nest",
+          "eolMediaURL": "https://content.eol.org/data/media/64/a2/77/509.54900147.jpg",
+          "eolThumbnailURL": "https://content.eol.org/data/media/64/a2/77/509.54900147.98x68.jpg",
+          "agents": [
+            {
+              "full_name": "<a href='https://commons.wikimedia.org/wiki/Category:Iconographia_Zoologica'>Iconographia Zoologica</a>",
+              "homepage": "https://commons.wikimedia.org/wiki/Category:Iconographia_Zoologica",
+              "role": "source"
+            },
+            {
+              "full_name": "<a href='https://commons.wikimedia.org/wiki/Category:Iconographia_Zoologica'>Iconographia Zoologica</a>",
+              "homepage": "https://commons.wikimedia.org/wiki/Category:Iconographia_Zoologica",
+              "role": "source"
+            },
+            {
+              "full_name": "Wikimedia Commons",
+              "homepage": null,
+              "role": "provider"
+            }
+          ]
+        },
+        {
+          "identifier": "EOL-media-509-56505527",
+          "dataObjectVersionID": 7416287,
+          "dataType": "http://purl.org/dc/dcmitype/StillImage",
+          "dataSubtype": "jpg",
+          "vettedStatus": "Trusted",
+          "dataRatings": [],
+          "dataRating": "2.5",
+          "mimeType": "image/jpeg",
+          "created": "2018-04-05T10:24:41.000Z",
+          "modified": "2018-10-24T13:01:49.000Z",
+          "title": "Dormouse1.jpg",
+          "license": "http://creativecommons.org/licenses/by/3.0/",
+          "license_id": 11,
+          "source": "https://commons.wikimedia.org/wiki/File:Dormouse1.jpg",
+          "mediaURL": "https://upload.wikimedia.org/wikipedia/commons/e/ed/Dormouse1.jpg",
+          "description": "Summary[<a href=\"https://commons.wikimedia.org/w/index.php?title=API&amp;action=edit&amp;section=1\" title=\"Edit section: Summary\">edit</a>]   DescriptionAPI  English: A hazel dormouse or common dormouse (Muscardinus avellanarius) during hibernation found in a bird box. Central Germany end of march. Deutsch: Eine Haselmaus (Muscardinus avellanarius) wÃ¤hrend des Winterschlafes, gefunden Ende MÃ¤rz in einen Vogelnistkasten im sÃ¼dlichen Niedersachsen.    Date 24 March 2006   Source Own work   Author ZoÃ« Helene Kindermann  ",
+          "eolMediaURL": "https://content.eol.org/data/media/64/f4/7e/509.56505527.jpg",
+          "eolThumbnailURL": "https://content.eol.org/data/media/64/f4/7e/509.56505527.98x68.jpg",
+          "agents": [
+            {
+              "full_name": "<a href='https://commons.wikimedia.org/wiki/User:Siebensch%C3%83%C2%A4fer'>SiebenschÃ¤fer</a>",
+              "homepage": "https://commons.wikimedia.org/wiki/User:Siebensch%C3%83%C2%A4fer",
+              "role": "source"
+            },
+            {
+              "full_name": "<a href='https://commons.wikimedia.org/wiki/User:Siebensch%C3%83%C2%A4fer'>SiebenschÃ¤fer</a>",
+              "homepage": "https://commons.wikimedia.org/wiki/User:Siebensch%C3%83%C2%A4fer",
+              "role": "source"
+            },
+            {
+              "full_name": "Wikimedia Commons",
+              "homepage": null,
+              "role": "provider"
+            }
+          ]
+        },
+        {
+          "identifier": "EOL-media-509-56505618",
+          "dataObjectVersionID": 7416288,
+          "dataType": "http://purl.org/dc/dcmitype/StillImage",
+          "dataSubtype": "jpg",
+          "vettedStatus": "Trusted",
+          "dataRatings": [],
+          "dataRating": "2.5",
+          "mimeType": "image/jpeg",
+          "created": "2018-04-05T10:24:41.000Z",
+          "modified": "2018-10-24T13:01:49.000Z",
+          "title": "Dormouse2.jpg",
+          "license": "http://creativecommons.org/licenses/by/3.0/",
+          "license_id": 11,
+          "source": "https://commons.wikimedia.org/wiki/File:Dormouse2.jpg",
+          "mediaURL": "https://upload.wikimedia.org/wikipedia/commons/9/9d/Dormouse2.jpg",
+          "description": "Summary[<a href=\"https://commons.wikimedia.org/w/index.php?title=API&amp;action=edit&amp;section=1\" title=\"Edit section: Summary\">edit</a>]   DescriptionAPI  English: A hazel dormouse or common dormouse (Muscardinus avellanarius) during hibernation found in a bird box. Central Germany end of march. Deutsch: Eine Haselmaus (Muscardinus avellanarius) wÃ¤hrend des Winterschlafes, gefunden Ende MÃ¤rz in einem Vogelnistkasten im sÃ¼dlichen Niedersachsen.    Date 24 March 2006   Source Own work   Author ZoÃ« Helene Kindermann  ",
+          "eolMediaURL": "https://content.eol.org/data/media/64/f4/7f/509.56505618.jpg",
+          "eolThumbnailURL": "https://content.eol.org/data/media/64/f4/7f/509.56505618.98x68.jpg",
+          "agents": [
+            {
+              "full_name": "<a href='https://commons.wikimedia.org/wiki/User:Siebensch%C3%83%C2%A4fer'>SiebenschÃ¤fer</a>",
+              "homepage": "https://commons.wikimedia.org/wiki/User:Siebensch%C3%83%C2%A4fer",
+              "role": "source"
+            },
+            {
+              "full_name": "<a href='https://commons.wikimedia.org/wiki/User:Siebensch%C3%83%C2%A4fer'>SiebenschÃ¤fer</a>",
+              "homepage": "https://commons.wikimedia.org/wiki/User:Siebensch%C3%83%C2%A4fer",
+              "role": "source"
+            },
+            {
+              "full_name": "Wikimedia Commons",
+              "homepage": null,
+              "role": "provider"
+            }
+          ]
+        },
+        {
+          "identifier": "EOL-media-509-5799672",
+          "dataObjectVersionID": 7416289,
+          "dataType": "http://purl.org/dc/dcmitype/StillImage",
+          "dataSubtype": "jpg",
+          "vettedStatus": "Trusted",
+          "dataRatings": [],
+          "dataRating": "2.5",
+          "mimeType": "image/jpeg",
+          "created": "2018-04-05T10:24:41.000Z",
+          "modified": "2018-10-24T13:01:49.000Z",
+          "title": "Muscardinus avellanarius nest.JPG",
+          "license": "http://creativecommons.org/licenses/by/3.0/",
+          "license_id": 11,
+          "source": "https://commons.wikimedia.org/wiki/File:Muscardinus_avellanarius_nest.JPG",
+          "mediaURL": "https://upload.wikimedia.org/wikipedia/commons/d/d3/Muscardinus_avellanarius_nest.JPG",
+          "description": "Summary[<a href=\"https://commons.wikimedia.org/w/index.php?title=API&amp;action=edit&amp;section=1\" title=\"Edit section: Summary\">edit</a>]   DescriptionAPI  English: Nest of a common dormouse (Muscardinus avellanarius)in France.    Date 11 July 2006, 17:51:14 (according to <a href=\"https://en.wikipedia.org/wiki/Exchangeable_image_file_format\" title=\"en:Exchangeable image file format\">Exif</a> data)   Source Own work   Author <a href=\"https://commons.wikimedia.org/wiki/User:AlexisMartin_mb\" title=\"User:AlexisMartin mb\">AlexisMartin mb</a>  ",
+          "eolMediaURL": "https://content.eol.org/data/media/65/37/8e/509.5799672.jpg",
+          "eolThumbnailURL": "https://content.eol.org/data/media/65/37/8e/509.5799672.98x68.jpg",
+          "agents": [
+            {
+              "full_name": "<a href='https://commons.wikimedia.org/wiki/User:ArndBot'>ArndBot</a>",
+              "homepage": "https://commons.wikimedia.org/wiki/User:ArndBot",
+              "role": "source"
+            },
+            {
+              "full_name": "<a href='https://commons.wikimedia.org/wiki/User:ArndBot'>ArndBot</a>",
+              "homepage": "https://commons.wikimedia.org/wiki/User:ArndBot",
+              "role": "source"
+            },
+            {
+              "full_name": "Wikimedia Commons",
+              "homepage": null,
+              "role": "provider"
+            }
+          ]
+        },
+        {
+          "identifier": "EOL-media-509-60620776",
+          "dataObjectVersionID": 7416290,
+          "dataType": "http://purl.org/dc/dcmitype/StillImage",
+          "dataSubtype": "jpg",
+          "vettedStatus": "Trusted",
+          "dataRatings": [],
+          "dataRating": "2.5",
+          "mimeType": "image/jpeg",
+          "created": "2018-04-05T10:24:41.000Z",
+          "modified": "2018-10-24T13:01:49.000Z",
+          "title": "Gliridae - Muscardinus avellanarius (Dormouse)-001.JPG",
+          "license": "http://creativecommons.org/licenses/by/3.0/",
+          "license_id": 11,
+          "source": "https://commons.wikimedia.org/wiki/File:Gliridae_-_Muscardinus_avellanarius_(Dormouse)-001.JPG",
+          "mediaURL": "https://upload.wikimedia.org/wikipedia/commons/5/53/Gliridae_-_Muscardinus_avellanarius_(Dormouse)-001.JPG",
+          "description": "Summary[<a href=\"https://commons.wikimedia.org/w/index.php?title=API&amp;action=edit&amp;section=1\" title=\"Edit section: Summary\">edit</a>]   DescriptionAPI  English: <i>Muscardinus avellanarius</i>. Val Ferret, Aosta, Italy    Date 15 August 2005   Source Own work   Author <a href=\"https://commons.wikimedia.org/wiki/User:Hectonichus\" title=\"User:Hectonichus\">Hectonichus</a>  ",
+          "eolMediaURL": "https://content.eol.org/data/media/65/98/bc/509.60620776.jpg",
+          "eolThumbnailURL": "https://content.eol.org/data/media/65/98/bc/509.60620776.98x68.jpg",
+          "agents": [
+            {
+              "full_name": "<a href='https://commons.wikimedia.org/wiki/User:Hectonichus'>Hectonichus</a>",
+              "homepage": "https://commons.wikimedia.org/wiki/User:Hectonichus",
+              "role": "source"
+            },
+            {
+              "full_name": "<a href='https://commons.wikimedia.org/wiki/User:Hectonichus'>Hectonichus</a>",
+              "homepage": "https://commons.wikimedia.org/wiki/User:Hectonichus",
+              "role": "source"
+            },
+            {
+              "full_name": "Wikimedia Commons",
+              "homepage": null,
+              "role": "provider"
+            }
+          ]
+        },
+        {
+          "identifier": "EOL-media-509-6481760",
+          "dataObjectVersionID": 7416291,
+          "dataType": "http://purl.org/dc/dcmitype/StillImage",
+          "dataSubtype": "jpg",
+          "vettedStatus": "Trusted",
+          "dataRatings": [],
+          "dataRating": "2.5",
+          "mimeType": "image/jpeg",
+          "created": "2018-04-05T10:24:41.000Z",
+          "modified": "2018-10-24T13:01:49.000Z",
+          "title": "Orzesznica.JPG",
+          "license": "http://creativecommons.org/licenses/publicdomain/",
+          "license_id": 6,
+          "source": "https://commons.wikimedia.org/wiki/File:Orzesznica.JPG",
+          "mediaURL": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Orzesznica.JPG",
+          "description": "Summary[<a href=\"https://commons.wikimedia.org/w/index.php?title=API&amp;action=edit&amp;section=1\" title=\"Edit section: Summary\">edit</a>]   DescriptionAPI  English: Hazel Dormouse (Muscardinus avellanarius) caught by a dog. Taken away from the dog - alive - and set free. Polski: Orzesznica, ktÃ³rÄ upolowaÅ pies. Odebrana Å¼ywa i wypuszczona na wolnoÅÄ.    Date 4 April 2009   Source Own work   Author <a href=\"https://commons.wikimedia.org/w/index.php?title=User:Ambica&amp;action=edit&amp;redlink=1\" title=\"User:Ambica\">Ambica</a>  ",
+          "eolMediaURL": "https://content.eol.org/data/media/67/5e/0d/509.6481760.jpg",
+          "eolThumbnailURL": "https://content.eol.org/data/media/67/5e/0d/509.6481760.98x68.jpg",
+          "agents": [
+            {
+              "full_name": "<a href='https://commons.wikimedia.org/wiki/User:BotAdventures'>BotAdventures</a>",
+              "homepage": "https://commons.wikimedia.org/wiki/User:BotAdventures",
+              "role": "source"
+            },
+            {
+              "full_name": "<a href='https://commons.wikimedia.org/wiki/User:BotAdventures'>BotAdventures</a>",
+              "homepage": "https://commons.wikimedia.org/wiki/User:BotAdventures",
+              "role": "source"
+            },
+            {
+              "full_name": "Wikimedia Commons",
+              "homepage": null,
+              "role": "provider"
+            }
+          ]
+        },
+        {
+          "identifier": "EOL-media-509-6981345",
+          "dataObjectVersionID": 7416292,
+          "dataType": "http://purl.org/dc/dcmitype/StillImage",
+          "dataSubtype": "jpg",
+          "vettedStatus": "Trusted",
+          "dataRatings": [],
+          "dataRating": "2.5",
+          "mimeType": "image/jpeg",
+          "created": "2018-04-05T10:24:41.000Z",
+          "modified": "2018-10-24T13:01:49.000Z",
+          "title": "Muscardinus avellanarius range map.png",
+          "license": "http://creativecommons.org/licenses/by/3.0/",
+          "license_id": 11,
+          "source": "https://commons.wikimedia.org/wiki/File:Muscardinus_avellanarius_range_map.png",
+          "mediaURL": "https://upload.wikimedia.org/wikipedia/commons/c/c9/Muscardinus_avellanarius_range_map.png",
+          "description": "Summary[<a href=\"https://commons.wikimedia.org/w/index.php?title=API&amp;action=edit&amp;section=1\" title=\"Edit section: Summary\">edit</a>]   DescriptionAPI  English: Range map for Hazel Dormouse (<i>Muscardinus avellanarius</i>), map made with help of <a href=\"http://www.aquarius.geomar.de/omc_intro.html\">www.aquarius.geomar.de</a>, Map depending on the <a href=\"http://www.iucnredlist.org/details/13992/0\">range map at IUCN red list</a>.    Date June 2009   Source Own work   Author <a href=\"https://commons.wikimedia.org/wiki/User:Nordelch\" title=\"User:Nordelch\">Nordelch</a>  ",
+          "eolMediaURL": "https://content.eol.org/data/media/67/86/44/509.6981345.jpg",
+          "eolThumbnailURL": "https://content.eol.org/data/media/67/86/44/509.6981345.98x68.jpg",
+          "agents": [
+            {
+              "full_name": "<a href='https://commons.wikimedia.org/wiki/User:Rupert%20Clayton'>Rupert Clayton</a>",
+              "homepage": "https://commons.wikimedia.org/wiki/User:Rupert%20Clayton",
+              "role": "source"
+            },
+            {
+              "full_name": "<a href='https://commons.wikimedia.org/wiki/User:Rupert%20Clayton'>Rupert Clayton</a>",
+              "homepage": "https://commons.wikimedia.org/wiki/User:Rupert%20Clayton",
+              "role": "source"
+            },
+            {
+              "full_name": "Wikimedia Commons",
+              "homepage": null,
+              "role": "provider"
+            }
+          ]
+        },
+        {
+          "identifier": "EOL-media-8-6383347231",
+          "dataObjectVersionID": 11105,
+          "dataType": "http://purl.org/dc/dcmitype/StillImage",
+          "dataSubtype": "jpg",
+          "vettedStatus": "Trusted",
+          "dataRatings": [],
+          "dataRating": "2.5",
+          "mimeType": "image/jpeg",
+          "created": "2017-11-24T21:09:22.000Z",
+          "modified": "2018-10-19T15:37:02.000Z",
+          "title": "n100_w1150",
+          "license": "http://creativecommons.org/licenses/by/2.0/",
+          "license_id": 3,
+          "language": "en",
+          "rightsHolder": "Biodiversity Heritage Library",
+          "source": "https://farm7.staticflickr.com/6235/6383347231_fb9404966c_o.jpg",
+          "mediaURL": "https://www.flickr.com/photos/biodivlibrary/6383347231/",
+          "description": "A history of British mammals. v.1.London :Gurney and Jackson,1910-1921.<a href=\"http://biodiversitylibrary.org/page/16024795\">biodiversitylibrary.org/page/16024795</a>",
+          "eolMediaURL": "https://content.eol.org/data/media/00/2b/61/8.6383347231.jpg",
+          "eolThumbnailURL": "https://content.eol.org/data/media/00/2b/61/8.6383347231.98x68.jpg",
+          "agents": [
+            {
+              "full_name": "Flickr BHL",
+              "homepage": null,
+              "role": "provider"
+            }
+          ]
+        }
+      ],
+      "licenses": []
+    }
+  },
+  "hierarchyEntries": {
+    "entry": {
+      "id": 7194010,
+      "resource_id": 1,
+      "page_id": 327940,
+      "rank_id": 1,
+      "parent_id": 7152802,
+      "scientific_name": "<i>Muscardinus avellanarius</i> (Linnaeus 1758)",
+      "canonical_form": "Muscardinus avellanarius",
+      "resource_pk": "-2420482",
+      "source_url": "http://eol.org/-2420482&but=not_really",
+      "is_hidden": false,
+      "in_unmapped_area": false,
+      "children_count": 0,
+      "created_at": "2018-02-17T14:06:57.000Z",
+      "updated_at": "2018-07-10T19:15:01.000Z",
+      "has_breadcrumb": false,
+      "parent_resource_pk": "-2383275",
+      "landmark": "no_landmark",
+      "harv_db_id": null
+    },
+    "sourceIdentifier": "-2420482",
+    "taxonID": 7194010,
+    "parentNameUsageID": 7152802,
+    "taxonConceptID": 327940,
+    "scientificName": "<i>Muscardinus avellanarius</i> (Linnaeus 1758)",
+    "taxonRank": "species",
+    "source": "https://eol.org/pages/327940/overview",
+    "nameAccordingTo": [
+      "EOL Dynamic Hierarchy"
+    ],
+    "vernacularNames": [],
+    "synonyms": [
+      {
+        "parentNameUsageID": 7194010,
+        "scientificName": "Muscardinus avellanarius (Linnaeus, 1758)",
+        "taxonomicStatus": "preferred",
+        "id": 4304012
+      }
+    ],
+    "ancestors": [
+      {
+        "sourceIdentifier": "-1",
+        "taxonID": 5642060,
+        "parentNameUsageID": null,
+        "taxonConceptID": 2913056,
+        "scientificName": "Life",
+        "taxonRank": "clade",
+        "source": "https://eol.org/pages/2913056/overview"
+      },
+      {
+        "sourceIdentifier": "93302",
+        "taxonID": 8366724,
+        "parentNameUsageID": 5642060,
+        "taxonConceptID": 6061725,
+        "scientificName": "Cellular Organisms",
+        "taxonRank": "clade",
+        "source": "https://eol.org/pages/6061725/overview"
+      },
+      {
+        "sourceIdentifier": "304358",
+        "taxonID": 8366680,
+        "parentNameUsageID": 8366724,
+        "taxonConceptID": 2908256,
+        "scientificName": "Eukaryota",
+        "taxonRank": "domain",
+        "source": "https://eol.org/pages/2908256/overview"
+      },
+      {
+        "sourceIdentifier": "-229",
+        "taxonID": 7049775,
+        "parentNameUsageID": 8366680,
+        "taxonConceptID": 2910700,
+        "scientificName": "Opisthokonta",
+        "taxonRank": "clade",
+        "source": "https://eol.org/pages/2910700/overview"
+      },
+      {
+        "sourceIdentifier": "691846",
+        "taxonID": 8366695,
+        "parentNameUsageID": 7049775,
+        "taxonConceptID": 1,
+        "scientificName": "Metazoa",
+        "taxonRank": "kingdom",
+        "source": "https://eol.org/pages/1/overview"
+      },
+      {
+        "sourceIdentifier": "-6275",
+        "taxonID": 7961769,
+        "parentNameUsageID": 8366695,
+        "taxonConceptID": 3014411,
+        "scientificName": "Bilateria",
+        "taxonRank": "clade",
+        "source": "https://eol.org/pages/3014411/overview"
+      },
+      {
+        "sourceIdentifier": "-20833",
+        "taxonID": 6822769,
+        "parentNameUsageID": 7961769,
+        "taxonConceptID": 8814528,
+        "scientificName": "Deuterostomia",
+        "taxonRank": "clade",
+        "source": "https://eol.org/pages/8814528/overview"
+      },
+      {
+        "sourceIdentifier": "125642",
+        "taxonID": 8366677,
+        "parentNameUsageID": 6822769,
+        "taxonConceptID": 694,
+        "scientificName": "Chordata",
+        "taxonRank": "phylum",
+        "source": "https://eol.org/pages/694/overview"
+      },
+      {
+        "sourceIdentifier": "-51339",
+        "taxonID": 7839181,
+        "parentNameUsageID": 8366677,
+        "taxonConceptID": 2774383,
+        "scientificName": "Vertebrata",
+        "taxonRank": "subphylum",
+        "source": "https://eol.org/pages/2774383/overview"
+      },
+      {
+        "sourceIdentifier": "-51335",
+        "taxonID": 7839137,
+        "parentNameUsageID": 7839181,
+        "taxonConceptID": 46557929,
+        "scientificName": "Gnathostomata",
+        "taxonRank": "clade",
+        "source": "https://eol.org/pages/46557929/overview"
+      },
+      {
+        "sourceIdentifier": "-51331",
+        "taxonID": 7839093,
+        "parentNameUsageID": 7839137,
+        "taxonConceptID": 2775704,
+        "scientificName": "Osteichthyes",
+        "taxonRank": "clade",
+        "source": "https://eol.org/pages/2775704/overview"
+      },
+      {
+        "sourceIdentifier": "-51329",
+        "taxonID": 7839071,
+        "parentNameUsageID": 7839093,
+        "taxonConceptID": 8909,
+        "scientificName": "Sarcopterygii",
+        "taxonRank": "superclass",
+        "source": "https://eol.org/pages/8909/overview"
+      },
+      {
+        "sourceIdentifier": "-51324",
+        "taxonID": 7839016,
+        "parentNameUsageID": 7839071,
+        "taxonConceptID": 46557930,
+        "scientificName": "Tetrapoda",
+        "taxonRank": "clade",
+        "source": "https://eol.org/pages/46557930/overview"
+      },
+      {
+        "sourceIdentifier": "-51313",
+        "taxonID": 7838895,
+        "parentNameUsageID": 7839016,
+        "taxonConceptID": 42312317,
+        "scientificName": "Reptiliomorpha",
+        "taxonRank": "clade",
+        "source": "https://eol.org/pages/42312317/overview"
+      },
+      {
+        "sourceIdentifier": "-51307",
+        "taxonID": 7838829,
+        "parentNameUsageID": 7838895,
+        "taxonConceptID": 3014446,
+        "scientificName": "Amniota",
+        "taxonRank": "clade",
+        "source": "https://eol.org/pages/3014446/overview"
+      },
+      {
+        "sourceIdentifier": "-51306",
+        "taxonID": 7838818,
+        "parentNameUsageID": 7838829,
+        "taxonConceptID": 3014447,
+        "scientificName": "Synapsida",
+        "taxonRank": "clade",
+        "source": "https://eol.org/pages/3014447/overview"
+      },
+      {
+        "sourceIdentifier": "-81030",
+        "taxonID": 8161369,
+        "parentNameUsageID": 7838818,
+        "taxonConceptID": 4522847,
+        "scientificName": "Therapsida",
+        "taxonRank": "order",
+        "source": "https://eol.org/pages/4522847/overview"
+      },
+      {
+        "sourceIdentifier": "-105521",
+        "taxonID": 5698598,
+        "parentNameUsageID": 8161369,
+        "taxonConceptID": 4528578,
+        "scientificName": "Cynodontia",
+        "taxonRank": "suborder",
+        "source": "https://eol.org/pages/4528578/overview"
+      },
+      {
+        "sourceIdentifier": "-168130",
+        "taxonID": 6380858,
+        "parentNameUsageID": 5698598,
+        "taxonConceptID": 1642,
+        "scientificName": "Mammalia",
+        "taxonRank": "class",
+        "source": "https://eol.org/pages/1642/overview"
+      },
+      {
+        "sourceIdentifier": "-326288",
+        "taxonID": 7633742,
+        "parentNameUsageID": 6380858,
+        "taxonConceptID": 47048248,
+        "scientificName": "Theria",
+        "taxonRank": "subclass",
+        "source": "https://eol.org/pages/47048248/overview"
+      },
+      {
+        "sourceIdentifier": "-577015",
+        "taxonID": 7907281,
+        "parentNameUsageID": 7633742,
+        "taxonConceptID": 47048864,
+        "scientificName": "Eutheria",
+        "taxonRank": "clade",
+        "source": "https://eol.org/pages/47048864/overview"
+      },
+      {
+        "sourceIdentifier": "-738669",
+        "taxonID": 8083891,
+        "parentNameUsageID": 7907281,
+        "taxonConceptID": 42399417,
+        "scientificName": "Placentalia",
+        "taxonRank": "clade",
+        "source": "https://eol.org/pages/42399417/overview"
+      },
+      {
+        "sourceIdentifier": "-1104903",
+        "taxonID": 5752681,
+        "parentNameUsageID": 8083891,
+        "taxonConceptID": 32005829,
+        "scientificName": "Boreoeutheria",
+        "taxonRank": "clade",
+        "source": "https://eol.org/pages/32005829/overview"
+      },
+      {
+        "sourceIdentifier": "-1225660",
+        "taxonID": 5879669,
+        "parentNameUsageID": 5752681,
+        "taxonConceptID": 40107874,
+        "scientificName": "Euarchontoglires",
+        "taxonRank": "clade",
+        "source": "https://eol.org/pages/40107874/overview"
+      },
+      {
+        "sourceIdentifier": "-1352181",
+        "taxonID": 6018262,
+        "parentNameUsageID": 5879669,
+        "taxonConceptID": 4530224,
+        "scientificName": "Glires",
+        "taxonRank": "clade",
+        "source": "https://eol.org/pages/4530224/overview"
+      },
+      {
+        "sourceIdentifier": "-1599799",
+        "taxonID": 6292851,
+        "parentNameUsageID": 6018262,
+        "taxonConceptID": 8677,
+        "scientificName": "Rodentia",
+        "taxonRank": "order",
+        "source": "https://eol.org/pages/8677/overview"
+      },
+      {
+        "sourceIdentifier": "-1871582",
+        "taxonID": 6589719,
+        "parentNameUsageID": 6292851,
+        "taxonConceptID": 2846678,
+        "scientificName": "Sciuromorpha",
+        "taxonRank": "suborder",
+        "source": "https://eol.org/pages/2846678/overview"
+      },
+      {
+        "sourceIdentifier": "-2228820",
+        "taxonID": 6982886,
+        "parentNameUsageID": 6589719,
+        "taxonConceptID": 47051528,
+        "scientificName": "Gliridae",
+        "taxonRank": "family",
+        "source": "https://eol.org/pages/47051528/overview"
+      },
+      {
+        "sourceIdentifier": "-2329482",
+        "taxonID": 7093445,
+        "parentNameUsageID": 6982886,
+        "taxonConceptID": 2848935,
+        "scientificName": "Leithiinae",
+        "taxonRank": "subfamily",
+        "source": "https://eol.org/pages/2848935/overview"
+      },
+      {
+        "sourceIdentifier": "-2383275",
+        "taxonID": 7152802,
+        "parentNameUsageID": 7093445,
+        "taxonConceptID": 42259,
+        "scientificName": "Muscardinus",
+        "taxonRank": "genus",
+        "source": "https://eol.org/pages/42259/overview"
+      }
+    ],
+    "children": [
+      {
+        "sourceIdentifier": "-2437670",
+        "taxonID": 7213074,
+        "parentNameUsageID": 7194010,
+        "taxonConceptID": 47051536,
+        "scientificName": "<i>Muscardinus avellanarius</i> ssp. <i>trapezius</i>",
+        "taxonRank": "subspecies",
+        "source": "https://eol.org/pages/47051536/overview"
+      },
+      {
+        "sourceIdentifier": "-2437671",
+        "taxonID": 7213075,
+        "parentNameUsageID": 7194010,
+        "taxonConceptID": 47051537,
+        "scientificName": "<i>Muscardinus <i>avellanarius</i></i> ssp. avellanarius",
+        "taxonRank": "subspecies",
+        "source": "https://eol.org/pages/47051537/overview"
+      },
+      {
+        "sourceIdentifier": "-2437672",
+        "taxonID": 7213076,
+        "parentNameUsageID": 7194010,
+        "taxonConceptID": 40335986,
+        "scientificName": "<i>Muscardinus avellanarius</i> ssp. <i>pulcher</i>",
+        "taxonRank": "subspecies",
+        "source": "https://eol.org/pages/40335986/overview"
+      }
+    ]
+  }
+}

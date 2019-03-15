@@ -4,10 +4,13 @@ var config = reqlib('lib/config/config')
   , mongoose = require('mongoose')
   ;
 
-process.env.NODE_ENV = 'test';
-config.load();
-i18n.init();
-mongoose.Promise = Promise; // Why is this necessary...?
+module.exports.init = function() {
+  process.env.NODE_ENV = 'test';
+  config.load();
+  i18n.init();
+  mongoose.Promise = Promise; // Why is this necessary...?
 
-var templateManager = reqlib('lib/template-manager');
-templateManager.load();
+  var templateManager = reqlib('lib/template-manager');
+  return templateManager.load();
+}
+

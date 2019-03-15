@@ -12,18 +12,19 @@ function getCard() {
   var data = readApiData();
 
   speciesDataSupplier._setApiCaller({
-    getJson: function(apiName, params, log, cb) {
-      var result;
+    getJson: function(apiName, params, log) {
+      return new Promise((resolve, reject) => {
+        var result;
 
-      if (apiName === 'pages') {
-        result = data.pages;
-      } else if (apiName === 'hierarchy_entries') {
-        result = data.hierarchyEntries;
-      }
+        if (apiName === 'pages') {
+          result = data.pages;
+        } else if (apiName === 'hierarchy_entries') {
+          result = data.hierarchyEntries;
+        }
 
-      if (!result) return cb(new Error('Unexpected api name in fake api caller: ' + apiName));
-
-      cb(null, result);
+        if (!result) return reject(new Error('Unexpected api name in fake api caller: ' + apiName));
+        return resolve(result)
+      });
     }
   });
 
@@ -54,7 +55,7 @@ function getCard() {
 }
 module.exports.getCard = getCard;
 
-function readApiData(cb) {
+function readApiData() {
   return JSON.parse(fs.readFileSync(path.join(__dirname, '../data/api-responses.json')));
 }
 

@@ -36,7 +36,7 @@
     "canvas": "1.6.11",
     "concat-stream": "^1.6.2",
     "cors": "^2.8.5",
-    "csv-parse": "^2.5.0",
+    "csv-parse": "^4.4.6",
     "express": "^4.16.4",
     "file-type": "^4.1.0",
     "flat": "^2.0.1",

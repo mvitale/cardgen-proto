@@ -46,7 +46,7 @@
     "merge": "^1.2.1",
     "minimist": "^1.2.0",
     "mongodb": "^2.2.36",
-    "mongoose": "^4.13.18",
+    "mongoose": "^5.7.5",
     "mongoose-autopopulate": "^0.8.2",
     "mongoose-beautiful-unique-validation": "^5.1.1",
     "nocache": "^2.0.0",

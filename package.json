@@ -43,7 +43,7 @@
     "fs-extra": "^7.0.1",
     "image-size": "^0.5.1",
     "lru-cache": "^5.1.1",
-    "merge": "^1.2.1",
+    "merge": "^2.1.1",
     "minimist": "^1.2.0",
     "mongodb": "^2.2.36",
     "mongoose": "^4.13.18",
